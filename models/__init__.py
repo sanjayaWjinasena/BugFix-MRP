@@ -5,3 +5,6 @@ from . import mrp_workcenter
 from . import mrp_workcenter_productivity
 from . import mrp_workorder
 from . import x_material_request_m
+from . import x_material_request_m_stage
+from . import x_material_request_m_tag
+from . import x_sales_report_type
