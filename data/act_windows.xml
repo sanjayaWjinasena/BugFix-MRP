@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- TODO: 5 act_windows records need hand-porting. -->
+  <!-- Clear-DB id=3381: Material Request M -->
+  <!-- Clear-DB id=2306: ECOs -->
+  <!-- Clear-DB id=2838: mrp.bom -->
+  <!-- Clear-DB id=2834: mrp.eco.bom.change -->
+  <!-- Clear-DB id=2555: 	mrp.workcenter.productivity -->
+</odoo>

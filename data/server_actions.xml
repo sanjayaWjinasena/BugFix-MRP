@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- TODO: 4 server_actions records need hand-porting. -->
+  <!-- Clear-DB id=2305: PLM - Tag Create -->
+  <!-- Clear-DB id=2304: PLM - Tag Description -->
+  <!-- Clear-DB id=2765: PROJ - Mark as Done Validation -->
+  <!-- Clear-DB id=2542: Update Cost Per Hour -->
+</odoo>
