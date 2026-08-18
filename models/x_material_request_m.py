@@ -25,6 +25,6 @@ class XMaterialRequestM(models.Model):
     x_studio_priority = fields.Boolean(string='High Priority')
     x_studio_sequence = fields.Integer(string='Sequence')
     x_studio_stage_id = fields.Many2one('x_material_request_m_stage', string='Stage', required=True)
-    x_studio_tag_ids = fields.Many2many('x_material_request_m_tag', string='Tags')
+    x_studio_tag_ids = fields.Many2many('x_material_request_m_tag', 'x_material_request_m_x_studio_tag_ids_rel', 'x_id', 'x_material_request_m_tag_id', string='Tags')
     x_studio_user_id = fields.Many2one('res.users', string='Responsible')
     x_studio_value = fields.Monetary(string='Value')
