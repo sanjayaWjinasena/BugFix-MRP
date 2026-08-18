@@ -9,7 +9,7 @@ class XMaterialRequestM(models.Model):
 
     x_active = fields.Boolean(string='Active')
     x_color = fields.Integer(string='Color')
-    x_material_request_m_line_ids_af086 = fields.One2many('x_material_request_m_line_af405', 'TODO_inverse', string='New Lines')
+    # TODO: x_material_request_m_line_ids_af086 = fields.One2many(...) -- Studio inverse name unknown; port from Clear-DB manually.
     x_name = fields.Char(string='Description', required=True)
     x_studio_company_id = fields.Many2one('res.company', string='Company')
     x_studio_currency_id = fields.Many2one('res.currency', string='Currency')

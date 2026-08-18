@@ -7,8 +7,8 @@ class MrpProduction(models.Model):
 
     x_studio_currency_id = fields.Many2one('res.currency', string='Currency')
     x_studio_current_user = fields.Many2one('res.users', string='Current User', readonly=True)
-    x_studio_direct_general_cost = fields.One2many('x_mrp_bom_general_cost', 'TODO_inverse', string='Direct General Cost')
-    x_studio_direct_material_cost = fields.One2many('x_mrp_bom_material_cos', 'TODO_inverse', string='Direct Material Cost')
+    # TODO: x_studio_direct_general_cost = fields.One2many(...) -- Studio inverse name unknown; port from Clear-DB manually.
+    # TODO: x_studio_direct_material_cost = fields.One2many(...) -- Studio inverse name unknown; port from Clear-DB manually.
     x_studio_finished_product_location = fields.Many2one('stock.location', string='Finished Product Location')
     x_studio_finished_products_location_updated = fields.Boolean(string='Finished Products Location Updated')
     x_studio_grand_total_actual_cost_1 = fields.Float(string='Grand Total (Actual Cost)', readonly=True)
@@ -16,8 +16,8 @@ class MrpProduction(models.Model):
     x_studio_mark_as_done_validation = fields.Text(string='Mark as Done Validation')
     x_studio_mass_produced = fields.Boolean(string='Mass Produced')
     x_studio_melt_item = fields.Boolean(string='Melt Item', readonly=True)
-    x_studio_one2many_field_Fzcvl = fields.One2many('x_mrp_bom_labour_cost', 'TODO_inverse', string='Direct Labour Cost')
-    x_studio_one2many_field_vg1OS = fields.One2many('x_mrp_bom_overhead_cos', 'TODO_inverse', string='Direct Overhead Cost')
+    # TODO: x_studio_one2many_field_Fzcvl = fields.One2many(...) -- Studio inverse name unknown; port from Clear-DB manually.
+    # TODO: x_studio_one2many_field_vg1OS = fields.One2many(...) -- Studio inverse name unknown; port from Clear-DB manually.
     x_studio_original_mo = fields.Char(string='Original MO')
     x_studio_ot_applicable = fields.Boolean(string='OT  Applicable', readonly=True, store=False)
     x_studio_pro_bom_total_general_cost = fields.Float(string='Total General Cost', readonly=True)
