@@ -1,24 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- TODO: 20 automations records need hand-porting. -->
-  <!-- Clear-DB id=21: Create BOM Material Cost -->
-  <!-- Clear-DB id=23: Update BOM Material Cost -->
-  <!-- Clear-DB id=24: Create BOM Labour Cost -->
-  <!-- Clear-DB id=25: Create BOM Overhead Cost -->
-  <!-- Clear-DB id=26: Create BOM General Cost -->
-  <!-- Clear-DB id=30: Create Production BOM Labour Cost -->
-  <!-- Clear-DB id=31: Update Production BOM Labour Cost -->
-  <!-- Clear-DB id=32: Create Production BOM Overhead Cost -->
-  <!-- Clear-DB id=33: Update Production BOM Overhead Cost -->
-  <!-- Clear-DB id=34: Create Production BOM General Cost -->
-  <!-- Clear-DB id=35: Update Production BOM General Cost -->
-  <!-- Clear-DB id=36: Update BOM Labour Cost -->
-  <!-- Clear-DB id=37: Update BOM Overhead Cost -->
-  <!-- Clear-DB id=38: Update BOM General Cost -->
-  <!-- Clear-DB id=47: Update Original MO in MO -->
-  <!-- Clear-DB id=122: SRM - Auto Populate Report Type in Production Order -->
-  <!-- Clear-DB id=209: PLM - Tag Description -->
-  <!-- Clear-DB id=210: PLM - Tag Create -->
-  <!-- Clear-DB id=249: Update Cost Per Hour -->
-  <!-- Clear-DB id=330: PROJ - Mark as Done Validation -->
+  <!-- 20 automations ports for BugFix-MRP (auto-generated from Clear-DB snapshot) -->
+  <record id="automation_21_create_bom_material_cost" model="base.automation">
+    <field name="name">Create BOM Material Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Bill of Material Line&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1016] -->
+  </record>
+  <record id="automation_23_update_bom_material_cost" model="base.automation">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Bill of Material Line&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1033] -->
+  </record>
+  <record id="automation_24_create_bom_labour_cost" model="base.automation">
+    <field name="name">Create BOM Labour Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center Usage&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1040] -->
+  </record>
+  <record id="automation_25_create_bom_overhead_cost" model="base.automation">
+    <field name="name">Create BOM Overhead Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center Usage&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1049] -->
+  </record>
+  <record id="automation_26_create_bom_general_cost" model="base.automation">
+    <field name="name">Create BOM General Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center Usage&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1054] -->
+  </record>
+  <record id="automation_30_create_production_bom_labour_cost" model="base.automation">
+    <field name="name">Create Production BOM Labour Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1080] -->
+  </record>
+  <record id="automation_31_update_production_bom_labour_cost" model="base.automation">
+    <field name="name">Update Production BOM Labour Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1086] -->
+  </record>
+  <record id="automation_32_create_production_bom_overhead_cost" model="base.automation">
+    <field name="name">Create Production BOM Overhead Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1093] -->
+  </record>
+  <record id="automation_33_update_production_bom_overhead_cost" model="base.automation">
+    <field name="name">Update Production BOM Overhead Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1096] -->
+  </record>
+  <record id="automation_34_create_production_bom_general_cost" model="base.automation">
+    <field name="name">Create Production BOM General Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1103] -->
+  </record>
+  <record id="automation_35_update_production_bom_general_cost" model="base.automation">
+    <field name="name">Update Production BOM General Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1106] -->
+  </record>
+  <record id="automation_36_update_bom_labour_cost" model="base.automation">
+    <field name="name">Update BOM Labour Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center Usage&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1113] -->
+  </record>
+  <record id="automation_37_update_bom_overhead_cost" model="base.automation">
+    <field name="name">Update BOM Overhead Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center Usage&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1120] -->
+  </record>
+  <record id="automation_38_update_bom_general_cost" model="base.automation">
+    <field name="name">Update BOM General Cost</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center Usage&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1127] -->
+  </record>
+  <record id="automation_47_update_original_mo_in_mo" model="base.automation">
+    <field name="name">Update Original MO in MO</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Production Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1155] -->
+  </record>
+  <record id="automation_122_srm_auto_populate_report_type_in_production_order" model="base.automation">
+    <field name="name">SRM - Auto Populate Report Type in Production Order</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Production Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [1738] -->
+  </record>
+  <record id="automation_209_plm_tag_description" model="base.automation">
+    <field name="name">PLM - Tag Description</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Engineering Change Order (ECO)&apos;)]"/>
+    <field name="trigger">on_change</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2304] -->
+  </record>
+  <record id="automation_210_plm_tag_create" model="base.automation">
+    <field name="name">PLM - Tag Create</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Engineering Change Order (ECO)&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2305] -->
+  </record>
+  <record id="automation_249_update_cost_per_hour" model="base.automation">
+    <field name="name">Update Cost Per Hour</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Work Center&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2542] -->
+  </record>
+  <record id="automation_330_proj_mark_as_done_validation" model="base.automation">
+    <field name="name">PROJ - Mark as Done Validation</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;Production Order&apos;)]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <!-- TODO: wire action_server_ids to actual server_action xmlids: [2765] -->
+  </record>
 </odoo>
