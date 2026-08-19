@@ -3,6 +3,7 @@
   <record id="ported_odoo_studio_mrp_prod_3f7141cd_2822_4ad0_b8df_a8eb899ee1d1" model="ir.ui.view">
     <field name="name">Odoo Studio: mrp.production.form-button</field>
     <field name="model">mrp.production</field>
+    <field name="key">studio_customization.odoo_studio_mrp_prod_3f7141cd-2822-4ad0-b8df-a8eb899ee1d1</field>
     <field name="type">form</field>
     <field name="priority">99</field>
     <field name="mode">extension</field>
@@ -13,37 +14,27 @@
             
           </xpath>
           
-          <xpath expr="//header/button[@name='button_mark_done'][3]" position="before">
-            
-          </xpath>
           
-          <xpath expr="//header/button[@name='action_cancel']" position="before">
-            
-          </xpath>
           
-          <xpath expr="//header/button[@name='action_confirm']" position="attributes">
-            <attribute name="invisible">(state != 'draft') or (((x_studio_mass_produced == False) and (x_studio_tracked_item == True)) or ((state != 'draft') or (x_studio_temp_location == True)))</attribute></xpath>
           
-          <xpath expr="//header/button[@name='action_cancel']" position="attributes">
-            <attribute name="invisible">((id == False) or (state in ('done', 'cancel')) or ((x_studio_serial_cancelled == False) and (x_studio_mass_produced == True)))</attribute></xpath>
           
-          <xpath expr="//header/button[@name='button_mark_done'][3]" position="attributes">
-            <attribute name="invisible">(move_raw_ids or not show_produce) or (((state != 'to_close') and ((qty_producing != 0) or (state not in ('confirmed', 'progress')))) or (((x_studio_mass_produced == False) and (x_studio_tracked_item == True)) or (((x_studio_finished_products_location_updated == False) and (x_studio_source_validate == True)) or ((set(move_raw_ids).intersection([])) or (x_studio_quantity_validation == True)))))</attribute></xpath>
           
-          <xpath expr="//header/button[@name='button_plan']" position="attributes">
-            <attribute name="invisible">(state not in ('confirmed', 'progress', 'to_close') or not workorder_ids or is_planned) or (((x_studio_mass_produced == False) and (x_studio_tracked_item == True)) or ((is_planned == True) or ((set(workorder_ids).intersection([])) or (state not in ('confirmed', 'progress', 'to_close')))))</attribute></xpath>
           
-          <xpath expr="//header/button[@name='do_unreserve']" position="attributes">
-            <attribute name="invisible">(not unreserve_visible) or (((x_studio_mass_produced == False) and (x_studio_tracked_item == True)) or (unreserve_visible == False))</attribute></xpath>
           
-          <xpath expr="//header/button[@name='button_scrap']" position="attributes">
-            <attribute name="invisible">(state in ('cancel', 'draft')) or (((x_studio_mass_produced == False) and (x_studio_tracked_item == True)) or (state in ('cancel', 'draft')))</attribute></xpath>
+          
+          
+          
+          
+          
+          
+          
+          
       
           <!--xpath expr="//header/button[@name='action_serial_mass_produce_wizard']" position="attributes">
             <attribute name="attrs">{'invisible': ['|',('show_serial_mass_produce', '=', False),'&amp;', ('x_studio_tracked_item', '=', True), ('x_studio_mass_produced', '=', False)]}</attribute> 
           </xpath-->
           
-          <xpath expr="//header/button[@name='action_serial_mass_produce_wizard']" position="replace"/>
+          
       
         </data>
     </field>

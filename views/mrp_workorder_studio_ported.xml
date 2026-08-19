@@ -3,6 +3,7 @@
   <record id="ported_mrp_workorder_view_f_456df5fb_425e_42ae_9ee5_3dafbf9e14f3" model="ir.ui.view">
     <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
     <field name="model">mrp.workorder</field>
+    <field name="key">studio_customization.mrp_workorder_view_f_456df5fb-425e-42ae-9ee5-3dafbf9e14f3</field>
     <field name="type">form</field>
     <field name="priority">99</field>
     <field name="mode">extension</field>
