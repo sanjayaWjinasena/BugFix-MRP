@@ -1,12 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mrp_bom_general_cost_group_user,mrp.bom.general.cost group_user,model_mrp_bom_general_cost,base.group_user,1,0,0,0
-access_mrp_bom_general_cost_group_system,mrp.bom.general.cost group_system,model_mrp_bom_general_cost,base.group_system,1,1,1,1
-access_mrp_bom_labour_cost_group_user,mrp.bom.labour.cost group_user,model_mrp_bom_labour_cost,base.group_user,1,0,0,0
-access_mrp_bom_labour_cost_group_system,mrp.bom.labour.cost group_system,model_mrp_bom_labour_cost,base.group_system,1,1,1,1
-access_mrp_bom_material_cost_group_user,mrp.bom.material.cost group_user,model_mrp_bom_material_cost,base.group_user,1,0,0,0
-access_mrp_bom_material_cost_group_system,mrp.bom.material.cost group_system,model_mrp_bom_material_cost,base.group_system,1,1,1,1
-access_mrp_bom_overhead_cost_group_user,mrp.bom.overhead.cost group_user,model_mrp_bom_overhead_cost,base.group_user,1,0,0,0
-access_mrp_bom_overhead_cost_group_system,mrp.bom.overhead.cost group_system,model_mrp_bom_overhead_cost,base.group_system,1,1,1,1
 access_x_material_request_m_user,x_material_request_m user access,model_x_material_request_m,base.group_user,1,1,1,1
 access_x_material_request_m_stage_user,x_material_request_m_stage user access,model_x_material_request_m_stage,base.group_user,1,1,1,1
 access_x_material_request_m_tag_user,x_material_request_m_tag user access,model_x_material_request_m_tag,base.group_user,1,1,1,1
