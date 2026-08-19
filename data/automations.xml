@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- 20 automations ports for BugFix-MRP (auto-generated from Clear-DB snapshot) -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_21_create_bom_material_cost" model="base.automation">     <field name="name">Create BOM Material Cost</field>     <field name="... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_23_update_bom_material_cost" model="base.automation">     <field name="name">Update BOM Material Cost</field>     <field name="... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_24_create_bom_labour_cost" model="base.automation">     <field name="name">Create BOM Labour Cost</field>     <field name="mode... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_25_create_bom_overhead_cost" model="base.automation">     <field name="name">Create BOM Overhead Cost</field>     <field name="... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_26_create_bom_general_cost" model="base.automation">     <field name="name">Create BOM General Cost</field>     <field name="mo... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_30_create_production_bom_labour_cost" model="base.automation">     <field name="name">Create Production BOM Labour Cost</field>... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_31_update_production_bom_labour_cost" model="base.automation">     <field name="name">Update Production BOM Labour Cost</field>... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_32_create_production_bom_overhead_cost" model="base.automation">     <field name="name">Create Production BOM Overhead Cost</fi... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_33_update_production_bom_overhead_cost" model="base.automation">     <field name="name">Update Production BOM Overhead Cost</fi... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_34_create_production_bom_general_cost" model="base.automation">     <field name="name">Create Production BOM General Cost</fiel... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_35_update_production_bom_general_cost" model="base.automation">     <field name="name">Update Production BOM General Cost</fiel... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_36_update_bom_labour_cost" model="base.automation">     <field name="name">Update BOM Labour Cost</field>     <field name="mode... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_37_update_bom_overhead_cost" model="base.automation">     <field name="name">Update BOM Overhead Cost</field>     <field name="... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_38_update_bom_general_cost" model="base.automation">     <field name="name">Update BOM General Cost</field>     <field name="mo... -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <record id="automation_47_update_original_mo_in_mo" model="base.automation">
     <field name="name">Update Original MO in MO</field>
     <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
@@ -29,9 +29,9 @@
     <field name="active" eval="True"/>
     <!-- TODO: wire action_server_ids to actual server_action xmlids: [1738] -->
   </record>
-  <!-- SKIPPED unknown model mrp.eco: <record id="automation_209_plm_tag_description" model="base.automation">     <field name="name">PLM - Tag Description</field>     <field name="model_i... -->
-  <!-- SKIPPED unknown model mrp.eco: <record id="automation_210_plm_tag_create" model="base.automation">     <field name="name">PLM - Tag Create</field>     <field name="model_id" search=... -->
-  <!-- SKIPPED unresolved model ref: <record id="automation_249_update_cost_per_hour" model="base.automation">     <field name="name">Update Cost Per Hour</field>     <field name="model_i... -->
+  
+  
+  
   <record id="automation_330_proj_mark_as_done_validation" model="base.automation">
     <field name="name">PROJ - Mark as Done Validation</field>
     <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
