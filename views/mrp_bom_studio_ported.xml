@@ -23,29 +23,7 @@
           <tree string="Routing Work Centers">
             <field name="sequence" widget="handle"/>
             <field name="name"/>
-            <field name="quality_point_count"/>
-            <button name="action_mrp_workorder_show_steps" type="object" icon="fa-list-ul" context="{'default_operation_id': id}"/>
-            <field name="workcenter_id"/>
-            <field name="time_cycle" widget="float_time" string="Duration (minutes)" sum="Total Duration" width="1.5"/>
-          </tree>
-        </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-          <page string="Direct Material Cost" name="studio_page_e1zSq">
-            <field name="x_studio_one2many_field_4rhw9" string="Direct Material Cost">
-              <tree editable="bottom" create="false" edit="false" delete="false">
-                <field name="x_studio_sequence" widget="handle"/>
-                <field name="x_studio_line_id" string="BOM Line ID" column_invisible="1"/>
-                <field name="x_studio_bom_material_cost_ids" string="BOM Material Cost" column_invisible="1"/>
-                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
-                <field name="x_studio_product_id" force_save="True" readonly="1"/>
-                <field name="x_studio_planned_qty" string="Planned Qty" force_save="True" readonly="1"/>
-                <field name="x_studio_uom_id" string="UOM" force_save="True" readonly="1"/>
-                <field name="x_studio_cost" string="Cost/Unit" widget="monetary"/>
-                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
-                <field name="x_studio_currency_id" column_invisible="1"/>
-                <field name="x_name" column_invisible="1"/>
-              </tree>
-            </field>
+            
             <group class="oe_subtotal_footer oe_right" name="studio_group_a8a1d8">
               <field name="x_studio_bom_total_material_cost" string="Total Material Cost"/>
               <field name="x_studio_currency_id" invisible="1"/>
