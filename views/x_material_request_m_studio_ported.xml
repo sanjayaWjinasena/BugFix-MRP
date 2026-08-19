@@ -42,9 +42,7 @@
             <field name="x_studio_notes" placeholder="Type down your notes here..." nolabel="1" colspan="2"/>
           </group>
           <notebook>
-            <page string="Details" name="lines">
-              <field name="x_material_request_m_line_ids_af086"/>
-            </page>
+            
           </notebook>
         </sheet>
         
