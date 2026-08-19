@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+  <record id="ported_odoo_studio_mrp_bom__89455c67_9b45_4c40_abd4_1ea6f989befd" model="ir.ui.view">
+    <field name="name">Odoo Studio: mrp.bom.form customization</field>
+    <field name="model">mrp.bom</field>
+    <field name="key">studio_customization.odoo_studio_mrp_bom__89455c67-9b45-4c40-abd4-1ea6f989befd</field>
+    <field name="type">form</field>
+    <field name="priority">99</field>
+    <field name="mode">extension</field>
+    <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]" position="before">
+          <header>  
+            
+          </header>
+          <header/>
+        </xpath>    
+          
+        
+        
+        
+      </data>
+    </field>
+  </record>
   <record id="ported_odoo_studio_mrp_bom__521909df_5d19_48cd_b5ed_65a972133e23" model="ir.ui.view">
     <field name="name">Odoo Studio: mrp.bom.form customization-button</field>
     <field name="model">mrp.bom</field>

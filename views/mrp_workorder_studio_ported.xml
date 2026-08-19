@@ -14,9 +14,7 @@
             <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '!=', True), ('skipped_check_ids', '!=', []), '&amp;', ('is_last_unfinished_wo', '=', False), ('is_last_lot', '=', False), '&amp;', ('is_last_unfinished_wo', '=', True), ('is_last_lot', '=', True)]}</attribute> 
           </xpath-->
           
-          <xpath expr="//field[@name='finished_lot_id']" position="attributes">
-          <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
-        </xpath>
+          
         </data>
     </field>
   </record>

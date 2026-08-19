@@ -12,20 +12,12 @@
       <data>
         
         
-        <xpath expr="//field[@name='product_tmpl_id']" position="after">
-          
-        </xpath>
         
-        <xpath expr="//field[@name='bom_id']" position="after">
-          
-        </xpath>
-        <xpath expr="//field[@name='effectivity']" position="attributes">
-          <attribute name="invisible">id == 0</attribute><attribute name="readonly">(state == 'done') or (state == 'done')</attribute></xpath>
-        <xpath expr="//field[@name='tag_ids']" position="attributes">
-          <attribute name="readonly">(state == 'done') or (state == 'done')</attribute></xpath>
-        <xpath expr="//field[@name='tag_ids']" position="after">
-          
-        </xpath>
+        
+        
+        
+        
+        
       </data>
     </field>
   </record>

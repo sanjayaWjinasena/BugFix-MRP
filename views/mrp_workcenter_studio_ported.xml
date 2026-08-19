@@ -10,30 +10,12 @@
     <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
     <field name="arch" type="xml">
       <data>
-        <xpath expr="//field[@name='costs_hour']" position="attributes">
-          <attribute name="force_save">0</attribute>
-          <attribute name="readonly">False</attribute>
-        </xpath>
         
         
         
-        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-          <page string="Users" name="studio_page_KhcWJ">
-            <group name="studio_group_KhcWJ">
-              <group name="studio_group_KhcWJ_right">
-                <field name="x_studio_many2many_field_j1rG7" widget="many2many_tags" options="{&quot;no_create&quot;: true, &quot;color_field&quot;: &quot;color&quot;}" help="Workcenter Visibility Control"/>
-                <field name="x_studio_employee" string="Employee" help="Actual Working Employee (For Cost per Hour)" invisible="1"/>
-                <field name="x_studio_employees" widget="many2many_tags" string="Employees" options="{&quot;no_create&quot;: true, &quot;color_field&quot;: &quot;color&quot;}" required="1"/>
-              </group>
-            </group>
-          </page>
-        </xpath>
-        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="after">
-          <group name="studio_group_y2nIj">
-            <group name="studio_group_y2nIj_left"/>
-            <group name="studio_group_y2nIj_right"/>
-          </group>
-        </xpath>
+        
+        
+        
       </data>
     </field>
   </record>

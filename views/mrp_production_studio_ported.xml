@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+  <record id="ported_odoo_studio_mrp_prod_525073cc_17e0_429c_95b2_d561fd435bfa" model="ir.ui.view">
+    <field name="name">Odoo Studio: mrp.production.form customization</field>
+    <field name="model">mrp.production</field>
+    <field name="key">studio_customization.odoo_studio_mrp_prod_525073cc-17e0-429c-95b2-d561fd435bfa</field>
+    <field name="type">form</field>
+    <field name="priority">99</field>
+    <field name="mode">extension</field>
+    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]" position="attributes">
+          <attribute name="create">false</attribute>
+          <attribute name="delete">true</attribute>
+          <attribute name="edit">true</attribute>
+        </xpath>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </data>
+    </field>
+  </record>
   <record id="ported_odoo_studio_mrp_prod_3f7141cd_2822_4ad0_b8df_a8eb899ee1d1" model="ir.ui.view">
     <field name="name">Odoo Studio: mrp.production.form-button</field>
     <field name="model">mrp.production</field>
@@ -10,9 +60,7 @@
     <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
     <field name="arch" type="xml">
       <data>
-          <xpath expr="//header/field[@name='show_lock']" position="after">
-            
-          </xpath>
+          
           
           
           
