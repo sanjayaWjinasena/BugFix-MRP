@@ -18,7 +18,6 @@
         'views/x_material_request_m_studio_ported.xml',
         'views/x_material_request_m_stage_studio_ported.xml',
         'views/x_material_request_m_tag_studio_ported.xml',
-        'views/mrp_eco_studio_ported.xml',
         'views/mrp_production_studio_ported.xml',
         'views/mrp_workcenter_studio_ported.xml',
         'views/mrp_workorder_studio_ported.xml',
