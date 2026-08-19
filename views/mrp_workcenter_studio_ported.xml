@@ -45,19 +45,19 @@
               <group name="studio_group_8ae122">
                 <group name="studio_group_9c2681">
                   <field name="active" invisible="1"/>
-                  <field name="category_id" options="{&quot;no_open&quot;: True}" context="{'default_company_id':company_id}"/>
+                  
                   <field name="company_id" options="{'no_create': True}"/>
-                  <field name="equipment_assign_to" widget="radio"/>
-                  <field name="employee_id" string="Employee" invisible="(equipment_assign_to == False) or (equipment_assign_to == 'department')"/>
-                  <field name="department_id" string="Department" invisible="(equipment_assign_to == False) or (equipment_assign_to == 'employee')"/>
+                  
+                  
+                  
                 </group>
                 <group name="studio_group_456ae3">
                   <field name="maintenance_team_id" context="{'default_company_id':company_id}"/>
                   <field name="technician_user_id" domain="[('share', '=', False)]"/>
-                  <field name="assign_date" groups="base.group_no_one"/>
-                  <field name="scrap_date" groups="base.group_no_one"/>
-                  <field name="location" string="Used in location"/>
-                  <field name="workcenter_id" context="{'default_company_id':company_id}" groups="mrp.group_mrp_routings"/>
+                  
+                  
+                  
+                  
                 </group>
               </group>
               <notebook name="studio_notebook_e7bc92">
@@ -67,19 +67,19 @@
                 <page string="Product Information" name="product_information">
                   <group name="studio_group_00a25f">
                     <group name="studio_group_cdba4b">
-                      <field name="partner_id"/>
-                      <field name="partner_ref"/>
-                      <field name="model"/>
-                      <field name="serial_no"/>
+                      
+                      
+                      
+                      
                       <field name="company_id" invisible="1"/>
                     </group>
                     <group name="studio_group_030ee2">
                       <field name="effective_date"/>
-                      <field name="cost" groups="maintenance.group_equipment_manager"/>
-                      <field name="x_studio_electricity" string="Electricity"/>
-                      <field name="x_studio_water" string="Water"/>
-                      <field name="x_studio_lubricant" string="Lubricant"/>
-                      <field name="warranty_date"/>
+                      
+                      
+                      
+                      
+                      
                     </group>
                   </group>
                 </page>
