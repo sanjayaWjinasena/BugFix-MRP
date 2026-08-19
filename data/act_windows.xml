@@ -6,26 +6,9 @@
     <field name="res_model">x_material_request_m</field>
     <field name="view_mode">kanban,tree,form,calendar,gantt,map,pivot,graph</field>
   </record>
-  <record id="action_2306_ecos" model="ir.actions.act_window">
-    <field name="name">ECOs</field>
-    <field name="res_model">mrp.eco.bom.change</field>
-    <field name="view_mode">tree,form</field>
-    <field name="domain">[('eco_id', '=', active_id)]</field>
-    <field name="context">{'search_default_eco_id': active_id,'default_eco_id': active_id}</field>
-  </record>
   <record id="action_2838_mrp_bom" model="ir.actions.act_window">
     <field name="name">mrp.bom</field>
     <field name="res_model">mrp.bom</field>
     <field name="view_mode">kanban,tree,form</field>
-  </record>
-  <record id="action_2834_mrp_eco_bom_change" model="ir.actions.act_window">
-    <field name="name">mrp.eco.bom.change</field>
-    <field name="res_model">mrp.eco.bom.change</field>
-    <field name="view_mode">form</field>
-  </record>
-  <record id="action_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
-    <field name="name">	mrp.workcenter.productivity</field>
-    <field name="res_model">mrp.workcenter.productivity</field>
-    <field name="view_mode">tree,form,pivot,graph</field>
   </record>
 </odoo>
