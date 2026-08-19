@@ -23,6 +23,7 @@
         'views/mrp_workorder_studio_ported.xml',
         'views/mrp_bom_studio_ported.xml',
         'views/mrp_eco_studio_ported.xml',
+        'views/mrp_workcenter_productivity_studio_ported.xml',
     ],
     'installable': True,
     'auto_install': False,

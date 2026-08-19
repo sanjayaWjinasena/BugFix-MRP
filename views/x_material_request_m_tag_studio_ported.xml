@@ -24,4 +24,31 @@
       </form>
     </field>
   </record>
+  <record id="ported_default_list_view_fo_82adaf2b_8e87_4058_81e1_7c964299488b" model="ir.ui.view">
+    <field name="name">Default list view for x_material_request_m_tag</field>
+    <field name="model">x_material_request_m_tag</field>
+    <field name="key">studio_customization.default_list_view_fo_82adaf2b-8e87-4058-81e1-7c964299488b</field>
+    <field name="type">tree</field>
+    <field name="priority">16</field>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+      <tree editable="bottom">
+        <field name="x_name"/>
+        <field name="x_color" widget="color_picker"/>
+      </tree>
+    </field>
+  </record>
+  <record id="ported_default_search_view__9352fa09_3b79_4b0c_b96d_d591a1569119" model="ir.ui.view">
+    <field name="name">Default search view for x_material_request_m_tag</field>
+    <field name="model">x_material_request_m_tag</field>
+    <field name="key">studio_customization.default_search_view__9352fa09-3b79-4b0c-b96d-d591a1569119</field>
+    <field name="type">search</field>
+    <field name="priority">16</field>
+    <field name="mode">primary</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="x_name"/>
+      </search>
+    </field>
+  </record>
 </odoo>
