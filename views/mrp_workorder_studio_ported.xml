@@ -1,21 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="ported_mrp_workorder_view_f_456df5fb_425e_42ae_9ee5_3dafbf9e14f3" model="ir.ui.view">
-    <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
-    <field name="model">mrp.workorder</field>
-    <field name="key">studio_customization.mrp_workorder_view_f_456df5fb-425e-42ae-9ee5-3dafbf9e14f3</field>
-    <field name="type">form</field>
-    <field name="priority">99</field>
-    <field name="mode">extension</field>
-    <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
-    <field name="arch" type="xml">
-      <data>
-          <!--xpath expr="//button[@name='do_finish']" position="attributes">
-            <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '!=', True), ('skipped_check_ids', '!=', []), '&amp;', ('is_last_unfinished_wo', '=', False), ('is_last_lot', '=', False), '&amp;', ('is_last_unfinished_wo', '=', True), ('is_last_lot', '=', True)]}</attribute> 
-          </xpath-->
-          
-          
-        </data>
-    </field>
-  </record>
 </odoo>

@@ -1,38 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="ported_odoo_studio_mrp_eco__596fe54e_9a3b_4020_b027_6cc7115112b6" model="ir.ui.view">
-    <field name="name">Odoo Studio: mrp.eco.view.form customization</field>
-    <field name="model">mrp.eco</field>
-    <field name="key">studio_customization.odoo_studio_mrp_eco__596fe54e-9a3b-4020-b027-6cc7115112b6</field>
-    <field name="type">form</field>
-    <field name="priority">99</field>
-    <field name="mode">extension</field>
-    <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
-    <field name="arch" type="xml">
-      <data>
-        
-        
-        
-        
-        
-        
-        
-        
-      </data>
-    </field>
-  </record>
-  <record id="ported_mrp_eco_view_form_bu_8ca7870c_83a3_4588_975f_f72b8b21da81" model="ir.ui.view">
-    <field name="name">mrp.eco.view.form_button</field>
-    <field name="model">mrp.eco</field>
-    <field name="key">studio_customization.mrp_eco_view_form_bu_8ca7870c-83a3-4588-975f-f72b8b21da81</field>
-    <field name="type">form</field>
-    <field name="priority">99</field>
-    <field name="mode">extension</field>
-    <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
-    <field name="arch" type="xml">
-      <data>
-          
-        </data>
-    </field>
-  </record>
 </odoo>

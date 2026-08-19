@@ -1,22 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="ported_odoo_studio_mrp_work_24ca2d8d_3c97_4246_a4bb_f1c74b095426" model="ir.ui.view">
-    <field name="name">Odoo Studio: mrp.workcenter.form customization</field>
-    <field name="model">mrp.workcenter</field>
-    <field name="key">studio_customization.odoo_studio_mrp_work_24ca2d8d-3c97-4246-a4bb-f1c74b095426</field>
-    <field name="type">form</field>
-    <field name="priority">99</field>
-    <field name="mode">extension</field>
-    <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
-    <field name="arch" type="xml">
-      <data>
-        
-        
-        
-        
-        
-        
-      </data>
-    </field>
-  </record>
 </odoo>
