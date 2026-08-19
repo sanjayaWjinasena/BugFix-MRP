@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <!-- 4 server_actions ports for BugFix-MRP (auto-generated from Clear-DB snapshot) -->
-  <record id="server_action_2305_plm_tag_create" model="ir.actions.server">
-    <field name="name">PLM - Tag Create</field>
-    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.eco&apos;)]"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[line_ids = []
-
-eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
-if eco_tag_search:
-  line_ids.append(eco_tag_search.id)
-else:
-  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
-  line_ids.append(eco_tag_create.id)
-
-"""if record.type == 'bom': 
-  record.write({'tag_ids':[(6, 0, line_ids)], 'active':False})
-else:
-  record.write({'tag_ids':[(6, 0, line_ids)]})"""
-  
-record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
-    <field name="usage">base_automation</field>
-  </record>
-  <record id="server_action_2304_plm_tag_description" model="ir.actions.server">
-    <field name="name">PLM - Tag Description</field>
-    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.eco&apos;)]"/>
-    <field name="state">code</field>
-    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
-if record.name:
-  record['x_studio_tag_description'] = record.name]]></field>
-    <field name="usage">base_automation</field>
-  </record>
+  <!-- SKIPPED unknown model mrp.eco: <record id="server_action_2305_plm_tag_create" model="ir.actions.server">     <field name="name">PLM - Tag Create</field>     <field name="model_id" s... -->
+  <!-- SKIPPED unknown model mrp.eco: <record id="server_action_2304_plm_tag_description" model="ir.actions.server">     <field name="name">PLM - Tag Description</field>     <field name="m... -->
   <record id="server_action_2765_proj_mark_as_done_validation" model="ir.actions.server">
     <field name="name">PROJ - Mark as Done Validation</field>
     <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
