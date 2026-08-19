@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="ported_odoo_studio_mrp_bom__89455c67_9b45_4c40_abd4_1ea6f989befd" model="ir.ui.view">
+    <field name="name">Odoo Studio: mrp.bom.form customization</field>
+    <field name="model">mrp.bom</field>
+    <field name="type">form</field>
+    <field name="priority">99</field>
+    <field name="mode">extension</field>
+    <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//form[1]/sheet[1]" position="before">
+          <header>  
+            
+          </header>
+          <header/>
+        </xpath>    
+          
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='type']" position="after">
+          <field name="x_studio_last_updated_date_cost" force_save="True" readonly="1" string="Last Updated Date (Cost)"/>
+        </xpath>
+        <xpath expr="//field[@name='operation_ids']" position="inside">
+          <tree string="Routing Work Centers">
+            <field name="sequence" widget="handle"/>
+            
+            
+            <button name="action_mrp_workorder_show_steps" type="object" icon="fa-list-ul" context="{'default_operation_id': id}"/>
+            
+            
+          </tree>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+          <page string="Direct Material Cost" name="studio_page_e1zSq">
+            
+            <group class="oe_subtotal_footer oe_right" name="studio_group_a8a1d8">
+              <field name="x_studio_bom_total_material_cost" string="Total Material Cost"/>
+              <field name="x_studio_currency_id" invisible="1"/>
+            </group>
+          </page>
+          <page string="Direct Labour Cost" name="studio_page_fu0mY">
+            
+            <group class="oe_subtotal_footer oe_right" name="studio_group_f215d5">
+              <field name="x_studio_bom_total_labour_cost" string="Total Labour Cost"/>
+              <field name="x_studio_currency_id" invisible="1"/>
+            </group>
+          </page>
+          <page string="Direct Overhead Cost" name="studio_page_6Zyth">
+            
+            <group class="oe_subtotal_footer oe_right" name="studio_group_737d17">
+              <field name="x_studio_bom_total_overhead_cost" string="Total Overhead Cost"/>
+              <field name="x_studio_currency_id" invisible="1"/>
+            </group>
+          </page>
+          <page string="Direct General Cost" name="studio_page_3aqeR">
+            
+            <group class="oe_subtotal_footer oe_right" name="studio_group_1ba92e">
+              <field name="x_studio_bom_total_general_cost" string="Total General Cost"/>
+              <field name="x_studio_currency_id" invisible="1"/>
+            </group>
+          </page>
+          <page string="Costing" name="studio_page_0BT1k">
+            <group name="studio_group_3c68cd">
+              <group name="studio_group_6691e1">
+                <field name="x_studio_bom_total_material_cost"/>
+                <field name="x_studio_bom_total_labour_cost"/>
+                <field name="x_studio_bom_total_overhead_cost"/>
+                <field name="x_studio_bom_total_general_cost" string="Total General Cost"/>
+              </group>
+            </group>
+          </page>
+        </xpath>
+      </data>
+    </field>
+  </record>
+  <record id="ported_odoo_studio_mrp_bom__521909df_5d19_48cd_b5ed_65a972133e23" model="ir.ui.view">
+    <field name="name">Odoo Studio: mrp.bom.form customization-button</field>
+    <field name="model">mrp.bom</field>
+    <field name="type">form</field>
+    <field name="priority">99</field>
+    <field name="mode">extension</field>
+    <field name="active" eval="False"/>
+    <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+          <xpath expr="//form[1]/sheet[1]" position="before">
+              <header>  
+                
+            </header>
+            <header/>
+          </xpath>
+        </data>
+    </field>
+  </record>
+</odoo>
