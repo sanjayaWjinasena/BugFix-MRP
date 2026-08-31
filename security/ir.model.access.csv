@@ -2,4 +2,3 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_x_material_request_m_user,x_material_request_m user access,model_x_material_request_m,base.group_user,1,1,1,1
 access_x_material_request_m_stage_user,x_material_request_m_stage user access,model_x_material_request_m_stage,base.group_user,1,1,1,1
 access_x_material_request_m_tag_user,x_material_request_m_tag user access,model_x_material_request_m_tag,base.group_user,1,1,1,1
-access_x_sales_report_type_user,x_sales_report_type user access,model_x_sales_report_type,base.group_user,1,1,1,1

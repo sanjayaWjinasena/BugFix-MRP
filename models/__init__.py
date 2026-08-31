@@ -6,4 +6,6 @@ from . import mrp_workorder
 from . import x_material_request_m
 from . import x_material_request_m_stage
 from . import x_material_request_m_tag
-from . import x_sales_report_type
+# x_sales_report_type sentinel removed: Jinasena_Masterdata_Reporting
+# now owns the model. Many2one ref on mrp.production resolves at
+# load time via the new dep.
