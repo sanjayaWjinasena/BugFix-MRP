@@ -1,13 +1,29 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.24',
+    'version': '17.0.0.0.25',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.25: view 2325 mrp.production form (27336b) - THE big DEFERRED.md
+    # item. Un-defers cleanly now that v0.0.23 shipped cost sub-models +
+    # O2M inverses. See views/mrp_studio_ported_v6.xml.
+    #   * 1 hardcoded ref converted: 617 -> %(mrp.act_mrp_block_workcenter_wo)d.
+    #   * 0 field ports needed (all refs resolve post-v0.0.23; 145 unique
+    #     refs across 7 models -- re-scout confirmed zero real missing).
+    #   * 0 sentinels needed.
+    #   * 10 studio_approval attributes preserved (tolerated).
+    # View adds: full nested form+tree for workorder_ids (tablet-mode
+    # workorder UI with time_ids/check_ids/finished_lot sub-elements),
+    # nested form for move_raw_ids (Stock Moves detail view), and 5
+    # notebook tabs (Direct Material/Labour/Overhead/General Cost + Costing
+    # summary) matching the mrp.bom form tabs pattern.
+    # New deps: purchase_stock, quality, quality_mrp, quality_mrp_workorder,
+    # stock_delivery. All 5 confirmed installed on repair-test-101.
+    # None have BugFix-* deps, so all edges stay acyclic.
     # v0.0.24: view 2574 mrp.bom form (6140b) - un-defers the DEFERRED.md
     # item now that v0.0.23 shipped the cost sub-model foundation.
     # See views/mrp_studio_ported_v5.xml.
@@ -138,7 +154,7 @@
     # which our mrp.production Many2one targets. Sentinel Python class
     # for x_sales_report_type removed in favor of the consolidated
     # masterdata module.
-    'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'maintenance', 'hr_maintenance', 'mrp_maintenance', 'BugFix-Stock', 'BugFix-Maintenance', 'Jinasena_Masterdata_Reporting'],
+    'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'maintenance', 'hr_maintenance', 'mrp_maintenance', 'purchase_stock', 'quality', 'quality_mrp', 'quality_mrp_workorder', 'stock_delivery', 'BugFix-Stock', 'BugFix-Maintenance', 'Jinasena_Masterdata_Reporting'],
     'data': [
         'security/ir_model_pins.xml',
         'security/ir.model.access.csv',
@@ -151,6 +167,7 @@
         'views/mrp_studio_ported_v3.xml',
         'views/mrp_studio_ported_v4.xml',
         'views/mrp_studio_ported_v5.xml',
+        'views/mrp_studio_ported_v6.xml',
     ],
     'installable': True,
     'auto_install': False,
