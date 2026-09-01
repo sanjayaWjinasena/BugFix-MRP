@@ -1,13 +1,22 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.16',
+    'version': '17.0.0.0.17',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.17: first view-port wave - 4 primary Default views for
+    # x_material_request_m. See views/x_material_request_m_studio_ported.xml.
+    #   * 8744 tree   (456b)
+    #   * 8745 form   (2026b) - oe_chatter stripped (model lacks mail.thread)
+    #   * 8746 search (1016b)
+    #   * 8749 kanban (2928b)
+    # 0 hardcoded action refs, 0 undeclared modifier fields, 0 missing
+    # field refs on repair-test-101. x_material_request_m_line_ids_af086
+    # O2M (referenced by 8745 form) resolves via v0.0.16 field port.
     # v0.0.16: port x_material_request_m_line_af405 custom model (3 fields)
     # and the O2M navigation from x_material_request_m to it.
     #   * models/x_material_request_m_line_af405.py - new model, 3
@@ -40,6 +49,7 @@
         'data/server_actions.xml',
         'data/automations.xml',
         'data/act_windows.xml',
+        'views/x_material_request_m_studio_ported.xml',
     ],
     'installable': True,
     'auto_install': False,
