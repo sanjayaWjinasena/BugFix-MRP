@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.21',
+    'version': '17.0.0.0.22',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.22: view 2324 mrp.workcenter form (6986b) - inserts full nested
+    # form for equipment_ids O2M, adds "Actual Costing" group + "Users" tab.
+    # See views/mrp_studio_ported_v4.xml.
+    #   * ZERO field ports needed. All 17 nested-form fields exist on
+    #     maintenance.equipment (relation of equipment_ids), pinned to
+    #     maintenance/hr_maintenance/mrp_maintenance/BugFix-Maintenance.
+    #     Modifier refs "department"/"employee" are Selection VALUES for
+    #     equipment_assign_to, not field names -> no sentinels.
+    #   * 1 numeric button ref converted: 667 ->
+    #     %(maintenance.hr_equipment_request_action_from_equipment)d.
+    # New deps: maintenance, hr_maintenance, mrp_maintenance,
+    # BugFix-Maintenance. BugFix-Maintenance depends only on
+    # [base_setup, maintenance] -- adding this edge stays acyclic.
     # v0.0.21: view 4830 mrp.eco form (1634b) + 2 field ports on mrp.eco.
     # See views/mrp_studio_ported_v3.xml.
     #   * models/mrp_eco.py: x_studio_error (Char) + x_studio_tag_description
@@ -91,7 +104,7 @@
     # which our mrp.production Many2one targets. Sentinel Python class
     # for x_sales_report_type removed in favor of the consolidated
     # masterdata module.
-    'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'BugFix-Stock', 'Jinasena_Masterdata_Reporting'],
+    'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'maintenance', 'hr_maintenance', 'mrp_maintenance', 'BugFix-Stock', 'BugFix-Maintenance', 'Jinasena_Masterdata_Reporting'],
     'data': [
         'security/ir_model_pins.xml',
         'security/ir.model.access.csv',
@@ -102,6 +115,7 @@
         'views/mrp_studio_ported.xml',
         'views/mrp_studio_ported_v2.xml',
         'views/mrp_studio_ported_v3.xml',
+        'views/mrp_studio_ported_v4.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-MRP v0.0.22: view 2324 mrp.workcenter form Studio inherit (6986b).
+    Byte-verbatim from Clear-DB except:
+      * Numeric ref name="667" -> %(maintenance.hr_equipment_request_action_from_equipment)d
+        (Maintenance Requests act_window; pinned to maintenance module,
+        already installed on repair-test-101).
+
+    Field analysis (all resolve; ZERO field ports needed):
+      * Fields inside the inserted <form> for equipment_ids O2M belong to
+        maintenance.equipment (via mrp.workcenter.equipment_ids O2M).
+        All 17 fields (assign_date, category_id, cost, department_id,
+        employee_id, equipment_assign_to, location, model, partner_id,
+        partner_ref, scrap_date, serial_no, warranty_date, workcenter_id,
+        x_studio_electricity, x_studio_water, x_studio_lubricant) exist
+        on maintenance.equipment on repair-test-101.
+      * Base fields pinned to maintenance / hr_maintenance / mrp_maintenance
+        (standard Odoo). x_studio_* pinned to BugFix-Maintenance.
+      * Top-level fields (Actual Costing group + Users tab) exist on
+        mrp.workcenter already (all pinned to BugFix-MRP itself).
+
+    Modifier refs (2 false positives, no sentinels needed):
+      * "department" / "employee" are Selection VALUES for the
+        equipment_assign_to selection field, not field names.
+
+    New deps this version: maintenance, hr_maintenance, mrp_maintenance,
+    BugFix-Maintenance. BugFix-Maintenance depends only on
+    [base_setup, maintenance] &#8212; no BugFix-* deps, adding this edge
+    stays acyclic.
+-->
+<odoo>
+
+    <record id="ported_view_2324_mrp_workcenter_form" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.workcenter.form customization</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='costs_hour']" position="attributes">
+                    <attribute name="force_save">0</attribute>
+                    <attribute name="readonly">False</attribute>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]/group[not(@name)][1]/div[1]/field[@name='time_start']" position="attributes">
+                    <attribute name="string">Users</attribute>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]" position="after">
+                    <group name="studio_group_HDkwr">
+                      <group name="studio_group_HDkwr_left" string="Actual Costing Information">
+                        <field name="x_studio_labour_cost_hour" string="Labour Cost per Hour"/>
+                        <field name="x_studio_overhead_cost_hour" string="Overhead Cost per Hour"/>
+                        <field name="x_studio_general_cost_hour" string="Equipment Actual Cost per Hour"/>
+                        <field name="x_studio_labour_idle_cost_per_hour" string="Labour Idle Cost Per Hour" force_save="True" readonly="1"/>
+                        <field name="x_studio_ot_cost_per_hour" string="OT Cost per Hour"/>
+                      </group>
+                    </group>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='equipment']/field[@name='equipment_ids']/tree[1]" position="after">
+                    <form string="Equipments">
+                      <sheet name="studio_sheet_ca31f0">
+                        <div class="oe_button_box" name="button_box">
+                          <button name="%(maintenance.hr_equipment_request_action_from_equipment)d" type="action" class="oe_stat_button" context="{'default_company_id': company_id}" icon="fa-wrench">
+                            <field string="Maintenance" name="maintenance_count" widget="statinfo"/>
+                          </button>
+                          <button name="button_mrp_workcenter" type="object" class="oe_stat_button" icon="fa-cogs" string="Work Center" groups="mrp.group_mrp_routings" invisible="workcenter_id == False">
+                                </button>
+                        </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div class="oe_title" name="studio_div_dd9f04">
+                          <label for="name"/>
+                          <h1>
+                            <field name="name" string="Name" placeholder="e.g. LED Monitor"/>
+                          </h1>
+                        </div>
+                        <group name="studio_group_8ae122">
+                          <group name="studio_group_9c2681">
+                            <field name="active" invisible="1"/>
+                            <field name="category_id" options="{'no_open': True}" context="{'default_company_id':company_id}"/>
+                            <field name="company_id" options="{'no_create': True}"/>
+                            <field name="equipment_assign_to" widget="radio"/>
+                            <field name="employee_id" string="Employee" invisible="(equipment_assign_to == False) or (equipment_assign_to == 'department')"/>
+                            <field name="department_id" string="Department" invisible="(equipment_assign_to == False) or (equipment_assign_to == 'employee')"/>
+                          </group>
+                          <group name="studio_group_456ae3">
+                            <field name="maintenance_team_id" context="{'default_company_id':company_id}"/>
+                            <field name="technician_user_id" domain="[('share', '=', False)]"/>
+                            <field name="assign_date" groups="base.group_no_one"/>
+                            <field name="scrap_date" groups="base.group_no_one"/>
+                            <field name="location" string="Used in location"/>
+                            <field name="workcenter_id" context="{'default_company_id':company_id}" groups="mrp.group_mrp_routings"/>
+                          </group>
+                        </group>
+                        <notebook name="studio_notebook_e7bc92">
+                          <page string="Description" name="description">
+                            <field name="note"/>
+                          </page>
+                          <page string="Product Information" name="product_information">
+                            <group name="studio_group_00a25f">
+                              <group name="studio_group_cdba4b">
+                                <field name="partner_id"/>
+                                <field name="partner_ref"/>
+                                <field name="model"/>
+                                <field name="serial_no"/>
+                                <field name="company_id" invisible="1"/>
+                              </group>
+                              <group name="studio_group_030ee2">
+                                <field name="effective_date"/>
+                                <field name="cost" groups="maintenance.group_equipment_manager"/>
+                                <field name="x_studio_electricity" string="Electricity"/>
+                                <field name="x_studio_water" string="Water"/>
+                                <field name="x_studio_lubricant" string="Lubricant"/>
+                                <field name="warranty_date"/>
+                              </group>
+                            </group>
+                          </page>
+                          <page string="Maintenance" name="maintenance">
+                            <group name="studio_group_8de69e">
+                              <group name="maintenance">
+                                <div class="o_row" name="studio_div_e0af6f">
+                                  </div>
+                                <div class="o_row" name="studio_div_be9c7f">
+                                  </div>
+                              </group>
+                              <group name="statistics">
+                                <label for="expected_mtbf" string="Expected Mean Time Between Failure"/>
+                                <div class="o_row" name="studio_div_443d03">
+                                  <field name="expected_mtbf"/> days
+                                    </div>
+                                <label for="mtbf" string="Mean Time Between Failure"/>
+                                <div class="o_row" name="studio_div_fb1a5a">
+                                  <field name="mtbf" class="oe_read_only"/> days
+                                    </div>
+                                <label for="estimated_next_failure" string="Estimated Next Failure"/>
+                                <div class="o_row" name="studio_div_147cdd">
+                                  <field name="estimated_next_failure" class="oe_read_only"/>
+                                </div>
+                                <field name="latest_failure_date" string="Latest Failure" class="oe_read_only"/>
+                                <label for="mttr" string="Mean Time To Repair"/>
+                                <div class="o_row" name="studio_div_4caa76">
+                                  <field name="mttr" class="oe_read_only"/> days
+                                    </div>
+                              </group>
+                            </group>
+                          </page>
+                        </notebook>
+                      </sheet>
+                    </form>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Users" name="studio_page_KhcWJ">
+                      <group name="studio_group_KhcWJ">
+                        <group name="studio_group_KhcWJ_right">
+                          <field name="x_studio_many2many_field_j1rG7" widget="many2many_tags" options="{'no_create': true, 'color_field': 'color'}" help="Workcenter Visibility Control"/>
+                          <field name="x_studio_employee" string="Employee" help="Actual Working Employee (For Cost per Hour)" invisible="1"/>
+                          <field name="x_studio_employees" widget="many2many_tags" string="Employees" options="{'no_create': true, 'color_field': 'color'}" required="1"/>
+                        </group>
+                      </group>
+                    </page>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="after">
+                    <group name="studio_group_y2nIj">
+                      <group name="studio_group_y2nIj_left"/>
+                      <group name="studio_group_y2nIj_right"/>
+                    </group>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
