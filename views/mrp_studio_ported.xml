@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    BugFix-MRP v0.0.18: 5 Studio inherits on standard mrp.* models.
+    BugFix-MRP v0.0.19: 4 Studio inherits on standard mrp.* models.
     Byte-verbatim arch from Clear-DB in every case; no strip.
 
     Batch:
@@ -8,24 +8,28 @@
       * 5503 mrp.workcenter.productivity.tree    (277b)
       * 3151 mrp.workcenter.tree                 (620b)
       * 5062 mrp.eco.view.tree                   (278b)
-      * 3953 mrp.workorder.view.form (tablet)    (642b)
 
     Field-ref audit against repair-test-101:
       * All base fields (product_tracking, orderpoint_id, forecasted_issue,
         is_planned, production_id, active) resolve.
       * All x_studio_* fields (report_type_m_wip, employee, many2many_field_j1rG7,
         labour_cost_hour, overhead_cost_hour, general_cost_hour,
-        labour_idle_cost_per_hour, ot_cost_per_hour, production_id on
-        stock.lot) resolve (state='base', already declared upstream).
+        labour_idle_cost_per_hour, ot_cost_per_hour) are pinned to
+        BugFix-MRP itself — no cross-repo dep gap.
       * x_studio_item_approved on mrp.eco is NEW — ported in models/mrp_eco.py.
 
-    New deps this version:
-      * mrp_plm       — required by 5062 inherit target (mrp_plm.mrp_eco_view_tree).
-      * mrp_workorder — required by 3953 inherit target
-        (mrp_workorder.mrp_workorder_view_form_tablet).
+    New dep this version:
+      * mrp_plm — required by 5062 inherit target (mrp_plm.mrp_eco_view_tree).
 
-    Deferred (4830 mrp.eco form 1634b): 3 missing fields + 10 undeclared
-    modifier refs; heavier sentinel + field-port work. Batched later.
+    Deferred:
+      * 3953 mrp.workorder tablet form (642b) — domain references
+        stock.lot.x_studio_production_id which is pinned to BugFix-Stock.
+        v0.0.18 attempted this and hit "Unknown field in domain" at
+        install time (rolled back). Either add BugFix-Stock as a
+        cross-repo dep, or defer permanently. Also drops mrp_workorder
+        dep until this decision is made.
+      * 4830 mrp.eco form (1634b) — 3 missing fields plus 10 undeclared
+        modifier refs; heavier sentinel + field-port work.
 -->
 <odoo>
 
@@ -105,25 +109,6 @@
                 <field name="active" optional="show" column_invisible="1"/>
               </xpath>
             </data>
-        </field>
-    </record>
-
-    <record id="ported_view_3953_mrp_workorder_form_tablet" model="ir.ui.view">
-        <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
-        <field name="model">mrp.workorder</field>
-        <field name="type">form</field>
-        <field name="priority">99</field>
-        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
-        <field name="arch" type="xml">
-            <data>
-                <!--xpath expr="//button[@name='do_finish']" position="attributes">
-                  <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '!=', True), ('skipped_check_ids', '!=', []), '&amp;', ('is_last_unfinished_wo', '=', False), ('is_last_lot', '=', False), '&amp;', ('is_last_unfinished_wo', '=', True), ('is_last_lot', '=', True)]}</attribute>
-                </xpath-->
-
-                <xpath expr="//field[@name='finished_lot_id']" position="attributes">
-                <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
-              </xpath>
-              </data>
         </field>
     </record>
 
