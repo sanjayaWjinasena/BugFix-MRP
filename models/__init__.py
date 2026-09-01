@@ -8,6 +8,8 @@ from . import x_material_request_m
 from . import x_material_request_m_line_af405
 from . import x_material_request_m_stage
 from . import x_material_request_m_tag
+from . import x_mass_produce_serial
+from . import x_mass_produce_serial_line
 from . import x_mrp_bom_general_cost
 from . import x_mrp_bom_labour_cost
 from . import x_mrp_bom_material_cos

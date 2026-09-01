@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-MRP v0.0.26: 2 views for x_mass_produce_serial wizard.
+    Un-defers server action 1147 (Mass Produce Serial Nos button on
+    3946 mrp.production form) end-to-end.
+
+    Byte-verbatim from Clear-DB except:
+      * 3 numeric button refs interpolated:
+        1149 -> %(BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate)d
+        1150 -> %(BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear)d
+        1151 -> %(BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original)d
+
+    Views:
+      * 2600 primary form (2251b) - Studio-designed wizard layout with
+        Generate/Clear/OK buttons and O2M sub-tree for serial number lines.
+      * 5898 Studio inherit (174b) - adds x_studio_company_id field
+        after x_studio_last_serial_no_id (invisible).
+-->
+<odoo>
+
+    <record id="ported_view_2600_mass_produce_serial_form" model="ir.ui.view">
+        <field name="name">Mass Produce Serial Nos</field>
+        <field name="model">x_mass_produce_serial</field>
+        <field name="type">form</field>
+        <field name="priority">16</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Mass Produce Serial Nos">
+              <separator string="Serial Numbers to Produce:"/>
+                <newline/>
+                <group>
+                  <field name="x_studio_production_id" options="{'no_open': true}" readonly="True"/>
+                  <field name="x_studio_product_id" options="{'no_open': true}" readonly="True"/>
+                  <field name="x_studio_product_qty" options="{'no_open': true}" readonly="True"/>
+                  <field name="x_studio_serial_no_prefix" style="text-transform: uppercase;" readonly="x_studio_generated == True" required="True"/>
+                  <field name="x_studio_prefix_status" force_save="1" readonly="True"/>
+                  <field name="x_studio_sequence_size" force_save="1" readonly="True" required="True"/>
+                  <field name="x_studio_starting_serial_no" force_save="1" readonly="True" required="True"/>
+                  <field name="x_studio_last_serial_no_id" options="{'no_open': true}" force_save="1" readonly="True"/>
+                  <field name="x_studio_generated" options="{'no_open': true}" invisible="1"/>
+                </group>
+                <newline/>
+                <button name="%(BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate)d" string="Generate" type="action" class="oe_highlight" invisible="x_studio_generated == True"/>
+                <button name="%(BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear)d" string="Clear" type="action" class="oe_highlight" invisible="x_studio_generated == False"/>
+                <group>
+                  <field name="x_studio_mass_produce_serial_ids" nolabel="1" colspan="2">
+                    <tree string="Details" create="false" editable="bottom" delete="false">
+                      <field name="x_studio_lotserial_number" options="{'no_open': true}" readonly="True"/>
+                      <field name="x_studio_product_uom_id" options="{'no_open': true}" readonly="True"/>
+                      <field name="x_studio_product_qty" options="{'no_open': true}" readonly="True"/>
+                    </tree>
+                  </field>
+                </group>
+                <newline/>
+                <footer>
+                  <button name="%(BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original)d" string="OK" type="action" class="oe_highlight"/>
+                  <button special="cancel" string="Cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="ported_view_5898_mass_produce_serial_form_studio" model="ir.ui.view">
+        <field name="name">Odoo Studio: Mass Produce Serial Nos customization</field>
+        <field name="model">x_mass_produce_serial</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="BugFix-MRP.ported_view_2600_mass_produce_serial_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='x_studio_last_serial_no_id']" position="after">
+                    <field name="x_studio_company_id" string="Company" invisible="1"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

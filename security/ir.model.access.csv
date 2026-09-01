@@ -7,3 +7,5 @@ access_x_mrp_bom_material_cos_user,x_mrp_bom_material_cos user access,model_x_mr
 access_x_mrp_bom_labour_cost_user,x_mrp_bom_labour_cost user access,model_x_mrp_bom_labour_cost,base.group_user,1,1,1,1
 access_x_mrp_bom_overhead_cos_user,x_mrp_bom_overhead_cos user access,model_x_mrp_bom_overhead_cos,base.group_user,1,1,1,1
 access_x_mrp_bom_general_cost_user,x_mrp_bom_general_cost user access,model_x_mrp_bom_general_cost,base.group_user,1,1,1,1
+access_x_mass_produce_serial_user,x_mass_produce_serial user access,model_x_mass_produce_serial,base.group_user,1,1,1,1
+access_x_mass_produce_serial_line_user,x_mass_produce_serial_ user access,model_x_mass_produce_serial_,base.group_user,1,1,1,1

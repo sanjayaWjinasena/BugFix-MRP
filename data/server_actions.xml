@@ -147,4 +147,109 @@ action = {
 
   record['x_studio_serial_cancelled'] = True]]></field>
   </record>
+
+  <!-- v0.0.26: 3 wizard server actions invoked by Generate/Clear/OK buttons
+       on view 2600 (x_mass_produce_serial primary form). All 3 reference
+       the wizard models ported this version + stock.lot fields owned by
+       BugFix-Stock (dep since v0.0.20). -->
+
+  <record id="server_action_1149_mass_produce_serial_numbers_generate" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers - Generate</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;x_mass_produce_serial&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.x_studio_product_id:
+  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+  company = env['res.company'].browse(company_id)
+
+  x = 0
+  code = record.x_studio_starting_serial_no
+  code_size = record.x_studio_sequence_size
+  while(x < record.x_studio_product_qty):
+    if x == 0:
+      code = str(int(code))
+    else:
+      code = str(int(code) + 1 )
+
+    code_length = len(code)
+    if code_length <= code_size:
+      code = ("0" * (code_size - code_length) + code)
+      npo = env['x_mass_produce_serial_'].create({'x_studio_mass_produce_serial_ids':record.id,'x_studio_lotserial_number':(record.x_studio_serial_no_prefix + code).upper(),'x_studio_product_id':record.x_studio_product_id.id,'x_studio_product_qty':1,'x_studio_product_uom_id':record.x_studio_product_id.uom_id.id,
+            'x_studio_production_id':record.x_studio_production_id.id,'x_studio_production_order':record.x_studio_production_id.x_studio_original_mo,'x_studio_serial_no_prefix':record.x_studio_serial_no_prefix,'x_studio_sequence_size':record.x_studio_sequence_size,'x_studio_starting_serial_no':code,'x_studio_company_id':company.id})
+    else:
+      raise UserError('Quantity to Create is Exceedind the Sequence Size')
+    x = x +1
+
+  record['x_studio_generated'] = True
+
+ctx = env.context
+ctx.update({'default_id':record.id,'default_x_studio_production_id':record.x_studio_production_id.id,'default_x_studio_product_id':record.x_studio_product_id.id,'default_x_studio_product_qty':record.x_studio_product_qty,'default_x_studio_company_id':company.id})
+action = {
+          'name': 'Mass Produce Serial Nos',
+          'type': 'ir.actions.act_window',
+          'res_model': 'x_mass_produce_serial',
+          'view_mode': 'form',
+          'view_type': 'form',
+          'target': 'new',
+          'res_id': record.id,
+          'context': ctx,
+          }]]></field>
+  </record>
+
+  <record id="server_action_1150_mass_produce_serial_numbers_clear" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers - Clear</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;x_mass_produce_serial&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.x_studio_product_id:
+ company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+ company = env['res.company'].browse(company_id)
+
+ temp_rec = env['x_mass_produce_serial_'].search([('x_studio_mass_produce_serial_ids', '=', record.id),('x_studio_company_id', '=', company.id)])
+ for del_rec in temp_rec:
+  del_rec.unlink()
+
+record['x_studio_generated'] = False
+record['x_studio_serial_no_prefix'] = ''
+record['x_studio_prefix_status'] = ''
+record['x_studio_sequence_size'] = ''
+record['x_studio_starting_serial_no'] = ''
+record['x_studio_last_serial_no_id'] = False
+
+ctx = env.context
+ctx.update({'default_id':record.id,'default_x_studio_production_id':record.x_studio_production_id.id,'default_x_studio_product_id':record.x_studio_product_id.id,'default_x_studio_product_qty':record.x_studio_product_qty,'default_x_studio_company_id':company.id})
+action = {
+          'name': 'Mass Produce Serial Nos',
+          'type': 'ir.actions.act_window',
+          'res_model': 'x_mass_produce_serial',
+          'view_mode': 'form',
+          'view_type': 'form',
+          'target': 'new',
+          'res_id': record.id,
+          'context': ctx,
+          }]]></field>
+  </record>
+
+  <record id="server_action_1151_mass_produce_serial_numbers_create_original" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers - Create Original Serial No</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;x_mass_produce_serial&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+for serial_line in record.x_studio_mass_produce_serial_ids:
+  npo = env['stock.lot'].create({'name':serial_line.x_studio_lotserial_number,'product_id':serial_line.x_studio_product_id.id,'product_qty':serial_line.x_studio_product_qty,'product_uom_id':serial_line.x_studio_product_uom_id.id,'x_studio_production_id':serial_line.x_studio_production_id.id,'x_studio_serial_no_prefix':serial_line.x_studio_serial_no_prefix,
+            'company_id':company.id,'x_studio_sequence_size':serial_line.x_studio_sequence_size,'x_studio_starting_serial_no':serial_line.x_studio_starting_serial_no,'x_studio_production_order':serial_line.x_studio_production_order})
+
+if record.x_studio_production_id:
+  update_mo = env['mrp.production'].search([('id', '=', record.x_studio_production_id.id),('company_id', '=', company.id)],limit=1)
+
+  if update_mo:
+    update_mo.write({'x_studio_mass_produced': True, 'x_studio_serial_cancelled': False})
+
+if record.id:
+  temp_rec = env['x_mass_produce_serial'].search([('id', '=', record.id)],limit=1)
+  temp_rec.unlink()]]></field>
+  </record>
 </odoo>

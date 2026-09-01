@@ -1,13 +1,33 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.25',
+    'version': '17.0.0.0.26',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.26: x_mass_produce_serial wizard - un-defers server action 1147
+    # (Mass Produce Serial Nos button on 3946 mrp.production form) end-to-end.
+    # Completes the runtime deferrals list from DEFERRED.md.
+    #   * models/x_mass_produce_serial.py (14 fields, parent wizard)
+    #   * models/x_mass_produce_serial_line.py (16 fields, line records.
+    #     Model _name = 'x_mass_produce_serial_' with trailing underscore
+    #     -- Studio truncated at 24-char model-name limit).
+    #   * 3 new server actions in data/server_actions.xml:
+    #     1149 Generate  - creates line records for the requested serial range
+    #     1150 Clear     - deletes lines and resets prefix/sequence fields
+    #     1151 Create Original Serial No - creates stock.lot records from lines
+    #                                       + marks mrp.production as mass_produced
+    #   * views/x_mass_produce_serial_studio_ported.xml: primary form
+    #     (view 2600) + Studio inherit (view 5898). Byte-verbatim except 3
+    #     hardcoded numeric refs (1149/1150/1151) interpolated to xmlids.
+    #   * security/ir_model_pins.xml + ir.model.access.csv: 2 model pin
+    #     records + 2 base.group_user ACL rows.
+    # No new deps required. All external refs (stock.lot, res.company,
+    # product.product, uom.uom, mrp.production) already covered by
+    # existing dep chain.
     # v0.0.25: view 2325 mrp.production form (27336b) - THE big DEFERRED.md
     # item. Un-defers cleanly now that v0.0.23 shipped cost sub-models +
     # O2M inverses. See views/mrp_studio_ported_v6.xml.
@@ -168,6 +188,7 @@
         'views/mrp_studio_ported_v4.xml',
         'views/mrp_studio_ported_v5.xml',
         'views/mrp_studio_ported_v6.xml',
+        'views/x_mass_produce_serial_studio_ported.xml',
     ],
     'installable': True,
     'auto_install': False,
