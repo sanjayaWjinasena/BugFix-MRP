@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-MRP v0.0.24: view 2574 mrp.bom form (6140b).
+    Un-defers the deferred item from DEFERRED.md now that v0.0.23 shipped
+    the 4 x_mrp_bom_*_cost child models + the 4 parent O2M inverses on
+    mrp.bom.
+
+    Byte-verbatim arch from Clear-DB except:
+      * Numeric ref name="1057" -> %(BugFix-MRP.server_action_1057_update_costs_in_bom)d
+        (Update Costs in BOM server action ported in v0.0.20).
+
+    Field-ref audit against repair-test-101 (post-v0.0.23):
+      * All top-level mrp.bom fields resolve:
+        - x_studio_last_updated_date_cost, x_studio_bom_total_*_cost:
+          pre-existing on models/mrp_bom.py.
+        - x_studio_one2many_field_4rhw9/bOopH/jPlQP + x_studio_direct_general_cost:
+          O2M inverses declared in v0.0.23.
+        - x_studio_currency_id: pre-existing.
+      * All fields inside the 4 O2M sub-tables (Direct Material/Labour/
+        Overhead/General Cost) resolve on child models x_mrp_bom_material_cos,
+        x_mrp_bom_labour_cost, x_mrp_bom_overhead_cos, x_mrp_bom_general_cost
+        (all ported in v0.0.23).
+      * The <xpath expr="//field[@name='operation_ids']" position="inside">
+        block inserts a routing-workcenter tree with 5 fields (sequence,
+        name, quality_point_count, workcenter_id, time_cycle) - all on
+        mrp.routing.workcenter (state=base, standard Odoo).
+      * 0 undeclared x_studio_ modifier refs. 0 studio_approval attributes.
+-->
+<odoo>
+
+    <record id="ported_view_2574_mrp_bom_form" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.bom.form customization</field>
+        <field name="model">mrp.bom</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//form[1]/sheet[1]" position="before">
+                    <header>
+                      <button type="action" name="%(BugFix-MRP.server_action_1057_update_costs_in_bom)d" string="Update Cost" class="btn-primary"/>
+                    </header>
+                    <header/>
+                </xpath>
+
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='type']" position="after">
+                    <field name="x_studio_last_updated_date_cost" force_save="True" readonly="1" string="Last Updated Date (Cost)"/>
+                </xpath>
+
+                <xpath expr="//field[@name='operation_ids']" position="inside">
+                    <tree string="Routing Work Centers">
+                        <field name="sequence" widget="handle"/>
+                        <field name="name"/>
+                        <field name="quality_point_count"/>
+                        <button name="action_mrp_workorder_show_steps" type="object" icon="fa-list-ul" context="{'default_operation_id': id}"/>
+                        <field name="workcenter_id"/>
+                        <field name="time_cycle" widget="float_time" string="Duration (minutes)" sum="Total Duration" width="1.5"/>
+                    </tree>
+                </xpath>
+
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page string="Direct Material Cost" name="studio_page_e1zSq">
+                        <field name="x_studio_one2many_field_4rhw9" string="Direct Material Cost">
+                            <tree editable="bottom" create="false" edit="false" delete="false">
+                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="x_studio_line_id" string="BOM Line ID" column_invisible="1"/>
+                                <field name="x_studio_bom_material_cost_ids" string="BOM Material Cost" column_invisible="1"/>
+                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="x_studio_product_id" force_save="True" readonly="1"/>
+                                <field name="x_studio_planned_qty" string="Planned Qty" force_save="True" readonly="1"/>
+                                <field name="x_studio_uom_id" string="UOM" force_save="True" readonly="1"/>
+                                <field name="x_studio_cost" string="Cost/Unit" widget="monetary"/>
+                                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="x_name" column_invisible="1"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" name="studio_group_a8a1d8">
+                            <field name="x_studio_bom_total_material_cost" string="Total Material Cost"/>
+                            <field name="x_studio_currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                    <page string="Direct Labour Cost" name="studio_page_fu0mY">
+                        <field name="x_studio_one2many_field_jPlQP" string="Direct Labour Cost">
+                            <tree editable="bottom" create="false" edit="false" delete="false">
+                                <field name="x_studio_bom_labour_cost_ids" string="BOM Labour Cost" column_invisible="1"/>
+                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="x_studio_planned_qty" string="Planned Hour"/>
+                                <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
+                                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="x_name" column_invisible="1"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" name="studio_group_f215d5">
+                            <field name="x_studio_bom_total_labour_cost" string="Total Labour Cost"/>
+                            <field name="x_studio_currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                    <page string="Direct Overhead Cost" name="studio_page_6Zyth">
+                        <field name="x_studio_one2many_field_bOopH" string="Direct Overhead Cost">
+                            <tree editable="bottom" create="false" edit="false" delete="false">
+                                <field name="x_studio_bom_overhead_cost_ids" string="BOM Overhead Cost" column_invisible="1"/>
+                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="x_studio_planned_qty" string="Planned Hour"/>
+                                <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
+                                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="x_name" column_invisible="1"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" name="studio_group_737d17">
+                            <field name="x_studio_bom_total_overhead_cost" string="Total Overhead Cost"/>
+                            <field name="x_studio_currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                    <page string="Direct General Cost" name="studio_page_3aqeR">
+                        <field name="x_studio_direct_general_cost">
+                            <tree create="false" edit="false" delete="false" editable="bottom">
+                                <field name="x_studio_bom_general_cost_ids" string="BOM General Cost" column_invisible="1"/>
+                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="x_studio_planned_qty" string="Planned Hour"/>
+                                <field name="x_studio_cost" string="Cost/Hour"/>
+                                <field name="x_studio_total_cost" string="Total Cost"/>
+                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="x_name" column_invisible="1"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" name="studio_group_1ba92e">
+                            <field name="x_studio_bom_total_general_cost" string="Total General Cost"/>
+                            <field name="x_studio_currency_id" invisible="1"/>
+                        </group>
+                    </page>
+                    <page string="Costing" name="studio_page_0BT1k">
+                        <group name="studio_group_3c68cd">
+                            <group name="studio_group_6691e1">
+                                <field name="x_studio_bom_total_material_cost"/>
+                                <field name="x_studio_bom_total_labour_cost"/>
+                                <field name="x_studio_bom_total_overhead_cost"/>
+                                <field name="x_studio_bom_total_general_cost" string="Total General Cost"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

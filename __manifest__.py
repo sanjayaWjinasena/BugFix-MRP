@@ -1,13 +1,24 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.23',
+    'version': '17.0.0.0.24',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.24: view 2574 mrp.bom form (6140b) - un-defers the DEFERRED.md
+    # item now that v0.0.23 shipped the cost sub-model foundation.
+    # See views/mrp_studio_ported_v5.xml.
+    #   * 1 hardcoded ref converted: 1057 ->
+    #     %(BugFix-MRP.server_action_1057_update_costs_in_bom)d.
+    #   * 0 field ports (all refs resolve post-v0.0.23).
+    #   * 0 sentinels needed. 0 studio_approval attributes.
+    #   * View adds 5 notebook tabs to mrp.bom form: Direct Material Cost,
+    #     Direct Labour Cost, Direct Overhead Cost, Direct General Cost, Costing.
+    #     Also inserts a routing-workcenter tree into //field[@name='operation_ids']
+    #     with 5 fields on mrp.routing.workcenter (all state=base).
     # v0.0.23: 4 custom cost sub-models + 8 parent O2M inverses.
     # Foundation ships; views 2325 + 2574 land in later versions.
     #   * models/x_mrp_bom_material_cos.py  (17 fields, 1805 Clear-DB rows)
@@ -139,6 +150,7 @@
         'views/mrp_studio_ported_v2.xml',
         'views/mrp_studio_ported_v3.xml',
         'views/mrp_studio_ported_v4.xml',
+        'views/mrp_studio_ported_v5.xml',
     ],
     'installable': True,
     'auto_install': False,
