@@ -47,4 +47,104 @@ else:
   if rpt_id:
    record['x_studio_report_type_m_wip'] = rpt_id.id]]></field>
   </record>
+
+  <!-- v0.0.20: 4 code-state server actions invoked by button refs on views 3945 + 3946.
+       All are usage=ir_actions_server (interactive buttons, not base_automation).
+       Custom-model env['x_...'] lookups are lazy-evaluated at click time, so install
+       succeeds even before those models are ported. -->
+
+  <record id="server_action_1057_update_costs_in_bom" model="ir.actions.server">
+    <field name="name">Update Costs in BOM</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.bom&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.id:
+  material_cost = env['x_mrp_bom_material_cos'].search([('x_studio_bom_material_cost_ids', '=', record.id)])
+
+  if material_cost:
+    for update_material_cost in material_cost:
+      update_material_cost.write({'x_studio_cost': update_material_cost.x_studio_product_id.standard_price})
+
+  labour_cost = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.id)])
+
+  if labour_cost:
+    for update_labour_cost in labour_cost:
+      update_labour_cost.write({'x_studio_cost': update_labour_cost.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour})
+
+  overhead_cost = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.id)])
+
+  if overhead_cost:
+    for update_overhead_cost in overhead_cost:
+      update_overhead_cost.write({'x_studio_cost': update_overhead_cost.x_studio_operation_id.workcenter_id.x_studio_overhead_cost_hour})
+
+  general_cost = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.id)])
+
+  if general_cost:
+    for update_general_cost in general_cost:
+      update_general_cost.write({'x_studio_cost': update_general_cost.x_studio_operation_id.workcenter_id.x_studio_general_cost_hour})
+
+  record['x_studio_last_updated_date_cost'] = datetime.datetime.now()]]></field>
+  </record>
+
+  <record id="server_action_1147_mass_produce_serial_numbers" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+ctx = env.context
+ctx.update({'default_x_studio_production_id':record.id,'default_x_studio_product_id':record.product_id.id,'default_x_studio_product_qty':record.product_qty,'default_x_studio_sequence_size':4,'default_x_studio_starting_serial_no':1,'default_x_studio_company_id':company.id})
+action = {
+          'name': 'Mass Produce Serial Nos',
+          'type': 'ir.actions.act_window',
+          'res_model': 'x_mass_produce_serial',
+          'view_mode': 'form',
+          'view_type': 'form',
+          'target': 'new',
+          'context': ctx,
+          }]]></field>
+  </record>
+
+  <record id="server_action_2534_finished_products_location_updated" model="ir.actions.server">
+    <field name="name">Finished Products Location Updated</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.id:
+  location = env['stock.location'].search([('id', '=', record.location_dest_id.id)], limit=1)
+  if location:
+    location2 = env['stock.location'].search([('location_id', '=', location.location_id.id),('x_studio_finished_good_location', '=', True)], limit=1)
+    if location2:
+      temp = env['stock.location'].search([('x_studio_temp_location', '=', True)], limit=1)
+      if temp:
+        record['state'] = 'draft'
+        record['location_dest_id'] = temp.id
+        record['x_studio_finished_product_location'] = location2.id
+        record['x_studio_finished_products_location_updated'] = True
+      else:
+        raise UserError('Temp. location has not been setup.')
+    else:
+      raise UserError('There is no Finished Good Location is setup for the Finished Product Location in Production Order.')]]></field>
+  </record>
+
+  <record id="server_action_3202_mass_produce_serial_numbers_cancel_serial_no" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers - Cancel Serial No</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.id:
+
+  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+  company = env['res.company'].browse(company_id)
+
+  serial_no = env['stock.lot'].search([('x_studio_production_id', '=', record.id),('company_id', '=', company.id)])
+  for lines in serial_no:
+    lines.unlink()
+  if record.state == 'draft':
+    record['x_studio_mass_produced'] = False
+
+  record['x_studio_serial_cancelled'] = True]]></field>
+  </record>
 </odoo>

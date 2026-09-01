@@ -1,13 +1,34 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.19',
+    'version': '17.0.0.0.20',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.20: hardcoded-ref button-views on mrp.bom + mrp.production +
+    # restored 3953. See views/mrp_studio_ported_v2.xml.
+    #   * 4 code-state server actions ported to data/server_actions.xml:
+    #     - 1057 Update Costs in BOM (on mrp.bom)
+    #     - 1147 Mass Produce Serial Numbers (on mrp.production)
+    #     - 2534 Finished Products Location Updated (on mrp.production)
+    #     - 3202 Mass Produce Serial Numbers - Cancel Serial No (on mrp.production)
+    #     All 4 reference custom models (x_mrp_bom_material_cos, x_mass_produce_serial,
+    #     etc.) via lazy env['x_...'] lookups; safe at install, runtime button
+    #     clicks may fail until those models are ported.
+    #   * 3945 mrp.bom form: "Update Cost" button in header (references 1057).
+    #   * 3946 mrp.production form: 3 buttons + 6 button-attribute overrides
+    #     (Mass Produce/Update/Cancel Serial). References 1147, 2534, 3202.
+    #     7 sentinel <field invisible="1"/> injected for x_studio_* fields
+    #     referenced in modifier expressions.
+    #   * 3953 mrp.workorder tablet form: RESTORED from v0.0.18 rollback.
+    #     Enabled by new BugFix-Stock dep -- stock.lot.x_studio_production_id
+    #     now resolves at BugFix-MRP install time.
+    # New deps: BugFix-Stock (for 3953 domain field), mrp_workorder
+    # (for 3953 inherit target). BugFix-Stock has no dep on any BugFix-*
+    # repo -- adding this edge stays acyclic (verified against manifest).
     # v0.0.19: v0.0.18 minus view 3953 (mrp.workorder tablet form).
     # 3953's domain references stock.lot.x_studio_production_id which
     # is pinned to BugFix-Stock. Not in our depends chain -> field not
@@ -59,7 +80,7 @@
     # which our mrp.production Many2one targets. Sentinel Python class
     # for x_sales_report_type removed in favor of the consolidated
     # masterdata module.
-    'depends': ['base_setup', 'mrp', 'mrp_plm', 'Jinasena_Masterdata_Reporting'],
+    'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'BugFix-Stock', 'Jinasena_Masterdata_Reporting'],
     'data': [
         'security/ir_model_pins.xml',
         'security/ir.model.access.csv',
@@ -68,6 +89,7 @@
         'data/act_windows.xml',
         'views/x_material_request_m_studio_ported.xml',
         'views/mrp_studio_ported.xml',
+        'views/mrp_studio_ported_v2.xml',
     ],
     'installable': True,
     'auto_install': False,
