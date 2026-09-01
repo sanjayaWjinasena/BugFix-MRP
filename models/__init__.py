@@ -4,6 +4,7 @@ from . import mrp_workcenter
 from . import mrp_workcenter_productivity
 from . import mrp_workorder
 from . import x_material_request_m
+from . import x_material_request_m_line_af405
 from . import x_material_request_m_stage
 from . import x_material_request_m_tag
 # x_sales_report_type sentinel removed: Jinasena_Masterdata_Reporting

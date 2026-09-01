@@ -3,5 +3,5 @@
   <record id="model_x_material_request_m" model="ir.model"><field name="name">x_material_request_m</field><field name="model">x_material_request_m</field></record>
   <record id="model_x_material_request_m_stage" model="ir.model"><field name="name">X Material Request M Stage</field><field name="model">x_material_request_m_stage</field></record>
   <record id="model_x_material_request_m_tag" model="ir.model"><field name="name">X Material Request M Tag</field><field name="model">x_material_request_m_tag</field></record>
-  <record id="model_x_sales_report_type" model="ir.model"><field name="name">X Sales Report Type</field><field name="model">x_sales_report_type</field></record>
+  <record id="model_x_material_request_m_line_af405" model="ir.model"><field name="name">material_request_m_line</field><field name="model">x_material_request_m_line_af405</field></record>
 </odoo>

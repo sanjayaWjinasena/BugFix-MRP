@@ -1,13 +1,23 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.15',
+    'version': '17.0.0.0.16',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.16: port x_material_request_m_line_af405 custom model (3 fields)
+    # and the O2M navigation from x_material_request_m to it.
+    #   * models/x_material_request_m_line_af405.py - new model, 3
+    #     Studio x_* fields (x_name, x_studio_sequence, and parent
+    #     M2O x_material_request_m_id). 0 rows on Clear-DB.
+    #   * models/x_material_request_m.py - x_material_request_m_line_ids_af086
+    #     TODO comment replaced with real One2many declaration
+    #     targeting the new model via x_material_request_m_id inverse.
+    #   * security/ir_model_pins.xml + ir.model.access.csv: pin +
+    #     base.group_user rw access for the new model.
     # v0.0.15: wire 3 base.automation stubs + port 2 backing server actions.
     #   * data/server_actions.xml grows from 2 to 4 records:
     #     1155 Update Original MO in MO (247b, on mrp.production)
