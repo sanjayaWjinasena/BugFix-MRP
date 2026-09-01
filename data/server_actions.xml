@@ -23,4 +23,28 @@ else:
 ]]></field>
     <field name="usage">base_automation</field>
   </record>
+
+  <record id="server_action_1155_update_original_mo_in_mo" model="ir.actions.server">
+    <field name="name">Update Original MO in MO</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.id:
+  if 	record.x_studio_tracked_item == True and record.x_studio_mass_produced == True:
+    size = len(record.name)
+    record['x_studio_original_mo'] = record.name[:size - 4]
+  else:
+    record['x_studio_original_mo'] = record.name
+  ]]></field>
+  </record>
+  <record id="server_action_1738_srm_auto_populate_report_type_in_production_order" model="ir.actions.server">
+    <field name="name">SRM - Auto Populate Report Type in Production Order</field>
+    <field name="model_id" search="[(&apos;model&apos;, &apos;=&apos;, &apos;mrp.production&apos;)]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.state == 'progress':
+  rpt_id= env['x_sales_report_type'].search([('x_studio_report_code', '=', 'Production Overview - WIP')],limit=1)
+  if rpt_id:
+   record['x_studio_report_type_m_wip'] = rpt_id.id]]></field>
+  </record>
 </odoo>
