@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-MRP v0.0.18: 5 Studio inherits on standard mrp.* models.
+    Byte-verbatim arch from Clear-DB in every case; no strip.
+
+    Batch:
+      * 2390 mrp.production.tree                 (486b)
+      * 5503 mrp.workcenter.productivity.tree    (277b)
+      * 3151 mrp.workcenter.tree                 (620b)
+      * 5062 mrp.eco.view.tree                   (278b)
+      * 3953 mrp.workorder.view.form (tablet)    (642b)
+
+    Field-ref audit against repair-test-101:
+      * All base fields (product_tracking, orderpoint_id, forecasted_issue,
+        is_planned, production_id, active) resolve.
+      * All x_studio_* fields (report_type_m_wip, employee, many2many_field_j1rG7,
+        labour_cost_hour, overhead_cost_hour, general_cost_hour,
+        labour_idle_cost_per_hour, ot_cost_per_hour, production_id on
+        stock.lot) resolve (state='base', already declared upstream).
+      * x_studio_item_approved on mrp.eco is NEW — ported in models/mrp_eco.py.
+
+    New deps this version:
+      * mrp_plm       — required by 5062 inherit target (mrp_plm.mrp_eco_view_tree).
+      * mrp_workorder — required by 3953 inherit target
+        (mrp_workorder.mrp_workorder_view_form_tablet).
+
+    Deferred (4830 mrp.eco form 1634b): 3 missing fields + 10 undeclared
+    modifier refs; heavier sentinel + field-port work. Batched later.
+-->
+<odoo>
+
+    <record id="ported_view_2390_mrp_production_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.production.tree customization</field>
+        <field name="model">mrp.production</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <data>
+              <xpath expr="//field[@name='duration_expected']" position="after">
+                <field name="product_tracking" optional="show"/>
+                <field name="orderpoint_id" optional="show"/>
+                <field name="forecasted_issue" optional="show"/>
+                <field name="is_planned" optional="show"/>
+              </xpath>
+              <xpath expr="//field[@name='activity_exception_decoration']" position="after">
+                <field name="x_studio_report_type_m_wip" string="Report Type (M-WIP)" column_invisible="1"/>
+              </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="ported_view_5503_mrp_workcenter_productivity_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.workcenter.productivity.tree customization</field>
+        <field name="model">mrp.workcenter.productivity</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp.oee_tree_view"/>
+        <field name="arch" type="xml">
+            <data>
+              <xpath expr="//field[@name='date_end']" position="after">
+                <field name="production_id" optional="show"/>
+              </xpath>
+              <xpath expr="//field[@name='user_id']" position="after">
+                <field optional="show" name="x_studio_employee" string="Employee"/>
+              </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="ported_view_3151_mrp_workcenter_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.workcenter.tree customization</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_tree_view"/>
+        <field name="arch" type="xml">
+            <data>
+              <xpath expr="//tree[1]/field[@name='company_id']" position="after">
+                <field name="x_studio_many2many_field_j1rG7" widget="many2many_tags" options="{'color_field': 'color'}"/>
+              </xpath>
+              <xpath expr="//field[@name='costs_hour']" position="after">
+                <field name="x_studio_labour_cost_hour" optional="show"/>
+                <field name="x_studio_overhead_cost_hour" optional="show"/>
+                <field name="x_studio_general_cost_hour" optional="show"/>
+                <field name="x_studio_labour_idle_cost_per_hour" optional="show"/>
+                <field name="x_studio_ot_cost_per_hour" optional="show"/>
+              </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="ported_view_5062_mrp_eco_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.eco.view.tree customization</field>
+        <field name="model">mrp.eco</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp_plm.mrp_eco_view_tree"/>
+        <field name="arch" type="xml">
+            <data>
+              <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="x_studio_item_approved" optional="hide"/>
+              </xpath>
+              <xpath expr="//field[@name='stage_id']" position="after">
+                <field name="active" optional="show" column_invisible="1"/>
+              </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="ported_view_3953_mrp_workorder_form_tablet" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
+        <field name="model">mrp.workorder</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <data>
+                <!--xpath expr="//button[@name='do_finish']" position="attributes">
+                  <attribute name="attrs">{'invisible': ['|', '|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '!=', True), ('skipped_check_ids', '!=', []), '&amp;', ('is_last_unfinished_wo', '=', False), ('is_last_lot', '=', False), '&amp;', ('is_last_unfinished_wo', '=', True), ('is_last_lot', '=', True)]}</attribute>
+                </xpath-->
+
+                <xpath expr="//field[@name='finished_lot_id']" position="attributes">
+                <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
+              </xpath>
+              </data>
+        </field>
+    </record>
+
+</odoo>

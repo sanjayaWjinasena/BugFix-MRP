@@ -1,13 +1,27 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.17',
+    'version': '17.0.0.0.18',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.18: bulk of small Studio inherits on standard mrp.* models.
+    # See views/mrp_studio_ported.xml. 5 views ported byte-verbatim:
+    #   * 2390 mrp.production.tree                 (486b)
+    #   * 5503 mrp.workcenter.productivity.tree    (277b)
+    #   * 3151 mrp.workcenter.tree                 (620b)
+    #   * 5062 mrp.eco.view.tree                   (278b)
+    #   * 3953 mrp.workorder.view.form (tablet)    (642b)
+    # 0 hardcoded action refs, 0 undeclared modifier fields, 0 missing
+    # field refs on repair-test-101 after porting x_studio_item_approved
+    # boolean on mrp.eco (models/mrp_eco.py). New deps: mrp_plm (5062
+    # inherit target) + mrp_workorder (3953 inherit target). Both already
+    # installed on repair-test-101 and Clear-DB.
+    # Deferred: 4830 mrp.eco form (1634b) - 3 missing fields plus 10
+    # undeclared modifier refs need sentinel injection; batched later.
     # v0.0.17: first view-port wave - 4 primary Default views for
     # x_material_request_m. See views/x_material_request_m_studio_ported.xml.
     #   * 8744 tree   (456b)
@@ -42,7 +56,7 @@
     # which our mrp.production Many2one targets. Sentinel Python class
     # for x_sales_report_type removed in favor of the consolidated
     # masterdata module.
-    'depends': ['base_setup', 'mrp', 'Jinasena_Masterdata_Reporting'],
+    'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'Jinasena_Masterdata_Reporting'],
     'data': [
         'security/ir_model_pins.xml',
         'security/ir.model.access.csv',
@@ -50,6 +64,7 @@
         'data/automations.xml',
         'data/act_windows.xml',
         'views/x_material_request_m_studio_ported.xml',
+        'views/mrp_studio_ported.xml',
     ],
     'installable': True,
     'auto_install': False,
