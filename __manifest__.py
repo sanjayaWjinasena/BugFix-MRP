@@ -1,13 +1,24 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.20',
+    'version': '17.0.0.0.21',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.21: view 4830 mrp.eco form (1634b) + 2 field ports on mrp.eco.
+    # See views/mrp_studio_ported_v3.xml.
+    #   * models/mrp_eco.py: x_studio_error (Char) + x_studio_tag_description
+    #     (Char) added alongside v0.0.18's x_studio_item_approved boolean.
+    #   * 4830 form: byte-verbatim Studio arch. 8 xpath positions
+    #     (approve/action_apply approval-gating, product_tmpl_id, bom_id x2,
+    #     effectivity, tag_ids x2). 2 sentinels injected for state + type.
+    #   * studio_approval attribute on 2 buttons preserved -- Studio-specific
+    #     approval-gating behaviour. Fallback plan: strip those xpaths if
+    #     Odoo rejects the attribute (Odoo validation is permissive so
+    #     expected OK).
     # v0.0.20: hardcoded-ref button-views on mrp.bom + mrp.production +
     # restored 3953. See views/mrp_studio_ported_v2.xml.
     #   * 4 code-state server actions ported to data/server_actions.xml:
@@ -90,6 +101,7 @@
         'views/x_material_request_m_studio_ported.xml',
         'views/mrp_studio_ported.xml',
         'views/mrp_studio_ported_v2.xml',
+        'views/mrp_studio_ported_v3.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    BugFix-MRP v0.0.21: view 4830 mrp.eco form Studio inherit (1634b).
+    Byte-verbatim from Clear-DB except:
+      * 2 sentinel <field invisible="1"/> injected for `state` and `type`
+        modifier refs (safety - base form declares them, redundant declaration
+        is tolerated).
+
+    Field ports required by this view:
+      * x_studio_error (Char) on mrp.eco - see models/mrp_eco.py
+      * x_studio_tag_description (Char) on mrp.eco - see models/mrp_eco.py
+      * x_studio_item_approved already ported in v0.0.18 (used here in modifier).
+
+    Modifier ref analysis (undeclared per scout):
+      * bom, both, confirmed, done, product, routing: Selection VALUES
+        (comparison operands like `type == 'bom'`), not field names. Safe.
+      * id: builtin, always tolerated by Odoo strict validation.
+      * product_tmpl_id: anchor of one of our xpaths - in composed arch.
+      * state, type: base fields on mrp.eco - sentinels for belt-and-suspenders.
+
+    studio_approval attribute (on approve + action_apply buttons):
+      Studio-specific behavioural attribute for approval gating. Not in
+      standard Odoo arch schema but validation is permissive at the
+      attribute-value level. If install rejects it, strip those 2 xpaths.
+-->
+<odoo>
+
+    <record id="ported_view_4830_mrp_eco_form" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.eco.view.form customization</field>
+        <field name="model">mrp.eco</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//sheet[1]" position="inside">
+                    <field name="state" invisible="1"/>
+                    <field name="type" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//button[@name='approve']" position="attributes">
+                    <attribute name="studio_approval">True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_apply']" position="attributes">
+                    <attribute name="studio_approval">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_tmpl_id']" position="after">
+                    <field name="x_studio_tag_description" string="Tag Description" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='bom_id']" position="attributes">
+                    <attribute name="invisible">(type in ('routing', 'product')) or (type in ['routing', 'product'])</attribute>
+                    <attribute name="readonly">(state != 'confirmed') or (((x_studio_item_approved != True) and (type == 'bom')) or (state != 'confirmed'))</attribute>
+                    <attribute name="required">(type in ('bom', 'both')) or (type in ['bom', 'both'])</attribute>
+                </xpath>
+                <xpath expr="//field[@name='bom_id']" position="after">
+                    <field name="x_studio_error" string="Error" force_save="True" readonly="1" invisible="((x_studio_item_approved == True) and (type == 'bom')) or ((product_tmpl_id == False) or (type == 'product'))"/>
+                </xpath>
+                <xpath expr="//field[@name='effectivity']" position="attributes">
+                    <attribute name="invisible">id == 0</attribute>
+                    <attribute name="readonly">(state == 'done') or (state == 'done')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="attributes">
+                    <attribute name="readonly">(state == 'done') or (state == 'done')</attribute>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="x_studio_item_approved" string="Approved Item"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>
