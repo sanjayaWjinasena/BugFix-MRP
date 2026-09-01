@@ -3,3 +3,7 @@ access_x_material_request_m_user,x_material_request_m user access,model_x_materi
 access_x_material_request_m_stage_user,x_material_request_m_stage user access,model_x_material_request_m_stage,base.group_user,1,1,1,1
 access_x_material_request_m_tag_user,x_material_request_m_tag user access,model_x_material_request_m_tag,base.group_user,1,1,1,1
 access_x_material_request_m_line_af405_user,x_material_request_m_line_af405 user access,model_x_material_request_m_line_af405,base.group_user,1,1,1,1
+access_x_mrp_bom_material_cos_user,x_mrp_bom_material_cos user access,model_x_mrp_bom_material_cos,base.group_user,1,1,1,1
+access_x_mrp_bom_labour_cost_user,x_mrp_bom_labour_cost user access,model_x_mrp_bom_labour_cost,base.group_user,1,1,1,1
+access_x_mrp_bom_overhead_cos_user,x_mrp_bom_overhead_cos user access,model_x_mrp_bom_overhead_cos,base.group_user,1,1,1,1
+access_x_mrp_bom_general_cost_user,x_mrp_bom_general_cost user access,model_x_mrp_bom_general_cost,base.group_user,1,1,1,1

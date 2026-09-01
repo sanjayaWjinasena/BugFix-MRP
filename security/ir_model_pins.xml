@@ -4,4 +4,8 @@
   <record id="model_x_material_request_m_stage" model="ir.model"><field name="name">X Material Request M Stage</field><field name="model">x_material_request_m_stage</field></record>
   <record id="model_x_material_request_m_tag" model="ir.model"><field name="name">X Material Request M Tag</field><field name="model">x_material_request_m_tag</field></record>
   <record id="model_x_material_request_m_line_af405" model="ir.model"><field name="name">material_request_m_line</field><field name="model">x_material_request_m_line_af405</field></record>
+  <record id="model_x_mrp_bom_material_cos" model="ir.model"><field name="name">mrp.bom.material.cost</field><field name="model">x_mrp_bom_material_cos</field></record>
+  <record id="model_x_mrp_bom_labour_cost" model="ir.model"><field name="name">mrp.bom.labour.cost</field><field name="model">x_mrp_bom_labour_cost</field></record>
+  <record id="model_x_mrp_bom_overhead_cos" model="ir.model"><field name="name">mrp.bom.overhead.cost</field><field name="model">x_mrp_bom_overhead_cos</field></record>
+  <record id="model_x_mrp_bom_general_cost" model="ir.model"><field name="name">mrp.bom.general.cost</field><field name="model">x_mrp_bom_general_cost</field></record>
 </odoo>

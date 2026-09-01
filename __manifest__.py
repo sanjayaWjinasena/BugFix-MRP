@@ -1,13 +1,36 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.22',
+    'version': '17.0.0.0.23',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.23: 4 custom cost sub-models + 8 parent O2M inverses.
+    # Foundation ships; views 2325 + 2574 land in later versions.
+    #   * models/x_mrp_bom_material_cos.py  (17 fields, 1805 Clear-DB rows)
+    #   * models/x_mrp_bom_labour_cost.py   (17 fields, 1605 rows)
+    #   * models/x_mrp_bom_overhead_cos.py  (13 fields, 1605 rows)
+    #   * models/x_mrp_bom_general_cost.py  (13 fields, 1605 rows)
+    # Model names truncated to 24 chars per Studio quirk (_cos not _cost
+    # for material + overhead). Each child has 2 parent M2Os:
+    # x_studio_bom_*_cost_ids (-> mrp.bom, cascade) and
+    # x_studio_prod_bom_*_cost_ids (-> mrp.production, cascade), plus
+    # operation_id, prod_bom_line_id refs.
+    #   * models/mrp_bom.py: 4 TODO O2Ms un-TODO'd with proper inverse
+    #     names (x_studio_direct_general_cost, x_studio_one2many_field_
+    #     4rhw9/bOopH/jPlQP -- names verbatim from Studio).
+    #   * models/mrp_production.py: 4 TODO O2Ms un-TODO'd similarly
+    #     (x_studio_direct_general_cost, x_studio_direct_material_cost,
+    #     x_studio_one2many_field_Fzcvl/vg1OS).
+    #   * security/ir_model_pins.xml + ir.model.access.csv: 4 model pin
+    #     records + 4 base.group_user ACL rows.
+    # Unblocks: server action 1057 runtime (Update Costs in BOM),
+    # server action 1057's env['x_mrp_bom_*_cost'] lookups now resolve.
+    # Doesn't ship views yet -- 2325 and 2574 need further re-scout to
+    # confirm all fields resolve now that parent O2Ms exist.
     # v0.0.22: view 2324 mrp.workcenter form (6986b) - inserts full nested
     # form for equipment_ids O2M, adds "Actual Costing" group + "Users" tab.
     # See views/mrp_studio_ported_v4.xml.
