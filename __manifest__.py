@@ -1,13 +1,22 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.26',
+    'version': '17.0.0.0.27',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
     'license': 'LGPL-3',
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
+    # v0.0.27: hotfix for v0.0.26 install failure.
+    # KeyError: 'x_studio_mass_produce_serial_ids' at registry setup.
+    # models/x_mass_produce_serial.py declared its O2M with comodel
+    # 'x_mass_produce_serial_line' (my file-name idea) but the child
+    # model's actual _name is 'x_mass_produce_serial_' (Studio-truncated
+    # 24-char limit). File name != model name -- Odoo resolved a stub
+    # comodel with no _fields dict, KeyError on inverse lookup.
+    # Fix: change comodel to 'x_mass_produce_serial_' (trailing
+    # underscore) to match the child model's _name declaration.
     # v0.0.26: x_mass_produce_serial wizard - un-defers server action 1147
     # (Mass Produce Serial Nos button on 3946 mrp.production form) end-to-end.
     # Completes the runtime deferrals list from DEFERRED.md.

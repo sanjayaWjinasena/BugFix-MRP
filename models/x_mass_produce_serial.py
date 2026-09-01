@@ -19,7 +19,7 @@ class XMassProduceSerial(models.Model):
     x_studio_generated = fields.Boolean(string='Generated')
     x_studio_last_serial_no_id = fields.Many2one('stock.lot', string='Last Used Serial No', ondelete='set null')
     x_studio_mass_produce_serial_ids = fields.One2many(
-        'x_mass_produce_serial_line', 'x_studio_mass_produce_serial_ids',
+        'x_mass_produce_serial_', 'x_studio_mass_produce_serial_ids',
         string='Serial No List')
     x_studio_prefix_status = fields.Selection(
         [('New', 'New'), ('Existing', 'Existing')],
