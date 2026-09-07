@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP backlog: 13 window actions -->
+<odoo>
+
+  <record id="act_window_2306_ecos" model="ir.actions.act_window">
+    <field name="name">ECOs</field>
+    <field name="res_model">mrp.eco.bom.change</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('eco_id', '=', active_id)]</field>
+    <field name="context">{'search_default_eco_id': active_id,'default_eco_id': active_id}</field>
+  </record>
+
+  <record id="act_window_2834_mrp_eco_bom_change" model="ir.actions.act_window">
+    <field name="name">mrp.eco.bom.change</field>
+    <field name="res_model">mrp.eco.bom.change</field>
+    <field name="view_mode">form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
+    <field name="name">	mrp.workcenter.productivity</field>
+    <field name="res_model">mrp.workcenter.productivity</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_663_work_orders" model="ir.actions.act_window">
+    <field name="name">Work Orders</field>
+    <field name="res_model">mrp.workorder</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="domain">[('state', 'not in', ['done', 'cancel'])]</field>
+    <field name="context">{'search_default_workcenter_id': active_id}</field>
+    <field name="target">fullscreen</field>
+    <field name="help" type="html"><p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+  </record>
+
+  <record id="act_window_1146_mass_produce_serial" model="ir.actions.act_window">
+    <field name="name">Mass Produce Serial</field>
+    <field name="res_model">x_mass_produce_serial</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_1148_mass_produce_serial_line" model="ir.actions.act_window">
+    <field name="name">Mass Produce Serial Line</field>
+    <field name="res_model">x_mass_produce_serial_</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_3382_material_request_m_stages" model="ir.actions.act_window">
+    <field name="name">Material Request M Stages</field>
+    <field name="res_model">x_material_request_m_stage</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_3383_material_request_m_tags" model="ir.actions.act_window">
+    <field name="name">Material Request M Tags</field>
+    <field name="res_model">x_material_request_m_tag</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_1053_mrp_bom_general_cost" model="ir.actions.act_window">
+    <field name="name">mrp.bom.general.cost</field>
+    <field name="res_model">x_mrp_bom_general_cost</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_1014_mrp_bom_labour_cost" model="ir.actions.act_window">
+    <field name="name">mrp.bom.labour.cost</field>
+    <field name="res_model">x_mrp_bom_labour_cost</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_1013_mrp_bom_material_cost" model="ir.actions.act_window">
+    <field name="name">mrp.bom.material.cost</field>
+    <field name="res_model">x_mrp_bom_material_cos</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_1015_mrp_bom_overhead_cost" model="ir.actions.act_window">
+    <field name="name">mrp.bom.overhead.cost</field>
+    <field name="res_model">x_mrp_bom_overhead_cos</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+  <record id="act_window_1134_work_center_costing" model="ir.actions.act_window">
+    <field name="name">Work Center Costing</field>
+    <field name="res_model">x_work_center_costing</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+
+</odoo>

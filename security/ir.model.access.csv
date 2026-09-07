@@ -9,3 +9,137 @@ access_x_mrp_bom_overhead_cos_user,x_mrp_bom_overhead_cos user access,model_x_mr
 access_x_mrp_bom_general_cost_user,x_mrp_bom_general_cost user access,model_x_mrp_bom_general_cost,base.group_user,1,1,1,1
 access_x_mass_produce_serial_user,x_mass_produce_serial user access,model_x_mass_produce_serial,base.group_user,1,1,1,1
 access_x_mass_produce_serial_line_user,x_mass_produce_serial_ user access,model_x_mass_produce_serial_,base.group_user,1,1,1,1
+access_6886_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_6250_inv___administrator,Inv - Administrator,BugFix-MRP.model_mrp_bom,stock.group_stock_manager,1,1,1,1
+access_6962_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_7057_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_6552_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_6438_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_5703_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_5575_bill_of_material,Bill of Material,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_6852_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,BugFix-Approvals.group_132_jin_sales_pos_users,1,0,0,0
+access_6767_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_8650_access_mrp_bom_rohana_read,access_mrp_bom_rohana_read,BugFix-MRP.model_mrp_bom,,1,0,0,0
+access_6577_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,mrp.model_mrp_bom_byproduct,,1,0,0,0
+access_6463_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,mrp.model_mrp_bom_byproduct,,1,0,0,0
+access_6974_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,mrp.model_mrp_bom_byproduct,,1,0,0,0
+access_6969_user,User,mrp.model_mrp_bom_byproduct,stock.group_stock_user,1,0,0,0
+access_6896_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_6963_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_7058_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_6553_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_6439_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_5704_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_6784_mrp_bom_line,mrp.bom.line,mrp.model_mrp_bom_line,,1,0,0,0
+access_8651_access_mrp_bom_line_rohana_read,access_mrp_bom_line_rohana_read,mrp.model_mrp_bom_line,,1,0,0,0
+access_6592_jin___manufacturing____mo_full_writes___without_routes_acces,Jin - Manufacturing -  MO Full Writes + Without Routes Access,mrp.model_mrp_consumption_warning,,1,1,1,0
+access_7252_jin___manufacturing____mo_full_writes___without_editing_m,Jin - Manufacturing -  MO Full Writes + Without Editing M,mrp.model_mrp_consumption_warning_line,,1,1,1,1
+access_6977_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,mrp.model_mrp_document,,1,0,0,0
+access_6971_user,User,mrp.model_mrp_document,stock.group_stock_user,1,0,0,0
+access_6128_mrp_eco,mrp.eco,BugFix-MRP.model_mrp_eco,,1,0,0,0
+access_6136_mrp_eco,mrp.eco,BugFix-MRP.model_mrp_eco,,1,1,1,1
+access_6122_mrp_eco_approval,mrp.eco.approval,mrp_plm.model_mrp_eco_approval,,1,0,0,0
+access_6130_mrp_eco_approval,mrp.eco.approval,mrp_plm.model_mrp_eco_approval,,1,1,1,1
+access_6121_mrp_eco_approval_template,mrp.eco.approval.template,mrp_plm.model_mrp_eco_approval_template,,1,0,0,0
+access_6129_mrp_eco_approval_template,mrp.eco.approval.template,mrp_plm.model_mrp_eco_approval_template,,1,0,0,0
+access_6124_mrp_eco_bom_line,mrp.eco.bom.line,mrp_plm.model_mrp_eco_bom_change,,1,0,0,0
+access_6132_mrp_eco_bom_line,mrp.eco.bom.line,mrp_plm.model_mrp_eco_bom_change,,1,1,1,1
+access_6125_mrp_eco_routing_line,mrp.eco.routing.line,mrp_plm.model_mrp_eco_routing_change,,1,0,0,0
+access_6133_mrp_eco_routing_line,mrp.eco.routing.line,mrp_plm.model_mrp_eco_routing_change,,1,1,1,1
+access_6123_mrp_eco_stage,mrp.eco.stage,mrp_plm.model_mrp_eco_stage,,1,0,0,0
+access_6131_mrp_eco_stage,mrp.eco.stage,mrp_plm.model_mrp_eco_stage,,1,0,0,0
+access_6126_mrp_eco_tag,mrp.eco.tag,mrp_plm.model_mrp_eco_tag,,1,0,0,0
+access_6134_mrp_eco_tag,mrp.eco.tag,mrp_plm.model_mrp_eco_tag,,1,1,1,1
+access_6127_mrp_eco_type,mrp.eco.type,mrp_plm.model_mrp_eco_type,,1,0,0,0
+access_6135_mrp_eco_type,mrp.eco.type,mrp_plm.model_mrp_eco_type,,1,0,0,0
+access_5656_administrator___kapila,Administrator - Kapila,BugFix-MRP.model_mrp_production,stock.group_stock_manager,1,1,1,1
+access_5767_mrp_production_user,mrp.production user,BugFix-MRP.model_mrp_production,,1,1,1,0
+access_6551_mrp_production_stock_worker,mrp.production stock_worker,BugFix-MRP.model_mrp_production,,1,0,0,0
+access_5840_mrp_production_stock_worker,mrp.production stock_worker,BugFix-MRP.model_mrp_production,,1,1,1,0
+access_7943_mrp_production_stock_worker,mrp.production stock_worker,BugFix-MRP.model_mrp_production,,1,1,1,0
+access_6437_mrp_production_stock_worker,mrp.production stock_worker,BugFix-MRP.model_mrp_production,,1,1,1,0
+access_5702_mrp_production_stock_worker,mrp.production stock_worker,BugFix-MRP.model_mrp_production,,1,0,0,0
+access_6080_jin___repair___minimum_rights,Jin - Repair - Minimum Rights,BugFix-MRP.model_mrp_production,,1,0,0,0
+access_6065_jin___repair___minimum_rights,Jin - Repair - Minimum Rights,BugFix-MRP.model_mrp_production,,1,0,0,0
+access_6776_mrp_production_salesman,mrp.production salesman,BugFix-MRP.model_mrp_production,,1,0,0,0
+access_8652_access_mrp_production_rohana_read,access_mrp_production_rohana_read,BugFix-MRP.model_mrp_production,,1,0,0,0
+access_7253_jin___manufacturing____mo_full_writes___without_editing,Jin - Manufacturing -  MO Full Writes + Without Editing,mrp.model_mrp_production_backorder,,1,1,1,1
+access_7254_jin___manufacturing____mo_full_writes___without_editing_mo,Jin - Manufacturing -  MO Full Writes + Without Editing MO,mrp.model_mrp_production_backorder_line,,1,1,1,1
+access_6576_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,mrp.model_mrp_routing_workcenter,,1,0,0,0
+access_6462_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,mrp.model_mrp_routing_workcenter,,1,0,0,0
+access_6976_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,mrp.model_mrp_routing_workcenter,,1,0,0,0
+access_6970_user,User,mrp.model_mrp_routing_workcenter,stock.group_stock_user,1,0,0,0
+access_6029_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,BugFix-MRP.model_mrp_workcenter,,1,0,0,0
+access_6104_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,BugFix-MRP.model_mrp_workcenter,,1,0,0,0
+access_6049_work_center_costing_group_system,Work Center Costing group_system,BugFix-MRP.model_mrp_workcenter,,1,1,1,0
+access_6584_work_center_costing_group_user,Work Center Costing group_user,BugFix-MRP.model_mrp_workcenter,,1,1,1,0
+access_6470_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workcenter,,1,1,1,0
+access_6973_user,User,BugFix-MRP.model_mrp_workcenter,,1,0,0,0
+access_6039_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,BugFix-MRP.model_mrp_workcenter_productivity,,1,1,1,0
+access_6110_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,BugFix-MRP.model_mrp_workcenter_productivity,,1,0,0,0
+access_6993_workcenter_productivity_log,Workcenter Productivity Log,BugFix-MRP.model_mrp_workcenter_productivity,,1,1,1,0
+access_6579_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workcenter_productivity,,1,1,1,0
+access_5869_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workcenter_productivity,,1,1,1,1
+access_7945_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workcenter_productivity,,1,1,1,1
+access_6465_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workcenter_productivity,,1,0,0,0
+access_6045_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,BugFix-MRP.model_mrp_workcenter_productivity,,1,0,0,0
+access_6223_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,BugFix-MRP.model_mrp_workcenter_productivity,,1,1,1,0
+access_6040_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,mrp.model_mrp_workcenter_productivity_loss,,1,1,1,0
+access_6111_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,mrp.model_mrp_workcenter_productivity_loss,,1,0,0,0
+access_6992_mrp_workcenter_productivity_loss,mrp.workcenter.productivity.loss,mrp.model_mrp_workcenter_productivity_loss,,1,0,0,0
+access_6994_jin___manufacturing____mo_full_writes____mps,Jin - Manufacturing -  MO Full Writes  + MPS,mrp.model_mrp_workcenter_productivity_loss,,1,1,1,1
+access_7948_jin___manufacturing____mo_full_writes____mps,Jin - Manufacturing -  MO Full Writes  + MPS,mrp.model_mrp_workcenter_productivity_loss,,1,1,1,1
+access_6225_jin___manufacturing___minimum_rights___cell_rights,Jin - Manufacturing - Minimum Rights + Cell Rights,mrp.model_mrp_workcenter_productivity_loss,,1,0,0,0
+access_6041_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,mrp.model_mrp_workcenter_productivity_loss_type,,1,1,1,0
+access_6112_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,mrp.model_mrp_workcenter_productivity_loss_type,,1,0,0,0
+access_6585_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,mrp.model_mrp_workcenter_productivity_loss_type,,1,0,0,0
+access_6471_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,mrp.model_mrp_workcenter_productivity_loss_type,,1,0,0,0
+access_6038_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,BugFix-MRP.model_mrp_workorder,,1,0,0,0
+access_6109_jin___maintenance___maintenance_users,Jin - Maintenance + Maintenance users,BugFix-MRP.model_mrp_workorder,,1,0,0,0
+access_5796_work_order,Work Order,BugFix-MRP.model_mrp_workorder,,1,1,1,0
+access_6578_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workorder,,1,1,1,0
+access_5868_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workorder,,1,1,1,0
+access_7944_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workorder,,1,1,1,0
+access_6464_jin___manufacturing____mo_full_writes,Jin - Manufacturing -  MO Full Writes,BugFix-MRP.model_mrp_workorder,,1,1,1,0
+access_5727_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,BugFix-MRP.model_mrp_workorder,,1,0,0,0
+access_6220_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,BugFix-MRP.model_mrp_workorder,,1,1,0,0
+access_6838_mrp_workorder_salesman,mrp.workorder salesman,BugFix-MRP.model_mrp_workorder,,1,0,0,0
+access_8653_access_mrp_workorder_rohana_read,access_mrp_workorder_rohana_read,BugFix-MRP.model_mrp_workorder,,1,0,0,0
+access_6046_jin___manufacturing___minimum_rights,Jin - Manufacturing - Minimum Rights,mrp_workorder.model_quality_alert,,1,0,0,0
+access_7263_jin___administrator,Jin - Administrator,mrp_workorder.model_quality_check,stock.group_stock_manager,1,1,1,1
+access_6554_quality_check,quality.check,mrp_workorder.model_quality_check,,1,0,0,0
+access_6440_quality_check,quality.check,mrp_workorder.model_quality_check,,1,0,0,0
+access_5705_quality_check,quality.check,mrp_workorder.model_quality_check,,1,0,0,0
+access_6863_quality_check,quality.check,mrp_workorder.model_quality_check,BugFix-Approvals.group_132_jin_sales_pos_users,1,0,0,0
+access_6267_inv___administrator,Inv - Administrator,mrp_workorder.model_quality_point,stock.group_stock_manager,1,1,1,1
+access_7284_quality_point,quality.point,mrp_workorder.model_quality_point,,1,1,1,0
+access_6097_quality_point,Quality.point,mrp_workorder.model_quality_point,,1,0,0,0
+access_6154_user,User,mrp_workorder.model_quality_point,,1,0,0,0
+access_6862_quality_point,quality.point,mrp_workorder.model_quality_point,BugFix-Approvals.group_132_jin_sales_pos_users,1,0,0,0
+access_6089_user,User,mrp_workorder.model_quality_point,helpdesk.group_helpdesk_user,1,0,0,0
+access_1215_mass_produce_serial_group_user,Mass Produce Serial group_user,BugFix-MRP.model_x_mass_produce_serial,base.group_user,1,0,0,0
+access_7281_mass_produce_serial_group_user,Mass Produce Serial group_user,BugFix-MRP.model_x_mass_produce_serial,,1,1,1,1
+access_7249_jin___manufacturing____mo_full_writes____mps,Jin - Manufacturing -  MO Full Writes  + MPS,BugFix-MRP.model_x_mass_produce_serial,,1,1,1,1
+access_7950_jin___manufacturing____mo_full_writes____mps,Jin - Manufacturing -  MO Full Writes  + MPS,BugFix-MRP.model_x_mass_produce_serial,,1,1,1,1
+access_1214_mass_produce_serial_group_system,Mass Produce Serial group_system,BugFix-MRP.model_x_mass_produce_serial,base.group_system,1,1,1,1
+access_1217_mass_produce_serial_line_group_user,Mass Produce Serial Line group_user,BugFix-MRP.model_x_mass_produce_serial_,base.group_user,1,0,0,0
+access_7282_mass_produce_serial_line_group_user,Mass Produce Serial Line group_user,BugFix-MRP.model_x_mass_produce_serial_,,1,1,1,1
+access_7250_jin___manufacturing____mo_full_writes____mps,Jin - Manufacturing -  MO Full Writes  + MPS,BugFix-MRP.model_x_mass_produce_serial_,,1,1,1,1
+access_7951_jin___manufacturing____mo_full_writes____mps,Jin - Manufacturing -  MO Full Writes  + MPS,BugFix-MRP.model_x_mass_produce_serial_,,1,1,1,1
+access_1216_mass_produce_serial_line_group_system,Mass Produce Serial Line group_system,BugFix-MRP.model_x_mass_produce_serial_,base.group_system,1,1,1,1
+access_8284_material_request_m_group_user,Material Request M group_user,BugFix-MRP.model_x_material_request_m,base.group_user,1,1,1,0
+access_8283_material_request_m_group_system,Material Request M group_system,BugFix-MRP.model_x_material_request_m,base.group_system,1,1,1,1
+access_8286_material_request_m_line_group_user,material_request_m_line group_user,BugFix-MRP.model_x_material_request_m_line_af405,base.group_user,1,1,1,0
+access_8285_material_request_m_line_group_system,material_request_m_line group_system,BugFix-MRP.model_x_material_request_m_line_af405,base.group_system,1,1,1,1
+access_8288_material_request_m_stages_group_user,Material Request M Stages group_user,BugFix-MRP.model_x_material_request_m_stage,base.group_user,1,1,1,0
+access_8287_material_request_m_stages_group_system,Material Request M Stages group_system,BugFix-MRP.model_x_material_request_m_stage,base.group_system,1,1,1,1
+access_8290_material_request_m_tags_group_user,Material Request M Tags group_user,BugFix-MRP.model_x_material_request_m_tag,base.group_user,1,1,1,0
+access_8289_material_request_m_tags_group_system,Material Request M Tags group_system,BugFix-MRP.model_x_material_request_m_tag,base.group_system,1,1,1,1
+access_1209_mrp_bom_general_cost_group_user,mrp.bom.general.cost group_user,BugFix-MRP.model_x_mrp_bom_general_cost,base.group_user,1,0,0,0
+access_1208_mrp_bom_general_cost_group_system,mrp.bom.general.cost group_system,BugFix-MRP.model_x_mrp_bom_general_cost,base.group_system,1,1,1,1
+access_1205_mrp_bom_labour_cost_group_user,mrp.bom.labour.cost group_user,BugFix-MRP.model_x_mrp_bom_labour_cost,base.group_user,1,0,0,0
+access_1204_mrp_bom_labour_cost_group_system,mrp.bom.labour.cost group_system,BugFix-MRP.model_x_mrp_bom_labour_cost,base.group_system,1,1,1,1
+access_1203_mrp_bom_material_cost_group_user,mrp.bom.material.cost group_user,BugFix-MRP.model_x_mrp_bom_material_cos,base.group_user,1,0,0,0
+access_1202_mrp_bom_material_cost_group_system,mrp.bom.material.cost group_system,BugFix-MRP.model_x_mrp_bom_material_cos,base.group_system,1,1,1,1
+access_1207_mrp_bom_overhead_cost_group_user,mrp.bom.overhead.cost group_user,BugFix-MRP.model_x_mrp_bom_overhead_cos,base.group_user,1,0,0,0
+access_1206_mrp_bom_overhead_cost_group_system,mrp.bom.overhead.cost group_system,BugFix-MRP.model_x_mrp_bom_overhead_cos,base.group_system,1,1,1,1
