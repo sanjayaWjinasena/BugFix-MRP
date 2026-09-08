@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: 2 gap window actions -->
+<odoo>
+
+
+  <record id="act_window_2838_mrp_bom" model="ir.actions.act_window">
+    <field name="name">mrp.bom</field>
+    <field name="res_model">mrp.bom</field>
+    <field name="view_mode">kanban,tree,form</field>
+  </record>
+
+  <record id="act_window_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
+    <field name="name">	mrp.workcenter.productivity</field>
+    <field name="res_model">mrp.workcenter.productivity</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+  </record>
+
+</odoo>

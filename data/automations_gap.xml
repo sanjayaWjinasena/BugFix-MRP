@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: 2 gap automations -->
+<odoo>
+
+
+  <record id="base_automation_46_update_tracking_item_status_in_mo" model="base.automation">
+    <field name="name">Update Tracking Item Status in MO</field>
+    <field name="active" eval="False"/>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="trigger">on_change</field>
+  </record>
+
+  <record id="base_automation_48_assign_original_mo_to_work_order" model="base.automation">
+    <field name="name">Assign Original MO to Work Order</field>
+    <field name="active" eval="False"/>
+    <field name="model_id" ref="mrp.model_mrp_workorder"/>
+    <field name="trigger">on_create_or_write</field>
+  </record>
+
+</odoo>
