@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: 2 Studio approval rules from routing sweep -->
+<odoo>
+  <data noupdate="0">
+
+    <record id="approval_rule_65_engineering_change_order_eco_approve_user_types_internal_use" model="studio.approval.rule">
+      <field name="name">Engineering Change Order (ECO)/approve (User types / Internal User) (65)</field>
+      <field name="model_id" ref="mrp.model_mrp_eco"/>
+      <field name="method">approve</field>
+      <field name="group_id" ref="base.group_user"/>
+      <field name="notification_order">1</field>
+    </record>
+
+    <record id="approval_rule_66_engineering_change_order_eco_action_apply_user_types_interna" model="studio.approval.rule">
+      <field name="name">Engineering Change Order (ECO)/action_apply (User types / Internal User) (66)</field>
+      <field name="model_id" ref="mrp.model_mrp_eco"/>
+      <field name="method">action_apply</field>
+      <field name="group_id" ref="base.group_user"/>
+      <field name="notification_order">1</field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.29',
+    'version': '17.0.0.0.30',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
@@ -202,6 +202,7 @@
         'data/server_actions_backlog.xml',
         'data/automations_backlog.xml',
         'data/window_actions_backlog.xml',
+        'data/approval_rules.xml',
     ],
     'installable': True,
     'auto_install': False,
