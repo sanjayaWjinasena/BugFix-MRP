@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: 41 ir.default records routed from Phase D2 sweep -->
+<odoo>
+  <data noupdate="1">
+
+    <record id="default_66_x_mrp_bom_material_cos_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_67_x_mrp_bom_material_cos_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_68_x_mrp_bom_labour_cost_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_labour_cost__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_69_x_mrp_bom_labour_cost_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_labour_cost__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_70_x_mrp_bom_overhead_cos_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_overhead_cos__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_71_x_mrp_bom_overhead_cos_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_overhead_cos__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_72_mrp_bom_x_studio_bom_total_labour_cost" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_bom__x_studio_bom_total_labour_cost"/>
+      <field name="json_value">""</field>
+    </record>
+
+    <record id="default_73_mrp_bom_x_studio_bom_total_overhead_cost" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_bom__x_studio_bom_total_overhead_cost"/>
+      <field name="json_value">""</field>
+    </record>
+
+    <record id="default_74_x_mrp_bom_general_cost_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_general_cost__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_75_x_mrp_bom_general_cost_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_general_cost__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_80_x_mass_produce_serial_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_81_x_mass_produce_serial_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_82_x_mass_produce_serial__x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial___x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_83_x_mass_produce_serial__x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial___x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_85_x_mass_produce_serial_x_studio_sequence_size" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial__x_studio_sequence_size"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_86_x_mass_produce_serial_x_studio_starting_serial_no" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial__x_studio_starting_serial_no"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_87_x_mass_produce_serial__x_studio_sequence_size" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial___x_studio_sequence_size"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_88_x_mass_produce_serial__x_studio_starting_serial_n" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mass_produce_serial___x_studio_starting_serial_no"/>
+      <field name="json_value">"0"</field>
+    </record>
+
+    <record id="default_217_x_mrp_bom_overhead_cos_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_overhead_cos__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_218_x_mrp_bom_material_cos_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_219_x_mrp_bom_labour_cost_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_labour_cost__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_220_mrp_bom_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_bom__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_221_x_mrp_bom_general_cost_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_general_cost__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_371_mrp_eco_x_studio_error" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_eco__x_studio_error"/>
+      <field name="json_value">"The Selected Product Should be Approved to Proceed."</field>
+    </record>
+
+    <record id="default_407_mrp_production_x_studio_process_error" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_process_error"/>
+      <field name="json_value">"Select the Correct Finished Product Location Manually to Proceed ."</field>
+    </record>
+
+    <record id="default_418_x_mrp_bom_overhead_cos_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_overhead_cos__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_419_x_mrp_bom_material_cos_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_420_x_mrp_bom_labour_cost_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_labour_cost__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_422_x_mrp_bom_general_cost_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_general_cost__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_423_mrp_production_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+
+    <record id="default_475_mrp_production_x_studio_mark_as_done_validation" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_mark_as_done_validation"/>
+      <field name="json_value">"Please enter the Quantity to produce to proceed with Mark as Done."</field>
+    </record>
+
+    <record id="default_614_x_material_request_m_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+
+    <record id="default_615_x_material_request_m_x_studio_company_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_company_id"/>
+      <field name="json_value">1</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_pvt_ltd"/>
+    </record>
+
+    <record id="default_616_x_material_request_m_x_studio_company_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_company_id"/>
+      <field name="json_value">2</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_agricultural_machinery"/>
+    </record>
+
+    <record id="default_617_x_material_request_m_x_studio_company_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_company_id"/>
+      <field name="json_value">3</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jltd"/>
+    </record>
+
+    <record id="default_618_x_material_request_m_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_pvt_ltd"/>
+    </record>
+
+    <record id="default_619_x_material_request_m_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_agricultural_machinery"/>
+    </record>
+
+    <record id="default_620_x_material_request_m_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jltd"/>
+    </record>
+
+    <record id="default_621_x_material_request_m_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+
+    <record id="default_622_x_material_request_m_x_studio_stage_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_stage_id"/>
+      <field name="json_value">1</field>
+    </record>
+
+    <record id="default_641_mrp_production_x_studio_super_user_melt_items" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_super_user_melt_items"/>
+      <field name="json_value">false</field>
+      <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_agricultural_machinery"/>
+    </record>
+
+  </data>
+</odoo>
