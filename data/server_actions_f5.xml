@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase F5 - 7 server actions -->
+<odoo>
+  <record id="sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
+    <field name="name">JIN - Company Id in Mass Produce Serial</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_company_id'] = company.id]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial_line" model="ir.actions.server">
+    <field name="name">JIN - Company Id in Mass Produce Serial Line</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial_')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_company_id'] = company.id]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Nos - Find Last</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_sequence_size'] = 4  
+record['x_studio_starting_serial_no'] = 1
+record['x_studio_last_serial_no_id'] = ''
+record['x_studio_company_id'] = company.id
+
+if record.x_studio_serial_no_prefix:
+  last_sn = env['stock.lot'].search([('x_studio_serial_no_prefix', '=ilike', record.x_studio_serial_no_prefix), ('company_id', '=', company.id)],order='id desc',limit=1)
+  if last_sn:
+    record['x_studio_prefix_status'] = 'Existing'
+    record['x_studio_sequence_size'] = last_sn.x_studio_sequence_size
+    record['x_studio_starting_serial_no'] = last_sn.x_studio_starting_serial_no + 1
+    record['x_studio_last_serial_no_id'] = last_sn.id
+  else:
+    record['x_studio_prefix_status'] = 'New'
+    
+    
+   
+  ]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_mrp_eco_plm_tag_create" model="ir.actions.server">
+    <field name="name">PLM - Tag Create</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[line_ids = []
+
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+if eco_tag_search:
+  line_ids.append(eco_tag_search.id)
+else:
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+  line_ids.append(eco_tag_create.id)
+
+"""if record.type == 'bom': 
+  record.write({'tag_ids':[(6, 0, line_ids)], 'active':False})
+else:
+  record.write({'tag_ids':[(6, 0, line_ids)]})"""
+  
+record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_mrp_eco_plm_tag_description" model="ir.actions.server">
+    <field name="name">PLM - Tag Description</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
+if record.name:
+  record['x_studio_tag_description'] = record.name]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_mrp_production_proj_mark_as_done_validation" model="ir.actions.server">
+    <field name="name">PROJ - Mark as Done Validation</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.']]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_mrp_workcenter_update_cost_per_hour" model="ir.actions.server">
+    <field name="name">Update Cost Per Hour</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[if record.x_studio_ot_cost_per_hour > 0.00:
+  #record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
+  record['costs_hour'] = record.x_studio_ot_cost_per_hour
+else:
+  #record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
+  record['costs_hour'] = record.x_studio_labour_cost_hour
+]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+</odoo>
