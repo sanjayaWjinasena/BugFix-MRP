@@ -21,7 +21,7 @@ class XMaterialRequestM(models.Model):
     x_studio_date_start = fields.Datetime(string='Start Date')
     x_studio_date_stop = fields.Datetime(string='End Date')
     x_studio_image = fields.Binary(string='Image')
-    x_studio_kanban_state = fields.Selection([], string='Kanban State')
+    x_studio_kanban_state = fields.Selection([('normal', 'In Progress'), ('done', 'Ready'), ('blocked', 'Blocked')], string='Kanban State')
     x_studio_notes = fields.Html(string='Notes')
     x_studio_partner_email = fields.Char(string='Email')
     x_studio_partner_id = fields.Many2one('res.partner', string='Contact')
