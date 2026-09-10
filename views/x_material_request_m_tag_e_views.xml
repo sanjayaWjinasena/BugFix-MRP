@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase E - 3 views for x_material_request_m_tag -->
+<odoo>
+  <data>
+    <record id="view_8760_default_form_view_for_x_material_request_m_tag_e" model="ir.ui.view">
+      <field name="name">Default form view for x_material_request_m_tag</field>
+      <field name="model">x_material_request_m_tag</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+  <header/>
+  <sheet string="Material Request M Tags">
+    <div class="oe_title">
+                <h1>
+                    <field name="x_name" required="1" placeholder="Name..."/>
+                </h1>
+            </div>
+    <group name="studio_group_7c6eda">
+      <group name="studio_group_7c6eda_left"/>
+      <group name="studio_group_7c6eda_right"/>
+    </group>
+  </sheet>
+</form>
+      </field>
+    </record>
+
+    <record id="view_8759_default_list_view_for_x_material_request_m_tag_e" model="ir.ui.view">
+      <field name="name">Default list view for x_material_request_m_tag</field>
+      <field name="model">x_material_request_m_tag</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom">
+  <field name="x_name"/>
+  <field name="x_color" widget="color_picker"/>
+</tree>
+      </field>
+    </record>
+
+    <record id="view_8761_default_search_view_for_x_material_request_m_tag_e" model="ir.ui.view">
+      <field name="name">Default search view for x_material_request_m_tag</field>
+      <field name="model">x_material_request_m_tag</field>
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+        <search>
+  <field name="x_name"/>
+</search>
+      </field>
+    </record>
+
+  </data>
+</odoo>

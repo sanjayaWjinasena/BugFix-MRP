@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase E - 1 views for mrp.eco -->
+<odoo>
+  <data>
+    <record id="view_5063_mrp_eco_view_form_button_e" model="ir.ui.view">
+      <field name="name">mrp.eco.view.form_button</field>
+      <field name="model">mrp.eco</field>
+      <field name="type">form</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="mrp_plm.mrp_eco_view_form"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+    <xpath expr="//header/button[@name='action_new_revision']" position="after">
+      <button type="action" name="2307" string="Related ECOs" class="btn-primary"/>
+    </xpath>
+  </data>
+      </field>
+    </record>
+
+  </data>
+</odoo>
