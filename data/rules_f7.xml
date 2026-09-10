@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase F7 - 2 record rules -->
+<odoo>
+  <record id="rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial_line" model="ir.rule">
+    <field name="name">JIN - Multi-Company - Mass Produce Serial Line</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial_')]"/>
+    <field name="domain_force">['|', ('x_studio_company_id', 'in', company_ids), ('x_studio_company_id', '=', False)]</field>
+  </record>
+  <record id="rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial" model="ir.rule">
+    <field name="name">JIN - Multi-Company - Mass Produce Serial</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="domain_force">['|', ('x_studio_company_id', 'in', company_ids), ('x_studio_company_id', '=', False)]</field>
+  </record>
+</odoo>
