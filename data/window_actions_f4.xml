@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase F4 - 2 window actions -->
+<odoo>
+  <record id="aw_f4_mrp_bom_mrp_bom" model="ir.actions.act_window">
+    <field name="name">mrp.bom</field>
+    <field name="res_model">mrp.bom</field>
+    <field name="view_mode">kanban,tree,form</field>
+  </record>
+  <record id="aw_f4_mrp_workcenter_productivity_mrp_workcenter_productivity" model="ir.actions.act_window">
+    <field name="name">	mrp.workcenter.productivity</field>
+    <field name="res_model">mrp.workcenter.productivity</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+  </record>
+</odoo>
