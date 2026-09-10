@@ -1,17 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- BugFix-MRP: Phase E - 5 views for x_mrp_bom_material_cos -->
-<odoo>
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- BugFix-MRP: Phase E - 5 views for x_mrp_bom_material_cos --><odoo>
   <data>
-    <record id="view_3149_default_dashboard_view_for_ir_model_825_e" model="ir.ui.view">
-      <field name="name">Default dashboard view for ir.model(825,)</field>
-      <field name="model">x_mrp_bom_material_cos</field>
-      <field name="type">dashboard</field>
-      <field name="arch" type="xml">
-        <dashboard><view type="graph"/><view type="pivot"/></dashboard>
-      </field>
-    </record>
-
-    <record id="view_2553_default_form_view_for_x_mrp_bom_material_cos_e" model="ir.ui.view">
+    <!-- STRIPPED dashboard view id=view_3149_default_dashboard_view_for_ir_model_825_e --><record id="view_2553_default_form_view_for_x_mrp_bom_material_cos_e" model="ir.ui.view">
       <field name="name">Default form view for x_mrp_bom_material_cos</field>
       <field name="model">x_mrp_bom_material_cos</field>
       <field name="type">form</field>
