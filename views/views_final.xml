@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- BugFix-MRP: Views final - 5 remaining views --><odoo>
+  <data>
+    <record id="view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_x_mrp_bom_general_cost" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_mrp_bom_general_cost customization</field>
+      <field name="model">x_mrp_bom_general_cost</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-MRP.view_2575_default_list_view_for_x_mrp_bom_general_cost_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='x_studio_sequence']" position="before">
+    <field name="x_studio_bom_general_cost_ids" string="BOM General Cost"/>
+    <field name="x_studio_prod_bom_general_cost_ids" string="Prod. BOM General Cost"/>
+    <field name="x_studio_prod_bom_line_id" string="Prod. BOM Line ID" column_invisible="1"/>
+    <field name="x_studio_operation_id" string="Operation"/>
+    <field name="x_studio_planned_qty" string="Planned Hour"/>
+    <field name="x_studio_actual_qty" string="Actual Hour"/>
+    <field name="x_studio_cost" string="Cost/Hour"/>
+    <field name="x_studio_total_cost" string="Total Cost"/>
+    <field name="x_studio_total_actual_cost" string="Total Actual Cost"/>
+    <field name="x_studio_currency_id" column_invisible="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
+
+    <record id="view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_mrp_bom_labour_cost customization</field>
+      <field name="model">x_mrp_bom_labour_cost</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-MRP.view_2555_default_list_view_for_x_mrp_bom_labour_cost_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='x_studio_sequence']" position="before">
+    <field name="x_studio_bom_labour_cost_ids" string="BOM Labour Cost"/>
+    <field name="x_studio_prod_bom_labour_cost_ids" string="Prod. BOM Labour Cost"/>
+    <field name="x_studio_prod_bom_line_id" string="Prod. BOM Line ID" column_invisible="1"/>
+    <field name="x_studio_operation_id" string="Operation"/>
+    <field name="x_studio_planned_qty" string="Planned Hour"/>
+    <field name="x_studio_actual_qty" string="Actual Hour"/>
+    <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
+    <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+    <field name="x_studio_total_actual_cost" string="Total Actual Cost"/>
+    <field name="x_studio_currency_id" column_invisible="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
+
+    <record id="view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_x_mrp_bom_material_cos" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_mrp_bom_material_cos customization</field>
+      <field name="model">x_mrp_bom_material_cos</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-MRP.view_2552_default_list_view_for_x_mrp_bom_material_cos_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='x_studio_sequence']" position="before">
+    <field name="x_studio_bom_material_cost_ids" string="BOM Material Cost"/>
+    <field name="x_studio_prod_bom_material_cost_ids" string="Prod. BOM Material Cost"/>
+    <field name="x_studio_prod_bom_line_id" string="Prod. BOM Line ID"/>
+    <field name="x_studio_bom_line_id" string="BOM Line"/>
+    <field name="x_studio_operation_id" string="Operation"/>
+    <field name="x_studio_product_id"/>
+    <field name="x_studio_planned_qty" string="Planned Qty"/>
+    <field name="x_studio_actual_qty" string="Actual Qty"/>
+    <field name="x_studio_uom_id" string="UOM"/>
+  </xpath>
+  <xpath expr="//field[@name='x_studio_sequence']" position="after">
+    <field name="x_studio_cost" string="Cost/Unit" widget="monetary"/>
+    <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+    <field name="x_studio_total_actual_cost" string="Total Actual Cost"/>
+    <field name="x_studio_currency_id" column_invisible="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
+
+    <record id="view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_x_mrp_bom_overhead_cos" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_mrp_bom_overhead_cos customization</field>
+      <field name="model">x_mrp_bom_overhead_cos</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-MRP.view_2558_default_list_view_for_x_mrp_bom_overhead_cos_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='x_studio_sequence']" position="before">
+    <field name="x_studio_bom_overhead_cost_ids" string="BOM Overhead Cost"/>
+    <field name="x_studio_prod_bom_overhead_cost_ids" string="Prod. BOM Overhead Cost"/>
+    <field name="x_studio_prod_bom_line_id" string="Prod. BOM Line ID" column_invisible="1"/>
+    <field name="x_studio_operation_id" string="Operation"/>
+    <field name="x_studio_planned_qty" string="Planned Hour"/>
+    <field name="x_studio_actual_qty"/>
+    <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
+    <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+    <field name="x_studio_total_actual_cost" string="Total Actual Cost"/>
+    <field name="x_studio_currency_id" column_invisible="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
+
+    <!-- STRIPPED: unresolvable studio_customization parent --></data>
+</odoo>
