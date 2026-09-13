@@ -5,6 +5,7 @@ from odoo import fields, models
 class XMaterialRequestM(models.Model):
     """Studio-ported custom model x_material_request_m."""
     _name = 'x_material_request_m'
+    _inherit = ['mail.activity.mixin']
     _description = 'Material Request M'
 
     x_active = fields.Boolean(string='Active')

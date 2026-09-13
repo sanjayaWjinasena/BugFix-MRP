@@ -8,6 +8,7 @@ class XMassProduceSerialLine(models.Model):
     the 24-char model-name limit). Line records for the parent
     x_mass_produce_serial wizard."""
     _name = 'x_mass_produce_serial_'
+    _inherit = ['mail.activity.mixin']
     _description = 'Mass Produce Serial Line'
     _rec_name = 'x_name'
     _order = 'x_studio_sequence asc, id asc'

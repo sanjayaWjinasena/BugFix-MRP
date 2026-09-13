@@ -9,6 +9,7 @@ class XMrpBomLabourCost(models.Model):
     Referenced by mrp.bom O2M x_studio_one2many_field_jPlQP and
     mrp.production O2M x_studio_one2many_field_Fzcvl."""
     _name = 'x_mrp_bom_labour_cost'
+    _inherit = ['mail.activity.mixin']
     _description = 'mrp.bom.labour.cost'
     _rec_name = 'x_name'
     _order = 'x_studio_sequence asc, id asc'

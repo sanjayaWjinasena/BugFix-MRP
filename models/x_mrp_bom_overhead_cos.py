@@ -8,6 +8,7 @@ class XMrpBomOverheadCos(models.Model):
     Referenced by mrp.bom O2M x_studio_one2many_field_bOopH and
     mrp.production O2M x_studio_one2many_field_vg1OS."""
     _name = 'x_mrp_bom_overhead_cos'
+    _inherit = ['mail.activity.mixin']
     _description = 'mrp.bom.overhead.cost'
     _rec_name = 'x_name'
     _order = 'x_studio_sequence asc, id asc'

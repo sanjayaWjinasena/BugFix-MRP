@@ -9,6 +9,7 @@ class XMassProduceSerial(models.Model):
     Nos' button (server action 1147). Generate/Clear/OK buttons on the primary
     form (view 2600) invoke server actions 1149/1150/1151."""
     _name = 'x_mass_produce_serial'
+    _inherit = ['mail.activity.mixin']
     _description = 'Mass Produce Serial'
     _rec_name = 'x_name'
     _order = 'x_studio_sequence asc, id asc'

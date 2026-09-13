@@ -8,6 +8,7 @@ class XMrpBomMaterialCos(models.Model):
     Referenced by mrp.bom O2M x_studio_one2many_field_4rhw9 and
     mrp.production O2M x_studio_direct_material_cost."""
     _name = 'x_mrp_bom_material_cos'
+    _inherit = ['mail.activity.mixin']
     _description = 'mrp.bom.material.cost'
     _rec_name = 'x_name'
     _order = 'x_studio_sequence asc, id asc'
