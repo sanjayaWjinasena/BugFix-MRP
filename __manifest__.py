@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.53',
+    'version': '17.0.0.0.54',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
@@ -185,13 +185,12 @@
     # masterdata module.
     'depends': ['base_setup', 'mrp', 'mrp_plm', 'mrp_workorder', 'maintenance', 'hr_maintenance', 'mrp_maintenance', 'purchase_stock', 'quality', 'quality_mrp', 'quality_mrp_workorder', 'stock_delivery', 'BugFix-Stock', 'BugFix-Maintenance', 'Jinasena_Masterdata_Reporting'],
     'data': [
-        'views/views_final.xml',
         'data/rules_f7.xml',
         'data/server_actions_f5.xml',
         'data/window_actions_f4.xml',
         'security/ir_model_pins.xml',
-        'security/ir.model.access.csv',
         'data/server_actions.xml',
+        'security/ir.model.access.csv',
         'data/automations.xml',
         'data/act_windows.xml',
         'views/x_material_request_m_studio_ported.xml',
@@ -224,8 +223,9 @@
         'views/x_mrp_bom_labour_cost_e_views.xml',
         'views/x_mrp_bom_material_cos_e_views.xml',
         'views/x_mrp_bom_overhead_cos_e_views.xml',
+        'views/views_final.xml',
         'data/menus_f6.xml',
-],
+    ],
     'installable': True,
     'auto_install': False,
     'application': True,
