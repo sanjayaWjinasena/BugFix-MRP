@@ -19,5 +19,11 @@
       </field>
     </record>
 
+    <menuitem id="menu_x_mrp_bom_material_cos_analysis"
+              name="BOM Material Cost Analysis"
+              parent="mrp.menu_mrp_reporting"
+              action="action_x_mrp_bom_material_cos_analysis"
+              sequence="90"/>
+
   </data>
 </odoo>
