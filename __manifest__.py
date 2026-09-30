@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.55',
+    'version': '17.0.0.0.56',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
@@ -225,6 +225,7 @@
         'views/x_mrp_bom_overhead_cos_e_views.xml',
         'views/views_final.xml',
         'data/menus_f6.xml',
+        'data/dashboard_replacements.xml',
     ],
     'installable': True,
     'auto_install': False,

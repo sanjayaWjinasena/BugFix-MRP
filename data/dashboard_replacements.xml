@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Odoo 17 replacement for Odoo 15 Studio's <dashboard> view type, which
+     was dropped in Odoo 17's web_studio. Ships an act_window with
+     view_mode="graph,pivot" so users can access graph + pivot aggregations
+     via the top-right view-toggle. Odoo auto-generates the graph/pivot views
+     from the model's fields; no explicit ir.ui.view records needed.
+
+     Replaces CDB view 3149 (studio_customization.default_dashboard_vi_a02a9429...). -->
+<odoo>
+  <data noupdate="1">
+
+    <record id="action_x_mrp_bom_material_cos_analysis" model="ir.actions.act_window">
+      <field name="name">BOM Material Cost Analysis</field>
+      <field name="res_model">x_mrp_bom_material_cos</field>
+      <field name="view_mode">graph,pivot</field>
+      <field name="help" type="html">
+        <p>Aggregated view of BOM material costs (graph + pivot).</p>
+        <p>Replaces the Odoo 15 Studio dashboard view that Odoo 17 dropped.</p>
+      </field>
+    </record>
+
+  </data>
+</odoo>
