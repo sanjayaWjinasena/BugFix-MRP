@@ -227,6 +227,8 @@
         'data/menus_f6.xml',
         'data/dashboard_replacements.xml',
     ],
+    # Staging_Migration: adopt existing Studio models for the ir.model pins.
+    'pre_init_hook': 'pre_init_hook',
     'post_init_hook': 'post_init_hook',
 'installable': True,
     'auto_install': False,
