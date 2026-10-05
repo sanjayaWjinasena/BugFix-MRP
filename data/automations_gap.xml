@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- BugFix-MRP: 2 gap automations -->
+<!-- BugFix-MRP: 2 gap automations (48 with its action 1156, Staging_Migration) -->
 <odoo>
 
 
@@ -10,11 +10,22 @@
     <field name="trigger">on_change</field>
   </record>
 
+  <record id="server_action_1156_assign_original_mo_to_work_order" model="ir.actions.server">
+    <field name="name">Assign Original MO to Work Order</field>
+    <field name="model_id" ref="mrp.model_mrp_workorder"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id:
+ prod_order = env['mrp.production'].search([('id', '=', record.production_id.id)],limit=1)
+ if prod_order:
+   record['x_studio_original_mo'] = prod_order.x_studio_original_mo]]></field>
+  </record>
   <record id="base_automation_48_assign_original_mo_to_work_order" model="base.automation">
     <field name="name">Assign Original MO to Work Order</field>
     <field name="active" eval="False"/>
     <field name="model_id" ref="mrp.model_mrp_workorder"/>
     <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_1156_assign_original_mo_to_work_order')])]"/>
   </record>
 
 </odoo>
