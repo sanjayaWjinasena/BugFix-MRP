@@ -27,7 +27,7 @@ class XMassProduceSerial(models.Model):
         string='Prefix Status')
     x_studio_product_id = fields.Many2one('product.product', string='Product', ondelete='set null')
     x_studio_product_qty = fields.Float(string='Quantity to Create')
-    x_studio_production_id = fields.Many2one('mrp.production', string='Production Order', ondelete='cascade')
+    x_studio_production_id = fields.Many2one('mrp.production', string='Production Order', ondelete='set null')
     x_studio_sequence = fields.Integer(string='Sequence')
     x_studio_sequence_size = fields.Integer(string='Sequence Size')
     x_studio_serial_no_prefix = fields.Char(string='Serial No Prefix')
