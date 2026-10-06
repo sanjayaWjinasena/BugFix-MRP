@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Studio approval rules the migration missed (found 2026-10-06: Studio-owned on production, no repo record). Production settings verbatim; approver / notified users are data and are not shipped. noupdate=0: removing a record here deletes it on upgrade. -->
+<odoo noupdate="0">
+<!-- Studio approval rule 107 "Unlock (Production Order)" (production, active on production, created 2025-11-26, 1 approval entries there; the approval history is data and stays on the environment). Remove this record to take it out. -->
+  <record id="approval_rule_107_unlock_production_order" model="studio.approval.rule">
+    <field name="name">Unlock (Production Order)</field>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="method">action_toggle_is_locked</field>
+    <field name="group_id" ref="stock.group_stock_manager"/>
+    <field name="notification_order">1</field>
+  </record>
+<!-- Studio approval rule 108 "Cancel (Production Order)" (production, active on production, created 2025-11-26, 83 approval entries there; the approval history is data and stays on the environment). Remove this record to take it out. -->
+  <record id="approval_rule_108_cancel_production_order" model="studio.approval.rule">
+    <field name="name">Cancel (Production Order)</field>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="method">action_cancel</field>
+    <field name="group_id" ref="stock.group_stock_manager"/>
+    <field name="notification_order">1</field>
+  </record>
+</odoo>
