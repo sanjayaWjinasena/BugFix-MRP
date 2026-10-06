@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jinasena : Module : MRP',
-    'version': '17.0.0.0.64',
+    'version': '17.0.0.0.65',
     'summary': 'Studio-to-Python port for BugFix-MRP',
     'author': 'Jinasena Agricultural Machinery (Pvt) Ltd.',
     'category': 'Manufacturing',
@@ -191,6 +191,7 @@
         'security/ir_model_pins.xml',
         'data/server_actions.xml',
         'security/ir.model.access.csv',
+        'security/removed_handmade_access_rights.xml',
         'data/automations.xml',
         'data/act_windows.xml',
         'views/x_material_request_m_studio_ported.xml',
