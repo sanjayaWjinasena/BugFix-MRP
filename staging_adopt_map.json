@@ -1,0 +1,2638 @@
+{
+"access_1202_mrp_bom_material_cost_group_system": {
+"ir.model.access": [
+[
+1202,
+"2021-08-03 07:37:33"
+]
+]
+},
+"access_1203_mrp_bom_material_cost_group_user": {
+"ir.model.access": [
+[
+1203,
+"2021-08-03 07:37:33"
+]
+]
+},
+"access_1204_mrp_bom_labour_cost_group_system": {
+"ir.model.access": [
+[
+1204,
+"2021-08-03 07:38:44"
+]
+]
+},
+"access_1205_mrp_bom_labour_cost_group_user": {
+"ir.model.access": [
+[
+1205,
+"2021-08-03 07:38:44"
+]
+]
+},
+"access_1206_mrp_bom_overhead_cost_group_system": {
+"ir.model.access": [
+[
+1206,
+"2021-08-03 07:39:17"
+]
+]
+},
+"access_1207_mrp_bom_overhead_cost_group_user": {
+"ir.model.access": [
+[
+1207,
+"2021-08-03 07:39:17"
+]
+]
+},
+"access_1208_mrp_bom_general_cost_group_system": {
+"ir.model.access": [
+[
+1208,
+"2021-08-06 03:12:34"
+]
+]
+},
+"access_1209_mrp_bom_general_cost_group_user": {
+"ir.model.access": [
+[
+1209,
+"2021-08-06 03:12:34"
+]
+]
+},
+"access_1214_mass_produce_serial_group_system": {
+"ir.model.access": [
+[
+1214,
+"2021-08-17 03:04:04"
+]
+]
+},
+"access_1215_mass_produce_serial_group_user": {
+"ir.model.access": [
+[
+1215,
+"2021-08-17 03:04:04"
+],
+[
+7281,
+"2024-08-23 04:22:29"
+]
+]
+},
+"access_1216_mass_produce_serial_line_group_system": {
+"ir.model.access": [
+[
+1216,
+"2021-08-17 09:55:26"
+]
+]
+},
+"access_1217_mass_produce_serial_line_group_user": {
+"ir.model.access": [
+[
+1217,
+"2021-08-17 09:55:26"
+],
+[
+7282,
+"2024-08-23 04:22:55"
+]
+]
+},
+"access_5575_bill_of_material": {
+"ir.model.access": [
+[
+5575,
+"2023-11-23 04:06:35"
+]
+]
+},
+"access_5656_administrator___kapila": {
+"ir.model.access": [
+[
+5656,
+"2023-11-23 07:08:45"
+]
+]
+},
+"access_5702_mrp_production_stock_worker": {
+"ir.model.access": [
+[
+5702,
+"2023-11-27 04:27:47"
+]
+]
+},
+"access_5703_mrp_bom": {
+"ir.model.access": [
+[
+5703,
+"2023-11-27 04:27:47"
+]
+]
+},
+"access_5704_mrp_bom_line": {
+"ir.model.access": [
+[
+5704,
+"2023-11-27 04:27:47"
+]
+]
+},
+"access_5705_quality_check": {
+"ir.model.access": [
+[
+5705,
+"2023-11-27 04:27:47"
+]
+]
+},
+"access_5727_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+5727,
+"2023-11-27 04:49:37"
+]
+]
+},
+"access_5767_mrp_production_user": {
+"ir.model.access": [
+[
+5767,
+"2023-11-27 05:25:58"
+]
+]
+},
+"access_5796_work_order": {
+"ir.model.access": [
+[
+5796,
+"2023-11-27 05:39:15"
+]
+]
+},
+"access_5840_mrp_production_stock_worker": {
+"ir.model.access": [
+[
+5840,
+"2023-11-27 07:55:29"
+]
+]
+},
+"access_5868_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+5868,
+"2023-11-27 07:55:29"
+]
+]
+},
+"access_5869_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+5869,
+"2023-11-27 07:55:29"
+]
+]
+},
+"access_6029_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6029,
+"2023-12-04 10:24:48"
+]
+]
+},
+"access_6038_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6038,
+"2023-12-05 09:21:37"
+]
+]
+},
+"access_6039_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6039,
+"2023-12-05 09:22:39"
+]
+]
+},
+"access_6040_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6040,
+"2023-12-05 09:24:05"
+]
+]
+},
+"access_6041_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6041,
+"2023-12-05 09:25:05"
+]
+]
+},
+"access_6045_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6045,
+"2023-12-05 10:13:04"
+]
+]
+},
+"access_6046_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6046,
+"2023-12-05 10:14:16"
+]
+]
+},
+"access_6049_work_center_costing_group_system": {
+"ir.model.access": [
+[
+6049,
+"2023-12-05 10:19:16"
+]
+]
+},
+"access_6065_jin___repair___minimum_rights": {
+"ir.model.access": [
+[
+6065,
+"2023-12-06 06:02:39"
+]
+]
+},
+"access_6080_jin___repair___minimum_rights": {
+"ir.model.access": [
+[
+6080,
+"2023-12-06 06:07:17"
+]
+]
+},
+"access_6089_user": {
+"ir.model.access": [
+[
+6089,
+"2023-12-06 09:19:05"
+]
+]
+},
+"access_6097_quality_point": {
+"ir.model.access": [
+[
+6097,
+"2023-12-13 06:11:35"
+]
+]
+},
+"access_6104_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6104,
+"2023-12-13 09:37:20"
+]
+]
+},
+"access_6109_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6109,
+"2023-12-13 09:37:20"
+]
+]
+},
+"access_6110_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6110,
+"2023-12-13 09:37:20"
+]
+]
+},
+"access_6111_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6111,
+"2023-12-13 09:37:20"
+]
+]
+},
+"access_6112_jin___maintenance___maintenance_users": {
+"ir.model.access": [
+[
+6112,
+"2023-12-13 09:37:20"
+]
+]
+},
+"access_6121_mrp_eco_approval_template": {
+"ir.model.access": [
+[
+6121,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6122_mrp_eco_approval": {
+"ir.model.access": [
+[
+6122,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6123_mrp_eco_stage": {
+"ir.model.access": [
+[
+6123,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6124_mrp_eco_bom_line": {
+"ir.model.access": [
+[
+6124,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6125_mrp_eco_routing_line": {
+"ir.model.access": [
+[
+6125,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6126_mrp_eco_tag": {
+"ir.model.access": [
+[
+6126,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6127_mrp_eco_type": {
+"ir.model.access": [
+[
+6127,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6128_mrp_eco": {
+"ir.model.access": [
+[
+6128,
+"2023-12-14 02:05:24"
+]
+]
+},
+"access_6129_mrp_eco_approval_template": {
+"ir.model.access": [
+[
+6129,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6130_mrp_eco_approval": {
+"ir.model.access": [
+[
+6130,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6131_mrp_eco_stage": {
+"ir.model.access": [
+[
+6131,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6132_mrp_eco_bom_line": {
+"ir.model.access": [
+[
+6132,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6133_mrp_eco_routing_line": {
+"ir.model.access": [
+[
+6133,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6134_mrp_eco_tag": {
+"ir.model.access": [
+[
+6134,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6135_mrp_eco_type": {
+"ir.model.access": [
+[
+6135,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6136_mrp_eco": {
+"ir.model.access": [
+[
+6136,
+"2023-12-14 02:16:26"
+]
+]
+},
+"access_6154_user": {
+"ir.model.access": [
+[
+6154,
+"2023-12-14 07:54:11"
+]
+]
+},
+"access_6220_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6220,
+"2023-12-19 04:49:57"
+]
+]
+},
+"access_6223_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6223,
+"2023-12-19 04:49:57"
+]
+]
+},
+"access_6225_jin___manufacturing___minimum_rights___cell_rights": {
+"ir.model.access": [
+[
+6225,
+"2023-12-19 04:51:54"
+]
+]
+},
+"access_6250_inv___administrator": {
+"ir.model.access": [
+[
+6250,
+"2024-01-02 09:59:20"
+]
+]
+},
+"access_6267_inv___administrator": {
+"ir.model.access": [
+[
+6267,
+"2024-01-03 06:10:00"
+]
+]
+},
+"access_6437_mrp_production_stock_worker": {
+"ir.model.access": [
+[
+6437,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6438_mrp_bom": {
+"ir.model.access": [
+[
+6438,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6439_mrp_bom_line": {
+"ir.model.access": [
+[
+6439,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6440_quality_check": {
+"ir.model.access": [
+[
+6440,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6462_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6462,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6463_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6463,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6464_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6464,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6465_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6465,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6470_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6470,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6471_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6471,
+"2024-02-13 08:22:17"
+]
+]
+},
+"access_6551_mrp_production_stock_worker": {
+"ir.model.access": [
+[
+6551,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6552_mrp_bom": {
+"ir.model.access": [
+[
+6552,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6553_mrp_bom_line": {
+"ir.model.access": [
+[
+6553,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6554_quality_check": {
+"ir.model.access": [
+[
+6554,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6576_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6576,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6577_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6577,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6578_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6578,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6579_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6579,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6584_work_center_costing_group_user": {
+"ir.model.access": [
+[
+6584,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6585_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+6585,
+"2024-02-14 09:10:51"
+]
+]
+},
+"access_6592_jin___manufacturing____mo_full_writes___without_routes_acces": {
+"ir.model.access": [
+[
+6592,
+"2024-02-14 10:01:05"
+]
+]
+},
+"access_6767_mrp_bom": {
+"ir.model.access": [
+[
+6767,
+"2024-03-20 06:21:14"
+]
+]
+},
+"access_6776_mrp_production_salesman": {
+"ir.model.access": [
+[
+6776,
+"2024-03-20 06:21:14"
+]
+]
+},
+"access_6784_mrp_bom_line": {
+"ir.model.access": [
+[
+6784,
+"2024-03-20 06:21:14"
+]
+]
+},
+"access_6838_mrp_workorder_salesman": {
+"ir.model.access": [
+[
+6838,
+"2024-03-20 06:21:14"
+]
+]
+},
+"access_6852_mrp_bom": {
+"ir.model.access": [
+[
+6852,
+"2024-03-21 07:56:33"
+]
+]
+},
+"access_6862_quality_point": {
+"ir.model.access": [
+[
+6862,
+"2024-03-21 08:11:40"
+]
+]
+},
+"access_6863_quality_check": {
+"ir.model.access": [
+[
+6863,
+"2024-03-21 08:12:40"
+]
+]
+},
+"access_6886_mrp_bom": {
+"ir.model.access": [
+[
+6886,
+"2024-04-10 06:37:20"
+]
+]
+},
+"access_6896_mrp_bom_line": {
+"ir.model.access": [
+[
+6896,
+"2024-04-10 06:54:31"
+]
+]
+},
+"access_6962_mrp_bom": {
+"ir.model.access": [
+[
+6962,
+"2024-04-22 09:03:43"
+]
+]
+},
+"access_6963_mrp_bom_line": {
+"ir.model.access": [
+[
+6963,
+"2024-04-22 09:03:43"
+]
+]
+},
+"access_6969_user": {
+"ir.model.access": [
+[
+6969,
+"2024-04-29 07:24:37"
+]
+]
+},
+"access_6970_user": {
+"ir.model.access": [
+[
+6970,
+"2024-04-29 07:27:45"
+]
+]
+},
+"access_6971_user": {
+"ir.model.access": [
+[
+6971,
+"2024-04-29 07:28:34"
+]
+]
+},
+"access_6973_user": {
+"ir.model.access": [
+[
+6973,
+"2024-04-29 07:34:35"
+]
+]
+},
+"access_6974_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6974,
+"2024-04-29 07:39:27"
+]
+]
+},
+"access_6976_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6976,
+"2024-04-29 08:09:55"
+]
+]
+},
+"access_6977_jin___manufacturing___minimum_rights": {
+"ir.model.access": [
+[
+6977,
+"2024-04-29 08:10:34"
+]
+]
+},
+"access_6992_mrp_workcenter_productivity_loss": {
+"ir.model.access": [
+[
+6992,
+"2024-04-30 10:06:25"
+]
+]
+},
+"access_6993_workcenter_productivity_log": {
+"ir.model.access": [
+[
+6993,
+"2024-04-30 10:07:15"
+]
+]
+},
+"access_6994_jin___manufacturing____mo_full_writes____mps": {
+"ir.model.access": [
+[
+6994,
+"2024-04-30 10:13:31"
+]
+]
+},
+"access_7057_mrp_bom": {
+"ir.model.access": [
+[
+7057,
+"2024-05-03 10:19:19"
+]
+]
+},
+"access_7058_mrp_bom_line": {
+"ir.model.access": [
+[
+7058,
+"2024-05-03 10:19:19"
+]
+]
+},
+"access_7249_jin___manufacturing____mo_full_writes____mps": {
+"ir.model.access": [
+[
+7249,
+"2024-08-07 05:32:28"
+]
+]
+},
+"access_7250_jin___manufacturing____mo_full_writes____mps": {
+"ir.model.access": [
+[
+7250,
+"2024-08-07 05:33:45"
+]
+]
+},
+"access_7252_jin___manufacturing____mo_full_writes___without_editing_m": {
+"ir.model.access": [
+[
+7252,
+"2024-08-07 06:21:22"
+]
+]
+},
+"access_7253_jin___manufacturing____mo_full_writes___without_editing": {
+"ir.model.access": [
+[
+7253,
+"2024-08-07 06:23:02"
+]
+]
+},
+"access_7254_jin___manufacturing____mo_full_writes___without_editing_mo": {
+"ir.model.access": [
+[
+7254,
+"2024-08-07 06:24:32"
+]
+]
+},
+"access_7263_jin___administrator": {
+"ir.model.access": [
+[
+7263,
+"2024-08-09 05:49:19"
+]
+]
+},
+"access_7281_mass_produce_serial_group_user": {
+"ir.model.access": [
+[
+7281,
+"2024-08-23 04:22:29"
+]
+]
+},
+"access_7282_mass_produce_serial_line_group_user": {
+"ir.model.access": [
+[
+7282,
+"2024-08-23 04:22:55"
+]
+]
+},
+"access_7284_quality_point": {
+"ir.model.access": [
+[
+7284,
+"2024-08-23 04:24:29"
+]
+]
+},
+"access_7943_mrp_production_stock_worker": {
+"ir.model.access": [
+[
+7943,
+"2025-05-14 07:21:29"
+]
+]
+},
+"access_7944_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+7944,
+"2025-05-14 07:21:29"
+]
+]
+},
+"access_7945_jin___manufacturing____mo_full_writes": {
+"ir.model.access": [
+[
+7945,
+"2025-05-14 07:21:29"
+]
+]
+},
+"access_7948_jin___manufacturing____mo_full_writes____mps": {
+"ir.model.access": [
+[
+7948,
+"2025-05-14 07:21:29"
+]
+]
+},
+"access_7950_jin___manufacturing____mo_full_writes____mps": {
+"ir.model.access": [
+[
+7950,
+"2025-05-14 07:21:29"
+]
+]
+},
+"access_7951_jin___manufacturing____mo_full_writes____mps": {
+"ir.model.access": [
+[
+7951,
+"2025-05-14 07:21:29"
+]
+]
+},
+"access_8283_material_request_m_group_system": {
+"ir.model.access": [
+[
+8283,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8284_material_request_m_group_user": {
+"ir.model.access": [
+[
+8284,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8285_material_request_m_line_group_system": {
+"ir.model.access": [
+[
+8285,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8286_material_request_m_line_group_user": {
+"ir.model.access": [
+[
+8286,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8287_material_request_m_stages_group_system": {
+"ir.model.access": [
+[
+8287,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8288_material_request_m_stages_group_user": {
+"ir.model.access": [
+[
+8288,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8289_material_request_m_tags_group_system": {
+"ir.model.access": [
+[
+8289,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8290_material_request_m_tags_group_user": {
+"ir.model.access": [
+[
+8290,
+"2025-10-24 04:36:46"
+]
+]
+},
+"access_8650_access_mrp_bom_rohana_read": {
+"ir.model.access": [
+[
+8650,
+"2026-05-20 02:54:10"
+]
+]
+},
+"access_8651_access_mrp_bom_line_rohana_read": {
+"ir.model.access": [
+[
+8651,
+"2026-05-20 02:54:10"
+]
+]
+},
+"access_8652_access_mrp_production_rohana_read": {
+"ir.model.access": [
+[
+8652,
+"2026-05-20 02:54:10"
+]
+]
+},
+"access_8653_access_mrp_workorder_rohana_read": {
+"ir.model.access": [
+[
+8653,
+"2026-05-20 02:54:10"
+]
+]
+},
+"act_window_1013_mrp_bom_material_cost": {
+"ir.actions.act_window": [
+[
+1013,
+"2021-08-03 07:37:33"
+]
+]
+},
+"act_window_1014_mrp_bom_labour_cost": {
+"ir.actions.act_window": [
+[
+1014,
+"2021-08-03 07:38:44"
+]
+]
+},
+"act_window_1015_mrp_bom_overhead_cost": {
+"ir.actions.act_window": [
+[
+1015,
+"2021-08-03 07:39:17"
+]
+]
+},
+"act_window_1053_mrp_bom_general_cost": {
+"ir.actions.act_window": [
+[
+1053,
+"2021-08-06 03:12:34"
+]
+]
+},
+"act_window_1146_mass_produce_serial": {
+"ir.actions.act_window": [
+[
+1146,
+"2021-08-17 03:04:04"
+]
+]
+},
+"act_window_1148_mass_produce_serial_line": {
+"ir.actions.act_window": [
+[
+1148,
+"2021-08-17 09:55:26"
+]
+]
+},
+"act_window_2306_ecos": {
+"ir.actions.act_window": [
+[
+2306,
+"2023-08-02 12:24:06"
+]
+]
+},
+"act_window_2555_mrp_workcenter_productivity": {
+"ir.actions.act_window": [
+[
+2555,
+"2024-05-09 05:02:51"
+]
+]
+},
+"act_window_2834_mrp_eco_bom_change": {
+"ir.actions.act_window": [
+[
+2834,
+"2024-10-17 11:10:03"
+]
+]
+},
+"act_window_2838_mrp_bom": {
+"ir.actions.act_window": [
+[
+2838,
+"2024-10-18 07:56:25"
+]
+]
+},
+"act_window_3382_material_request_m_stages": {
+"ir.actions.act_window": [
+[
+3382,
+"2025-10-24 04:36:46"
+]
+]
+},
+"act_window_3383_material_request_m_tags": {
+"ir.actions.act_window": [
+[
+3383,
+"2025-10-24 04:36:46"
+]
+]
+},
+"act_window_663_work_orders": {
+"ir.actions.act_window": [
+[
+663,
+"2021-02-05 06:17:59"
+]
+]
+},
+"action_2838_mrp_bom": {
+"ir.actions.act_window": [
+[
+2838,
+"2024-10-18 07:56:25"
+]
+]
+},
+"action_3381_material_request_m": {
+"ir.actions.act_window": [
+[
+3381,
+"2025-10-24 04:36:46"
+]
+]
+},
+"automation_122_srm_auto_populate_report_type_in_production_order": {
+"base.automation": [
+[
+122,
+"2022-08-11 12:50:04"
+]
+]
+},
+"automation_330_proj_mark_as_done_validation": {
+"base.automation": [
+[
+330,
+"2024-08-15 03:55:05"
+]
+]
+},
+"automation_47_update_original_mo_in_mo": {
+"base.automation": [
+[
+47,
+"2021-08-19 07:20:19"
+]
+]
+},
+"base_automation_209_plm_tag_description": {
+"base.automation": [
+[
+209,
+"2023-08-02 07:51:32"
+]
+]
+},
+"base_automation_210_plm_tag_create": {
+"base.automation": [
+[
+210,
+"2023-08-02 08:41:24"
+]
+]
+},
+"base_automation_21_create_bom_material_cost": {
+"base.automation": [
+[
+21,
+"2021-08-04 03:39:25"
+]
+]
+},
+"base_automation_23_update_bom_material_cost": {
+"base.automation": [
+[
+23,
+"2021-08-04 07:45:40"
+]
+]
+},
+"base_automation_249_update_cost_per_hour": {
+"base.automation": [
+[
+249,
+"2024-04-24 07:01:12"
+]
+]
+},
+"base_automation_24_create_bom_labour_cost": {
+"base.automation": [
+[
+24,
+"2021-08-04 09:12:00"
+]
+]
+},
+"base_automation_25_create_bom_overhead_cost": {
+"base.automation": [
+[
+25,
+"2021-08-05 04:16:45"
+]
+]
+},
+"base_automation_26_create_bom_general_cost": {
+"base.automation": [
+[
+26,
+"2021-08-06 03:35:49"
+]
+]
+},
+"base_automation_30_create_production_bom_labour_cost": {
+"base.automation": [
+[
+30,
+"2021-08-11 05:40:23"
+]
+]
+},
+"base_automation_31_update_production_bom_labour_cost": {
+"base.automation": [
+[
+31,
+"2021-08-11 06:49:29"
+]
+]
+},
+"base_automation_326_jin_company_id_in_mass_produce_serial": {
+"base.automation": [
+[
+326,
+"2024-07-24 10:00:14"
+]
+]
+},
+"base_automation_327_jin_company_id_in_mass_produce_serial_line": {
+"base.automation": [
+[
+327,
+"2024-07-24 10:03:30"
+]
+]
+},
+"base_automation_32_create_production_bom_overhead_cost": {
+"base.automation": [
+[
+32,
+"2021-08-11 07:01:42"
+]
+]
+},
+"base_automation_33_update_production_bom_overhead_cost": {
+"base.automation": [
+[
+33,
+"2021-08-11 07:10:02"
+]
+]
+},
+"base_automation_34_create_production_bom_general_cost": {
+"base.automation": [
+[
+34,
+"2021-08-11 07:11:37"
+]
+]
+},
+"base_automation_35_update_production_bom_general_cost": {
+"base.automation": [
+[
+35,
+"2021-08-11 07:12:56"
+]
+]
+},
+"base_automation_36_update_bom_labour_cost": {
+"base.automation": [
+[
+36,
+"2021-08-11 07:19:56"
+]
+]
+},
+"base_automation_37_update_bom_overhead_cost": {
+"base.automation": [
+[
+37,
+"2021-08-11 07:26:50"
+]
+]
+},
+"base_automation_38_update_bom_general_cost": {
+"base.automation": [
+[
+38,
+"2021-08-11 07:28:36"
+]
+]
+},
+"base_automation_45_mass_produce_serial_nos_find_last": {
+"base.automation": [
+[
+45,
+"2021-08-19 00:48:44"
+]
+]
+},
+"base_automation_46_update_tracking_item_status_in_mo": {
+"base.automation": [
+[
+46,
+"2021-08-19 01:54:44"
+]
+]
+},
+"base_automation_48_assign_original_mo_to_work_order": {
+"base.automation": [
+[
+48,
+"2021-08-20 06:52:34"
+]
+]
+},
+"default_217_x_mrp_bom_overhead_cos_x_studio_currency_id": {
+"ir.default": [
+[
+217,
+"2021-11-29 06:49:51"
+]
+]
+},
+"default_218_x_mrp_bom_material_cos_x_studio_currency_id": {
+"ir.default": [
+[
+218,
+"2021-11-29 06:49:51"
+]
+]
+},
+"default_219_x_mrp_bom_labour_cost_x_studio_currency_id": {
+"ir.default": [
+[
+219,
+"2021-11-29 06:49:51"
+]
+]
+},
+"default_220_mrp_bom_x_studio_currency_id": {
+"ir.default": [
+[
+220,
+"2021-11-29 06:49:51"
+]
+]
+},
+"default_221_x_mrp_bom_general_cost_x_studio_currency_id": {
+"ir.default": [
+[
+221,
+"2021-11-29 06:49:51"
+]
+]
+},
+"default_371_mrp_eco_x_studio_error": {
+"ir.default": [
+[
+371,
+"2023-08-02 06:52:25"
+]
+]
+},
+"default_407_mrp_production_x_studio_process_error": {
+"ir.default": [
+[
+407,
+"2024-04-25 07:44:00"
+]
+]
+},
+"default_418_x_mrp_bom_overhead_cos_x_studio_currency_id": {
+"ir.default": [
+[
+418,
+"2024-06-28 04:48:08"
+]
+]
+},
+"default_419_x_mrp_bom_material_cos_x_studio_currency_id": {
+"ir.default": [
+[
+419,
+"2024-06-28 04:48:08"
+]
+]
+},
+"default_420_x_mrp_bom_labour_cost_x_studio_currency_id": {
+"ir.default": [
+[
+420,
+"2024-06-28 04:48:08"
+]
+]
+},
+"default_422_x_mrp_bom_general_cost_x_studio_currency_id": {
+"ir.default": [
+[
+422,
+"2024-06-28 04:48:08"
+]
+]
+},
+"default_423_mrp_production_x_studio_currency_id": {
+"ir.default": [
+[
+423,
+"2024-06-28 04:48:08"
+]
+]
+},
+"default_475_mrp_production_x_studio_mark_as_done_validation": {
+"ir.default": [
+[
+475,
+"2024-08-15 02:17:14"
+]
+]
+},
+"default_614_x_material_request_m_x_active": {
+"ir.default": [
+[
+614,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_615_x_material_request_m_x_studio_company_id": {
+"ir.default": [
+[
+615,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_616_x_material_request_m_x_studio_company_id": {
+"ir.default": [
+[
+616,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_617_x_material_request_m_x_studio_company_id": {
+"ir.default": [
+[
+617,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_618_x_material_request_m_x_studio_currency_id": {
+"ir.default": [
+[
+618,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_619_x_material_request_m_x_studio_currency_id": {
+"ir.default": [
+[
+619,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_620_x_material_request_m_x_studio_currency_id": {
+"ir.default": [
+[
+620,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_621_x_material_request_m_x_studio_sequence": {
+"ir.default": [
+[
+621,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_622_x_material_request_m_x_studio_stage_id": {
+"ir.default": [
+[
+622,
+"2025-10-24 04:36:46"
+]
+]
+},
+"default_641_mrp_production_x_studio_super_user_melt_items": {
+"ir.default": [
+[
+641,
+"2026-02-03 06:12:03"
+]
+]
+},
+"default_66_x_mrp_bom_material_cos_x_active": {
+"ir.default": [
+[
+66,
+"2021-08-03 07:37:33"
+]
+]
+},
+"default_67_x_mrp_bom_material_cos_x_studio_sequence": {
+"ir.default": [
+[
+67,
+"2021-08-03 07:37:33"
+]
+]
+},
+"default_68_x_mrp_bom_labour_cost_x_active": {
+"ir.default": [
+[
+68,
+"2021-08-03 07:38:44"
+]
+]
+},
+"default_69_x_mrp_bom_labour_cost_x_studio_sequence": {
+"ir.default": [
+[
+69,
+"2021-08-03 07:38:44"
+]
+]
+},
+"default_70_x_mrp_bom_overhead_cos_x_active": {
+"ir.default": [
+[
+70,
+"2021-08-03 07:39:17"
+]
+]
+},
+"default_71_x_mrp_bom_overhead_cos_x_studio_sequence": {
+"ir.default": [
+[
+71,
+"2021-08-03 07:39:17"
+]
+]
+},
+"default_72_mrp_bom_x_studio_bom_total_labour_cost": {
+"ir.default": [
+[
+72,
+"2021-08-05 08:30:58"
+]
+]
+},
+"default_73_mrp_bom_x_studio_bom_total_overhead_cost": {
+"ir.default": [
+[
+73,
+"2021-08-05 08:31:05"
+]
+]
+},
+"default_74_x_mrp_bom_general_cost_x_active": {
+"ir.default": [
+[
+74,
+"2021-08-06 03:12:34"
+]
+]
+},
+"default_75_x_mrp_bom_general_cost_x_studio_sequence": {
+"ir.default": [
+[
+75,
+"2021-08-06 03:12:34"
+]
+]
+},
+"default_80_x_mass_produce_serial_x_active": {
+"ir.default": [
+[
+80,
+"2021-08-17 03:04:04"
+]
+]
+},
+"default_81_x_mass_produce_serial_x_studio_sequence": {
+"ir.default": [
+[
+81,
+"2021-08-17 03:04:04"
+]
+]
+},
+"default_82_x_mass_produce_serial__x_active": {
+"ir.default": [
+[
+82,
+"2021-08-17 09:55:26"
+]
+]
+},
+"default_83_x_mass_produce_serial__x_studio_sequence": {
+"ir.default": [
+[
+83,
+"2021-08-17 09:55:26"
+]
+]
+},
+"default_85_x_mass_produce_serial_x_studio_sequence_size": {
+"ir.default": [
+[
+85,
+"2021-08-18 10:07:00"
+]
+]
+},
+"default_86_x_mass_produce_serial_x_studio_starting_serial_no": {
+"ir.default": [
+[
+86,
+"2021-08-18 10:11:46"
+]
+]
+},
+"default_87_x_mass_produce_serial__x_studio_sequence_size": {
+"ir.default": [
+[
+87,
+"2021-08-19 00:17:50"
+]
+]
+},
+"default_88_x_mass_produce_serial__x_studio_starting_serial_n": {
+"ir.default": [
+[
+88,
+"2021-08-19 00:18:29"
+]
+]
+},
+"menu_f6_material_request_m": {
+"ir.ui.menu": [
+[
+1742,
+"2025-10-24 04:36:46"
+]
+]
+},
+"menu_f6_material_request_m_stages": {
+"ir.ui.menu": [
+[
+1743,
+"2025-10-24 04:36:46"
+]
+]
+},
+"menu_f6_material_request_m_tags": {
+"ir.ui.menu": [
+[
+1744,
+"2025-10-24 04:36:46"
+]
+]
+},
+"ported_view_2324_mrp_workcenter_form": {
+"ir.ui.view": [
+[
+2324,
+"2021-05-17 08:12:32"
+]
+]
+},
+"ported_view_2325_mrp_production_form": {
+"ir.ui.view": [
+[
+2325,
+"2021-05-20 03:23:47"
+]
+]
+},
+"ported_view_2390_mrp_production_tree": {
+"ir.ui.view": [
+[
+2390,
+"2021-06-14 10:41:24"
+]
+]
+},
+"ported_view_2574_mrp_bom_form": {
+"ir.ui.view": [
+[
+2574,
+"2021-08-03 10:26:13"
+]
+]
+},
+"ported_view_2600_mass_produce_serial_form": {
+"ir.ui.view": [
+[
+2600,
+"2021-08-17 05:12:48"
+]
+]
+},
+"ported_view_3151_mrp_workcenter_tree": {
+"ir.ui.view": [
+[
+3151,
+"2022-01-20 04:51:16"
+]
+]
+},
+"ported_view_3945_mrp_bom_form_button": {
+"ir.ui.view": [
+[
+3945,
+"2022-10-24 10:34:28"
+]
+]
+},
+"ported_view_3946_mrp_production_form_button": {
+"ir.ui.view": [
+[
+3946,
+"2022-10-24 11:11:24"
+]
+]
+},
+"ported_view_3953_mrp_workorder_form_tablet": {
+"ir.ui.view": [
+[
+3953,
+"2022-10-24 12:34:11"
+]
+]
+},
+"ported_view_4830_mrp_eco_form": {
+"ir.ui.view": [
+[
+4830,
+"2023-02-27 03:31:45"
+]
+]
+},
+"ported_view_5062_mrp_eco_tree": {
+"ir.ui.view": [
+[
+5062,
+"2023-08-02 12:29:03"
+]
+]
+},
+"ported_view_5503_mrp_workcenter_productivity_tree": {
+"ir.ui.view": [
+[
+5503,
+"2024-05-09 05:04:19"
+]
+]
+},
+"ported_view_5898_mass_produce_serial_form_studio": {
+"ir.ui.view": [
+[
+5898,
+"2024-07-24 09:58:33"
+]
+]
+},
+"ported_view_8744_default_list_view_for_x_material_request_m": {
+"ir.ui.view": [
+[
+8744,
+"2025-10-24 04:36:46"
+]
+]
+},
+"ported_view_8745_default_form_view_for_x_material_request_m": {
+"ir.ui.view": [
+[
+8745,
+"2025-10-24 04:36:46"
+]
+]
+},
+"ported_view_8746_default_search_view_for_x_material_request_m": {
+"ir.ui.view": [
+[
+8746,
+"2025-10-24 04:36:46"
+]
+]
+},
+"ported_view_8749_default_kanban_view_for_x_material_request_m": {
+"ir.ui.view": [
+[
+8749,
+"2025-10-24 04:36:46"
+]
+]
+},
+"rule_201_mrp_production_multi_company": {
+"ir.rule": [
+[
+201,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_202_mrp_unbuild_multi_company": {
+"ir.rule": [
+[
+202,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_203_mrp_workcenter_multi_company": {
+"ir.rule": [
+[
+203,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_204_mrp_workorder_multi_company": {
+"ir.rule": [
+[
+204,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_205_mrp_bom_multi_company": {
+"ir.rule": [
+[
+205,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_206_mrp_bom_line_multi_company": {
+"ir.rule": [
+[
+206,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_207_mrp_bom_byproduct_multi_company": {
+"ir.rule": [
+[
+207,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_208_mrp_routing_workcenter_multi_company": {
+"ir.rule": [
+[
+208,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_209_mrp_workcenter_productivity_multi_company": {
+"ir.rule": [
+[
+209,
+"2021-02-03 05:49:53"
+]
+]
+},
+"rule_210_quality_alert_company_rule": {
+"ir.rule": [
+[
+210,
+"2021-02-05 06:17:56"
+]
+]
+},
+"rule_211_quality_check_company_rule": {
+"ir.rule": [
+[
+211,
+"2021-02-05 06:17:56"
+]
+]
+},
+"rule_212_control_point_company_rule": {
+"ir.rule": [
+[
+212,
+"2021-02-05 06:17:56"
+]
+]
+},
+"rule_222_manufacturing_eco_company_rule": {
+"ir.rule": [
+[
+222,
+"2021-02-05 07:46:10"
+]
+]
+},
+"rule_338_work_centre_visibility": {
+"ir.rule": [
+[
+338,
+"2022-01-20 04:46:08"
+]
+]
+},
+"rule_605_jin_multi_company_mass_produce_serial": {
+"ir.rule": [
+[
+605,
+"2024-07-24 10:01:35"
+]
+]
+},
+"rule_606_jin_multi_company_mass_produce_serial_line": {
+"ir.rule": [
+[
+606,
+"2024-07-24 10:04:21"
+]
+]
+},
+"rule_883_material_request_m_multi_company": {
+"ir.rule": [
+[
+883,
+"2025-10-24 04:36:46"
+]
+]
+},
+"sa_f5_mrp_eco_plm_tag_create": {
+"ir.actions.server": [
+[
+2305,
+"2023-08-02 08:41:24"
+]
+]
+},
+"sa_f5_mrp_eco_plm_tag_description": {
+"ir.actions.server": [
+[
+2304,
+"2023-08-02 07:51:32"
+]
+]
+},
+"sa_f5_mrp_production_proj_mark_as_done_validation": {
+"ir.actions.server": [
+[
+2765,
+"2024-08-15 03:55:05"
+]
+]
+},
+"sa_f5_mrp_workcenter_update_cost_per_hour": {
+"ir.actions.server": [
+[
+2542,
+"2024-04-24 07:01:12"
+]
+]
+},
+"sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial": {
+"ir.actions.server": [
+[
+2729,
+"2024-07-24 10:00:14"
+]
+]
+},
+"sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial_line": {
+"ir.actions.server": [
+[
+2730,
+"2024-07-24 10:03:30"
+]
+]
+},
+"sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last": {
+"ir.actions.server": [
+[
+1153,
+"2021-08-19 00:48:44"
+]
+]
+},
+"server_action_1016_create_bom_material_cost": {
+"ir.actions.server": [
+[
+1016,
+"2021-08-04 03:39:25"
+]
+]
+},
+"server_action_1026_update_bom_material_cost": {
+"ir.actions.server": [
+[
+1026,
+"2021-08-04 07:41:26"
+]
+]
+},
+"server_action_1033_update_bom_material_cost": {
+"ir.actions.server": [
+[
+1033,
+"2021-08-04 07:45:40"
+]
+]
+},
+"server_action_1040_create_bom_labour_cost": {
+"ir.actions.server": [
+[
+1040,
+"2021-08-04 09:12:00"
+]
+]
+},
+"server_action_1049_create_bom_overhead_cost": {
+"ir.actions.server": [
+[
+1049,
+"2021-08-05 04:16:45"
+]
+]
+},
+"server_action_1054_create_bom_general_cost": {
+"ir.actions.server": [
+[
+1054,
+"2021-08-06 03:35:49"
+]
+]
+},
+"server_action_1057_update_costs_in_bom": {
+"ir.actions.server": [
+[
+1057,
+"2021-08-06 04:26:00"
+]
+]
+},
+"server_action_1080_create_production_bom_labour_cost": {
+"ir.actions.server": [
+[
+1080,
+"2021-08-11 05:40:23"
+]
+]
+},
+"server_action_1086_update_production_bom_labour_cost": {
+"ir.actions.server": [
+[
+1086,
+"2021-08-11 06:49:29"
+]
+]
+},
+"server_action_1093_create_production_bom_overhead_cost": {
+"ir.actions.server": [
+[
+1093,
+"2021-08-11 07:01:42"
+]
+]
+},
+"server_action_1096_update_production_bom_overhead_cost": {
+"ir.actions.server": [
+[
+1096,
+"2021-08-11 07:10:02"
+]
+]
+},
+"server_action_1103_create_production_bom_general_cost": {
+"ir.actions.server": [
+[
+1103,
+"2021-08-11 07:11:37"
+]
+]
+},
+"server_action_1106_update_production_bom_general_cost": {
+"ir.actions.server": [
+[
+1106,
+"2021-08-11 07:12:56"
+]
+]
+},
+"server_action_1113_update_bom_labour_cost": {
+"ir.actions.server": [
+[
+1113,
+"2021-08-11 07:19:56"
+]
+]
+},
+"server_action_1120_update_bom_overhead_cost": {
+"ir.actions.server": [
+[
+1120,
+"2021-08-11 07:26:50"
+]
+]
+},
+"server_action_1127_update_bom_general_cost": {
+"ir.actions.server": [
+[
+1127,
+"2021-08-11 07:28:36"
+]
+]
+},
+"server_action_1147_mass_produce_serial_numbers": {
+"ir.actions.server": [
+[
+1147,
+"2021-08-17 05:15:37"
+]
+]
+},
+"server_action_1149_mass_produce_serial_numbers_generate": {
+"ir.actions.server": [
+[
+1149,
+"2021-08-18 03:27:48"
+]
+]
+},
+"server_action_1150_mass_produce_serial_numbers_clear": {
+"ir.actions.server": [
+[
+1150,
+"2021-08-18 15:54:24"
+]
+]
+},
+"server_action_1151_mass_produce_serial_numbers_create_original": {
+"ir.actions.server": [
+[
+1151,
+"2021-08-18 16:53:41"
+]
+]
+},
+"server_action_1153_mass_produce_serial_nos_find_last": {
+"ir.actions.server": [
+[
+1153,
+"2021-08-19 00:48:44"
+]
+]
+},
+"server_action_1154_update_tracking_item_status_in_mo": {
+"ir.actions.server": [
+[
+1154,
+"2021-08-19 01:54:44"
+]
+]
+},
+"server_action_1155_update_original_mo_in_mo": {
+"ir.actions.server": [
+[
+1155,
+"2021-08-19 07:20:19"
+]
+]
+},
+"server_action_1156_assign_original_mo_to_work_order": {
+"ir.actions.server": [
+[
+1156,
+"2021-08-20 06:52:34"
+]
+]
+},
+"server_action_1738_srm_auto_populate_report_type_in_production_order": {
+"ir.actions.server": [
+[
+1738,
+"2022-08-11 12:50:04"
+]
+]
+},
+"server_action_2304_plm_tag_description": {
+"ir.actions.server": [
+[
+2304,
+"2023-08-02 07:51:32"
+]
+]
+},
+"server_action_2305_plm_tag_create": {
+"ir.actions.server": [
+[
+2305,
+"2023-08-02 08:41:24"
+]
+]
+},
+"server_action_2307_plm_filter_by_tag": {
+"ir.actions.server": [
+[
+2307,
+"2023-08-02 12:35:55"
+]
+]
+},
+"server_action_2534_finished_products_location_updated": {
+"ir.actions.server": [
+[
+2534,
+"2024-04-17 05:34:18"
+]
+]
+},
+"server_action_2542_update_cost_per_hour": {
+"ir.actions.server": [
+[
+2542,
+"2024-04-24 07:01:12"
+]
+]
+},
+"server_action_2729_jin_company_id_in_mass_produce_serial": {
+"ir.actions.server": [
+[
+2729,
+"2024-07-24 10:00:14"
+]
+]
+},
+"server_action_2730_jin_company_id_in_mass_produce_serial_line": {
+"ir.actions.server": [
+[
+2730,
+"2024-07-24 10:03:30"
+]
+]
+},
+"server_action_2765_proj_mark_as_done_validation": {
+"ir.actions.server": [
+[
+2765,
+"2024-08-15 03:55:05"
+]
+]
+},
+"server_action_3202_mass_produce_serial_numbers_cancel_serial_no": {
+"ir.actions.server": [
+[
+3202,
+"2025-03-25 23:47:34"
+]
+]
+},
+"view_2552_default_list_view_for_x_mrp_bom_material_cos_e": {
+"ir.ui.view": [
+[
+2552,
+"2021-08-03 07:37:33"
+]
+]
+},
+"view_2553_default_form_view_for_x_mrp_bom_material_cos_e": {
+"ir.ui.view": [
+[
+2553,
+"2021-08-03 07:37:33"
+]
+]
+},
+"view_2554_default_search_view_for_x_mrp_bom_material_cos_e": {
+"ir.ui.view": [
+[
+2554,
+"2021-08-03 07:37:33"
+]
+]
+},
+"view_2555_default_list_view_for_x_mrp_bom_labour_cost_e": {
+"ir.ui.view": [
+[
+2555,
+"2021-08-03 07:38:44"
+]
+]
+},
+"view_2556_default_form_view_for_x_mrp_bom_labour_cost_e": {
+"ir.ui.view": [
+[
+2556,
+"2021-08-03 07:38:44"
+]
+]
+},
+"view_2557_default_search_view_for_x_mrp_bom_labour_cost_e": {
+"ir.ui.view": [
+[
+2557,
+"2021-08-03 07:38:44"
+]
+]
+},
+"view_2558_default_list_view_for_x_mrp_bom_overhead_cos_e": {
+"ir.ui.view": [
+[
+2558,
+"2021-08-03 07:39:17"
+]
+]
+},
+"view_2559_default_form_view_for_x_mrp_bom_overhead_cos_e": {
+"ir.ui.view": [
+[
+2559,
+"2021-08-03 07:39:17"
+]
+]
+},
+"view_2560_default_search_view_for_x_mrp_bom_overhead_cos_e": {
+"ir.ui.view": [
+[
+2560,
+"2021-08-03 07:39:17"
+]
+]
+},
+"view_2575_default_list_view_for_x_mrp_bom_general_cost_e": {
+"ir.ui.view": [
+[
+2575,
+"2021-08-06 03:12:34"
+]
+]
+},
+"view_2576_default_form_view_for_x_mrp_bom_general_cost_e": {
+"ir.ui.view": [
+[
+2576,
+"2021-08-06 03:12:34"
+]
+]
+},
+"view_2577_default_search_view_for_x_mrp_bom_general_cost_e": {
+"ir.ui.view": [
+[
+2577,
+"2021-08-06 03:12:34"
+]
+]
+},
+"view_2623_default_tree_view_for_ir_model_837_e": {
+"ir.ui.view": [
+[
+2623,
+"2021-08-18 06:49:50"
+]
+]
+},
+"view_2624_default_tree_view_for_ir_model_839_e": {
+"ir.ui.view": [
+[
+2624,
+"2021-08-18 06:50:10"
+],
+[
+2625,
+"2021-08-18 06:50:29"
+]
+]
+},
+"view_3953_mrp_workorder_view_form_inherit_quality_tablet_new_button_e": {
+"ir.ui.view": [
+[
+3953,
+"2022-10-24 12:34:11"
+]
+]
+},
+"view_5063_mrp_eco_view_form_button_e": {
+"ir.ui.view": [
+[
+5063,
+"2023-08-02 12:45:54"
+]
+]
+},
+"view_5461_odoo_studio_mrp_bom_tree_customization_e": {
+"ir.ui.view": [
+[
+5461,
+"2024-03-06 11:33:49"
+]
+]
+},
+"view_8747_default_calendar_view_for_x_material_request_m_e": {
+"ir.ui.view": [
+[
+8747,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8748_default_gantt_view_for_x_material_request_m_e": {
+"ir.ui.view": [
+[
+8748,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8750_default_map_view_for_x_material_request_m_e": {
+"ir.ui.view": [
+[
+8750,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8751_default_pivot_view_for_x_material_request_m_e": {
+"ir.ui.view": [
+[
+8751,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8752_default_graph_view_for_x_material_request_m_e": {
+"ir.ui.view": [
+[
+8752,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8753_default_list_view_for_x_material_request_m_line_af405_e": {
+"ir.ui.view": [
+[
+8753,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8754_default_form_view_for_x_material_request_m_line_af405_e": {
+"ir.ui.view": [
+[
+8754,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8755_default_search_view_for_x_material_request_m_line_af405_e": {
+"ir.ui.view": [
+[
+8755,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8756_default_list_view_for_x_material_request_m_stage_e": {
+"ir.ui.view": [
+[
+8756,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8757_default_form_view_for_x_material_request_m_stage_e": {
+"ir.ui.view": [
+[
+8757,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8758_default_search_view_for_x_material_request_m_stage_e": {
+"ir.ui.view": [
+[
+8758,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8759_default_list_view_for_x_material_request_m_tag_e": {
+"ir.ui.view": [
+[
+8759,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8760_default_form_view_for_x_material_request_m_tag_e": {
+"ir.ui.view": [
+[
+8760,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_8761_default_search_view_for_x_material_request_m_tag_e": {
+"ir.ui.view": [
+[
+8761,
+"2025-10-24 04:36:46"
+]
+]
+},
+"view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_x_mrp_bom_general_cost": {
+"ir.ui.view": [
+[
+2578,
+"2021-08-06 03:13:39"
+]
+]
+},
+"view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c": {
+"ir.ui.view": [
+[
+2565,
+"2021-08-03 08:46:32"
+]
+]
+},
+"view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_x_mrp_bom_material_cos": {
+"ir.ui.view": [
+[
+2562,
+"2021-08-03 07:45:31"
+]
+]
+},
+"view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_x_mrp_bom_overhead_cos": {
+"ir.ui.view": [
+[
+2566,
+"2021-08-03 08:54:33"
+]
+]
+}
+}
