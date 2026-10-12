@@ -163,57 +163,73 @@
       <field name="json_value">true</field>
     </record>
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_615_x_material_request_m_x_studio_company_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_company_id"/>
       <field name="json_value">1</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_pvt_ltd"/>
     </record>
+    -->
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_616_x_material_request_m_x_studio_company_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_company_id"/>
       <field name="json_value">2</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_agricultural_machinery"/>
     </record>
+    -->
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_617_x_material_request_m_x_studio_company_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_company_id"/>
       <field name="json_value">3</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jltd"/>
     </record>
+    -->
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_618_x_material_request_m_x_studio_currency_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_currency_id"/>
       <field name="json_value">145</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_pvt_ltd"/>
     </record>
+    -->
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_619_x_material_request_m_x_studio_currency_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_currency_id"/>
       <field name="json_value">145</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_agricultural_machinery"/>
     </record>
+    -->
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_620_x_material_request_m_x_studio_currency_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_currency_id"/>
       <field name="json_value">145</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jltd"/>
     </record>
+    -->
 
     <record id="default_621_x_material_request_m_x_studio_sequence" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_sequence"/>
       <field name="json_value">10</field>
     </record>
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (record id):
     <record id="default_622_x_material_request_m_x_studio_stage_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_x_material_request_m__x_studio_stage_id"/>
       <field name="json_value">1</field>
     </record>
+    -->
 
+    <!-- upgrade-testing: points at a specific record (company/user/partner/location/stage...), not shipped (company/user specific):
     <record id="default_641_mrp_production_x_studio_super_user_melt_items" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_super_user_melt_items"/>
       <field name="json_value">false</field>
       <field name="company_id" ref="seed_master_data_and_settings.company_jinasena_agricultural_machinery"/>
     </record>
+    -->
 
   </data>
 </odoo>

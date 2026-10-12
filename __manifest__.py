@@ -212,7 +212,7 @@
         'data/server_actions_gap.xml',
         'data/automations_gap.xml',
         'data/window_actions_gap.xml',
-        # 'data/ir_defaults_gap.xml',  # upgrade-testing: data, not shipped
+        'data/ir_defaults_gap.xml',  # upgrade-testing: form defaults shipped; record-specific ones commented inside
         'views/mrp_bom_e_views.xml',
         'views/mrp_eco_e_views.xml',
         'views/mrp_workorder_e_views.xml',
