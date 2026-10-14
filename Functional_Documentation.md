@@ -132,31 +132,55 @@ Adds BoM costing: Direct Material, Labour, Overhead and General Cost tabs holdin
 
 ```python
 if record.id:
-  material_cost = env['x_mrp_bom_material_cos'].search([('x_studio_bom_material_cost_ids', '=', record.id)])
+    material_cost = env["x_mrp_bom_material_cos"].search(
+        [("x_studio_bom_material_cost_ids", "=", record.id)]
+    )
 
-  if material_cost:
-    for update_material_cost in material_cost:
-      update_material_cost.write({'x_studio_cost': update_material_cost.x_studio_product_id.standard_price})
+    if material_cost:
+        for update_material_cost in material_cost:
+            update_material_cost.write(
+                {
+                    "x_studio_cost": update_material_cost.x_studio_product_id.standard_price
+                }
+            )
 
-  labour_cost = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.id)])
+    labour_cost = env["x_mrp_bom_labour_cost"].search(
+        [("x_studio_bom_labour_cost_ids", "=", record.id)]
+    )
 
-  if labour_cost:
-    for update_labour_cost in labour_cost:
-      update_labour_cost.write({'x_studio_cost': update_labour_cost.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour})
+    if labour_cost:
+        for update_labour_cost in labour_cost:
+            update_labour_cost.write(
+                {
+                    "x_studio_cost": update_labour_cost.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour
+                }
+            )
 
-  overhead_cost = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.id)])
+    overhead_cost = env["x_mrp_bom_overhead_cos"].search(
+        [("x_studio_bom_overhead_cost_ids", "=", record.id)]
+    )
 
-  if overhead_cost:
-    for update_overhead_cost in overhead_cost:
-      update_overhead_cost.write({'x_studio_cost': update_overhead_cost.x_studio_operation_id.workcenter_id.x_studio_overhead_cost_hour})
+    if overhead_cost:
+        for update_overhead_cost in overhead_cost:
+            update_overhead_cost.write(
+                {
+                    "x_studio_cost": update_overhead_cost.x_studio_operation_id.workcenter_id.x_studio_overhead_cost_hour
+                }
+            )
 
-  general_cost = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.id)])
+    general_cost = env["x_mrp_bom_general_cost"].search(
+        [("x_studio_bom_general_cost_ids", "=", record.id)]
+    )
 
-  if general_cost:
-    for update_general_cost in general_cost:
-      update_general_cost.write({'x_studio_cost': update_general_cost.x_studio_operation_id.workcenter_id.x_studio_general_cost_hour})
+    if general_cost:
+        for update_general_cost in general_cost:
+            update_general_cost.write(
+                {
+                    "x_studio_cost": update_general_cost.x_studio_operation_id.workcenter_id.x_studio_general_cost_hour
+                }
+            )
 
-  record['x_studio_last_updated_date_cost'] = datetime.datetime.now()
+    record["x_studio_last_updated_date_cost"] = datetime.datetime.now()
 ```
   </details>
 **Window actions (3):**
@@ -229,7 +253,16 @@ Adds no fields, but two automations keep BoM material cost lines in sync: when a
   <details><summary>code (1 lines)</summary>
 
 ```python
-new_record = env["x_mrp_bom_material_cos"].create({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})
+new_record = env["x_mrp_bom_material_cos"].create(
+    {
+        "x_studio_bom_material_cost_ids": record.bom_id.id,
+        "x_studio_operation_id": record.operation_id.id,
+        "x_studio_planned_qty": record.product_qty,
+        "x_studio_uom_id": record.product_uom_id.id,
+        "x_studio_line_id": record.id,
+        "x_studio_product_id": record.product_id.id,
+    }
+)
 ```
   </details>
 - **Update BOM Material Cost** (`server_action_1033_update_bom_material_cost`, type `code`)
@@ -240,9 +273,26 @@ new_record = env["x_mrp_bom_material_cos"].create({"x_studio_bom_material_cost_i
 
 ```python
 if record.id:
-  update = env['x_mrp_bom_material_cos'].search([('x_studio_line_id', '=', record.id), ('x_studio_bom_material_cost_ids', '=', record.bom_id.id,)], limit=1)
-  if update:
-    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_product_id':record.product_id.id,'x_studio_planned_qty':record.product_qty,'x_studio_uom_id':record.product_uom_id.id})
+    update = env["x_mrp_bom_material_cos"].search(
+        [
+            ("x_studio_line_id", "=", record.id),
+            (
+                "x_studio_bom_material_cost_ids",
+                "=",
+                record.bom_id.id,
+            ),
+        ],
+        limit=1,
+    )
+    if update:
+        update.write(
+            {
+                "x_studio_operation_id": record.operation_id.id,
+                "x_studio_product_id": record.product_id.id,
+                "x_studio_planned_qty": record.product_qty,
+                "x_studio_uom_id": record.product_uom_id.id,
+            }
+        )
 ```
   </details>
 - **Update BOM Material Cost** (`server_action_1026_update_bom_material_cost`, type `code`)
@@ -252,7 +302,16 @@ if record.id:
   <details><summary>code (1 lines)</summary>
 
 ```python
-record.write({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})
+record.write(
+    {
+        "x_studio_bom_material_cost_ids": record.bom_id.id,
+        "x_studio_operation_id": record.operation_id.id,
+        "x_studio_planned_qty": record.product_qty,
+        "x_studio_uom_id": record.product_uom_id.id,
+        "x_studio_line_id": record.id,
+        "x_studio_product_id": record.product_id.id,
+    }
+)
 ```
   </details>
 **Automations (2):**
@@ -312,23 +371,22 @@ Adds an approval step to engineering change orders: Approve and Apply both requi
   <details><summary>code (30 lines)</summary>
 
 ```python
-
 line_ids = []
 
 
-
-eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+eco_tag_search = env["mrp.eco.tag"].search(
+    [("name", "=", record.x_studio_tag_description)], limit=1
+)
 
 if eco_tag_search:
-
-  line_ids.append(eco_tag_search.id)
+    line_ids.append(eco_tag_search.id)
 
 else:
+    eco_tag_create = env["mrp.eco.tag"].create(
+        {"name": record.x_studio_tag_description}
+    )
 
-  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
-
-  line_ids.append(eco_tag_create.id)
-
+    line_ids.append(eco_tag_create.id)
 
 
 """if record.type == 'bom': 
@@ -339,9 +397,8 @@ else:
 
   record.write({'tag_ids':[(6, 0, line_ids)]})"""
 
-  
 
-record.write({'tag_ids':[(6, 0, line_ids)]})
+record.write({"tag_ids": [(6, 0, line_ids)]})
 ```
   </details>
 - **Execute Code** (`server_action_2304_plm_tag_description`, type `code`)
@@ -351,10 +408,9 @@ record.write({'tag_ids':[(6, 0, line_ids)]})
   <details><summary>code (4 lines)</summary>
 
 ```python
-
-#record.write({'x_studio_tag_description':record.name})
+# record.write({'x_studio_tag_description':record.name})
 if record.name:
-  record['x_studio_tag_description'] = record.name
+    record["x_studio_tag_description"] = record.name
 ```
   </details>
 - **PLM - Filter by Tag** (`server_action_2307_plm_filter_by_tag`, type `code`)
@@ -365,24 +421,15 @@ if record.name:
 
 ```python
 action = {
-
-          'name': 'Engineering Change Order ',
-
-          'domain': [('x_studio_tag_description', '=', record.x_studio_tag_description)],
-
-          'type': 'ir.actions.act_window',
-
-          'res_model': 'mrp.eco',
-
-          'view_mode': 'tree,form',
-
-          'view_type': 'form',
-
-          'view_id': False,
-
-          'context': False,
-
-          }
+    "name": "Engineering Change Order ",
+    "domain": [("x_studio_tag_description", "=", record.x_studio_tag_description)],
+    "type": "ir.actions.act_window",
+    "res_model": "mrp.eco",
+    "view_mode": "tree,form",
+    "view_type": "form",
+    "view_id": False,
+    "context": False,
+}
 ```
   </details>
 - **PLM - Tag Create** (`sa_f5_mrp_eco_plm_tag_create`, type `code`)
@@ -395,19 +442,19 @@ action = {
 line_ids = []
 
 
-
-eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+eco_tag_search = env["mrp.eco.tag"].search(
+    [("name", "=", record.x_studio_tag_description)], limit=1
+)
 
 if eco_tag_search:
-
-  line_ids.append(eco_tag_search.id)
+    line_ids.append(eco_tag_search.id)
 
 else:
+    eco_tag_create = env["mrp.eco.tag"].create(
+        {"name": record.x_studio_tag_description}
+    )
 
-  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
-
-  line_ids.append(eco_tag_create.id)
-
+    line_ids.append(eco_tag_create.id)
 
 
 """if record.type == 'bom': 
@@ -418,9 +465,8 @@ else:
 
   record.write({'tag_ids':[(6, 0, line_ids)]})"""
 
-  
 
-record.write({'tag_ids':[(6, 0, line_ids)]})
+record.write({"tag_ids": [(6, 0, line_ids)]})
 ```
   </details>
 - **PLM - Tag Description** (`sa_f5_mrp_eco_plm_tag_description`, type `code`)
@@ -430,9 +476,9 @@ record.write({'tag_ids':[(6, 0, line_ids)]})
   <details><summary>code (3 lines)</summary>
 
 ```python
-#record.write({'x_studio_tag_description':record.name})
+# record.write({'x_studio_tag_description':record.name})
 if record.name:
-  record['x_studio_tag_description'] = record.name
+    record["x_studio_tag_description"] = record.name
 ```
   </details>
 **Automations (2):**
@@ -542,8 +588,9 @@ Adds MO costing (Direct Material, Labour, Overhead and General Cost tabs filled 
   <details><summary>code (2 lines)</summary>
 
 ```python
-
-record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.'
+record["x_studio_mark_as_done_validation"] = (
+    "Please enter the Quantity to produce to proceed with Mark as Done."
+)
 ```
   </details>
 - **Finished Products Location Updated** (`server_action_2534_finished_products_location_updated`, type `code`)
@@ -554,20 +601,32 @@ record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produ
 
 ```python
 if record.id:
-  location = env['stock.location'].search([('id', '=', record.location_dest_id.id)], limit=1)
-  if location:
-    location2 = env['stock.location'].search([('location_id', '=', location.location_id.id),('x_studio_finished_good_location', '=', True)], limit=1)
-    if location2:
-      temp = env['stock.location'].search([('x_studio_temp_location', '=', True)], limit=1)
-      if temp:
-        record['state'] = 'draft'
-        record['location_dest_id'] = temp.id
-        record['x_studio_finished_product_location'] = location2.id
-        record['x_studio_finished_products_location_updated'] = True
-      else:
-        raise UserError('Temp. location has not been setup.')
-    else:
-      raise UserError('There is no Finished Good Location is setup for the Finished Product Location in Production Order.')
+    location = env["stock.location"].search(
+        [("id", "=", record.location_dest_id.id)], limit=1
+    )
+    if location:
+        location2 = env["stock.location"].search(
+            [
+                ("location_id", "=", location.location_id.id),
+                ("x_studio_finished_good_location", "=", True),
+            ],
+            limit=1,
+        )
+        if location2:
+            temp = env["stock.location"].search(
+                [("x_studio_temp_location", "=", True)], limit=1
+            )
+            if temp:
+                record["state"] = "draft"
+                record["location_dest_id"] = temp.id
+                record["x_studio_finished_product_location"] = location2.id
+                record["x_studio_finished_products_location_updated"] = True
+            else:
+                raise UserError("Temp. location has not been setup.")
+        else:
+            raise UserError(
+                "There is no Finished Good Location is setup for the Finished Product Location in Production Order."
+            )
 ```
   </details>
 - **Mass Produce Serial Numbers** (`server_action_1147_mass_produce_serial_numbers`, type `code`)
@@ -577,20 +636,29 @@ if record.id:
   <details><summary>code (14 lines)</summary>
 
 ```python
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
 ctx = env.context
-ctx.update({'default_x_studio_production_id':record.id,'default_x_studio_product_id':record.product_id.id,'default_x_studio_product_qty':record.product_qty,'default_x_studio_sequence_size':4,'default_x_studio_starting_serial_no':1,'default_x_studio_company_id':company.id})
+ctx.update(
+    {
+        "default_x_studio_production_id": record.id,
+        "default_x_studio_product_id": record.product_id.id,
+        "default_x_studio_product_qty": record.product_qty,
+        "default_x_studio_sequence_size": 4,
+        "default_x_studio_starting_serial_no": 1,
+        "default_x_studio_company_id": company.id,
+    }
+)
 action = {
-          'name': 'Mass Produce Serial Nos',
-          'type': 'ir.actions.act_window',
-          'res_model': 'x_mass_produce_serial',
-          'view_mode': 'form',
-          'view_type': 'form',
-          'target': 'new',
-          'context': ctx,
-          }
+    "name": "Mass Produce Serial Nos",
+    "type": "ir.actions.act_window",
+    "res_model": "x_mass_produce_serial",
+    "view_mode": "form",
+    "view_type": "form",
+    "target": "new",
+    "context": ctx,
+}
 ```
   </details>
 - **Mass Produce Serial Numbers - Cancel Serial No** (`server_action_3202_mass_produce_serial_numbers_cancel_serial_no`, type `code`)
@@ -601,17 +669,18 @@ action = {
 
 ```python
 if record.id:
+    company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+    company = env["res.company"].browse(company_id)
 
-  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-  company = env['res.company'].browse(company_id)
+    serial_no = env["stock.lot"].search(
+        [("x_studio_production_id", "=", record.id), ("company_id", "=", company.id)]
+    )
+    for lines in serial_no:
+        lines.unlink()
+    if record.state == "draft":
+        record["x_studio_mass_produced"] = False
 
-  serial_no = env['stock.lot'].search([('x_studio_production_id', '=', record.id),('company_id', '=', company.id)])
-  for lines in serial_no:
-    lines.unlink()
-  if record.state == 'draft':
-    record['x_studio_mass_produced'] = False
-
-  record['x_studio_serial_cancelled'] = True
+    record["x_studio_serial_cancelled"] = True
 ```
   </details>
 - **PROJ - Mark as Done Validation** (`sa_f5_mrp_production_proj_mark_as_done_validation`, type `code`)
@@ -621,7 +690,9 @@ if record.id:
   <details><summary>code (1 lines)</summary>
 
 ```python
-record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.'
+record["x_studio_mark_as_done_validation"] = (
+    "Please enter the Quantity to produce to proceed with Mark as Done."
+)
 ```
   </details>
 - **SRM - Auto Populate Report Type in Production Order** (`server_action_1738_srm_auto_populate_report_type_in_production_order`, type `code`)
@@ -631,10 +702,12 @@ record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produ
   <details><summary>code (4 lines)</summary>
 
 ```python
-if record.state == 'progress':
-  rpt_id= env['x_sales_report_type'].search([('x_studio_report_code', '=', 'Production Overview - WIP')],limit=1)
-  if rpt_id:
-   record['x_studio_report_type_m_wip'] = rpt_id.id
+if record.state == "progress":
+    rpt_id = env["x_sales_report_type"].search(
+        [("x_studio_report_code", "=", "Production Overview - WIP")], limit=1
+    )
+    if rpt_id:
+        record["x_studio_report_type_m_wip"] = rpt_id.id
 ```
   </details>
 - **Update Original MO in MO** (`server_action_1155_update_original_mo_in_mo`, type `code`)
@@ -645,11 +718,11 @@ if record.state == 'progress':
 
 ```python
 if record.id:
-  if 	record.x_studio_tracked_item == True and record.x_studio_mass_produced == True:
-    size = len(record.name)
-    record['x_studio_original_mo'] = record.name[:size - 4]
-  else:
-    record['x_studio_original_mo'] = record.name
+    if record.x_studio_tracked_item == True and record.x_studio_mass_produced == True:
+        size = len(record.name)
+        record["x_studio_original_mo"] = record.name[: size - 4]
+    else:
+        record["x_studio_original_mo"] = record.name
 ```
   </details>
 - **Update Tracking Item Status in MO** (`server_action_1154_update_tracking_item_status_in_mo`, type `code`)
@@ -660,10 +733,10 @@ if record.id:
 
 ```python
 if record.product_id:
-  if record.product_id.tracking == 'serial':
-    record['x_studio_tracked_item'] = True
-  else:
-    record['x_studio_tracked_item'] = False
+    if record.product_id.tracking == "serial":
+        record["x_studio_tracked_item"] = True
+    else:
+        record["x_studio_tracked_item"] = False
 ```
   </details>
 **Automations (4):**
@@ -721,7 +794,13 @@ Adds no fields, but six automations maintain BoM cost lines per operation: when 
   <details><summary>code (1 lines)</summary>
 
 ```python
-new_record = env["x_mrp_bom_general_cost"].create({"x_studio_bom_general_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+new_record = env["x_mrp_bom_general_cost"].create(
+    {
+        "x_studio_bom_general_cost_ids": record.bom_id.id,
+        "x_studio_operation_id": record.id,
+        "x_studio_planned_qty": record.time_cycle / 60.00,
+    }
+)
 ```
   </details>
 - **Create BOM Labour Cost** (`server_action_1040_create_bom_labour_cost`, type `code`)
@@ -731,7 +810,13 @@ new_record = env["x_mrp_bom_general_cost"].create({"x_studio_bom_general_cost_id
   <details><summary>code (1 lines)</summary>
 
 ```python
-new_record = env["x_mrp_bom_labour_cost"].create({"x_studio_bom_labour_cost_ids": record.bom_id.id, "x_studio_planned_qty": record.time_cycle/60.00, "x_studio_operation_id": record.id})
+new_record = env["x_mrp_bom_labour_cost"].create(
+    {
+        "x_studio_bom_labour_cost_ids": record.bom_id.id,
+        "x_studio_planned_qty": record.time_cycle / 60.00,
+        "x_studio_operation_id": record.id,
+    }
+)
 ```
   </details>
 - **Create BOM Overhead Cost** (`server_action_1049_create_bom_overhead_cost`, type `code`)
@@ -741,7 +826,13 @@ new_record = env["x_mrp_bom_labour_cost"].create({"x_studio_bom_labour_cost_ids"
   <details><summary>code (1 lines)</summary>
 
 ```python
-new_record = env["x_mrp_bom_overhead_cos"].create({"x_studio_bom_overhead_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+new_record = env["x_mrp_bom_overhead_cos"].create(
+    {
+        "x_studio_bom_overhead_cost_ids": record.bom_id.id,
+        "x_studio_operation_id": record.id,
+        "x_studio_planned_qty": record.time_cycle / 60.00,
+    }
+)
 ```
   </details>
 - **Update BOM General Cost** (`server_action_1127_update_bom_general_cost`, type `code`)
@@ -752,9 +843,20 @@ new_record = env["x_mrp_bom_overhead_cos"].create({"x_studio_bom_overhead_cost_i
 
 ```python
 if record.bom_id and record.id:
-  update = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
-  if update:
-    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00})
+    update = env["x_mrp_bom_general_cost"].search(
+        [
+            ("x_studio_bom_general_cost_ids", "=", record.bom_id.id),
+            ("x_studio_operation_id", "=", record.id),
+        ],
+        limit=1,
+    )
+    if update:
+        update.write(
+            {
+                "x_studio_operation_id": record.id,
+                "x_studio_planned_qty": record.time_cycle / 60.00,
+            }
+        )
 ```
   </details>
 - **Update BOM Labour Cost** (`server_action_1113_update_bom_labour_cost`, type `code`)
@@ -765,9 +867,20 @@ if record.bom_id and record.id:
 
 ```python
 if record.bom_id and record.id:
-  update = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
-  if update:
-    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00})
+    update = env["x_mrp_bom_labour_cost"].search(
+        [
+            ("x_studio_bom_labour_cost_ids", "=", record.bom_id.id),
+            ("x_studio_operation_id", "=", record.id),
+        ],
+        limit=1,
+    )
+    if update:
+        update.write(
+            {
+                "x_studio_operation_id": record.id,
+                "x_studio_planned_qty": record.time_cycle / 60.00,
+            }
+        )
 ```
   </details>
 - **Update BOM Overhead Cost** (`server_action_1120_update_bom_overhead_cost`, type `code`)
@@ -778,9 +891,20 @@ if record.bom_id and record.id:
 
 ```python
 if record.bom_id and record.id:
-  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
-  if update:
-    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00})
+    update = env["x_mrp_bom_overhead_cos"].search(
+        [
+            ("x_studio_bom_overhead_cost_ids", "=", record.bom_id.id),
+            ("x_studio_operation_id", "=", record.id),
+        ],
+        limit=1,
+    )
+    if update:
+        update.write(
+            {
+                "x_studio_operation_id": record.id,
+                "x_studio_planned_qty": record.time_cycle / 60.00,
+            }
+        )
 ```
   </details>
 **Automations (6):**
@@ -856,13 +980,12 @@ Adds an Actual Costing Information group with labour, overhead, equipment, idle 
   <details><summary>code (7 lines)</summary>
 
 ```python
-
 if record.x_studio_ot_cost_per_hour > 0.00:
-  #record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
-  record['costs_hour'] = record.x_studio_ot_cost_per_hour
+    # record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
+    record["costs_hour"] = record.x_studio_ot_cost_per_hour
 else:
-  #record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
-  record['costs_hour'] = record.x_studio_labour_cost_hour
+    # record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
+    record["costs_hour"] = record.x_studio_labour_cost_hour
 ```
   </details>
 - **Update Cost Per Hour** (`sa_f5_mrp_workcenter_update_cost_per_hour`, type `code`)
@@ -873,11 +996,11 @@ else:
 
 ```python
 if record.x_studio_ot_cost_per_hour > 0.00:
-  #record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
-  record['costs_hour'] = record.x_studio_ot_cost_per_hour
+    # record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
+    record["costs_hour"] = record.x_studio_ot_cost_per_hour
 else:
-  #record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
-  record['costs_hour'] = record.x_studio_labour_cost_hour
+    # record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
+    record["costs_hour"] = record.x_studio_labour_cost_hour
 ```
   </details>
 **Automations (1):**
@@ -961,10 +1084,12 @@ Adds Original MO and OT Applicable fields. Six automations create and update the
   <details><summary>code (4 lines)</summary>
 
 ```python
- if record.production_id:
-  prod_order = env['mrp.production'].search([('id', '=', record.production_id.id)],limit=1)
-  if prod_order:
-    record['x_studio_original_mo'] = prod_order.x_studio_original_mo
+if record.production_id:
+    prod_order = env["mrp.production"].search(
+        [("id", "=", record.production_id.id)], limit=1
+    )
+    if prod_order:
+        record["x_studio_original_mo"] = prod_order.x_studio_original_mo
 ```
   </details>
 - **Create Production BOM General Cost** (`server_action_1103_create_production_bom_general_cost`, type `code`)
@@ -975,8 +1100,14 @@ Adds Original MO and OT Applicable fields. Six automations create and update the
 
 ```python
 if record.production_id and record.operation_id:
-
-  prod_bom_labour_cost = env['x_mrp_bom_general_cost'].create({'x_studio_prod_bom_general_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})
+    prod_bom_labour_cost = env["x_mrp_bom_general_cost"].create(
+        {
+            "x_studio_prod_bom_general_cost_ids": record.production_id.id,
+            "x_studio_operation_id": record.operation_id.id,
+            "x_studio_actual_qty": record.duration / 60.00,
+            "x_studio_planned_qty": record.duration_expected / 60.00,
+        }
+    )
 ```
   </details>
 - **Create Production BOM Labour Cost** (`server_action_1080_create_production_bom_labour_cost`, type `code`)
@@ -987,8 +1118,14 @@ if record.production_id and record.operation_id:
 
 ```python
 if record.production_id and record.operation_id:
-
-  prod_bom_labour_cost = env['x_mrp_bom_labour_cost'].create({'x_studio_prod_bom_labour_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})
+    prod_bom_labour_cost = env["x_mrp_bom_labour_cost"].create(
+        {
+            "x_studio_prod_bom_labour_cost_ids": record.production_id.id,
+            "x_studio_operation_id": record.operation_id.id,
+            "x_studio_actual_qty": record.duration / 60.00,
+            "x_studio_planned_qty": record.duration_expected / 60.00,
+        }
+    )
 ```
   </details>
 - **Create Production BOM Overhead Cost** (`server_action_1093_create_production_bom_overhead_cost`, type `code`)
@@ -999,8 +1136,14 @@ if record.production_id and record.operation_id:
 
 ```python
 if record.production_id and record.operation_id:
-
-  prod_bom_labour_cost = env['x_mrp_bom_overhead_cos'].create({'x_studio_prod_bom_overhead_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})
+    prod_bom_labour_cost = env["x_mrp_bom_overhead_cos"].create(
+        {
+            "x_studio_prod_bom_overhead_cost_ids": record.production_id.id,
+            "x_studio_operation_id": record.operation_id.id,
+            "x_studio_actual_qty": record.duration / 60.00,
+            "x_studio_planned_qty": record.duration_expected / 60.00,
+        }
+    )
 ```
   </details>
 - **Update Production BOM General Cost** (`server_action_1106_update_production_bom_general_cost`, type `code`)
@@ -1011,9 +1154,21 @@ if record.production_id and record.operation_id:
 
 ```python
 if record.production_id and record.operation_id:
-  update = env['x_mrp_bom_general_cost'].search([('x_studio_prod_bom_general_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
-  if update:
-    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})
+    update = env["x_mrp_bom_general_cost"].search(
+        [
+            ("x_studio_prod_bom_general_cost_ids", "=", record.production_id.id),
+            ("x_studio_operation_id", "=", record.operation_id.id),
+        ],
+        limit=1,
+    )
+    if update:
+        update.write(
+            {
+                "x_studio_operation_id": record.operation_id.id,
+                "x_studio_actual_qty": record.duration / 60.00,
+                "x_studio_planned_qty": record.duration_expected / 60.00,
+            }
+        )
 ```
   </details>
 - **Update Production BOM Labour Cost** (`server_action_1086_update_production_bom_labour_cost`, type `code`)
@@ -1024,36 +1179,59 @@ if record.production_id and record.operation_id:
 
 ```python
 if record.production_id and record.operation_id:
-  ot_applicable = False
-  #######################
-  work_center = env['mrp.workcenter'].search([('id', '=', record.workcenter_id.id)])
-  if work_center:
-    for work_centers in work_center:
-      if work_centers.x_studio_ot_cost_per_hour > 0.00:
-        #work_centers.write({'costs_hour':(work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour + work_centers.x_studio_ot_cost_per_hour)}) 
-        work_centers.write({'costs_hour':(work_centers.x_studio_ot_cost_per_hour)})
-      else:
-        #work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour + work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour)})
-        work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour)}) 
-  
-  #######################
-  update = env['x_mrp_bom_labour_cost'].search([('x_studio_prod_bom_labour_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
-  if update:
-    if record.x_studio_ot_applicable == False:
-      if record.workcenter_id.x_studio_ot_cost_per_hour > 0.00:
-        ot_applicable = True
-    else:
-      ot_applicable = True
-      
-    #actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
-    #actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
-    actual_cost = update.x_studio_operation_id.workcenter_id.costs_hour 
-    actual_cost_ot = update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
-    #actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour
-    actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour
-    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00,'x_studio_cost':actual_cost,'x_studio_cost_ot':actual_cost_ot,'x_studio_cost_without_ot':actual_cost_without_ot})
-    
-    record['x_studio_ot_applicable'] = ot_applicable
+    ot_applicable = False
+    #######################
+    work_center = env["mrp.workcenter"].search([("id", "=", record.workcenter_id.id)])
+    if work_center:
+        for work_centers in work_center:
+            if work_centers.x_studio_ot_cost_per_hour > 0.00:
+                # work_centers.write({'costs_hour':(work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour + work_centers.x_studio_ot_cost_per_hour)})
+                work_centers.write(
+                    {"costs_hour": (work_centers.x_studio_ot_cost_per_hour)}
+                )
+            else:
+                # work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour + work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour)})
+                work_centers.write(
+                    {"costs_hour": (work_centers.x_studio_labour_cost_hour)}
+                )
+
+    #######################
+    update = env["x_mrp_bom_labour_cost"].search(
+        [
+            ("x_studio_prod_bom_labour_cost_ids", "=", record.production_id.id),
+            ("x_studio_operation_id", "=", record.operation_id.id),
+        ],
+        limit=1,
+    )
+    if update:
+        if record.x_studio_ot_applicable == False:
+            if record.workcenter_id.x_studio_ot_cost_per_hour > 0.00:
+                ot_applicable = True
+        else:
+            ot_applicable = True
+
+        # actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+        # actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+        actual_cost = update.x_studio_operation_id.workcenter_id.costs_hour
+        actual_cost_ot = (
+            update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+        )
+        # actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour
+        actual_cost_without_ot = (
+            update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour
+        )
+        update.write(
+            {
+                "x_studio_operation_id": record.operation_id.id,
+                "x_studio_actual_qty": record.duration / 60.00,
+                "x_studio_planned_qty": record.duration_expected / 60.00,
+                "x_studio_cost": actual_cost,
+                "x_studio_cost_ot": actual_cost_ot,
+                "x_studio_cost_without_ot": actual_cost_without_ot,
+            }
+        )
+
+        record["x_studio_ot_applicable"] = ot_applicable
 ```
   </details>
 - **Update Production BOM Overhead Cost** (`server_action_1096_update_production_bom_overhead_cost`, type `code`)
@@ -1064,9 +1242,21 @@ if record.production_id and record.operation_id:
 
 ```python
 if record.production_id and record.operation_id:
-  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_prod_bom_overhead_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
-  if update:
-    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})
+    update = env["x_mrp_bom_overhead_cos"].search(
+        [
+            ("x_studio_prod_bom_overhead_cost_ids", "=", record.production_id.id),
+            ("x_studio_operation_id", "=", record.operation_id.id),
+        ],
+        limit=1,
+    )
+    if update:
+        update.write(
+            {
+                "x_studio_operation_id": record.operation_id.id,
+                "x_studio_actual_qty": record.duration / 60.00,
+                "x_studio_planned_qty": record.duration_expected / 60.00,
+            }
+        )
 ```
   </details>
 **Automations (7):**
@@ -1220,11 +1410,10 @@ A pop-up wizard, opened from the Mass Produce Serial Nos button on a manufacturi
   <details><summary>code (5 lines)</summary>
 
 ```python
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
-
-record['x_studio_company_id'] = company.id
+record["x_studio_company_id"] = company.id
 ```
   </details>
 - **Execute Code** (`server_action_1153_mass_produce_serial_nos_find_last`, type `code`)
@@ -1234,24 +1423,30 @@ record['x_studio_company_id'] = company.id
   <details><summary>code (18 lines)</summary>
 
 ```python
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
-
-record['x_studio_sequence_size'] = 4  
-record['x_studio_starting_serial_no'] = 1
-record['x_studio_last_serial_no_id'] = ''
-record['x_studio_company_id'] = company.id
+record["x_studio_sequence_size"] = 4
+record["x_studio_starting_serial_no"] = 1
+record["x_studio_last_serial_no_id"] = ""
+record["x_studio_company_id"] = company.id
 
 if record.x_studio_serial_no_prefix:
-  last_sn = env['stock.lot'].search([('x_studio_serial_no_prefix', '=ilike', record.x_studio_serial_no_prefix), ('company_id', '=', company.id)],order='id desc',limit=1)
-  if last_sn:
-    record['x_studio_prefix_status'] = 'Existing'
-    record['x_studio_sequence_size'] = last_sn.x_studio_sequence_size
-    record['x_studio_starting_serial_no'] = last_sn.x_studio_starting_serial_no + 1
-    record['x_studio_last_serial_no_id'] = last_sn.id
-  else:
-    record['x_studio_prefix_status'] = 'New'
+    last_sn = env["stock.lot"].search(
+        [
+            ("x_studio_serial_no_prefix", "=ilike", record.x_studio_serial_no_prefix),
+            ("company_id", "=", company.id),
+        ],
+        order="id desc",
+        limit=1,
+    )
+    if last_sn:
+        record["x_studio_prefix_status"] = "Existing"
+        record["x_studio_sequence_size"] = last_sn.x_studio_sequence_size
+        record["x_studio_starting_serial_no"] = last_sn.x_studio_starting_serial_no + 1
+        record["x_studio_last_serial_no_id"] = last_sn.id
+    else:
+        record["x_studio_prefix_status"] = "New"
 ```
   </details>
 - **JIN - Company Id in Mass Produce Serial** (`sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial`, type `code`)
@@ -1261,10 +1456,10 @@ if record.x_studio_serial_no_prefix:
   <details><summary>code (4 lines)</summary>
 
 ```python
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-record['x_studio_company_id'] = company.id
+record["x_studio_company_id"] = company.id
 ```
   </details>
 - **Mass Produce Serial Nos - Find Last** (`sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`, type `code`)
@@ -1274,23 +1469,30 @@ record['x_studio_company_id'] = company.id
   <details><summary>code (17 lines)</summary>
 
 ```python
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-record['x_studio_sequence_size'] = 4  
-record['x_studio_starting_serial_no'] = 1
-record['x_studio_last_serial_no_id'] = ''
-record['x_studio_company_id'] = company.id
+record["x_studio_sequence_size"] = 4
+record["x_studio_starting_serial_no"] = 1
+record["x_studio_last_serial_no_id"] = ""
+record["x_studio_company_id"] = company.id
 
 if record.x_studio_serial_no_prefix:
-  last_sn = env['stock.lot'].search([('x_studio_serial_no_prefix', '=ilike', record.x_studio_serial_no_prefix), ('company_id', '=', company.id)],order='id desc',limit=1)
-  if last_sn:
-    record['x_studio_prefix_status'] = 'Existing'
-    record['x_studio_sequence_size'] = last_sn.x_studio_sequence_size
-    record['x_studio_starting_serial_no'] = last_sn.x_studio_starting_serial_no + 1
-    record['x_studio_last_serial_no_id'] = last_sn.id
-  else:
-    record['x_studio_prefix_status'] = 'New'
+    last_sn = env["stock.lot"].search(
+        [
+            ("x_studio_serial_no_prefix", "=ilike", record.x_studio_serial_no_prefix),
+            ("company_id", "=", company.id),
+        ],
+        order="id desc",
+        limit=1,
+    )
+    if last_sn:
+        record["x_studio_prefix_status"] = "Existing"
+        record["x_studio_sequence_size"] = last_sn.x_studio_sequence_size
+        record["x_studio_starting_serial_no"] = last_sn.x_studio_starting_serial_no + 1
+        record["x_studio_last_serial_no_id"] = last_sn.id
+    else:
+        record["x_studio_prefix_status"] = "New"
 ```
   </details>
 - **Mass Produce Serial Numbers - Clear** (`server_action_1150_mass_produce_serial_numbers_clear`, type `code`)
@@ -1301,32 +1503,45 @@ if record.x_studio_serial_no_prefix:
 
 ```python
 if record.x_studio_product_id:
- company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
- company = env['res.company'].browse(company_id)
+    company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+    company = env["res.company"].browse(company_id)
 
- temp_rec = env['x_mass_produce_serial_'].search([('x_studio_mass_produce_serial_ids', '=', record.id),('x_studio_company_id', '=', company.id)])
- for del_rec in temp_rec:
-  del_rec.unlink()
+    temp_rec = env["x_mass_produce_serial_"].search(
+        [
+            ("x_studio_mass_produce_serial_ids", "=", record.id),
+            ("x_studio_company_id", "=", company.id),
+        ]
+    )
+    for del_rec in temp_rec:
+        del_rec.unlink()
 
-record['x_studio_generated'] = False
-record['x_studio_serial_no_prefix'] = ''
-record['x_studio_prefix_status'] = ''
-record['x_studio_sequence_size'] = ''
-record['x_studio_starting_serial_no'] = ''
-record['x_studio_last_serial_no_id'] = False
+record["x_studio_generated"] = False
+record["x_studio_serial_no_prefix"] = ""
+record["x_studio_prefix_status"] = ""
+record["x_studio_sequence_size"] = ""
+record["x_studio_starting_serial_no"] = ""
+record["x_studio_last_serial_no_id"] = False
 
 ctx = env.context
-ctx.update({'default_id':record.id,'default_x_studio_production_id':record.x_studio_production_id.id,'default_x_studio_product_id':record.x_studio_product_id.id,'default_x_studio_product_qty':record.x_studio_product_qty,'default_x_studio_company_id':company.id})
+ctx.update(
+    {
+        "default_id": record.id,
+        "default_x_studio_production_id": record.x_studio_production_id.id,
+        "default_x_studio_product_id": record.x_studio_product_id.id,
+        "default_x_studio_product_qty": record.x_studio_product_qty,
+        "default_x_studio_company_id": company.id,
+    }
+)
 action = {
-          'name': 'Mass Produce Serial Nos',
-          'type': 'ir.actions.act_window',
-          'res_model': 'x_mass_produce_serial',
-          'view_mode': 'form',
-          'view_type': 'form',
-          'target': 'new',
-          'res_id': record.id,
-          'context': ctx,
-          }
+    "name": "Mass Produce Serial Nos",
+    "type": "ir.actions.act_window",
+    "res_model": "x_mass_produce_serial",
+    "view_mode": "form",
+    "view_type": "form",
+    "target": "new",
+    "res_id": record.id,
+    "context": ctx,
+}
 ```
   </details>
 - **Mass Produce Serial Numbers - Create Original Serial No** (`server_action_1151_mass_produce_serial_numbers_create_original`, type `code`)
@@ -1336,22 +1551,42 @@ action = {
   <details><summary>code (16 lines)</summary>
 
 ```python
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
 for serial_line in record.x_studio_mass_produce_serial_ids:
-  npo = env['stock.lot'].create({'name':serial_line.x_studio_lotserial_number,'product_id':serial_line.x_studio_product_id.id,'product_qty':serial_line.x_studio_product_qty,'product_uom_id':serial_line.x_studio_product_uom_id.id,'x_studio_production_id':serial_line.x_studio_production_id.id,'x_studio_serial_no_prefix':serial_line.x_studio_serial_no_prefix,
-            'company_id':company.id,'x_studio_sequence_size':serial_line.x_studio_sequence_size,'x_studio_starting_serial_no':serial_line.x_studio_starting_serial_no,'x_studio_production_order':serial_line.x_studio_production_order})
+    npo = env["stock.lot"].create(
+        {
+            "name": serial_line.x_studio_lotserial_number,
+            "product_id": serial_line.x_studio_product_id.id,
+            "product_qty": serial_line.x_studio_product_qty,
+            "product_uom_id": serial_line.x_studio_product_uom_id.id,
+            "x_studio_production_id": serial_line.x_studio_production_id.id,
+            "x_studio_serial_no_prefix": serial_line.x_studio_serial_no_prefix,
+            "company_id": company.id,
+            "x_studio_sequence_size": serial_line.x_studio_sequence_size,
+            "x_studio_starting_serial_no": serial_line.x_studio_starting_serial_no,
+            "x_studio_production_order": serial_line.x_studio_production_order,
+        }
+    )
 
 if record.x_studio_production_id:
-  update_mo = env['mrp.production'].search([('id', '=', record.x_studio_production_id.id),('company_id', '=', company.id)],limit=1)
+    update_mo = env["mrp.production"].search(
+        [
+            ("id", "=", record.x_studio_production_id.id),
+            ("company_id", "=", company.id),
+        ],
+        limit=1,
+    )
 
-  if update_mo:
-    update_mo.write({'x_studio_mass_produced': True, 'x_studio_serial_cancelled': False})
+    if update_mo:
+        update_mo.write(
+            {"x_studio_mass_produced": True, "x_studio_serial_cancelled": False}
+        )
 
 if record.id:
-  temp_rec = env['x_mass_produce_serial'].search([('id', '=', record.id)],limit=1)
-  temp_rec.unlink()
+    temp_rec = env["x_mass_produce_serial"].search([("id", "=", record.id)], limit=1)
+    temp_rec.unlink()
 ```
   </details>
 - **Mass Produce Serial Numbers - Generate** (`server_action_1149_mass_produce_serial_numbers_generate`, type `code`)
@@ -1362,41 +1597,64 @@ if record.id:
 
 ```python
 if record.x_studio_product_id:
-  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-  company = env['res.company'].browse(company_id)
+    company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+    company = env["res.company"].browse(company_id)
 
-  x = 0
-  code = record.x_studio_starting_serial_no
-  code_size = record.x_studio_sequence_size
-  while(x < record.x_studio_product_qty):
-    if x == 0:
-      code = str(int(code))
-    else:
-      code = str(int(code) + 1 )
+    x = 0
+    code = record.x_studio_starting_serial_no
+    code_size = record.x_studio_sequence_size
+    while x < record.x_studio_product_qty:
+        if x == 0:
+            code = str(int(code))
+        else:
+            code = str(int(code) + 1)
 
-    code_length = len(code)
-    if code_length <= code_size:
-      code = ("0" * (code_size - code_length) + code)
-      npo = env['x_mass_produce_serial_'].create({'x_studio_mass_produce_serial_ids':record.id,'x_studio_lotserial_number':(record.x_studio_serial_no_prefix + code).upper(),'x_studio_product_id':record.x_studio_product_id.id,'x_studio_product_qty':1,'x_studio_product_uom_id':record.x_studio_product_id.uom_id.id,
-            'x_studio_production_id':record.x_studio_production_id.id,'x_studio_production_order':record.x_studio_production_id.x_studio_original_mo,'x_studio_serial_no_prefix':record.x_studio_serial_no_prefix,'x_studio_sequence_size':record.x_studio_sequence_size,'x_studio_starting_serial_no':code,'x_studio_company_id':company.id})
-    else:
-      raise UserError('Quantity to Create is Exceedind the Sequence Size')
-    x = x +1
+        code_length = len(code)
+        if code_length <= code_size:
+            code = "0" * (code_size - code_length) + code
+            npo = env["x_mass_produce_serial_"].create(
+                {
+                    "x_studio_mass_produce_serial_ids": record.id,
+                    "x_studio_lotserial_number": (
+                        record.x_studio_serial_no_prefix + code
+                    ).upper(),
+                    "x_studio_product_id": record.x_studio_product_id.id,
+                    "x_studio_product_qty": 1,
+                    "x_studio_product_uom_id": record.x_studio_product_id.uom_id.id,
+                    "x_studio_production_id": record.x_studio_production_id.id,
+                    "x_studio_production_order": record.x_studio_production_id.x_studio_original_mo,
+                    "x_studio_serial_no_prefix": record.x_studio_serial_no_prefix,
+                    "x_studio_sequence_size": record.x_studio_sequence_size,
+                    "x_studio_starting_serial_no": code,
+                    "x_studio_company_id": company.id,
+                }
+            )
+        else:
+            raise UserError("Quantity to Create is Exceedind the Sequence Size")
+        x = x + 1
 
-  record['x_studio_generated'] = True
+    record["x_studio_generated"] = True
 
 ctx = env.context
-ctx.update({'default_id':record.id,'default_x_studio_production_id':record.x_studio_production_id.id,'default_x_studio_product_id':record.x_studio_product_id.id,'default_x_studio_product_qty':record.x_studio_product_qty,'default_x_studio_company_id':company.id})
+ctx.update(
+    {
+        "default_id": record.id,
+        "default_x_studio_production_id": record.x_studio_production_id.id,
+        "default_x_studio_product_id": record.x_studio_product_id.id,
+        "default_x_studio_product_qty": record.x_studio_product_qty,
+        "default_x_studio_company_id": company.id,
+    }
+)
 action = {
-          'name': 'Mass Produce Serial Nos',
-          'type': 'ir.actions.act_window',
-          'res_model': 'x_mass_produce_serial',
-          'view_mode': 'form',
-          'view_type': 'form',
-          'target': 'new',
-          'res_id': record.id,
-          'context': ctx,
-          }
+    "name": "Mass Produce Serial Nos",
+    "type": "ir.actions.act_window",
+    "res_model": "x_mass_produce_serial",
+    "view_mode": "form",
+    "view_type": "form",
+    "target": "new",
+    "res_id": record.id,
+    "context": ctx,
+}
 ```
   </details>
 **Automations (2):**
@@ -1494,11 +1752,10 @@ A generated serial number line of the Mass Produce Serial wizard. It holds the s
   <details><summary>code (5 lines)</summary>
 
 ```python
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
-
-record['x_studio_company_id'] = company.id
+record["x_studio_company_id"] = company.id
 ```
   </details>
 - **JIN - Company Id in Mass Produce Serial Line** (`sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial_line`, type `code`)
@@ -1508,10 +1765,10 @@ record['x_studio_company_id'] = company.id
   <details><summary>code (4 lines)</summary>
 
 ```python
-company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
-company = env['res.company'].browse(company_id)
+company_id = env.context.get("allowed_company_ids", [env.user.company_id.id])[0]
+company = env["res.company"].browse(company_id)
 
-record['x_studio_company_id'] = company.id
+record["x_studio_company_id"] = company.id
 ```
   </details>
 **Automations (1):**

@@ -1,11 +1,12 @@
 """Sentinel declaration for x_material_request_m_tag so cross-references resolve."""
+
 from odoo import fields, models
 
 
 class XMaterialRequestMTag(models.Model):
-    _name = 'x_material_request_m_tag'
-    _rec_name = 'x_name'  # Clear-DB Studio model: records are named by x_name
-    _description = 'Material Request M Tags'
+    _name = "x_material_request_m_tag"
+    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _description = "Material Request M Tags"
 
-    x_color = fields.Integer(string='Color')
-    x_name = fields.Char(string='Name')
+    x_color = fields.Integer(string="Color")
+    x_name = fields.Char(string="Name")

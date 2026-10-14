@@ -8,18 +8,19 @@ model unblocks:
     x_material_request_m (was TODO on-disk pending inverse discovery).
   * Future port of view 8745.
 """
+
 from odoo import fields, models
 
 
 class XMaterialRequestMLineAf405(models.Model):
-    _name = 'x_material_request_m_line_af405'
-    _description = 'material_request_m_line'
-    _order = 'x_studio_sequence asc, id asc'
-    _rec_name = 'x_name'
+    _name = "x_material_request_m_line_af405"
+    _description = "material_request_m_line"
+    _order = "x_studio_sequence asc, id asc"
+    _rec_name = "x_name"
 
-    x_name = fields.Char(string='Description')
-    x_studio_sequence = fields.Integer(string='Sequence')
+    x_name = fields.Char(string="Description")
+    x_studio_sequence = fields.Integer(string="Sequence")
     x_material_request_m_id = fields.Many2one(
-        'x_material_request_m',
-        ondelete='set null',
+        "x_material_request_m",
+        ondelete="set null",
     )
