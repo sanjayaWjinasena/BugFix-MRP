@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import fields, models
+
 
 class XMrpBomGeneralCostGap(models.Model):
     _inherit = 'x_mrp_bom_general_cost'

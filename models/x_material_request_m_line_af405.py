@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """x_material_request_m_line_af405 - line rows for x_material_request_m.
 
 Studio-created custom model. Very small (3 fields, 0 rows on Clear-DB).
@@ -22,6 +21,5 @@ class XMaterialRequestMLineAf405(models.Model):
     x_studio_sequence = fields.Integer(string='Sequence')
     x_material_request_m_id = fields.Many2one(
         'x_material_request_m',
-        string='X Material Request M',
         ondelete='set null',
     )

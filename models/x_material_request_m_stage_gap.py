@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import fields, models
+
 
 class XMaterialRequestMStageGap(models.Model):
     _inherit = 'x_material_request_m_stage'
