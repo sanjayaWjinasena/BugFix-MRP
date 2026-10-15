@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="aw_f4_mrp_workcenter_productivity_mrp_workcenter_productivity" model="ir.actions.act_window">
+    <field name="name">	mrp.workcenter.productivity</field>
+    <field name="res_model">mrp.workcenter.productivity</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+  </record>
+    <record id="ported_view_5503_mrp_workcenter_productivity_tree" model="ir.ui.view">
+        <field name="name">Odoo Studio: mrp.workcenter.productivity.tree customization</field>
+        <field name="model">mrp.workcenter.productivity</field>
+        <field name="type">tree</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp.oee_tree_view"/>
+        <field name="arch" type="xml">
+            <data>
+              <xpath expr="//field[@name='date_end']" position="after">
+                <field name="production_id" optional="show"/>
+              </xpath>
+              <xpath expr="//field[@name='user_id']" position="after">
+                <field optional="show" name="x_studio_employee" string="Employee"/>
+              </xpath>
+            </data>
+        </field>
+    </record>
+  <record id="act_window_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
+    <field name="name">	mrp.workcenter.productivity</field>
+    <field name="res_model">mrp.workcenter.productivity</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+  <record id="act_window_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
+    <field name="name">	mrp.workcenter.productivity</field>
+    <field name="res_model">mrp.workcenter.productivity</field>
+    <field name="view_mode">tree,form,pivot,graph</field>
+  </record>
+</odoo>

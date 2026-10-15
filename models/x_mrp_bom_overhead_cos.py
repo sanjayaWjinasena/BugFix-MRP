@@ -34,3 +34,11 @@ class XMrpBomOverheadCos(models.Model):
     x_studio_sequence = fields.Integer(string="Sequence")
     x_studio_total_actual_cost = fields.Float(string="Total Actual Cost")
     x_studio_total_cost = fields.Float(string="Total Cost")
+
+
+class XMrpBomOverheadCosGap(models.Model):
+    _inherit = "x_mrp_bom_overhead_cos"
+    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+
+    x_active = fields.Boolean(string="Active")
+    x_name = fields.Char(string="Name")

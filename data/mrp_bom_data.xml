@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- v0.0.20: 4 code-state server actions invoked by button refs on views 3945 + 3946.
+       All are usage=ir_actions_server (interactive buttons, not base_automation).
+       Custom-model env['x_...'] lookups are lazy-evaluated at click time, so install
+       succeeds even before those models are ported. -->
+  <record id="server_action_1057_update_costs_in_bom" model="ir.actions.server">
+    <field name="name">Update Costs in BOM</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom')]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.id:
+  material_cost = env['x_mrp_bom_material_cos'].search([('x_studio_bom_material_cost_ids', '=', record.id)])
+
+  if material_cost:
+    for update_material_cost in material_cost:
+      update_material_cost.write({'x_studio_cost': update_material_cost.x_studio_product_id.standard_price})
+
+  labour_cost = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.id)])
+
+  if labour_cost:
+    for update_labour_cost in labour_cost:
+      update_labour_cost.write({'x_studio_cost': update_labour_cost.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour})
+
+  overhead_cost = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.id)])
+
+  if overhead_cost:
+    for update_overhead_cost in overhead_cost:
+      update_overhead_cost.write({'x_studio_cost': update_overhead_cost.x_studio_operation_id.workcenter_id.x_studio_overhead_cost_hour})
+
+  general_cost = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.id)])
+
+  if general_cost:
+    for update_general_cost in general_cost:
+      update_general_cost.write({'x_studio_cost': update_general_cost.x_studio_operation_id.workcenter_id.x_studio_general_cost_hour})
+
+  record['x_studio_last_updated_date_cost'] = datetime.datetime.now()]]></field>
+  </record>
+    <data noupdate="1">
+    <record id="default_72_mrp_bom_x_studio_bom_total_labour_cost" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_bom__x_studio_bom_total_labour_cost"/>
+      <field name="json_value">""</field>
+    </record>
+    <record id="default_73_mrp_bom_x_studio_bom_total_overhead_cost" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_bom__x_studio_bom_total_overhead_cost"/>
+      <field name="json_value">""</field>
+    </record>
+    <record id="default_220_mrp_bom_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_bom__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+    </data>
+</odoo>

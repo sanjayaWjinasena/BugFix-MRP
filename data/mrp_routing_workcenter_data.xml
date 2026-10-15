@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="server_action_1054_create_bom_general_cost" model="ir.actions.server">
+    <field name="name">Create BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_general_cost"].create({"x_studio_bom_general_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+
+]]></field>
+  </record>
+  <record id="server_action_1040_create_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Create BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_labour_cost"].create({"x_studio_bom_labour_cost_ids": record.bom_id.id, "x_studio_planned_qty": record.time_cycle/60.00, "x_studio_operation_id": record.id})
+
+]]></field>
+  </record>
+  <record id="server_action_1049_create_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Create BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_overhead_cos"].create({"x_studio_bom_overhead_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+
+]]></field>
+  </record>
+  <record id="server_action_1127_update_bom_general_cost" model="ir.actions.server">
+    <field name="name">Update BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.bom_id and record.id:
+  update = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+  <record id="server_action_1113_update_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Update BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.bom_id and record.id:
+  update = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+  <record id="server_action_1120_update_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Update BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.bom_id and record.id:
+  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+  <record id="base_automation_24_create_bom_labour_cost" model="base.automation">
+    <field name="name">Create BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_routing_workcenter__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1040_create_bom_labour_cost')])]"/>
+  </record>
+  <record id="base_automation_25_create_bom_overhead_cost" model="base.automation">
+    <field name="name">Create BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_routing_workcenter__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1049_create_bom_overhead_cost')])]"/>
+  </record>
+  <record id="base_automation_26_create_bom_general_cost" model="base.automation">
+    <field name="name">Create BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_routing_workcenter__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1054_create_bom_general_cost')])]"/>
+  </record>
+  <record id="base_automation_36_update_bom_labour_cost" model="base.automation">
+    <field name="name">Update BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1113_update_bom_labour_cost')])]"/>
+  </record>
+  <record id="base_automation_37_update_bom_overhead_cost" model="base.automation">
+    <field name="name">Update BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1120_update_bom_overhead_cost')])]"/>
+  </record>
+  <record id="base_automation_38_update_bom_general_cost" model="base.automation">
+    <field name="name">Update BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1127_update_bom_general_cost')])]"/>
+  </record>
+</odoo>

@@ -40,3 +40,11 @@ class XMassProduceSerial(models.Model):
     x_studio_sequence_size = fields.Integer(string="Sequence Size")
     x_studio_serial_no_prefix = fields.Char(string="Serial No Prefix")
     x_studio_starting_serial_no = fields.Integer(string="Starting Serial No")
+
+
+class XMassProduceSerialGap(models.Model):
+    _inherit = "x_mass_produce_serial"
+    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+
+    x_active = fields.Boolean(string="Active")
+    x_name = fields.Char(string="Name")

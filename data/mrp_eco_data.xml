@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="sa_f5_mrp_eco_plm_tag_create" model="ir.actions.server">
+    <field name="name">PLM - Tag Create</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[line_ids = []
+
+
+
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+
+if eco_tag_search:
+
+  line_ids.append(eco_tag_search.id)
+
+else:
+
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+
+  line_ids.append(eco_tag_create.id)
+
+
+
+"""if record.type == 'bom': 
+
+  record.write({'tag_ids':[(6, 0, line_ids)], 'active':False})
+
+else:
+
+  record.write({'tag_ids':[(6, 0, line_ids)]})"""
+
+  
+
+record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="sa_f5_mrp_eco_plm_tag_description" model="ir.actions.server">
+    <field name="name">PLM - Tag Description</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
+if record.name:
+  record['x_studio_tag_description'] = record.name]]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <record id="server_action_2307_plm_filter_by_tag" model="ir.actions.server">
+    <field name="name">PLM - Filter by Tag</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[action = {
+
+          'name': 'Engineering Change Order ',
+
+          'domain': [('x_studio_tag_description', '=', record.x_studio_tag_description)],
+
+          'type': 'ir.actions.act_window',
+
+          'res_model': 'mrp.eco',
+
+          'view_mode': 'tree,form',
+
+          'view_type': 'form',
+
+          'view_id': False,
+
+          'context': False,
+
+          } 
+
+
+
+
+
+]]></field>
+  </record>
+  <record id="server_action_2305_plm_tag_create" model="ir.actions.server">
+    <field name="name">PLM - Tag Create</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[line_ids = []
+
+
+
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+
+if eco_tag_search:
+
+  line_ids.append(eco_tag_search.id)
+
+else:
+
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+
+  line_ids.append(eco_tag_create.id)
+
+
+
+"""if record.type == 'bom': 
+
+  record.write({'tag_ids':[(6, 0, line_ids)], 'active':False})
+
+else:
+
+  record.write({'tag_ids':[(6, 0, line_ids)]})"""
+
+  
+
+record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
+  </record>
+  <record id="server_action_2304_plm_tag_description" model="ir.actions.server">
+    <field name="name">PLM - Tag Description</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
+if record.name:
+  record['x_studio_tag_description'] = record.name]]></field>
+  </record>
+  <record id="base_automation_209_plm_tag_description" model="base.automation">
+    <field name="name">PLM - Tag Description</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('mrp_plm.field_mrp_eco__name')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2304_plm_tag_description')])]"/>
+  </record>
+  <record id="base_automation_210_plm_tag_create" model="base.automation">
+    <field name="name">PLM - Tag Create</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp_plm.field_mrp_eco__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2305_plm_tag_create')])]"/>
+  </record>
+    <record id="approval_rule_65_engineering_change_order_eco_approve_user_types_internal_use" model="studio.approval.rule">
+      <field name="name">Engineering Change Order (ECO)/approve (User types / Internal User) (65)</field>
+      <field name="model_id" ref="mrp_plm.model_mrp_eco"/>
+      <field name="method">approve</field>
+      <field name="group_id" ref="base.group_user"/>
+      <field name="notification_order">1</field>
+    </record>
+    <record id="approval_rule_66_engineering_change_order_eco_action_apply_user_types_interna" model="studio.approval.rule">
+      <field name="name">Engineering Change Order (ECO)/action_apply (User types / Internal User) (66)</field>
+      <field name="model_id" ref="mrp_plm.model_mrp_eco"/>
+      <field name="method">action_apply</field>
+      <field name="group_id" ref="base.group_user"/>
+      <field name="notification_order">1</field>
+    </record>
+  <record id="server_action_2304_plm_tag_description" model="ir.actions.server">
+    <field name="name">PLM - Tag Description</field>
+    <field name="model_id" ref="mrp_plm.model_mrp_eco"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+#record.write({'x_studio_tag_description':record.name})
+if record.name:
+  record['x_studio_tag_description'] = record.name
+    ]]></field>
+  </record>
+  <record id="server_action_2305_plm_tag_create" model="ir.actions.server">
+    <field name="name">PLM - Tag Create</field>
+    <field name="model_id" ref="mrp_plm.model_mrp_eco"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+line_ids = []
+
+
+
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+
+if eco_tag_search:
+
+  line_ids.append(eco_tag_search.id)
+
+else:
+
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+
+  line_ids.append(eco_tag_create.id)
+
+
+
+"""if record.type == 'bom': 
+
+  record.write({'tag_ids':[(6, 0, line_ids)], 'active':False})
+
+else:
+
+  record.write({'tag_ids':[(6, 0, line_ids)]})"""
+
+  
+
+record.write({'tag_ids':[(6, 0, line_ids)]})
+    ]]></field>
+  </record>
+    <data noupdate="1">
+    <record id="default_371_mrp_eco_x_studio_error" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_eco__x_studio_error"/>
+      <field name="json_value">"The Selected Product Should be Approved to Proceed."</field>
+    </record>
+    </data>
+</odoo>

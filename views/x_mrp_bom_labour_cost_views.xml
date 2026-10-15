@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="act_window_1014_mrp_bom_labour_cost" model="ir.actions.act_window">
+    <field name="name">mrp.bom.labour.cost</field>
+    <field name="res_model">x_mrp_bom_labour_cost</field>
+    <field name="view_mode">tree,form</field>
+    <field name="context">{}</field>
+    <field name="help" type="html"><p class="o_view_nocontent_smiling_face">
+                    This is your new action.
+                </p>
+                <p>By default, it contains a list and a form view and possibly
+                    other view types depending on the options you chose for your model.
+                </p>
+                <p>
+                    You can start customizing these screens by clicking on the Studio icon on the
+                    top right corner (you can also customize this help message there).
+                </p>
+            </field>
+  </record>
+    <record id="view_2556_default_form_view_for_x_mrp_bom_labour_cost_e" model="ir.ui.view">
+      <field name="name">Default form view for x_mrp_bom_labour_cost</field>
+      <field name="model">x_mrp_bom_labour_cost</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+  <header/>
+  <sheet string="mrp.bom.labour.cost">
+    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="x_active == True"/>
+    <field name="x_active" invisible="1"/>
+    <div class="oe_title">
+                <h1>
+                    <field name="x_name" required="1" placeholder="Name..."/>
+                </h1>
+            </div>
+    <group name="studio_group_c9c7f4">
+      <group name="studio_group_c9c7f4_left"/>
+      <group name="studio_group_c9c7f4_right"/>
+    </group>
+  </sheet>
+  <div class="oe_chatter" name="oe_chatter">
+    <!-- STRIPPED field message_follower_ids not on x_mrp_bom_labour_cost -->
+    <!-- STRIPPED field message_ids not on x_mrp_bom_labour_cost -->
+    <!-- STRIPPED field activity_ids not on x_mrp_bom_labour_cost -->
+  </div>
+</form>
+      </field>
+    </record>
+    <record id="view_2555_default_list_view_for_x_mrp_bom_labour_cost_e" model="ir.ui.view">
+      <field name="name">Default list view for x_mrp_bom_labour_cost</field>
+      <field name="model">x_mrp_bom_labour_cost</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree>
+  <field name="x_studio_sequence" widget="handle"/>
+  <field name="x_name"/>
+</tree>
+      </field>
+    </record>
+    <record id="view_2557_default_search_view_for_x_mrp_bom_labour_cost_e" model="ir.ui.view">
+      <field name="name">Default search view for x_mrp_bom_labour_cost</field>
+      <field name="model">x_mrp_bom_labour_cost</field>
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+        <search>
+  <field name="x_name"/>
+  <separator/>
+  <filter string="Archived" name="archived_x_mrp_bom_labour_cost" domain="[['x_active', '=', False]]"/>
+  <separator/>
+</search>
+      </field>
+    </record>
+    <record id="view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c" model="ir.ui.view">
+      <field name="name">Odoo Studio: Default list view for x_mrp_bom_labour_cost customization</field>
+      <field name="model">x_mrp_bom_labour_cost</field>
+      <field name="type">tree</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="BugFix-MRP.view_2555_default_list_view_for_x_mrp_bom_labour_cost_e"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='x_studio_sequence']" position="before">
+    <field name="x_studio_bom_labour_cost_ids" string="BOM Labour Cost"/>
+    <field name="x_studio_prod_bom_labour_cost_ids" string="Prod. BOM Labour Cost"/>
+    <field name="x_studio_prod_bom_line_id" string="Prod. BOM Line ID" column_invisible="1"/>
+    <field name="x_studio_operation_id" string="Operation"/>
+    <field name="x_studio_planned_qty" string="Planned Hour"/>
+    <field name="x_studio_actual_qty" string="Actual Hour"/>
+    <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
+    <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
+    <field name="x_studio_total_actual_cost" string="Total Actual Cost"/>
+    <field name="x_studio_currency_id" column_invisible="1"/>
+  </xpath>
+  <xpath expr="//field[@name='x_name']" position="attributes">
+    <attribute name="column_invisible">1</attribute></xpath>
+</data>
+      </field>
+    </record>
+</odoo>

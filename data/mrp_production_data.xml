@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="sa_f5_mrp_production_proj_mark_as_done_validation" model="ir.actions.server">
+    <field name="name">PROJ - Mark as Done Validation</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.']]></field>
+    <field name="usage">base_automation</field>
+    <field name="binding_view_types">list,form</field>
+  </record>
+  <!-- 4 server_actions ports for BugFix-MRP (auto-generated from Clear-DB snapshot) -->
+  <record id="server_action_2765_proj_mark_as_done_validation" model="ir.actions.server">
+    <field name="name">PROJ - Mark as Done Validation</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="code"><![CDATA[record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.']]></field>
+    <field name="usage">base_automation</field>
+  </record>
+  <record id="server_action_1155_update_original_mo_in_mo" model="ir.actions.server">
+    <field name="name">Update Original MO in MO</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.id:
+  if 	record.x_studio_tracked_item == True and record.x_studio_mass_produced == True:
+    size = len(record.name)
+    record['x_studio_original_mo'] = record.name[:size - 4]
+  else:
+    record['x_studio_original_mo'] = record.name
+  ]]></field>
+  </record>
+  <record id="server_action_1738_srm_auto_populate_report_type_in_production_order" model="ir.actions.server">
+    <field name="name">SRM - Auto Populate Report Type in Production Order</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.state == 'progress':
+  rpt_id= env['x_sales_report_type'].search([('x_studio_report_code', '=', 'Production Overview - WIP')],limit=1)
+  if rpt_id:
+   record['x_studio_report_type_m_wip'] = rpt_id.id]]></field>
+  </record>
+  <record id="server_action_1147_mass_produce_serial_numbers" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+ctx = env.context
+ctx.update({'default_x_studio_production_id':record.id,'default_x_studio_product_id':record.product_id.id,'default_x_studio_product_qty':record.product_qty,'default_x_studio_sequence_size':4,'default_x_studio_starting_serial_no':1,'default_x_studio_company_id':company.id})
+action = {
+          'name': 'Mass Produce Serial Nos',
+          'type': 'ir.actions.act_window',
+          'res_model': 'x_mass_produce_serial',
+          'view_mode': 'form',
+          'view_type': 'form',
+          'target': 'new',
+          'context': ctx,
+          }]]></field>
+  </record>
+  <record id="server_action_2534_finished_products_location_updated" model="ir.actions.server">
+    <field name="name">Finished Products Location Updated</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.id:
+  location = env['stock.location'].search([('id', '=', record.location_dest_id.id)], limit=1)
+  if location:
+    location2 = env['stock.location'].search([('location_id', '=', location.location_id.id),('x_studio_finished_good_location', '=', True)], limit=1)
+    if location2:
+      temp = env['stock.location'].search([('x_studio_temp_location', '=', True)], limit=1)
+      if temp:
+        record['state'] = 'draft'
+        record['location_dest_id'] = temp.id
+        record['x_studio_finished_product_location'] = location2.id
+        record['x_studio_finished_products_location_updated'] = True
+      else:
+        raise UserError('Temp. location has not been setup.')
+    else:
+      raise UserError('There is no Finished Good Location is setup for the Finished Product Location in Production Order.')]]></field>
+  </record>
+  <record id="server_action_3202_mass_produce_serial_numbers_cancel_serial_no" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Numbers - Cancel Serial No</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[if record.id:
+
+  company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+  company = env['res.company'].browse(company_id)
+
+  serial_no = env['stock.lot'].search([('x_studio_production_id', '=', record.id),('company_id', '=', company.id)])
+  for lines in serial_no:
+    lines.unlink()
+  if record.state == 'draft':
+    record['x_studio_mass_produced'] = False
+
+  record['x_studio_serial_cancelled'] = True]]></field>
+  </record>
+  <!-- 20 automations ports for BugFix-MRP (auto-generated from Clear-DB snapshot) -->
+  <record id="automation_47_update_original_mo_in_mo" model="base.automation">
+    <field name="name">Update Original MO in MO</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_1155_update_original_mo_in_mo')])]"/>
+  </record>
+  <record id="automation_122_srm_auto_populate_report_type_in_production_order" model="base.automation">
+    <field name="name">SRM - Auto Populate Report Type in Production Order</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_1738_srm_auto_populate_report_type_in_production_order')])]"/>
+  </record>
+  <record id="automation_330_proj_mark_as_done_validation" model="base.automation">
+    <field name="name">PROJ - Mark as Done Validation</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="active" eval="True"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_2765_proj_mark_as_done_validation')])]"/>
+  </record>
+  <record id="server_action_1154_update_tracking_item_status_in_mo" model="ir.actions.server">
+    <field name="name">Update Tracking Item Status in MO</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.product_id:
+  if record.product_id.tracking == 'serial':
+    record['x_studio_tracked_item'] = True
+  else:
+    record['x_studio_tracked_item'] = False
+  ]]></field>
+  </record>
+<!-- Studio approval rule 107 "Unlock (Production Order)" (production, active on production, created 2025-11-26, 1 approval entries there; the approval history is data and stays on the environment). Remove this record to take it out. -->
+  <record id="approval_rule_107_unlock_production_order" model="studio.approval.rule">
+    <field name="name">Unlock (Production Order)</field>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="method">action_toggle_is_locked</field>
+    <field name="group_id" ref="stock.group_stock_manager"/>
+    <field name="notification_order">1</field>
+  </record>
+<!-- Studio approval rule 108 "Cancel (Production Order)" (production, active on production, created 2025-11-26, 83 approval entries there; the approval history is data and stays on the environment). Remove this record to take it out. -->
+  <record id="approval_rule_108_cancel_production_order" model="studio.approval.rule">
+    <field name="name">Cancel (Production Order)</field>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="method">action_cancel</field>
+    <field name="group_id" ref="stock.group_stock_manager"/>
+    <field name="notification_order">1</field>
+  </record>
+  <record id="server_action_2765_proj_mark_as_done_validation" model="ir.actions.server">
+    <field name="name">PROJ - Mark as Done Validation</field>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[
+record['x_studio_mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.'
+    ]]></field>
+  </record>
+  <record id="base_automation_46_update_tracking_item_status_in_mo" model="base.automation">
+    <field name="name">Update Tracking Item Status in MO</field>
+    <field name="active" eval="False"/>
+    <field name="model_id" ref="mrp.model_mrp_production"/>
+    <field name="trigger">on_change</field>
+  </record>
+    <data noupdate="1">
+    <record id="default_407_mrp_production_x_studio_process_error" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_process_error"/>
+      <field name="json_value">"Select the Correct Finished Product Location Manually to Proceed ."</field>
+    </record>
+    <record id="default_423_mrp_production_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+    <record id="default_475_mrp_production_x_studio_mark_as_done_validation" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_production__x_studio_mark_as_done_validation"/>
+      <field name="json_value">"Please enter the Quantity to produce to proceed with Mark as Done."</field>
+    </record>
+    </data>
+</odoo>

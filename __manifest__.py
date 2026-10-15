@@ -19,7 +19,7 @@
     # underscore) to match the child model's _name declaration.
     # v0.0.26: x_mass_produce_serial wizard - un-defers server action 1147
     # (Mass Produce Serial Nos button on 3946 mrp.production form) end-to-end.
-    # Completes the runtime deferrals list from DEFERRED.md.
+    # Completes the runtime deferrals list from docs/DEFERRED.md.
     #   * models/x_mass_produce_serial.py (14 fields, parent wizard)
     #   * models/x_mass_produce_serial_line.py (16 fields, line records.
     #     Model _name = 'x_mass_produce_serial_' with trailing underscore
@@ -37,7 +37,7 @@
     # No new deps required. All external refs (stock.lot, res.company,
     # product.product, uom.uom, mrp.production) already covered by
     # existing dep chain.
-    # v0.0.25: view 2325 mrp.production form (27336b) - THE big DEFERRED.md
+    # v0.0.25: view 2325 mrp.production form (27336b) - THE big docs/DEFERRED.md
     # item. Un-defers cleanly now that v0.0.23 shipped cost sub-models +
     # O2M inverses. See views/mrp_studio_ported_v6.xml.
     #   * 1 hardcoded ref converted: 617 -> %(mrp.act_mrp_block_workcenter_wo)d.
@@ -53,7 +53,7 @@
     # New deps: purchase_stock, quality, quality_mrp, quality_mrp_workorder,
     # stock_delivery. All 5 confirmed installed on repair-test-101.
     # None have BugFix-* deps, so all edges stay acyclic.
-    # v0.0.24: view 2574 mrp.bom form (6140b) - un-defers the DEFERRED.md
+    # v0.0.24: view 2574 mrp.bom form (6140b) - un-defers the docs/DEFERRED.md
     # item now that v0.0.23 shipped the cost sub-model foundation.
     # See views/mrp_studio_ported_v5.xml.
     #   * 1 hardcoded ref converted: 1057 ->
@@ -201,49 +201,42 @@
         "Jinasena_Masterdata_Reporting",
     ],
     "data": [
-        "data/rules_f7.xml",
-        "data/server_actions_f5.xml",
-        "data/window_actions_f4.xml",
         "security/ir_model_pins.xml",
-        "data/server_actions.xml",
-        "security/ir.model.access.csv",
+        "security/bugfix_mrp_security.xml",
         "security/removed_handmade_access_rights.xml",
-        "data/automations.xml",
-        "data/act_windows.xml",
-        "views/x_material_request_m_studio_ported.xml",
-        "views/mrp_studio_ported.xml",
-        "views/mrp_studio_ported_v2.xml",
-        "views/mrp_studio_ported_v3.xml",
-        "views/mrp_studio_ported_v4.xml",
-        "views/mrp_studio_ported_v5.xml",
-        "views/mrp_studio_ported_v6.xml",
-        "views/x_mass_produce_serial_studio_ported.xml",
-        "data/record_rules.xml",
-        "data/server_actions_backlog.xml",
-        "data/automations_backlog.xml",
-        "data/window_actions_backlog.xml",
-        "data/approval_rules.xml",
-        "data/approval_rules_studio_gap.xml",
-        "data/server_actions_gap.xml",
-        "data/automations_gap.xml",
-        "data/window_actions_gap.xml",
-        "data/ir_defaults_gap.xml",  # upgrade-testing: form defaults shipped; record-specific ones commented inside
-        "views/mrp_bom_e_views.xml",
-        "views/mrp_eco_e_views.xml",
-        "views/mrp_workorder_e_views.xml",
-        "views/x_mass_produce_serial__e_views.xml",
-        "views/x_mass_produce_serial_e_views.xml",
-        "views/x_material_request_m_e_views.xml",
-        "views/x_material_request_m_line_af405_e_views.xml",
-        "views/x_material_request_m_stage_e_views.xml",
-        "views/x_material_request_m_tag_e_views.xml",
-        "views/x_mrp_bom_general_cost_e_views.xml",
-        "views/x_mrp_bom_labour_cost_e_views.xml",
-        "views/x_mrp_bom_material_cos_e_views.xml",
-        "views/x_mrp_bom_overhead_cos_e_views.xml",
-        "views/views_final.xml",
-        "data/menus_f6.xml",
-        "data/dashboard_replacements.xml",
+        "security/ir.model.access.csv",
+        "data/mrp_eco_data.xml",
+        "data/mrp_production_data.xml",
+        "data/mrp_workcenter_data.xml",
+        "data/x_mass_produce_serial__data.xml",
+        "data/x_mass_produce_serial_data.xml",
+        "data/mrp_bom_data.xml",
+        "data/mrp_bom_line_data.xml",
+        "data/mrp_routing_workcenter_data.xml",
+        "data/mrp_workorder_data.xml",
+        "data/x_material_request_m_data.xml",
+        "data/x_mrp_bom_general_cost_data.xml",
+        "data/x_mrp_bom_labour_cost_data.xml",
+        "data/x_mrp_bom_material_cos_data.xml",
+        "data/x_mrp_bom_overhead_cos_data.xml",
+        "views/mrp_bom_views.xml",
+        "views/mrp_workcenter_productivity_views.xml",
+        "views/x_material_request_m_views.xml",
+        "views/mrp_eco_views.xml",
+        "views/mrp_production_views.xml",
+        "views/mrp_workcenter_views.xml",
+        "views/mrp_workorder_views.xml",
+        "views/x_mass_produce_serial_views.xml",
+        "views/mrp_eco_bom_change_views.xml",
+        "views/x_mass_produce_serial__views.xml",
+        "views/x_material_request_m_stage_views.xml",
+        "views/x_material_request_m_tag_views.xml",
+        "views/x_mrp_bom_general_cost_views.xml",
+        "views/x_mrp_bom_labour_cost_views.xml",
+        "views/x_mrp_bom_material_cos_views.xml",
+        "views/x_mrp_bom_overhead_cos_views.xml",
+        "views/x_material_request_m_line_af405_views.xml",
+        "views/bugfix_mrp_menus.xml",
     ],
     "post_init_hook": "post_init_hook",
     "application": True,

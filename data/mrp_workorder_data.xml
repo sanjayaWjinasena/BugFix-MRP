@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="server_action_1156_assign_original_mo_to_work_order" model="ir.actions.server">
+    <field name="name">Assign Original MO to Work Order</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[ if record.production_id:
+  prod_order = env['mrp.production'].search([('id', '=', record.production_id.id)],limit=1)
+  if prod_order:
+    record['x_studio_original_mo'] = prod_order.x_studio_original_mo]]></field>
+  </record>
+  <record id="server_action_1103_create_production_bom_general_cost" model="ir.actions.server">
+    <field name="name">Create Production BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+
+  prod_bom_labour_cost = env['x_mrp_bom_general_cost'].create({'x_studio_prod_bom_general_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})]]></field>
+  </record>
+  <record id="server_action_1080_create_production_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Create Production BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+
+  prod_bom_labour_cost = env['x_mrp_bom_labour_cost'].create({'x_studio_prod_bom_labour_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})]]></field>
+  </record>
+  <record id="server_action_1093_create_production_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Create Production BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+
+  prod_bom_labour_cost = env['x_mrp_bom_overhead_cos'].create({'x_studio_prod_bom_overhead_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})]]></field>
+  </record>
+  <record id="server_action_1106_update_production_bom_general_cost" model="ir.actions.server">
+    <field name="name">Update Production BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  update = env['x_mrp_bom_general_cost'].search([('x_studio_prod_bom_general_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+  <record id="server_action_1086_update_production_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Update Production BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  ot_applicable = False
+  #######################
+  work_center = env['mrp.workcenter'].search([('id', '=', record.workcenter_id.id)])
+  if work_center:
+    for work_centers in work_center:
+      if work_centers.x_studio_ot_cost_per_hour > 0.00:
+        #work_centers.write({'costs_hour':(work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour + work_centers.x_studio_ot_cost_per_hour)}) 
+        work_centers.write({'costs_hour':(work_centers.x_studio_ot_cost_per_hour)})
+      else:
+        #work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour + work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour)})
+        work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour)}) 
+  
+  #######################
+  update = env['x_mrp_bom_labour_cost'].search([('x_studio_prod_bom_labour_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
+  if update:
+    if record.x_studio_ot_applicable == False:
+      if record.workcenter_id.x_studio_ot_cost_per_hour > 0.00:
+        ot_applicable = True
+    else:
+      ot_applicable = True
+      
+    #actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+    #actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+    actual_cost = update.x_studio_operation_id.workcenter_id.costs_hour 
+    actual_cost_ot = update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+    #actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour
+    actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00,'x_studio_cost':actual_cost,'x_studio_cost_ot':actual_cost_ot,'x_studio_cost_without_ot':actual_cost_without_ot})
+    
+    record['x_studio_ot_applicable'] = ot_applicable
+      
+      
+    
+  
+
+]]></field>
+  </record>
+  <record id="server_action_1096_update_production_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Update Production BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_prod_bom_overhead_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+  <record id="base_automation_30_create_production_bom_labour_cost" model="base.automation">
+    <field name="name">Create Production BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1080_create_production_bom_labour_cost')])]"/>
+  </record>
+  <record id="base_automation_31_update_production_bom_labour_cost" model="base.automation">
+    <field name="name">Update Production BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1086_update_production_bom_labour_cost')])]"/>
+  </record>
+  <record id="base_automation_32_create_production_bom_overhead_cost" model="base.automation">
+    <field name="name">Create Production BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1093_create_production_bom_overhead_cost')])]"/>
+  </record>
+  <record id="base_automation_33_update_production_bom_overhead_cost" model="base.automation">
+    <field name="name">Update Production BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1096_update_production_bom_overhead_cost')])]"/>
+  </record>
+  <record id="base_automation_34_create_production_bom_general_cost" model="base.automation">
+    <field name="name">Create Production BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1103_create_production_bom_general_cost')])]"/>
+  </record>
+  <record id="base_automation_35_update_production_bom_general_cost" model="base.automation">
+    <field name="name">Update Production BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1106_update_production_bom_general_cost')])]"/>
+  </record>
+  <record id="base_automation_48_assign_original_mo_to_work_order" model="base.automation">
+    <field name="name">Assign Original MO to Work Order</field>
+    <field name="active" eval="False"/>
+    <field name="model_id" ref="mrp.model_mrp_workorder"/>
+    <field name="trigger">on_create_or_write</field>
+  </record>
+</odoo>

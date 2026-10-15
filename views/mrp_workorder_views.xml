@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ported_view_3953_mrp_workorder_form_tablet" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
+        <field name="model">mrp.workorder</field>
+        <field name="type">form</field>
+        <field name="priority">99</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='finished_lot_id']" position="attributes">
+                    <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+  <record id="act_window_663_work_orders" model="ir.actions.act_window">
+    <field name="name">Work Orders</field>
+    <field name="res_model">mrp.workorder</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="domain">[('state', 'not in', ['done', 'cancel'])]</field>
+    <field name="context">{'search_default_workcenter_id': active_id}</field>
+    <field name="target">fullscreen</field>
+    <field name="help" type="html"><p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+  </record>
+    <record id="view_3953_mrp_workorder_view_form_inherit_quality_tablet_new_button_e" model="ir.ui.view">
+      <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
+      <field name="model">mrp.workorder</field>
+      <field name="type">form</field>
+      <field name="priority">99</field>
+      <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+    <!-- STRIPPED malformed xpath comment block -->
+    
+    <xpath expr="//field[@name='finished_lot_id']" position="attributes">
+    <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
+  </xpath>
+  </data>
+      </field>
+    </record>
+</odoo>

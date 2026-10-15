@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="server_action_1016_create_bom_material_cost" model="ir.actions.server">
+    <field name="name">Create BOM Material Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_material_cos"].create({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})
+
+]]></field>
+  </record>
+  <record id="server_action_1033_update_bom_material_cost" model="ir.actions.server">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.id:
+  update = env['x_mrp_bom_material_cos'].search([('x_studio_line_id', '=', record.id), ('x_studio_bom_material_cost_ids', '=', record.bom_id.id,)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_product_id':record.product_id.id,'x_studio_planned_qty':record.product_qty,'x_studio_uom_id':record.product_uom_id.id}) 
+   
+  
+
+]]></field>
+  </record>
+  <record id="server_action_1026_update_bom_material_cost" model="ir.actions.server">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[record.write({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})]]></field>
+  </record>
+  <record id="base_automation_21_create_bom_material_cost" model="base.automation">
+    <field name="name">Create BOM Material Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_bom_line__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1016_create_bom_material_cost')])]"/>
+  </record>
+  <record id="base_automation_23_update_bom_material_cost" model="base.automation">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1033_update_bom_material_cost')])]"/>
+  </record>
+</odoo>

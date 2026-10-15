@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <menuitem id="menu_f6_material_request_m" name="Material Request M" parent="BugFix-Stock.menu_1745_material_management_module" action="BugFix-MRP.action_3381_material_request_m" sequence="5"/>
+  <menuitem id="menu_f6_material_request_m_stages" name="Material Request M Stages" parent="BugFix-Stock.menu_1747_configuration" action="BugFix-MRP.act_window_3382_material_request_m_stages"/>
+  <menuitem id="menu_f6_material_request_m_tags" name="Material Request M Tags" parent="BugFix-Stock.menu_1747_configuration" action="BugFix-MRP.act_window_3383_material_request_m_tags"/>
+    <data noupdate="1">
+    <menuitem id="menu_x_mrp_bom_material_cos_analysis" name="BOM Material Cost Analysis" parent="mrp.menu_mrp_reporting" action="action_x_mrp_bom_material_cos_analysis" sequence="90"/>
+    </data>
+</odoo>

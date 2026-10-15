@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    <record id="default_66_x_mrp_bom_material_cos_x_active" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_active"/>
+      <field name="json_value">true</field>
+    </record>
+    <record id="default_67_x_mrp_bom_material_cos_x_studio_sequence" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_studio_sequence"/>
+      <field name="json_value">10</field>
+    </record>
+    <record id="default_218_x_mrp_bom_material_cos_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+    <record id="default_419_x_mrp_bom_material_cos_x_studio_currency_id" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_x_mrp_bom_material_cos__x_studio_currency_id"/>
+      <field name="json_value">145</field>
+    </record>
+    </data>
+</odoo>
