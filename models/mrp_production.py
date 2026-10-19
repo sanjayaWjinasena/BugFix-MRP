@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class MrpProduction(models.Model):
@@ -41,9 +41,31 @@ class MrpProduction(models.Model):
     x_studio_quantity_validation = fields.Boolean(string='Quantity Validation', readonly=True, store=False)
     x_studio_report_type_m_wip = fields.Many2one('x_sales_report_type', string='Report Type (M-WIP)')
     x_studio_serial_cancelled = fields.Boolean(string='Serial Cancelled')
-    x_studio_source_validate = fields.Boolean(string='Source Validate', readonly=True, store=False)
+    x_studio_source_validate = fields.Boolean(
+        string='Source Validate', readonly=True, store=False,
+        compute='_compute_x_studio_source_validate')
     x_studio_super_user = fields.Boolean(string='Super User', readonly=True, store=False)
     x_studio_super_user_melt_items = fields.Boolean(string='Super User (Melt Items)', readonly=True)
     x_studio_temp_location = fields.Boolean(string='Temp Location', readonly=True)
     x_studio_total_actual_general_cost = fields.Float(string='Total Actual General Cost', readonly=True)
-    x_studio_tracked_item = fields.Boolean(string='Tracked Item', readonly=True, store=False)
+    x_studio_tracked_item = fields.Boolean(
+        string='Tracked Item', readonly=True, store=False,
+        compute='_compute_x_studio_tracked_item')
+
+    # Ported verbatim from the Clear-DB Studio computes (same depends). Without them both flags
+    # stayed False, so the "Mass Produce Serial Nos" button never showed for serial-tracked products.
+    @api.depends('product_id')
+    def _compute_x_studio_tracked_item(self):
+        for rec in self:
+            rec.x_studio_tracked_item = rec.product_id.tracking == 'serial'
+
+    @api.depends('origin')
+    def _compute_x_studio_source_validate(self):
+        for rec in self:
+            val = False
+            if rec.origin:
+                if rec.origin == 'MPS' or rec.origin.startswith('OP'):
+                    val = True
+            if rec.location_src_id.id != rec.location_dest_id.id:
+                val = True
+            rec.x_studio_source_validate = val
