@@ -238,15 +238,22 @@ action = {
     <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
+created_lots = env['stock.lot']
 for serial_line in record.x_studio_mass_produce_serial_ids:
   npo = env['stock.lot'].create({'name':serial_line.x_studio_lotserial_number,'product_id':serial_line.x_studio_product_id.id,'product_qty':serial_line.x_studio_product_qty,'product_uom_id':serial_line.x_studio_product_uom_id.id,'x_studio_production_id':serial_line.x_studio_production_id.id,'x_studio_serial_no_prefix':serial_line.x_studio_serial_no_prefix,
             'company_id':company.id,'x_studio_sequence_size':serial_line.x_studio_sequence_size,'x_studio_starting_serial_no':serial_line.x_studio_starting_serial_no,'x_studio_production_order':serial_line.x_studio_production_order})
+  created_lots |= npo
 
 if record.x_studio_production_id:
   update_mo = env['mrp.production'].search([('id', '=', record.x_studio_production_id.id),('company_id', '=', company.id)],limit=1)
 
   if update_mo:
-    update_mo.write({'x_studio_mass_produced': True, 'x_studio_serial_cancelled': False})
+    mo_vals = {'x_studio_mass_produced': True, 'x_studio_serial_cancelled': False}
+    # Show the mass-produced serial on the MO instead of letting Odoo
+    # auto-generate one (bug sheet, Manufacturing row 3, 20/Oct).
+    if created_lots and not update_mo.lot_producing_id:
+      mo_vals['lot_producing_id'] = created_lots[0].id
+    update_mo.write(mo_vals)
 
 if record.id:
   temp_rec = env['x_mass_produce_serial'].search([('id', '=', record.id)],limit=1)

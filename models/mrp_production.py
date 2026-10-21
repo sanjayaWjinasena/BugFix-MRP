@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models
 
+# MO header buttons hidden for now (bug sheet, Manufacturing row 7,
+# 20/Oct: "Temporarily remove these buttons"). Matched by button name
+# first and by label as a fallback, so a renamed core method still hides.
+_HIDDEN_MO_BUTTON_NAMES = (
+    'button_maintenance_req',      # Maintenance Request (mrp_maintenance)
+    'action_open_label_type',      # Print Labels
+    'action_open_label_layout',    # Print Labels (older name)
+)
+# 'Unlock' is matched by label only: the Lock button shares its method.
+_HIDDEN_MO_BUTTON_LABELS = ('Maintenance Request', 'Print Labels', 'Unlock')
+
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
@@ -69,3 +80,13 @@ class MrpProduction(models.Model):
             if rec.location_src_id.id != rec.location_dest_id.id:
                 val = True
             rec.x_studio_source_validate = val
+
+    @api.model
+    def _get_view(self, view_id=None, view_type='form', **options):
+        arch, view = super()._get_view(view_id, view_type, **options)
+        if view_type == 'form':
+            for btn in arch.xpath('//header//button'):
+                if (btn.get('name') in _HIDDEN_MO_BUTTON_NAMES
+                        or btn.get('string') in _HIDDEN_MO_BUTTON_LABELS):
+                    btn.set('invisible', '1')
+        return arch, view

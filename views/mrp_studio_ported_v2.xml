@@ -23,23 +23,10 @@
 -->
 <odoo>
 
-    <record id="ported_view_3945_mrp_bom_form_button" model="ir.ui.view">
-        <field name="name">Odoo Studio: mrp.bom.form customization-button</field>
-        <field name="model">mrp.bom</field>
-        <field name="type">form</field>
-        <field name="priority">99</field>
-        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
-        <field name="arch" type="xml">
-            <data>
-                <xpath expr="//form[1]/sheet[1]" position="before">
-                    <header>
-                      <button type="action" name="%(BugFix-MRP.server_action_1057_update_costs_in_bom)d" string="Update Cost" class="btn-primary"/>
-                  </header>
-                  <header/>
-                </xpath>
-            </data>
-        </field>
-    </record>
+    <!-- ported_view_3945_mrp_bom_form_button removed (bug sheet, Manufacturing
+         row 6, 20/Oct): it added a second "Update Cost" header button on the
+         BoM form. ported_view_2574_mrp_bom_form (mrp_studio_ported_v5.xml)
+         already provides the button. -->
 
     <record id="ported_view_3946_mrp_production_form_button" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.production.form-button</field>
@@ -68,7 +55,7 @@
                 </xpath>
 
                 <xpath expr="//header/button[@name='action_cancel']" position="before">
-                  <button type="action" name="%(BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no)d" string="Cancel Serial Nos" class="btn-primary" invisible="((x_studio_mass_produced == True) and (x_studio_serial_cancelled == True) and (state != 'draft')) or (x_studio_mass_produced == False)"/>
+                  <button type="action" name="%(BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no)d" string="Cancel Serial Nos" class="btn-primary" invisible="(x_studio_mass_produced == False) or (x_studio_serial_cancelled == True) or (state != 'draft')"/>
                 </xpath>
 
                 <xpath expr="//header/button[@name='action_confirm']" position="attributes">
