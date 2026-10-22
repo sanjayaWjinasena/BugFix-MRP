@@ -1,5 +1,6 @@
 {
-    # upgrade-testing branch: data files below are commented out - this branch installs functions only, no data is seeded.
+    # upgrade-testing branch: data files below are commented out - this branch installs
+    # functions only, no data is seeded.
     "name": "Jinasena : Module : MRP",
     "version": "17.0.0.0.64",
     "summary": "Studio-to-Python port for BugFix-MRP",
@@ -174,7 +175,7 @@
     #     1738 SRM Auto Populate Report Type in Production Order (209b,
     #          on mrp.production; runtime lookup on x_sales_report_type)
     #   * data/automations.xml: all 3 TODO comments replaced by
-    #     <field name="action_server_ids" eval="[(6, 0, [ref('server_action_NNNN_...')])]"/>
+    # <field name="action_server_ids" eval="[(6, 0, [ref('server_action_NNNN_...')])]"/>
     #     Trigger semantics preserved.
     #   * 3 base.automation records now actually invoke their server
     #     actions on trigger; previously they were silent no-ops.
