@@ -75,10 +75,7 @@ def _seed_field_selections(env, entries):
                 )
         except Exception as e:
             _logger.warning(
-                "BugFix-MRP: seed failed %s.%s (%s).",
-                model,
-                fname,
-                e,
+                "BugFix-MRP: seed failed %s.%s (%s).", model, fname, e, exc_info=True
             )
 
 
