@@ -1,4 +1,15 @@
-from odoo import fields, models
+from odoo import api, fields, models
+
+# MO header buttons hidden for now (bug sheet, Manufacturing row 7,
+# 20/Oct: "Temporarily remove these buttons"). Matched by button name
+# first and by label as a fallback, so a renamed core method still hides.
+_HIDDEN_MO_BUTTON_NAMES = (
+    "button_maintenance_req",  # Maintenance Request (mrp_maintenance)
+    "action_open_label_type",  # Print Labels
+    "action_open_label_layout",  # Print Labels (older name)
+)
+# 'Unlock' is matched by label only: the Lock button shares its method.
+_HIDDEN_MO_BUTTON_LABELS = ("Maintenance Request", "Print Labels", "Unlock")
 
 
 class MrpProduction(models.Model):
@@ -83,7 +94,10 @@ class MrpProduction(models.Model):
     )
     x_studio_serial_cancelled = fields.Boolean(string="Serial Cancelled")
     x_studio_source_validate = fields.Boolean(
-        string="Source Validate", readonly=True, store=False
+        string="Source Validate",
+        readonly=True,
+        store=False,
+        compute="_compute_x_studio_source_validate",
     )
     x_studio_super_user = fields.Boolean(
         string="Super User", readonly=True, store=False
@@ -96,5 +110,38 @@ class MrpProduction(models.Model):
         string="Total Actual General Cost", readonly=True
     )
     x_studio_tracked_item = fields.Boolean(
-        string="Tracked Item", readonly=True, store=False
+        string="Tracked Item",
+        readonly=True,
+        store=False,
+        compute="_compute_x_studio_tracked_item",
     )
+
+    # Ported verbatim from the Clear-DB Studio computes (same depends). Without them both flags
+    # stayed False, so the "Mass Produce Serial Nos" button never showed for serial-tracked products.
+    @api.depends("product_id")
+    def _compute_x_studio_tracked_item(self):
+        for rec in self:
+            rec.x_studio_tracked_item = rec.product_id.tracking == "serial"
+
+    @api.depends("origin")
+    def _compute_x_studio_source_validate(self):
+        for rec in self:
+            val = False
+            if rec.origin:
+                if rec.origin == "MPS" or rec.origin.startswith("OP"):
+                    val = True
+            if rec.location_src_id.id != rec.location_dest_id.id:
+                val = True
+            rec.x_studio_source_validate = val
+
+    @api.model
+    def _get_view(self, view_id=None, view_type="form", **options):
+        arch, view = super()._get_view(view_id, view_type, **options)
+        if view_type == "form":
+            for btn in arch.xpath("//header//button"):
+                if (
+                    btn.get("name") in _HIDDEN_MO_BUTTON_NAMES
+                    or btn.get("string") in _HIDDEN_MO_BUTTON_LABELS
+                ):
+                    btn.set("invisible", "1")
+        return arch, view

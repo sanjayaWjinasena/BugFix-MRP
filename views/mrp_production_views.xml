@@ -47,7 +47,7 @@
                 </xpath>
 
                 <xpath expr="//header/button[@name='action_cancel']" position="before">
-                  <button type="action" name="%(BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no)d" string="Cancel Serial Nos" class="btn-primary" invisible="((x_studio_mass_produced == True) and (x_studio_serial_cancelled == True) and (state != 'draft')) or (x_studio_mass_produced == False)"/>
+                  <button type="action" name="%(BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no)d" string="Cancel Serial Nos" class="btn-primary" invisible="(x_studio_mass_produced == False) or (x_studio_serial_cancelled == True) or (state != 'draft')"/>
                 </xpath>
 
                 <xpath expr="//header/button[@name='action_confirm']" position="attributes">
