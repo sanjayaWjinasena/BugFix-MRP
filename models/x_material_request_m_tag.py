@@ -5,16 +5,16 @@ from odoo import fields, models
 
 class XMaterialRequestMTag(models.Model):
     _name = "x_material_request_m_tag"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _description = "Material Request M Tags"
 
-    x_color = fields.Integer(string="Color")
-    x_name = fields.Char(string="Name")
+    color = fields.Integer(string="Color")
+    name = fields.Char(string="Name")
 
 
 class XMaterialRequestMTagGap(models.Model):
     _inherit = "x_material_request_m_tag"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    x_color = fields.Integer(string="Color")
-    x_name = fields.Char(string="Name", required=True)
+    color = fields.Integer(string="Color")
+    name = fields.Char(string="Name", required=True)

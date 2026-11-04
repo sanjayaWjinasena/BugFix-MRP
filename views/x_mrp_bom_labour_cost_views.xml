@@ -25,11 +25,11 @@
         <form>
   <header/>
   <sheet string="mrp.bom.labour.cost">
-    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="x_active == True"/>
-    <field name="x_active" invisible="1"/>
+    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="active == True"/>
+    <field name="active" invisible="1"/>
     <div class="oe_title">
                 <h1>
-                    <field name="x_name" required="1" placeholder="Name..."/>
+                    <field name="name" required="1" placeholder="Name..."/>
                 </h1>
             </div>
     <group name="studio_group_c9c7f4">
@@ -51,8 +51,8 @@
       <field name="type">tree</field>
       <field name="arch" type="xml">
         <tree>
-  <field name="x_studio_sequence" widget="handle"/>
-  <field name="x_name"/>
+  <field name="sequence" widget="handle"/>
+  <field name="name"/>
 </tree>
       </field>
     </record>
@@ -62,9 +62,9 @@
       <field name="type">search</field>
       <field name="arch" type="xml">
         <search>
-  <field name="x_name"/>
+  <field name="name"/>
   <separator/>
-  <filter string="Archived" name="archived_x_mrp_bom_labour_cost" domain="[['x_active', '=', False]]"/>
+  <filter string="Archived" name="archived_x_mrp_bom_labour_cost" domain="[['active', '=', False]]"/>
   <separator/>
 </search>
       </field>
@@ -78,7 +78,7 @@
       <field name="mode">extension</field>
       <field name="arch" type="xml">
         <data>
-  <xpath expr="//field[@name='x_studio_sequence']" position="before">
+  <xpath expr="//field[@name='sequence']" position="before">
     <field name="x_studio_bom_labour_cost_ids" string="BOM Labour Cost"/>
     <field name="x_studio_prod_bom_labour_cost_ids" string="Prod. BOM Labour Cost"/>
     <field name="x_studio_prod_bom_line_id" string="Prod. BOM Line ID" column_invisible="1"/>
@@ -90,7 +90,7 @@
     <field name="x_studio_total_actual_cost" string="Total Actual Cost"/>
     <field name="x_studio_currency_id" column_invisible="1"/>
   </xpath>
-  <xpath expr="//field[@name='x_name']" position="attributes">
+  <xpath expr="//field[@name='name']" position="attributes">
     <attribute name="column_invisible">1</attribute></xpath>
 </data>
       </field>

@@ -2,7 +2,7 @@
     # upgrade-testing branch: data files below are commented out - this branch installs
     # functions only, no data is seeded.
     "name": "Jinasena : Module : MRP",
-    "version": "17.0.0.0.66",
+    "version": "17.0.0.0.67",
     "summary": "Studio-to-Python port for BugFix-MRP",
     "author": "Jinasena Agricultural Machinery (Pvt) Ltd.",
     "category": "Manufacturing",
@@ -162,7 +162,7 @@
     # v0.0.16: port x_material_request_m_line_af405 custom model (3 fields)
     # and the O2M navigation from x_material_request_m to it.
     #   * models/x_material_request_m_line_af405.py - new model, 3
-    #     Studio x_* fields (x_name, x_studio_sequence, and parent
+    #     Studio x_* fields (name, sequence, and parent
     #     M2O x_material_request_m_id). 0 rows on Clear-DB.
     #   * models/x_material_request_m.py - x_material_request_m_line_ids_af086
     #     TODO comment replaced with real One2many declaration

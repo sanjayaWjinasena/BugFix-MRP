@@ -7,7 +7,7 @@
     <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
-record['x_studio_company_id'] = company.id]]></field>
+record['accounting_company_id'] = company.id]]></field>
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
@@ -19,7 +19,7 @@ record['x_studio_company_id'] = company.id]]></field>
     <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
-record['x_studio_company_id'] = company.id]]></field>
+record['accounting_company_id'] = company.id]]></field>
   </record>
   <record id="base_automation_327_jin_company_id_in_mass_produce_serial_line" model="base.automation">
     <field name="name">JIN - Company Id in Mass Produce Serial Line</field>
@@ -38,7 +38,7 @@ record['x_studio_company_id'] = company.id]]></field>
 company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
 company = env['res.company'].browse(company_id)
 
-record['x_studio_company_id'] = company.id
+record['accounting_company_id'] = company.id
     ]]></field>
   </record>
 </odoo>

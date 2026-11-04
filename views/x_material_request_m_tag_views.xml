@@ -27,7 +27,7 @@
   <sheet string="Material Request M Tags">
     <div class="oe_title">
                 <h1>
-                    <field name="x_name" required="1" placeholder="Name..."/>
+                    <field name="name" required="1" placeholder="Name..."/>
                 </h1>
             </div>
     <group name="studio_group_7c6eda">
@@ -44,8 +44,8 @@
       <field name="type">tree</field>
       <field name="arch" type="xml">
         <tree editable="bottom">
-  <field name="x_name"/>
-  <field name="x_color" widget="color_picker"/>
+  <field name="name"/>
+  <field name="color" widget="color_picker"/>
 </tree>
       </field>
     </record>
@@ -55,7 +55,7 @@
       <field name="type">search</field>
       <field name="arch" type="xml">
         <search>
-  <field name="x_name"/>
+  <field name="name"/>
 </search>
       </field>
     </record>

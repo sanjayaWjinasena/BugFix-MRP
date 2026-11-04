@@ -15,11 +15,11 @@ from odoo import fields, models
 class XMaterialRequestMLineAf405(models.Model):
     _name = "x_material_request_m_line_af405"
     _description = "material_request_m_line"
-    _order = "x_studio_sequence asc, id asc"
-    _rec_name = "x_name"
+    _order = "sequence asc, id asc"
+    _rec_name = "name"
 
-    x_name = fields.Char(string="Description")
-    x_studio_sequence = fields.Integer(string="Sequence")
+    name = fields.Char(string="Description")
+    sequence = fields.Integer(string="Sequence")
     x_material_request_m_id = fields.Many2one(
         "x_material_request_m",
         ondelete="set null",
@@ -28,7 +28,7 @@ class XMaterialRequestMLineAf405(models.Model):
 
 class XMaterialRequestMLineAf405Gap(models.Model):
     _inherit = "x_material_request_m_line_af405"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
     x_material_request_m_id = fields.Many2one(comodel_name="x_material_request_m")
-    x_name = fields.Char(string="Description", required=True)
+    name = fields.Char(string="Description", required=True)

@@ -48,7 +48,7 @@
 company = env['res.company'].browse(company_id)
 
 ctx = env.context
-ctx.update({'default_x_studio_production_id':record.id,'default_x_studio_product_id':record.product_id.id,'default_x_studio_product_qty':record.product_qty,'default_x_studio_sequence_size':4,'default_x_studio_starting_serial_no':1,'default_x_studio_company_id':company.id})
+ctx.update({'default_x_studio_production_id':record.id,'default_x_studio_product_id':record.product_id.id,'default_x_studio_product_qty':record.product_qty,'default_x_studio_sequence_size':4,'default_x_studio_starting_serial_no':1,'default_accounting_company_id':company.id})
 action = {
           'name': 'Mass Produce Serial Nos',
           'type': 'ir.actions.act_window',
@@ -67,9 +67,9 @@ action = {
     <field name="code"><![CDATA[if record.id:
   location = env['stock.location'].search([('id', '=', record.location_dest_id.id)], limit=1)
   if location:
-    location2 = env['stock.location'].search([('location_id', '=', location.location_id.id),('x_studio_finished_good_location', '=', True)], limit=1)
+    location2 = env['stock.location'].search([('location_id', '=', location.location_id.id),('finished_good_location', '=', True)], limit=1)
     if location2:
-      temp = env['stock.location'].search([('x_studio_temp_location', '=', True)], limit=1)
+      temp = env['stock.location'].search([('temp_location', '=', True)], limit=1)
       if temp:
         record['state'] = 'draft'
         record['location_dest_id'] = temp.id

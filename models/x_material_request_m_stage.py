@@ -5,15 +5,15 @@ from odoo import fields, models
 
 class XMaterialRequestMStage(models.Model):
     _name = "x_material_request_m_stage"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _description = "Material Request M Stages"
 
-    x_name = fields.Char(string="Stage Name")
-    x_studio_sequence = fields.Integer(string="Sequence")
+    name = fields.Char(string="Stage Name")
+    sequence = fields.Integer(string="Sequence")
 
 
 class XMaterialRequestMStageGap(models.Model):
     _inherit = "x_material_request_m_stage"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    x_name = fields.Char(string="Stage Name", required=True)
+    name = fields.Char(string="Stage Name", required=True)

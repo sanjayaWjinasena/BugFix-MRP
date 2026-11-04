@@ -10,11 +10,11 @@ class XMrpBomOverheadCos(models.Model):
     _name = "x_mrp_bom_overhead_cos"
     _inherit = ["mail.activity.mixin"]
     _description = "mrp.bom.overhead.cost"
-    _rec_name = "x_name"
-    _order = "x_studio_sequence asc, id asc"
+    _rec_name = "name"
+    _order = "sequence asc, id asc"
 
-    x_active = fields.Boolean(string="Active", default=True)
-    x_name = fields.Char(string="Name")
+    active = fields.Boolean(string="Active", default=True)
+    name = fields.Char(string="Name")
     x_studio_actual_qty = fields.Float(string="Actual Hour")
     x_studio_bom_overhead_cost_ids = fields.Many2one(
         "mrp.bom", string="BOM Overhead Cost", ondelete="set null"
@@ -31,14 +31,14 @@ class XMrpBomOverheadCos(models.Model):
     x_studio_prod_bom_overhead_cost_ids = fields.Many2one(
         "mrp.production", string="Prod. BOM Overhead Cost", ondelete="set null"
     )
-    x_studio_sequence = fields.Integer(string="Sequence")
+    sequence = fields.Integer(string="Sequence")
     x_studio_total_actual_cost = fields.Float(string="Total Actual Cost")
     x_studio_total_cost = fields.Float(string="Total Cost")
 
 
 class XMrpBomOverheadCosGap(models.Model):
     _inherit = "x_mrp_bom_overhead_cos"
-    _rec_name = "x_name"  # Clear-DB Studio model: records are named by x_name
+    _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    x_active = fields.Boolean(string="Active")
-    x_name = fields.Char(string="Name")
+    active = fields.Boolean(string="Active")
+    name = fields.Char(string="Name")

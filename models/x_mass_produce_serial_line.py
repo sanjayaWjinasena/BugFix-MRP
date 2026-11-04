@@ -10,12 +10,12 @@ class XMassProduceSerialLine(models.Model):
     _name = "x_mass_produce_serial_"
     _inherit = ["mail.activity.mixin"]
     _description = "Mass Produce Serial Line"
-    _rec_name = "x_name"
-    _order = "x_studio_sequence asc, id asc"
+    _rec_name = "name"
+    _order = "sequence asc, id asc"
 
-    x_active = fields.Boolean(string="Active", default=True)
-    x_name = fields.Char(string="Name")
-    x_studio_company_id = fields.Many2one("res.company", string="Company")
+    active = fields.Boolean(string="Active", default=True)
+    name = fields.Char(string="Name")
+    accounting_company_id = fields.Many2one("res.company", string="Company")
     x_studio_lot_serial_id = fields.Many2one(
         "stock.lot", string="Lot/Serial Number", ondelete="set null"
     )
@@ -34,7 +34,7 @@ class XMassProduceSerialLine(models.Model):
         "mrp.production", string="Production Order", ondelete="set null"
     )
     x_studio_production_order = fields.Char(string="Production Order")
-    x_studio_sequence = fields.Integer(string="Sequence")
+    sequence = fields.Integer(string="Sequence")
     x_studio_sequence_size = fields.Integer(string="Sequence Size")
     x_studio_serial_no_prefix = fields.Char(string="Serial No Prefix")
     x_studio_starting_no = fields.Char(string="Starting No")

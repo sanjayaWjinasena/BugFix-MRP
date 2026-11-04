@@ -23,7 +23,7 @@
       <field name="type">tree</field>
       <field name="active" eval="False"/>
       <field name="arch" type="xml">
-        <tree string="Mass Produce Serial Line"><field name="x_name"/></tree>
+        <tree string="Mass Produce Serial Line"><field name="name"/></tree>
       </field>
     </record>
 </odoo>

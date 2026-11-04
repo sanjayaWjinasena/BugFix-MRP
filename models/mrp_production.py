@@ -105,7 +105,7 @@ class MrpProduction(models.Model):
     x_studio_super_user_melt_items = fields.Boolean(
         string="Super User (Melt Items)", readonly=True
     )
-    x_studio_temp_location = fields.Boolean(string="Temp Location", readonly=True)
+    temp_location = fields.Boolean(string="Temp Location", readonly=True)
     x_studio_total_actual_general_cost = fields.Float(
         string="Total Actual General Cost", readonly=True
     )

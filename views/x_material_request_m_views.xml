@@ -14,14 +14,14 @@
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <tree>
-              <field name="x_name"/>
+              <field name="name"/>
               <field name="x_studio_partner_id"/>
               <field name="x_studio_user_id" widget="many2one_avatar_user"/>
-              <field name="x_studio_company_id" groups="base.group_multi_company"/>
+              <field name="accounting_company_id" groups="base.group_multi_company"/>
               <field name="x_studio_currency_id" invisible="1"/>
               <field name="x_studio_value" sum="Total"/>
-              <field name="x_studio_tag_ids" widget="many2many_tags" options="{'color_field': 'x_color'}"/>
-              <field name="x_color" widget="color_picker"/>
+              <field name="x_studio_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+              <field name="color" widget="color_picker"/>
             </tree>
         </field>
     </record>
@@ -38,12 +38,12 @@
               </header>
               <sheet string="Material Request M">
                 <field name="x_studio_kanban_state" widget="state_selection"/>
-                <widget name="web_ribbon" text="Archived" bg_color="text-bg-danger" invisible="x_active"/>
-                <field name="x_active" invisible="1"/>
+                <widget name="web_ribbon" text="Archived" bg_color="text-bg-danger" invisible="active"/>
+                <field name="active" invisible="1"/>
                 <field class="oe_avatar" widget="image" name="x_studio_image"/>
                 <div class="oe_title">
                             <h1>
-                                <field name="x_name" required="1" placeholder="Name..."/>
+                                <field name="name" required="1" placeholder="Name..."/>
                             </h1>
                         </div>
                 <group name="studio_group_e2fd3f">
@@ -59,8 +59,8 @@
                     <field name="x_studio_user_id" widget="many2one_avatar_user"/>
                     <field name="x_studio_currency_id" invisible="1"/>
                     <field name="x_studio_value"/>
-                    <field name="x_studio_tag_ids" widget="many2many_tags" options="{'color_field': 'x_color'}"/>
-                    <field name="x_studio_company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="x_studio_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="accounting_company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                   </group>
                 </group>
                 <group>
@@ -84,7 +84,7 @@
         <field name="mode">primary</field>
         <field name="arch" type="xml">
             <search>
-              <field name="x_name"/>
+              <field name="name"/>
               <field name="x_studio_partner_id" operator="child_of"/>
               <field name="x_studio_user_id"/>
               <field name="x_studio_tag_ids"/>
@@ -94,7 +94,7 @@
               <filter date="x_studio_date_start" name="studio_filter_date_start" string="Start Date"/>
               <filter date="x_studio_date_stop" name="studio_filter_date_stop" string="End Date"/>
               <separator/>
-              <filter string="Archived" name="archived_x_material_request_m" domain="[['x_active', '=', False]]"/>
+              <filter string="Archived" name="archived_x_material_request_m" domain="[['active', '=', False]]"/>
               <separator/>
               <filter name="groupby_x_partner" string="Partner" context="{'group_by': 'x_studio_partner_id'}" domain="[]"/>
               <filter name="groupby_x_user" string="Responsible" context="{'group_by': 'x_studio_user_id'}" domain="[]"/>
@@ -109,21 +109,21 @@
         <field name="priority">16</field>
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="x_studio_stage_id" default_order="x_studio_priority desc, x_studio_sequence asc, id desc">
-              <field name="x_color"/>
+            <kanban default_group_by="x_studio_stage_id" default_order="custom_reports_priority desc, sequence asc, id desc">
+              <field name="color"/>
               <field name="x_studio_user_id" widget="many2one_avatar_user"/>
               <field name="x_studio_currency_id"/>
               <progressbar field="x_studio_kanban_state" colors="{&quot;normal&quot;: &quot;200&quot;, &quot;done&quot;: &quot;success&quot;, &quot;blocked&quot;: &quot;danger&quot;}" sum_field="x_studio_value"/>
               <templates>
                 <t t-name="kanban-box">
-                  <div t-attf-class="#{!selection_mode ? kanban_color(record.x_color.raw_value) : ''} oe_kanban_global_click">
+                  <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click">
                     <field class="o_kanban_image" name="x_studio_image" widget="image" options="{&quot;zoom&quot;: true, &quot;background&quot;: true, &quot;preventClicks&quot;: false}"/>
                     <div class="o_kanban_record_details">
                       <div class="o_kanban_record_top" name="studio_auto_kanban_top">
                         <div class="o_kanban_record_headings" name="studio_auto_kanban_headings">
-                          <field name="x_studio_priority" widget="boolean_favorite" nolabel="1"/>
+                          <field name="custom_reports_priority" widget="boolean_favorite" nolabel="1"/>
                           <strong class="o_kanban_record_title" name="studio_auto_kanban_title">
-                            <field name="x_name"/>
+                            <field name="name"/>
                           </strong>
                         </div>
                         <div class="o_dropdown_kanban dropdown">
@@ -133,12 +133,12 @@
                           <div class="dropdown-menu" role="menu">
                             <a t-if="widget.editable" role="menuitem" type="edit" class="dropdown-item">Edit</a>
                             <a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete</a>
-                            <ul class="oe_kanban_colorpicker" data-field="x_color"/>
+                            <ul class="oe_kanban_colorpicker" data-field="color"/>
                           </div>
                         </div>
                       </div>
                       <div class="o_kanban_record_body" name="studio_auto_kanban_body">
-                        <field name="x_studio_tag_ids" options="{'color_field': 'x_color'}"/>
+                        <field name="x_studio_tag_ids" options="{'color_field': 'color'}"/>
                       </div>
                       <div class="o_kanban_record_bottom" name="studio_auto_kanban_bottom">
                         <div class="oe_kanban_bottom_left" name="studio_auto_kanban_bottom_left">
@@ -162,7 +162,7 @@
       <field name="model">x_material_request_m</field>
       <field name="type">calendar</field>
       <field name="arch" type="xml">
-        <calendar date_start="x_studio_date" create_name_field="x_name"/>
+        <calendar date_start="x_studio_date" create_name_field="name"/>
       </field>
     </record>
     <record id="view_8748_default_gantt_view_for_x_material_request_m_e" model="ir.ui.view">

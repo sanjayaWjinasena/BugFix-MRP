@@ -44,7 +44,7 @@
                     <page string="Direct Material Cost" name="studio_page_e1zSq">
                         <field name="x_studio_one2many_field_4rhw9" string="Direct Material Cost">
                             <tree editable="bottom" create="false" edit="false" delete="false">
-                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="sequence" widget="handle"/>
                                 <field name="x_studio_line_id" string="BOM Line ID" column_invisible="1"/>
                                 <field name="x_studio_bom_material_cost_ids" string="BOM Material Cost" column_invisible="1"/>
                                 <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
@@ -54,7 +54,7 @@
                                 <field name="x_studio_cost" string="Cost/Unit" widget="monetary"/>
                                 <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
                                 <field name="x_studio_currency_id" column_invisible="1"/>
-                                <field name="x_name" column_invisible="1"/>
+                                <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_a8a1d8">
@@ -66,13 +66,13 @@
                         <field name="x_studio_one2many_field_jPlQP" string="Direct Labour Cost">
                             <tree editable="bottom" create="false" edit="false" delete="false">
                                 <field name="x_studio_bom_labour_cost_ids" string="BOM Labour Cost" column_invisible="1"/>
-                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="sequence" widget="handle"/>
                                 <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
                                 <field name="x_studio_planned_qty" string="Planned Hour"/>
                                 <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
                                 <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
                                 <field name="x_studio_currency_id" column_invisible="1"/>
-                                <field name="x_name" column_invisible="1"/>
+                                <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_f215d5">
@@ -84,13 +84,13 @@
                         <field name="x_studio_one2many_field_bOopH" string="Direct Overhead Cost">
                             <tree editable="bottom" create="false" edit="false" delete="false">
                                 <field name="x_studio_bom_overhead_cost_ids" string="BOM Overhead Cost" column_invisible="1"/>
-                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="sequence" widget="handle"/>
                                 <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
                                 <field name="x_studio_planned_qty" string="Planned Hour"/>
                                 <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
                                 <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
                                 <field name="x_studio_currency_id" column_invisible="1"/>
-                                <field name="x_name" column_invisible="1"/>
+                                <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_737d17">
@@ -102,13 +102,13 @@
                         <field name="x_studio_direct_general_cost">
                             <tree create="false" edit="false" delete="false" editable="bottom">
                                 <field name="x_studio_bom_general_cost_ids" string="BOM General Cost" column_invisible="1"/>
-                                <field name="x_studio_sequence" widget="handle"/>
+                                <field name="sequence" widget="handle"/>
                                 <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
                                 <field name="x_studio_planned_qty" string="Planned Hour"/>
                                 <field name="x_studio_cost" string="Cost/Hour"/>
                                 <field name="x_studio_total_cost" string="Total Cost"/>
                                 <field name="x_studio_currency_id" column_invisible="1"/>
-                                <field name="x_name" column_invisible="1"/>
+                                <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_1ba92e">

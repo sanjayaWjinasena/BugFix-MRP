@@ -50,7 +50,7 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='x_studio_last_serial_no_id']" position="after">
-                    <field name="x_studio_company_id" string="Company" invisible="1"/>
+                    <field name="accounting_company_id" string="Company" invisible="1"/>
                 </xpath>
             </data>
         </field>
@@ -78,7 +78,7 @@
       <field name="type">tree</field>
       <field name="active" eval="False"/>
       <field name="arch" type="xml">
-        <tree string="Mass Produce Serial"><field name="x_name"/></tree>
+        <tree string="Mass Produce Serial"><field name="name"/></tree>
       </field>
     </record>
 </odoo>
