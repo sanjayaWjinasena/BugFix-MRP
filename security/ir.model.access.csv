@@ -1,14 +1,14 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_x_material_request_m_user,x_material_request_m user access,model_x_material_request_m,base.group_user,1,1,1,1
-access_x_material_request_m_stage_user,x_material_request_m_stage user access,model_x_material_request_m_stage,base.group_user,1,1,1,1
-access_x_material_request_m_tag_user,x_material_request_m_tag user access,model_x_material_request_m_tag,base.group_user,1,1,1,1
-access_x_material_request_m_line_af405_user,x_material_request_m_line_af405 user access,model_x_material_request_m_line_af405,base.group_user,1,1,1,1
-access_x_mrp_bom_material_cos_user,x_mrp_bom_material_cos user access,model_x_mrp_bom_material_cos,base.group_user,1,1,1,1
-access_x_mrp_bom_labour_cost_user,x_mrp_bom_labour_cost user access,model_x_mrp_bom_labour_cost,base.group_user,1,1,1,1
-access_x_mrp_bom_overhead_cos_user,x_mrp_bom_overhead_cos user access,model_x_mrp_bom_overhead_cos,base.group_user,1,1,1,1
-access_x_mrp_bom_general_cost_user,x_mrp_bom_general_cost user access,model_x_mrp_bom_general_cost,base.group_user,1,1,1,1
-access_x_mass_produce_serial_user,x_mass_produce_serial user access,model_x_mass_produce_serial,base.group_user,1,1,1,1
-access_x_mass_produce_serial_line_user,x_mass_produce_serial_ user access,model_x_mass_produce_serial_,base.group_user,1,1,1,1
+access_x_material_request_m_user,material_request_m user access,model_material_request_m,base.group_user,1,1,1,1
+access_x_material_request_m_stage_user,material_request_m_stage user access,model_material_request_m_stage,base.group_user,1,1,1,1
+access_x_material_request_m_tag_user,material_request_m_tag user access,model_material_request_m_tag,base.group_user,1,1,1,1
+access_x_material_request_m_line_af405_user,material_request_m_line_af405 user access,model_material_request_m_line_af405,base.group_user,1,1,1,1
+access_x_mrp_bom_material_cos_user,mrp_bom_material_cos user access,model_mrp_bom_material_cos,base.group_user,1,1,1,1
+access_x_mrp_bom_labour_cost_user,mrp_bom_labour_cost user access,model_mrp_bom_labour_cost,base.group_user,1,1,1,1
+access_x_mrp_bom_overhead_cos_user,mrp_bom_overhead_cos user access,model_mrp_bom_overhead_cos,base.group_user,1,1,1,1
+access_x_mrp_bom_general_cost_user,mrp_bom_general_cost user access,model_mrp_bom_general_cost,base.group_user,1,1,1,1
+access_x_mass_produce_serial_user,mass_produce_serial user access,model_mass_produce_serial,base.group_user,1,1,1,1
+access_x_mass_produce_serial_line_user,mass_produce_serial_ user access,model_mass_produce_serial_,base.group_user,1,1,1,1
 access_6250_inv___administrator,Inv - Administrator,BugFix-MRP.model_mrp_bom,stock.group_stock_manager,1,1,1,1
 access_6852_mrp_bom,mrp.bom,BugFix-MRP.model_mrp_bom,BugFix-Approvals.group_132_jin_sales_pos_users,1,0,0,0
 access_6969_user,User,mrp.model_mrp_bom_byproduct,stock.group_stock_user,1,0,0,0
@@ -20,24 +20,24 @@ access_6863_quality_check,quality.check,mrp_workorder.model_quality_check,BugFix
 access_6267_inv___administrator,Inv - Administrator,mrp_workorder.model_quality_point,stock.group_stock_manager,1,1,1,1
 access_6862_quality_point,quality.point,mrp_workorder.model_quality_point,BugFix-Approvals.group_132_jin_sales_pos_users,1,0,0,0
 access_6089_user,User,mrp_workorder.model_quality_point,helpdesk.group_helpdesk_user,1,0,0,0
-access_1215_mass_produce_serial_group_user,Mass Produce Serial group_user,BugFix-MRP.model_x_mass_produce_serial,base.group_user,1,0,0,0
-access_1214_mass_produce_serial_group_system,Mass Produce Serial group_system,BugFix-MRP.model_x_mass_produce_serial,base.group_system,1,1,1,1
-access_1217_mass_produce_serial_line_group_user,Mass Produce Serial Line group_user,BugFix-MRP.model_x_mass_produce_serial_,base.group_user,1,0,0,0
-access_1216_mass_produce_serial_line_group_system,Mass Produce Serial Line group_system,BugFix-MRP.model_x_mass_produce_serial_,base.group_system,1,1,1,1
-access_8284_material_request_m_group_user,Material Request M group_user,BugFix-MRP.model_x_material_request_m,base.group_user,1,1,1,0
-access_8283_material_request_m_group_system,Material Request M group_system,BugFix-MRP.model_x_material_request_m,base.group_system,1,1,1,1
-access_8286_material_request_m_line_group_user,material_request_m_line group_user,BugFix-MRP.model_x_material_request_m_line_af405,base.group_user,1,1,1,0
-access_8285_material_request_m_line_group_system,material_request_m_line group_system,BugFix-MRP.model_x_material_request_m_line_af405,base.group_system,1,1,1,1
-access_8288_material_request_m_stages_group_user,Material Request M Stages group_user,BugFix-MRP.model_x_material_request_m_stage,base.group_user,1,1,1,0
-access_8287_material_request_m_stages_group_system,Material Request M Stages group_system,BugFix-MRP.model_x_material_request_m_stage,base.group_system,1,1,1,1
-access_8290_material_request_m_tags_group_user,Material Request M Tags group_user,BugFix-MRP.model_x_material_request_m_tag,base.group_user,1,1,1,0
-access_8289_material_request_m_tags_group_system,Material Request M Tags group_system,BugFix-MRP.model_x_material_request_m_tag,base.group_system,1,1,1,1
-access_1209_mrp_bom_general_cost_group_user,mrp.bom.general.cost group_user,BugFix-MRP.model_x_mrp_bom_general_cost,base.group_user,1,0,0,0
-access_1208_mrp_bom_general_cost_group_system,mrp.bom.general.cost group_system,BugFix-MRP.model_x_mrp_bom_general_cost,base.group_system,1,1,1,1
-access_1205_mrp_bom_labour_cost_group_user,mrp.bom.labour.cost group_user,BugFix-MRP.model_x_mrp_bom_labour_cost,base.group_user,1,0,0,0
-access_1204_mrp_bom_labour_cost_group_system,mrp.bom.labour.cost group_system,BugFix-MRP.model_x_mrp_bom_labour_cost,base.group_system,1,1,1,1
-access_1203_mrp_bom_material_cost_group_user,mrp.bom.material.cost group_user,BugFix-MRP.model_x_mrp_bom_material_cos,base.group_user,1,0,0,0
-access_1202_mrp_bom_material_cost_group_system,mrp.bom.material.cost group_system,BugFix-MRP.model_x_mrp_bom_material_cos,base.group_system,1,1,1,1
-access_1207_mrp_bom_overhead_cost_group_user,mrp.bom.overhead.cost group_user,BugFix-MRP.model_x_mrp_bom_overhead_cos,base.group_user,1,0,0,0
-access_1206_mrp_bom_overhead_cost_group_system,mrp.bom.overhead.cost group_system,BugFix-MRP.model_x_mrp_bom_overhead_cos,base.group_system,1,1,1,1
+access_1215_mass_produce_serial_group_user,Mass Produce Serial group_user,BugFix-MRP.model_mass_produce_serial,base.group_user,1,0,0,0
+access_1214_mass_produce_serial_group_system,Mass Produce Serial group_system,BugFix-MRP.model_mass_produce_serial,base.group_system,1,1,1,1
+access_1217_mass_produce_serial_line_group_user,Mass Produce Serial Line group_user,BugFix-MRP.model_mass_produce_serial_,base.group_user,1,0,0,0
+access_1216_mass_produce_serial_line_group_system,Mass Produce Serial Line group_system,BugFix-MRP.model_mass_produce_serial_,base.group_system,1,1,1,1
+access_8284_material_request_m_group_user,Material Request M group_user,BugFix-MRP.model_material_request_m,base.group_user,1,1,1,0
+access_8283_material_request_m_group_system,Material Request M group_system,BugFix-MRP.model_material_request_m,base.group_system,1,1,1,1
+access_8286_material_request_m_line_group_user,material_request_m_line group_user,BugFix-MRP.model_material_request_m_line_af405,base.group_user,1,1,1,0
+access_8285_material_request_m_line_group_system,material_request_m_line group_system,BugFix-MRP.model_material_request_m_line_af405,base.group_system,1,1,1,1
+access_8288_material_request_m_stages_group_user,Material Request M Stages group_user,BugFix-MRP.model_material_request_m_stage,base.group_user,1,1,1,0
+access_8287_material_request_m_stages_group_system,Material Request M Stages group_system,BugFix-MRP.model_material_request_m_stage,base.group_system,1,1,1,1
+access_8290_material_request_m_tags_group_user,Material Request M Tags group_user,BugFix-MRP.model_material_request_m_tag,base.group_user,1,1,1,0
+access_8289_material_request_m_tags_group_system,Material Request M Tags group_system,BugFix-MRP.model_material_request_m_tag,base.group_system,1,1,1,1
+access_1209_mrp_bom_general_cost_group_user,mrp.bom.general.cost group_user,BugFix-MRP.model_mrp_bom_general_cost,base.group_user,1,0,0,0
+access_1208_mrp_bom_general_cost_group_system,mrp.bom.general.cost group_system,BugFix-MRP.model_mrp_bom_general_cost,base.group_system,1,1,1,1
+access_1205_mrp_bom_labour_cost_group_user,mrp.bom.labour.cost group_user,BugFix-MRP.model_mrp_bom_labour_cost,base.group_user,1,0,0,0
+access_1204_mrp_bom_labour_cost_group_system,mrp.bom.labour.cost group_system,BugFix-MRP.model_mrp_bom_labour_cost,base.group_system,1,1,1,1
+access_1203_mrp_bom_material_cost_group_user,mrp.bom.material.cost group_user,BugFix-MRP.model_mrp_bom_material_cos,base.group_user,1,0,0,0
+access_1202_mrp_bom_material_cost_group_system,mrp.bom.material.cost group_system,BugFix-MRP.model_mrp_bom_material_cos,base.group_system,1,1,1,1
+access_1207_mrp_bom_overhead_cost_group_user,mrp.bom.overhead.cost group_user,BugFix-MRP.model_mrp_bom_overhead_cos,base.group_user,1,0,0,0
+access_1206_mrp_bom_overhead_cost_group_system,mrp.bom.overhead.cost group_system,BugFix-MRP.model_mrp_bom_overhead_cos,base.group_system,1,1,1,1
 

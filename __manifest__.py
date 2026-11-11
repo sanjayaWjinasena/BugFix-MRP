@@ -2,7 +2,7 @@
     # upgrade-testing branch: data files below are commented out - this branch installs
     # functions only, no data is seeded.
     "name": "Jinasena : Module : MRP",
-    "version": "17.0.0.0.67",
+    "version": "17.0.0.0.68",
     "summary": "Studio-to-Python port for BugFix-MRP",
     "author": "Jinasena Agricultural Machinery (Pvt) Ltd.",
     "category": "Manufacturing",
@@ -10,20 +10,20 @@
     # Do NOT depend on studio_customization -- Odoo SH does not ship
     # a manifest for it, listing it causes install skip.
     # v0.0.27: hotfix for v0.0.26 install failure.
-    # KeyError: 'x_studio_mass_produce_serial_ids' at registry setup.
-    # models/x_mass_produce_serial.py declared its O2M with comodel
+    # KeyError: 'mass_produce_serial_ids' at registry setup.
+    # models/mass_produce_serial.py declared its O2M with comodel
     # 'x_mass_produce_serial_line' (my file-name idea) but the child
-    # model's actual _name is 'x_mass_produce_serial_' (Studio-truncated
+    # model's actual _name is 'mass_produce_serial_' (Studio-truncated
     # 24-char limit). File name != model name -- Odoo resolved a stub
     # comodel with no _fields dict, KeyError on inverse lookup.
-    # Fix: change comodel to 'x_mass_produce_serial_' (trailing
+    # Fix: change comodel to 'mass_produce_serial_' (trailing
     # underscore) to match the child model's _name declaration.
-    # v0.0.26: x_mass_produce_serial wizard - un-defers server action 1147
+    # v0.0.26: mass_produce_serial wizard - un-defers server action 1147
     # (Mass Produce Serial Nos button on 3946 mrp.production form) end-to-end.
     # Completes the runtime deferrals list from docs/DEFERRED.md.
-    #   * models/x_mass_produce_serial.py (14 fields, parent wizard)
-    #   * models/x_mass_produce_serial_line.py (16 fields, line records.
-    #     Model _name = 'x_mass_produce_serial_' with trailing underscore
+    #   * models/mass_produce_serial.py (14 fields, parent wizard)
+    #   * models/mass_produce_serial_line.py (16 fields, line records.
+    #     Model _name = 'mass_produce_serial_' with trailing underscore
     #     -- Studio truncated at 24-char model-name limit).
     #   * 3 new server actions in data/server_actions.xml:
     #     1149 Generate  - creates line records for the requested serial range
@@ -67,21 +67,21 @@
     #     with 5 fields on mrp.routing.workcenter (all state=base).
     # v0.0.23: 4 custom cost sub-models + 8 parent O2M inverses.
     # Foundation ships; views 2325 + 2574 land in later versions.
-    #   * models/x_mrp_bom_material_cos.py  (17 fields, 1805 Clear-DB rows)
-    #   * models/x_mrp_bom_labour_cost.py   (17 fields, 1605 rows)
-    #   * models/x_mrp_bom_overhead_cos.py  (13 fields, 1605 rows)
-    #   * models/x_mrp_bom_general_cost.py  (13 fields, 1605 rows)
+    #   * models/mrp_bom_material_cos.py  (17 fields, 1805 Clear-DB rows)
+    #   * models/mrp_bom_labour_cost.py   (17 fields, 1605 rows)
+    #   * models/mrp_bom_overhead_cos.py  (13 fields, 1605 rows)
+    #   * models/mrp_bom_general_cost.py  (13 fields, 1605 rows)
     # Model names truncated to 24 chars per Studio quirk (_cos not _cost
     # for material + overhead). Each child has 2 parent M2Os:
     # x_studio_bom_*_cost_ids (-> mrp.bom, cascade) and
     # x_studio_prod_bom_*_cost_ids (-> mrp.production, cascade), plus
     # operation_id, prod_bom_line_id refs.
     #   * models/mrp_bom.py: 4 TODO O2Ms un-TODO'd with proper inverse
-    #     names (x_studio_direct_general_cost, x_studio_one2many_field_
+    #     names (direct_general_cost, x_studio_one2many_field_
     #     4rhw9/bOopH/jPlQP -- names verbatim from Studio).
     #   * models/mrp_production.py: 4 TODO O2Ms un-TODO'd similarly
-    #     (x_studio_direct_general_cost, x_studio_direct_material_cost,
-    #     x_studio_one2many_field_Fzcvl/vg1OS).
+    #     (direct_general_cost, direct_material_cost,
+    #     one2many_field_Fzcvl/vg1OS).
     #   * security/ir_model_pins.xml + ir.model.access.csv: 4 model pin
     #     records + 4 base.group_user ACL rows.
     # Unblocks: server action 1057 runtime (Update Costs in BOM),
@@ -103,8 +103,8 @@
     # [base_setup, maintenance] -- adding this edge stays acyclic.
     # v0.0.21: view 4830 mrp.eco form (1634b) + 2 field ports on mrp.eco.
     # See views/mrp_studio_ported_v3.xml.
-    #   * models/mrp_eco.py: x_studio_error (Char) + x_studio_tag_description
-    #     (Char) added alongside v0.0.18's x_studio_item_approved boolean.
+    #   * models/mrp_eco.py: error (Char) + tag_description
+    #     (Char) added alongside v0.0.18's item_approved boolean.
     #   * 4830 form: byte-verbatim Studio arch. 8 xpath positions
     #     (approve/action_apply approval-gating, product_tmpl_id, bom_id x2,
     #     effectivity, tag_ids x2). 2 sentinels injected for state + type.
@@ -119,7 +119,7 @@
     #     - 1147 Mass Produce Serial Numbers (on mrp.production)
     #     - 2534 Finished Products Location Updated (on mrp.production)
     #     - 3202 Mass Produce Serial Numbers - Cancel Serial No (on mrp.production)
-    #     All 4 reference custom models (x_mrp_bom_material_cos, x_mass_produce_serial,
+    #     All 4 reference custom models (mrp_bom_material_cos, mass_produce_serial,
     #     etc.) via lazy env['x_...'] lookups; safe at install, runtime button
     #     clicks may fail until those models are ported.
     #   * 3945 mrp.bom form: "Update Cost" button in header (references 1057).
@@ -128,13 +128,13 @@
     #     7 sentinel <field invisible="1"/> injected for x_studio_* fields
     #     referenced in modifier expressions.
     #   * 3953 mrp.workorder tablet form: RESTORED from v0.0.18 rollback.
-    #     Enabled by new BugFix-Stock dep -- stock.lot.x_studio_production_id
+    #     Enabled by new BugFix-Stock dep -- stock.lot.production_id
     #     now resolves at BugFix-MRP install time.
     # New deps: BugFix-Stock (for 3953 domain field), mrp_workorder
     # (for 3953 inherit target). BugFix-Stock has no dep on any BugFix-*
     # repo -- adding this edge stays acyclic (verified against manifest).
     # v0.0.19: v0.0.18 minus view 3953 (mrp.workorder tablet form).
-    # 3953's domain references stock.lot.x_studio_production_id which
+    # 3953's domain references stock.lot.production_id which
     # is pinned to BugFix-Stock. Not in our depends chain -> field not
     # yet in registry at BugFix-MRP install time -> "Unknown field in
     # domain" ParseError. Rolled back cleanly. mrp_workorder dep also
@@ -147,42 +147,42 @@
     #   * 3151 mrp.workcenter.tree                 (620b)  OK
     #   * 5062 mrp.eco.view.tree                   (278b)  OK
     #   * 3953 mrp.workorder.view.form (tablet)    (642b)  FAILED
-    # New model file mrp_eco.py declares x_studio_item_approved (boolean).
+    # New model file mrp_eco.py declares item_approved (boolean).
     # Deferred: 4830 mrp.eco form (1634b) - 3 missing fields plus 10
     # undeclared modifier refs need sentinel injection; batched later.
     # v0.0.17: first view-port wave - 4 primary Default views for
-    # x_material_request_m. See views/x_material_request_m_studio_ported.xml.
+    # material_request_m. See views/x_material_request_m_studio_ported.xml.
     #   * 8744 tree   (456b)
     #   * 8745 form   (2026b) - oe_chatter stripped (model lacks mail.thread)
     #   * 8746 search (1016b)
     #   * 8749 kanban (2928b)
     # 0 hardcoded action refs, 0 undeclared modifier fields, 0 missing
-    # field refs on repair-test-101. x_material_request_m_line_ids_af086
+    # field refs on repair-test-101. material_request_m_line_ids_af086
     # O2M (referenced by 8745 form) resolves via v0.0.16 field port.
-    # v0.0.16: port x_material_request_m_line_af405 custom model (3 fields)
-    # and the O2M navigation from x_material_request_m to it.
-    #   * models/x_material_request_m_line_af405.py - new model, 3
+    # v0.0.16: port material_request_m_line_af405 custom model (3 fields)
+    # and the O2M navigation from material_request_m to it.
+    #   * models/material_request_m_line_af405.py - new model, 3
     #     Studio x_* fields (name, sequence, and parent
-    #     M2O x_material_request_m_id). 0 rows on Clear-DB.
-    #   * models/x_material_request_m.py - x_material_request_m_line_ids_af086
+    #     M2O material_request_m_id). 0 rows on Clear-DB.
+    #   * models/material_request_m.py - material_request_m_line_ids_af086
     #     TODO comment replaced with real One2many declaration
-    #     targeting the new model via x_material_request_m_id inverse.
+    #     targeting the new model via material_request_m_id inverse.
     #   * security/ir_model_pins.xml + ir.model.access.csv: pin +
     #     base.group_user rw access for the new model.
     # v0.0.15: wire 3 base.automation stubs + port 2 backing server actions.
     #   * data/server_actions.xml grows from 2 to 4 records:
     #     1155 Update Original MO in MO (247b, on mrp.production)
     #     1738 SRM Auto Populate Report Type in Production Order (209b,
-    #          on mrp.production; runtime lookup on x_sales_report_type)
+    #          on mrp.production; runtime lookup on sales_report_type)
     #   * data/automations.xml: all 3 TODO comments replaced by
     # <field name="action_server_ids" eval="[(6, 0, [ref('server_action_NNNN_...')])]"/>
     #     Trigger semantics preserved.
     #   * 3 base.automation records now actually invoke their server
     #     actions on trigger; previously they were silent no-ops.
     # Mirrors BugFix-Stock v0.0.15 + BugFix-Accounting v0.0.47 pattern.
-    # v0.0.13: added Jinasena_Masterdata_Reporting - owns x_sales_report_type
+    # v0.0.13: added Jinasena_Masterdata_Reporting - owns sales_report_type
     # which our mrp.production Many2one targets. Sentinel Python class
-    # for x_sales_report_type removed in favor of the consolidated
+    # for sales_report_type removed in favor of the consolidated
     # masterdata module.
     "depends": [
         "base_setup",
@@ -209,34 +209,34 @@
         "data/mrp_eco_data.xml",
         "data/mrp_production_data.xml",
         "data/mrp_workcenter_data.xml",
-        "data/x_mass_produce_serial__data.xml",
-        "data/x_mass_produce_serial_data.xml",
+        "data/mass_produce_serial__data.xml",
+        "data/mass_produce_serial_data.xml",
         "data/mrp_bom_data.xml",
         "data/mrp_bom_line_data.xml",
         "data/mrp_routing_workcenter_data.xml",
         "data/mrp_workorder_data.xml",
-        "data/x_material_request_m_data.xml",
-        "data/x_mrp_bom_general_cost_data.xml",
-        "data/x_mrp_bom_labour_cost_data.xml",
-        "data/x_mrp_bom_material_cos_data.xml",
-        "data/x_mrp_bom_overhead_cos_data.xml",
+        "data/material_request_m_data.xml",
+        "data/mrp_bom_general_cost_data.xml",
+        "data/mrp_bom_labour_cost_data.xml",
+        "data/mrp_bom_material_cos_data.xml",
+        "data/mrp_bom_overhead_cos_data.xml",
         "views/mrp_bom_views.xml",
         "views/mrp_workcenter_productivity_views.xml",
-        "views/x_material_request_m_views.xml",
+        "views/material_request_m_views.xml",
         "views/mrp_eco_views.xml",
         "views/mrp_production_views.xml",
         "views/mrp_workcenter_views.xml",
         "views/mrp_workorder_views.xml",
-        "views/x_mass_produce_serial_views.xml",
+        "views/mass_produce_serial_views.xml",
         "views/mrp_eco_bom_change_views.xml",
-        "views/x_mass_produce_serial__views.xml",
-        "views/x_material_request_m_stage_views.xml",
-        "views/x_material_request_m_tag_views.xml",
-        "views/x_mrp_bom_general_cost_views.xml",
-        "views/x_mrp_bom_labour_cost_views.xml",
-        "views/x_mrp_bom_material_cos_views.xml",
-        "views/x_mrp_bom_overhead_cos_views.xml",
-        "views/x_material_request_m_line_af405_views.xml",
+        "views/mass_produce_serial__views.xml",
+        "views/material_request_m_stage_views.xml",
+        "views/material_request_m_tag_views.xml",
+        "views/mrp_bom_general_cost_views.xml",
+        "views/mrp_bom_labour_cost_views.xml",
+        "views/mrp_bom_material_cos_views.xml",
+        "views/mrp_bom_overhead_cos_views.xml",
+        "views/material_request_m_line_af405_views.xml",
         "views/bugfix_mrp_menus.xml",
     ],
     "post_init_hook": "post_init_hook",

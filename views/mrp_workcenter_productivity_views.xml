@@ -17,7 +17,7 @@
                 <field name="production_id" optional="show"/>
               </xpath>
               <xpath expr="//field[@name='user_id']" position="after">
-                <field optional="show" name="x_studio_employee" string="Employee"/>
+                <field optional="show" name="employee" string="Employee"/>
               </xpath>
             </data>
         </field>

@@ -1169,7 +1169,7 @@
   <!--
   <record id="access_7281_mass_produce_serial_group_user" model="ir.model.access">
     <field name="name">Mass Produce Serial group_user</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial"/>
     <field name="group_id" ref="BugFix-Studio-Misc.group_g_manufacturing_jin_manufacturing_mo_creator"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -1181,7 +1181,7 @@
   <!--
   <record id="access_7249_jin___manufacturing____mo_full_writes____mps" model="ir.model.access">
     <field name="name">Jin - Manufacturing -  MO Full Writes  + MPS</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial"/>
     <field name="group_id" ref="BugFix-Studio-Misc.group_g_manufacturing_jin_manufacturing_master_plan_creator_add_a_product"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -1193,7 +1193,7 @@
   <!--
   <record id="access_7950_jin___manufacturing____mo_full_writes____mps" model="ir.model.access">
     <field name="name">Jin - Manufacturing -  MO Full Writes  + MPS</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial"/>
     <field name="group_id" ref="BugFix-Studio-Misc.group_g_manufacturing_jin_manufacturing_master_plan_operator_replenish"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -1205,7 +1205,7 @@
   <!--
   <record id="access_7282_mass_produce_serial_line_group_user" model="ir.model.access">
     <field name="name">Mass Produce Serial Line group_user</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial_"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial_"/>
     <field name="group_id" ref="BugFix-Studio-Misc.group_g_manufacturing_jin_manufacturing_mo_creator"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -1217,7 +1217,7 @@
   <!--
   <record id="access_7250_jin___manufacturing____mo_full_writes____mps" model="ir.model.access">
     <field name="name">Jin - Manufacturing -  MO Full Writes  + MPS</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial_"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial_"/>
     <field name="group_id" ref="BugFix-Studio-Misc.group_g_manufacturing_jin_manufacturing_master_plan_creator_add_a_product"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -1229,7 +1229,7 @@
   <!--
   <record id="access_7951_jin___manufacturing____mo_full_writes____mps" model="ir.model.access">
     <field name="name">Jin - Manufacturing -  MO Full Writes  + MPS</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial_"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial_"/>
     <field name="group_id" ref="BugFix-Studio-Misc.group_g_manufacturing_jin_manufacturing_master_plan_operator_replenish"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>

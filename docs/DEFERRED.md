@@ -18,7 +18,7 @@ prerequisite chain + sizing).
 ## History of resolved deferrals
 
 - **View 3953 mrp.workorder tablet form** — deferred v0.0.18–v0.0.19 due
-  to cross-repo field ref on `stock.lot.x_studio_production_id`.
+  to cross-repo field ref on `stock.lot.production_id`.
   Resolved v0.0.20 by adding `BugFix-Stock` dep to manifest.
 - **View 4830 mrp.eco form** — deferred through v0.0.19–v0.0.20 pending
   small field-port work. Landed v0.0.21 (2 Char field ports).
@@ -33,7 +33,7 @@ prerequisite chain + sizing).
   Resolved v0.0.25 after v0.0.23 shipped foundation. Added 5 new deps
   (quality/quality_mrp/quality_mrp_workorder/purchase_stock/stock_delivery).
 - **Server action 1147 (Mass Produce Serial Nos) runtime deferral** —
-  referenced `x_mass_produce_serial` wizard model that wasn't ported at
+  referenced `mass_produce_serial` wizard model that wasn't ported at
   ship time. Resolved v0.0.26 (2 wizard models + 3 backing server
   actions 1149/1150/1151 + primary form view 2600 + Studio inherit 5898).
 - **v0.0.26 install failure (KeyError on inverse_name)** — parent O2M

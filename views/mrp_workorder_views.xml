@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='finished_lot_id']" position="attributes">
-                    <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
+                    <attribute name="domain">[('product_id', '=', product_id),('production_id', '=', production_id)]</attribute>
                 </xpath>
             </data>
         </field>
@@ -45,7 +45,7 @@
     <!-- STRIPPED malformed xpath comment block -->
     
     <xpath expr="//field[@name='finished_lot_id']" position="attributes">
-    <attribute name="domain">[('product_id', '=', product_id),('x_studio_production_id', '=', production_id)]</attribute>
+    <attribute name="domain">[('product_id', '=', product_id),('production_id', '=', production_id)]</attribute>
   </xpath>
   </data>
       </field>

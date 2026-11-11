@@ -5,7 +5,7 @@
     <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[new_record = env["x_mrp_bom_material_cos"].create({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})
+    <field name="code"><![CDATA[new_record = env["mrp_bom_material_cos"].create({"bom_material_cost_ids": record.bom_id.id, "operation_id": record.operation_id.id, "planned_qty": record.product_qty, "uom_id": record.product_uom_id.id, "line_id": record.id, "product_id": record.product_id.id})
 
 ]]></field>
   </record>
@@ -15,9 +15,9 @@
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[if record.id:
-  update = env['x_mrp_bom_material_cos'].search([('x_studio_line_id', '=', record.id), ('x_studio_bom_material_cost_ids', '=', record.bom_id.id,)], limit=1)
+  update = env['mrp_bom_material_cos'].search([('line_id', '=', record.id), ('bom_material_cost_ids', '=', record.bom_id.id,)], limit=1)
   if update:
-    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_product_id':record.product_id.id,'x_studio_planned_qty':record.product_qty,'x_studio_uom_id':record.product_uom_id.id}) 
+    update.write({'operation_id':record.operation_id.id,'product_id':record.product_id.id,'planned_qty':record.product_qty,'uom_id':record.product_uom_id.id}) 
    
   
 
@@ -28,7 +28,7 @@
     <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[record.write({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})]]></field>
+    <field name="code"><![CDATA[record.write({"bom_material_cost_ids": record.bom_id.id, "operation_id": record.operation_id.id, "planned_qty": record.product_qty, "uom_id": record.product_uom_id.id, "line_id": record.id, "product_id": record.product_id.id})]]></field>
   </record>
   <record id="base_automation_21_create_bom_material_cost" model="base.automation">
     <field name="name">Create BOM Material Cost</field>

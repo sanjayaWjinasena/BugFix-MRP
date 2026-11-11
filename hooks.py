@@ -21,9 +21,9 @@ _logger = logging.getLogger(__name__)
 # framework query_insert / query_update — no cr.execute in our code.
 # (model, field, value, label, sequence)
 _FIELD_SELECTIONS = [
-    ("x_material_request_m", "x_studio_kanban_state", "normal", "In Progress", 10),
-    ("x_material_request_m", "x_studio_kanban_state", "done", "Ready", 1),
-    ("x_material_request_m", "x_studio_kanban_state", "blocked", "Blocked", 2),
+    ("material_request_m", "kanban_state", "normal", "In Progress", 10),
+    ("material_request_m", "kanban_state", "done", "Ready", 1),
+    ("material_request_m", "kanban_state", "blocked", "Blocked", 2),
 ]
 
 

@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <data>
               <xpath expr="//field[@name='tag_ids']" position="after">
-                <field name="x_studio_item_approved" optional="hide"/>
+                <field name="item_approved" optional="hide"/>
               </xpath>
               <xpath expr="//field[@name='stage_id']" position="after">
                 <field name="active" optional="show" column_invisible="1"/>
@@ -37,15 +37,15 @@
                     <attribute name="studio_approval">True</attribute>
                 </xpath>
                 <xpath expr="//field[@name='product_tmpl_id']" position="after">
-                    <field name="x_studio_tag_description" string="Tag Description" invisible="1"/>
+                    <field name="tag_description" string="Tag Description" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='bom_id']" position="attributes">
                     <attribute name="invisible">(type in ('routing', 'product')) or (type in ['routing', 'product'])</attribute>
-                    <attribute name="readonly">(state != 'confirmed') or (((x_studio_item_approved != True) and (type == 'bom')) or (state != 'confirmed'))</attribute>
+                    <attribute name="readonly">(state != 'confirmed') or (((item_approved != True) and (type == 'bom')) or (state != 'confirmed'))</attribute>
                     <attribute name="required">(type in ('bom', 'both')) or (type in ['bom', 'both'])</attribute>
                 </xpath>
                 <xpath expr="//field[@name='bom_id']" position="after">
-                    <field name="x_studio_error" string="Error" force_save="True" readonly="1" invisible="((x_studio_item_approved == True) and (type == 'bom')) or ((product_tmpl_id == False) or (type == 'product'))"/>
+                    <field name="error" string="Error" force_save="True" readonly="1" invisible="((item_approved == True) and (type == 'bom')) or ((product_tmpl_id == False) or (type == 'product'))"/>
                 </xpath>
                 <xpath expr="//field[@name='effectivity']" position="attributes">
                     <attribute name="invisible">id == 0</attribute>
@@ -55,7 +55,7 @@
                     <attribute name="readonly">(state == 'done') or (state == 'done')</attribute>
                 </xpath>
                 <xpath expr="//field[@name='tag_ids']" position="after">
-                    <field name="x_studio_item_approved" string="Approved Item"/>
+                    <field name="item_approved" string="Approved Item"/>
                 </xpath>
             </data>
         </field>

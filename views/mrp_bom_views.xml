@@ -26,7 +26,7 @@
                 </xpath>
 
                 <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='type']" position="after">
-                    <field name="x_studio_last_updated_date_cost" force_save="True" readonly="1" string="Last Updated Date (Cost)"/>
+                    <field name="last_updated_date_cost" force_save="True" readonly="1" string="Last Updated Date (Cost)"/>
                 </xpath>
 
                 <xpath expr="//field[@name='operation_ids']" position="inside">
@@ -42,87 +42,87 @@
 
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                     <page string="Direct Material Cost" name="studio_page_e1zSq">
-                        <field name="x_studio_one2many_field_4rhw9" string="Direct Material Cost">
+                        <field name="one2many_field_4rhw9" string="Direct Material Cost">
                             <tree editable="bottom" create="false" edit="false" delete="false">
                                 <field name="sequence" widget="handle"/>
-                                <field name="x_studio_line_id" string="BOM Line ID" column_invisible="1"/>
-                                <field name="x_studio_bom_material_cost_ids" string="BOM Material Cost" column_invisible="1"/>
-                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
-                                <field name="x_studio_product_id" force_save="True" readonly="1"/>
-                                <field name="x_studio_planned_qty" string="Planned Qty" force_save="True" readonly="1"/>
-                                <field name="x_studio_uom_id" string="UOM" force_save="True" readonly="1"/>
-                                <field name="x_studio_cost" string="Cost/Unit" widget="monetary"/>
-                                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
-                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="line_id" string="BOM Line ID" column_invisible="1"/>
+                                <field name="bom_material_cost_ids" string="BOM Material Cost" column_invisible="1"/>
+                                <field name="operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="product_id" force_save="True" readonly="1"/>
+                                <field name="planned_qty" string="Planned Qty" force_save="True" readonly="1"/>
+                                <field name="uom_id" string="UOM" force_save="True" readonly="1"/>
+                                <field name="cost" string="Cost/Unit" widget="monetary"/>
+                                <field name="total_cost" string="Total Cost" widget="monetary"/>
+                                <field name="accounting_currency_id" column_invisible="1"/>
                                 <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_a8a1d8">
-                            <field name="x_studio_bom_total_material_cost" string="Total Material Cost"/>
-                            <field name="x_studio_currency_id" invisible="1"/>
+                            <field name="bom_total_material_cost" string="Total Material Cost"/>
+                            <field name="accounting_currency_id" invisible="1"/>
                         </group>
                     </page>
                     <page string="Direct Labour Cost" name="studio_page_fu0mY">
-                        <field name="x_studio_one2many_field_jPlQP" string="Direct Labour Cost">
+                        <field name="one2many_field_jPlQP" string="Direct Labour Cost">
                             <tree editable="bottom" create="false" edit="false" delete="false">
-                                <field name="x_studio_bom_labour_cost_ids" string="BOM Labour Cost" column_invisible="1"/>
+                                <field name="bom_labour_cost_ids" string="BOM Labour Cost" column_invisible="1"/>
                                 <field name="sequence" widget="handle"/>
-                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
-                                <field name="x_studio_planned_qty" string="Planned Hour"/>
-                                <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
-                                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
-                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="planned_qty" string="Planned Hour"/>
+                                <field name="cost" string="Cost/Hour" widget="monetary"/>
+                                <field name="total_cost" string="Total Cost" widget="monetary"/>
+                                <field name="accounting_currency_id" column_invisible="1"/>
                                 <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_f215d5">
-                            <field name="x_studio_bom_total_labour_cost" string="Total Labour Cost"/>
-                            <field name="x_studio_currency_id" invisible="1"/>
+                            <field name="bom_total_labour_cost" string="Total Labour Cost"/>
+                            <field name="accounting_currency_id" invisible="1"/>
                         </group>
                     </page>
                     <page string="Direct Overhead Cost" name="studio_page_6Zyth">
-                        <field name="x_studio_one2many_field_bOopH" string="Direct Overhead Cost">
+                        <field name="one2many_field_bOopH" string="Direct Overhead Cost">
                             <tree editable="bottom" create="false" edit="false" delete="false">
-                                <field name="x_studio_bom_overhead_cost_ids" string="BOM Overhead Cost" column_invisible="1"/>
+                                <field name="bom_overhead_cost_ids" string="BOM Overhead Cost" column_invisible="1"/>
                                 <field name="sequence" widget="handle"/>
-                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
-                                <field name="x_studio_planned_qty" string="Planned Hour"/>
-                                <field name="x_studio_cost" string="Cost/Hour" widget="monetary"/>
-                                <field name="x_studio_total_cost" string="Total Cost" widget="monetary"/>
-                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="planned_qty" string="Planned Hour"/>
+                                <field name="cost" string="Cost/Hour" widget="monetary"/>
+                                <field name="total_cost" string="Total Cost" widget="monetary"/>
+                                <field name="accounting_currency_id" column_invisible="1"/>
                                 <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_737d17">
-                            <field name="x_studio_bom_total_overhead_cost" string="Total Overhead Cost"/>
-                            <field name="x_studio_currency_id" invisible="1"/>
+                            <field name="bom_total_overhead_cost" string="Total Overhead Cost"/>
+                            <field name="accounting_currency_id" invisible="1"/>
                         </group>
                     </page>
                     <page string="Direct General Cost" name="studio_page_3aqeR">
-                        <field name="x_studio_direct_general_cost">
+                        <field name="direct_general_cost">
                             <tree create="false" edit="false" delete="false" editable="bottom">
-                                <field name="x_studio_bom_general_cost_ids" string="BOM General Cost" column_invisible="1"/>
+                                <field name="bom_general_cost_ids" string="BOM General Cost" column_invisible="1"/>
                                 <field name="sequence" widget="handle"/>
-                                <field name="x_studio_operation_id" string="Operation" force_save="True" readonly="1"/>
-                                <field name="x_studio_planned_qty" string="Planned Hour"/>
-                                <field name="x_studio_cost" string="Cost/Hour"/>
-                                <field name="x_studio_total_cost" string="Total Cost"/>
-                                <field name="x_studio_currency_id" column_invisible="1"/>
+                                <field name="operation_id" string="Operation" force_save="True" readonly="1"/>
+                                <field name="planned_qty" string="Planned Hour"/>
+                                <field name="cost" string="Cost/Hour"/>
+                                <field name="total_cost" string="Total Cost"/>
+                                <field name="accounting_currency_id" column_invisible="1"/>
                                 <field name="name" column_invisible="1"/>
                             </tree>
                         </field>
                         <group class="oe_subtotal_footer oe_right" name="studio_group_1ba92e">
-                            <field name="x_studio_bom_total_general_cost" string="Total General Cost"/>
-                            <field name="x_studio_currency_id" invisible="1"/>
+                            <field name="bom_total_general_cost" string="Total General Cost"/>
+                            <field name="accounting_currency_id" invisible="1"/>
                         </group>
                     </page>
                     <page string="Costing" name="studio_page_0BT1k">
                         <group name="studio_group_3c68cd">
                             <group name="studio_group_6691e1">
-                                <field name="x_studio_bom_total_material_cost"/>
-                                <field name="x_studio_bom_total_labour_cost"/>
-                                <field name="x_studio_bom_total_overhead_cost"/>
-                                <field name="x_studio_bom_total_general_cost" string="Total General Cost"/>
+                                <field name="bom_total_material_cost"/>
+                                <field name="bom_total_labour_cost"/>
+                                <field name="bom_total_overhead_cost"/>
+                                <field name="bom_total_general_cost" string="Total General Cost"/>
                             </group>
                         </group>
                     </page>
@@ -146,7 +146,7 @@
         <data>
   <xpath expr="//field[@name='product_tmpl_id']" position="after">
     <field name="display_name" optional="show"/>
-    <field optional="show" name="x_studio_product_category" widget="char_emojis"/>
+    <field optional="show" name="product_category" widget="char_emojis"/>
   </xpath>
 </data>
       </field>

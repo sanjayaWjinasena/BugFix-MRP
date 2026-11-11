@@ -8,7 +8,7 @@
 
 
 
-eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.tag_description)],limit=1)
 
 if eco_tag_search:
 
@@ -16,7 +16,7 @@ if eco_tag_search:
 
 else:
 
-  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.tag_description})
 
   line_ids.append(eco_tag_create.id)
 
@@ -40,9 +40,9 @@ record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
     <field name="name">PLM - Tag Description</field>
     <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
     <field name="state">code</field>
-    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
+    <field name="code"><![CDATA[#record.write({'tag_description':record.name})
 if record.name:
-  record['x_studio_tag_description'] = record.name]]></field>
+  record['tag_description'] = record.name]]></field>
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
@@ -55,7 +55,7 @@ if record.name:
 
           'name': 'Engineering Change Order ',
 
-          'domain': [('x_studio_tag_description', '=', record.x_studio_tag_description)],
+          'domain': [('tag_description', '=', record.tag_description)],
 
           'type': 'ir.actions.act_window',
 
@@ -86,7 +86,7 @@ if record.name:
 
 
 
-eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.tag_description)],limit=1)
 
 if eco_tag_search:
 
@@ -94,7 +94,7 @@ if eco_tag_search:
 
 else:
 
-  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.tag_description})
 
   line_ids.append(eco_tag_create.id)
 
@@ -117,9 +117,9 @@ record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
     <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
+    <field name="code"><![CDATA[#record.write({'tag_description':record.name})
 if record.name:
-  record['x_studio_tag_description'] = record.name]]></field>
+  record['tag_description'] = record.name]]></field>
   </record>
   <record id="base_automation_209_plm_tag_description" model="base.automation">
     <field name="name">PLM - Tag Description</field>
@@ -157,9 +157,9 @@ if record.name:
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[
-#record.write({'x_studio_tag_description':record.name})
+#record.write({'tag_description':record.name})
 if record.name:
-  record['x_studio_tag_description'] = record.name
+  record['tag_description'] = record.name
     ]]></field>
   </record>
   <record id="server_action_2305_plm_tag_create" model="ir.actions.server">
@@ -172,7 +172,7 @@ line_ids = []
 
 
 
-eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.tag_description)],limit=1)
 
 if eco_tag_search:
 
@@ -180,7 +180,7 @@ if eco_tag_search:
 
 else:
 
-  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.tag_description})
 
   line_ids.append(eco_tag_create.id)
 
@@ -200,8 +200,8 @@ record.write({'tag_ids':[(6, 0, line_ids)]})
     ]]></field>
   </record>
     <data noupdate="1">
-    <record id="default_371_mrp_eco_x_studio_error" model="ir.default">
-      <field name="field_id" ref="BugFix-MRP.field_mrp_eco__x_studio_error"/>
+    <record id="default_371_mrp_eco_error" model="ir.default">
+      <field name="field_id" ref="BugFix-MRP.field_mrp_eco__error"/>
       <field name="json_value">"The Selected Product Should be Approved to Proceed."</field>
     </record>
     </data>

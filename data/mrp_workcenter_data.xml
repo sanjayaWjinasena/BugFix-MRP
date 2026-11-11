@@ -4,12 +4,12 @@
     <field name="name">Update Cost Per Hour</field>
     <field name="model_id" search="[('model', '=', 'mrp.workcenter')]"/>
     <field name="state">code</field>
-    <field name="code"><![CDATA[if record.x_studio_ot_cost_per_hour > 0.00:
-  #record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
-  record['costs_hour'] = record.x_studio_ot_cost_per_hour
+    <field name="code"><![CDATA[if record.ot_cost_per_hour > 0.00:
+  #record['costs_hour'] = record.overhead_cost_hour + record.general_cost_hour + record.ot_cost_per_hour
+  record['costs_hour'] = record.ot_cost_per_hour
 else:
-  #record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
-  record['costs_hour'] = record.x_studio_labour_cost_hour
+  #record['costs_hour'] = record.labour_cost_hour + record.overhead_cost_hour + record.general_cost_hour
+  record['costs_hour'] = record.labour_cost_hour
 ]]></field>
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
@@ -18,12 +18,12 @@ else:
     <field name="name">Update Cost Per Hour</field>
     <field name="model_id" search="[('model', '=', 'mrp.workcenter')]"/>
     <field name="state">code</field>
-    <field name="code"><![CDATA[if record.x_studio_ot_cost_per_hour > 0.00:
-  #record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
-  record['costs_hour'] = record.x_studio_ot_cost_per_hour
+    <field name="code"><![CDATA[if record.ot_cost_per_hour > 0.00:
+  #record['costs_hour'] = record.overhead_cost_hour + record.general_cost_hour + record.ot_cost_per_hour
+  record['costs_hour'] = record.ot_cost_per_hour
 else:
-  #record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
-  record['costs_hour'] = record.x_studio_labour_cost_hour
+  #record['costs_hour'] = record.labour_cost_hour + record.overhead_cost_hour + record.general_cost_hour
+  record['costs_hour'] = record.labour_cost_hour
 ]]></field>
     <field name="usage">base_automation</field>
   </record>
@@ -40,12 +40,12 @@ else:
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[
-if record.x_studio_ot_cost_per_hour > 0.00:
-  #record['costs_hour'] = record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour + record.x_studio_ot_cost_per_hour
-  record['costs_hour'] = record.x_studio_ot_cost_per_hour
+if record.ot_cost_per_hour > 0.00:
+  #record['costs_hour'] = record.overhead_cost_hour + record.general_cost_hour + record.ot_cost_per_hour
+  record['costs_hour'] = record.ot_cost_per_hour
 else:
-  #record['costs_hour'] = record.x_studio_labour_cost_hour + record.x_studio_overhead_cost_hour + record.x_studio_general_cost_hour
-  record['costs_hour'] = record.x_studio_labour_cost_hour
+  #record['costs_hour'] = record.labour_cost_hour + record.overhead_cost_hour + record.general_cost_hour
+  record['costs_hour'] = record.labour_cost_hour
 
     ]]></field>
   </record>

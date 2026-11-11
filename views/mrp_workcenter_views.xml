@@ -9,14 +9,14 @@
         <field name="arch" type="xml">
             <data>
               <xpath expr="//tree[1]/field[@name='company_id']" position="after">
-                <field name="x_studio_many2many_field_j1rG7" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="many2many_field_j1rG7" widget="many2many_tags" options="{'color_field': 'color'}"/>
               </xpath>
               <xpath expr="//field[@name='costs_hour']" position="after">
-                <field name="x_studio_labour_cost_hour" optional="show"/>
-                <field name="x_studio_overhead_cost_hour" optional="show"/>
-                <field name="x_studio_general_cost_hour" optional="show"/>
-                <field name="x_studio_labour_idle_cost_per_hour" optional="show"/>
-                <field name="x_studio_ot_cost_per_hour" optional="show"/>
+                <field name="labour_cost_hour" optional="show"/>
+                <field name="overhead_cost_hour" optional="show"/>
+                <field name="general_cost_hour" optional="show"/>
+                <field name="labour_idle_cost_per_hour" optional="show"/>
+                <field name="ot_cost_per_hour" optional="show"/>
               </xpath>
             </data>
         </field>
@@ -39,11 +39,11 @@
                 <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]" position="after">
                     <group name="studio_group_HDkwr">
                       <group name="studio_group_HDkwr_left" string="Actual Costing Information">
-                        <field name="x_studio_labour_cost_hour" string="Labour Cost per Hour"/>
-                        <field name="x_studio_overhead_cost_hour" string="Overhead Cost per Hour"/>
-                        <field name="x_studio_general_cost_hour" string="Equipment Actual Cost per Hour"/>
-                        <field name="x_studio_labour_idle_cost_per_hour" string="Labour Idle Cost Per Hour" force_save="True" readonly="1"/>
-                        <field name="x_studio_ot_cost_per_hour" string="OT Cost per Hour"/>
+                        <field name="labour_cost_hour" string="Labour Cost per Hour"/>
+                        <field name="overhead_cost_hour" string="Overhead Cost per Hour"/>
+                        <field name="general_cost_hour" string="Equipment Actual Cost per Hour"/>
+                        <field name="labour_idle_cost_per_hour" string="Labour Idle Cost Per Hour" force_save="True" readonly="1"/>
+                        <field name="ot_cost_per_hour" string="OT Cost per Hour"/>
                       </group>
                     </group>
                 </xpath>
@@ -98,9 +98,9 @@
                               <group name="studio_group_030ee2">
                                 <field name="effective_date"/>
                                 <field name="cost" groups="maintenance.group_equipment_manager"/>
-                                <field name="x_studio_electricity" string="Electricity"/>
-                                <field name="x_studio_water" string="Water"/>
-                                <field name="x_studio_lubricant" string="Lubricant"/>
+                                <field name="electricity" string="Electricity"/>
+                                <field name="water" string="Water"/>
+                                <field name="lubricant" string="Lubricant"/>
                                 <field name="warranty_date"/>
                               </group>
                             </group>
@@ -142,9 +142,9 @@
                     <page string="Users" name="studio_page_KhcWJ">
                       <group name="studio_group_KhcWJ">
                         <group name="studio_group_KhcWJ_right">
-                          <field name="x_studio_many2many_field_j1rG7" widget="many2many_tags" options="{'no_create': true, 'color_field': 'color'}" help="Workcenter Visibility Control"/>
-                          <field name="x_studio_employee" string="Employee" help="Actual Working Employee (For Cost per Hour)" invisible="1"/>
-                          <field name="x_studio_employees" widget="many2many_tags" string="Employees" options="{'no_create': true, 'color_field': 'color'}" required="1"/>
+                          <field name="many2many_field_j1rG7" widget="many2many_tags" options="{'no_create': true, 'color_field': 'color'}" help="Workcenter Visibility Control"/>
+                          <field name="employee" string="Employee" help="Actual Working Employee (For Cost per Hour)" invisible="1"/>
+                          <field name="employees" widget="many2many_tags" string="Employees" options="{'no_create': true, 'color_field': 'color'}" required="1"/>
                         </group>
                       </group>
                     </page>

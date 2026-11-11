@@ -2,12 +2,12 @@
 <odoo>
   <record id="rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial_line" model="ir.rule">
     <field name="name">JIN - Multi-Company - Mass Produce Serial Line</field>
-    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial_')]"/>
+    <field name="model_id" search="[('model', '=', 'mass_produce_serial_')]"/>
     <field name="domain_force">['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]</field>
   </record>
   <record id="rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial" model="ir.rule">
     <field name="name">JIN - Multi-Company - Mass Produce Serial</field>
-    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="domain_force">['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]</field>
   </record>
   <record id="rule_205_mrp_bom_multi_company" model="ir.rule">
@@ -93,7 +93,7 @@
   <record id="rule_338_work_centre_visibility" model="ir.rule">
     <field name="name">Work Centre Visibility</field>
     <field name="model_id" ref="BugFix-MRP.model_mrp_workcenter"/>
-    <field name="domain_force">[('x_studio_many2many_field_j1rG7', '=', user.id)]</field>
+    <field name="domain_force">[('many2many_field_j1rG7', '=', user.id)]</field>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
     <field name="perm_create" eval="True"/>
@@ -152,7 +152,7 @@
   </record>
   <record id="rule_605_jin_multi_company_mass_produce_serial" model="ir.rule">
     <field name="name">JIN - Multi-Company - Mass Produce Serial</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial"/>
     <field name="domain_force">['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]</field>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -162,7 +162,7 @@
   </record>
   <record id="rule_606_jin_multi_company_mass_produce_serial_line" model="ir.rule">
     <field name="name">JIN - Multi-Company - Mass Produce Serial Line</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_mass_produce_serial_"/>
+    <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial_"/>
     <field name="domain_force">['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]</field>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -172,7 +172,7 @@
   </record>
   <record id="rule_883_material_request_m_multi_company" model="ir.rule">
     <field name="name">Material Request M - Multi-Company</field>
-    <field name="model_id" ref="BugFix-MRP.model_x_material_request_m"/>
+    <field name="model_id" ref="BugFix-MRP.model_material_request_m"/>
     <field name="domain_force">['|', ('accounting_company_id', '=', False), ('accounting_company_id', 'in', company_ids)]</field>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>

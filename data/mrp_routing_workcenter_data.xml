@@ -5,7 +5,7 @@
     <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[new_record = env["x_mrp_bom_general_cost"].create({"x_studio_bom_general_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+    <field name="code"><![CDATA[new_record = env["mrp_bom_general_cost"].create({"bom_general_cost_ids": record.bom_id.id, "operation_id": record.id, "planned_qty": record.time_cycle/60.00})
 
 ]]></field>
   </record>
@@ -14,7 +14,7 @@
     <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[new_record = env["x_mrp_bom_labour_cost"].create({"x_studio_bom_labour_cost_ids": record.bom_id.id, "x_studio_planned_qty": record.time_cycle/60.00, "x_studio_operation_id": record.id})
+    <field name="code"><![CDATA[new_record = env["mrp_bom_labour_cost"].create({"bom_labour_cost_ids": record.bom_id.id, "planned_qty": record.time_cycle/60.00, "operation_id": record.id})
 
 ]]></field>
   </record>
@@ -23,7 +23,7 @@
     <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
     <field name="state">code</field>
     <field name="usage">base_automation</field>
-    <field name="code"><![CDATA[new_record = env["x_mrp_bom_overhead_cos"].create({"x_studio_bom_overhead_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+    <field name="code"><![CDATA[new_record = env["mrp_bom_overhead_cos"].create({"bom_overhead_cost_ids": record.bom_id.id, "operation_id": record.id, "planned_qty": record.time_cycle/60.00})
 
 ]]></field>
   </record>
@@ -33,9 +33,9 @@
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[if record.bom_id and record.id:
-  update = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  update = env['mrp_bom_general_cost'].search([('bom_general_cost_ids', '=', record.bom_id.id), ('operation_id', '=', record.id)], limit=1)
   if update:
-    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    update.write({'operation_id':record.id,'planned_qty':record.time_cycle/60.00}) 
     
   
 
@@ -47,9 +47,9 @@
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[if record.bom_id and record.id:
-  update = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  update = env['mrp_bom_labour_cost'].search([('bom_labour_cost_ids', '=', record.bom_id.id), ('operation_id', '=', record.id)], limit=1)
   if update:
-    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    update.write({'operation_id':record.id,'planned_qty':record.time_cycle/60.00}) 
     
   
 
@@ -61,9 +61,9 @@
     <field name="state">code</field>
     <field name="usage">base_automation</field>
     <field name="code"><![CDATA[if record.bom_id and record.id:
-  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  update = env['mrp_bom_overhead_cos'].search([('bom_overhead_cost_ids', '=', record.bom_id.id), ('operation_id', '=', record.id)], limit=1)
   if update:
-    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    update.write({'operation_id':record.id,'planned_qty':record.time_cycle/60.00}) 
     
   
 

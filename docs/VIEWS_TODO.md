@@ -6,15 +6,15 @@ human review before commit.
 
 | # | Clear-DB view ID | Type | Target model | Name | Inherits |
 |---|---|---|---|---|---|
-| 1 | 8747 | calendar | `x_material_request_m` | Default calendar view for x_material_request_m | — |
-| 2 | 8745 | form | `x_material_request_m` | Default form view for x_material_request_m | — |
-| 3 | 8748 | gantt | `x_material_request_m` | Default gantt view for x_material_request_m | — |
-| 4 | 8752 | graph | `x_material_request_m` | Default graph view for x_material_request_m | — |
-| 5 | 8749 | kanban | `x_material_request_m` | Default kanban view for x_material_request_m | — |
-| 6 | 8744 | tree | `x_material_request_m` | Default list view for x_material_request_m | — |
-| 7 | 8750 | map | `x_material_request_m` | Default map view for x_material_request_m | — |
-| 8 | 8751 | pivot | `x_material_request_m` | Default pivot view for x_material_request_m | — |
-| 9 | 8746 | search | `x_material_request_m` | Default search view for x_material_request_m | — |
+| 1 | 8747 | calendar | `material_request_m` | Default calendar view for material_request_m | — |
+| 2 | 8745 | form | `material_request_m` | Default form view for material_request_m | — |
+| 3 | 8748 | gantt | `material_request_m` | Default gantt view for material_request_m | — |
+| 4 | 8752 | graph | `material_request_m` | Default graph view for material_request_m | — |
+| 5 | 8749 | kanban | `material_request_m` | Default kanban view for material_request_m | — |
+| 6 | 8744 | tree | `material_request_m` | Default list view for material_request_m | — |
+| 7 | 8750 | map | `material_request_m` | Default map view for material_request_m | — |
+| 8 | 8751 | pivot | `material_request_m` | Default pivot view for material_request_m | — |
+| 9 | 8746 | search | `material_request_m` | Default search view for material_request_m | — |
 | 10 | 2574 | form | `mrp.bom` | Odoo Studio: mrp.bom.form customization | mrp.bom.form |
 | 11 | 3945 | form | `mrp.bom` | Odoo Studio: mrp.bom.form customization-button | mrp.bom.form |
 | 12 | 5461 | tree | `mrp.bom` | Odoo Studio: mrp.bom.tree customization | mrp.bom.tree |
