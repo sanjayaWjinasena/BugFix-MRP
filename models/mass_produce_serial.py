@@ -14,10 +14,10 @@ class XMassProduceSerial(models.Model):
     _rec_name = "name"
     _order = "sequence asc, id asc"
 
-    active = fields.Boolean(string="Active", default=True)
-    name = fields.Char(string="Name")
+    active = fields.Boolean(default=True)
+    name = fields.Char()
     accounting_company_id = fields.Many2one("res.company", string="Company")
-    generated = fields.Boolean(string="Generated")
+    generated = fields.Boolean()
     last_serial_no_id = fields.Many2one(
         "stock.lot", string="Last Used Serial No", ondelete="set null"
     )
@@ -26,25 +26,21 @@ class XMassProduceSerial(models.Model):
         "mass_produce_serial_ids",
         string="Serial No List",
     )
-    prefix_status = fields.Selection(
-        [("New", "New"), ("Existing", "Existing")], string="Prefix Status"
-    )
-    product_id = fields.Many2one(
-        "product.product", string="Product", ondelete="set null"
-    )
+    prefix_status = fields.Selection([("New", "New"), ("Existing", "Existing")])
+    product_id = fields.Many2one("product.product", ondelete="set null")
     product_qty = fields.Float(string="Quantity to Create")
     production_id = fields.Many2one(
         "mrp.production", string="Production Order", ondelete="set null"
     )
-    sequence = fields.Integer(string="Sequence")
-    sequence_size = fields.Integer(string="Sequence Size")
-    serial_no_prefix = fields.Char(string="Serial No Prefix")
-    starting_serial_no = fields.Integer(string="Starting Serial No")
+    sequence = fields.Integer()
+    sequence_size = fields.Integer()
+    serial_no_prefix = fields.Char()
+    starting_serial_no = fields.Integer()
 
 
 class XMassProduceSerialGap(models.Model):
     _inherit = "mass_produce_serial"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    active = fields.Boolean(string="Active")
-    name = fields.Char(string="Name")
+    active = fields.Boolean()
+    name = fields.Char()

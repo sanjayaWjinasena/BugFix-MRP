@@ -19,7 +19,7 @@ class XMaterialRequestMLineAf405(models.Model):
     _rec_name = "name"
 
     name = fields.Char(string="Description")
-    sequence = fields.Integer(string="Sequence")
+    sequence = fields.Integer()
     material_request_m_id = fields.Many2one(
         "material_request_m",
         ondelete="set null",

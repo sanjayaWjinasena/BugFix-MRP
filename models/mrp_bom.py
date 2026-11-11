@@ -10,9 +10,7 @@ class MrpBom(models.Model):
     bom_total_labour_cost = fields.Float(
         string="Total Labour Cost", readonly=True, store=False
     )
-    bom_total_material_cost = fields.Float(
-        string="Total Material Cost", readonly=True
-    )
+    bom_total_material_cost = fields.Float(string="Total Material Cost", readonly=True)
     bom_total_overhead_cost = fields.Float(
         string="Total Overhead Cost", readonly=True, store=False
     )
@@ -20,7 +18,6 @@ class MrpBom(models.Model):
     direct_general_cost = fields.One2many(
         "mrp_bom_general_cost",
         "bom_general_cost_ids",
-        string="Direct General Cost",
     )
     last_updated_date_cost = fields.Datetime(string="Last Updated Date (Cost)")
     one2many_field_4rhw9 = fields.One2many(
@@ -38,9 +35,7 @@ class MrpBom(models.Model):
         "bom_labour_cost_ids",
         string="Direct Labour Cost",
     )
-    product_category = fields.Char(
-        string="Product Category", readonly=True, store=False
-    )
+    product_category = fields.Char(readonly=True, store=False)
     related_field_15j_1iv9vlere = fields.Char(
         string="New Related Field", readonly=True, store=False
     )

@@ -14,8 +14,8 @@ class XMrpBomLabourCost(models.Model):
     _rec_name = "name"
     _order = "sequence asc, id asc"
 
-    active = fields.Boolean(string="Active", default=True)
-    name = fields.Char(string="Name")
+    active = fields.Boolean(default=True)
+    name = fields.Char()
     actual_qty = fields.Float(string="Actual Hour")
     bom_labour_cost_ids = fields.Many2one(
         "mrp.bom", string="BOM Labour Cost", ondelete="set null"
@@ -24,9 +24,7 @@ class XMrpBomLabourCost(models.Model):
     cost_ot = fields.Float(string="Cost/Hour(OT)")
     cost_without_ot = fields.Float(string="Cost/Hour(Labour Cost)")
     accounting_currency_id = fields.Many2one("res.currency", string="Currency")
-    operation_id = fields.Many2one(
-        "mrp.routing.workcenter", string="Operation", ondelete="cascade"
-    )
+    operation_id = fields.Many2one("mrp.routing.workcenter", ondelete="cascade")
     planned_qty = fields.Float(string="Planned Hour")
     prod_bom_labour_cost_ids = fields.Many2one(
         "mrp.production", string="Prod. BOM Labour Cost", ondelete="set null"
@@ -34,18 +32,18 @@ class XMrpBomLabourCost(models.Model):
     prod_bom_line_id = fields.Many2one(
         "mrp.workorder", string="Prod. BOM Line ID", ondelete="cascade"
     )
-    sequence = fields.Integer(string="Sequence")
-    total_actual_cost = fields.Float(string="Total Actual Cost")
+    sequence = fields.Integer()
+    total_actual_cost = fields.Float()
     total_actual_cost_ot = fields.Float(string="Total Actual Cost (OT)")
     total_actual_cost_without_ot = fields.Float(
         string="Total Actual Cost (Labour Cost)"
     )
-    total_cost = fields.Float(string="Total Cost")
+    total_cost = fields.Float()
 
 
 class XMrpBomLabourCostGap(models.Model):
     _inherit = "mrp_bom_labour_cost"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    active = fields.Boolean(string="Active")
-    name = fields.Char(string="Name")
+    active = fields.Boolean()
+    name = fields.Char()

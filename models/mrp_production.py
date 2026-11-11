@@ -22,19 +22,13 @@ class MrpProduction(models.Model):
     direct_general_cost = fields.One2many(
         "mrp_bom_general_cost",
         "prod_bom_general_cost_ids",
-        string="Direct General Cost",
     )
     direct_material_cost = fields.One2many(
         "mrp_bom_material_cos",
         "prod_bom_material_cost_ids",
-        string="Direct Material Cost",
     )
-    finished_product_location = fields.Many2one(
-        "stock.location", string="Finished Product Location"
-    )
-    finished_products_location_updated = fields.Boolean(
-        string="Finished Products Location Updated"
-    )
+    finished_product_location = fields.Many2one("stock.location")
+    finished_products_location_updated = fields.Boolean()
     grand_total_actual_cost_1 = fields.Float(
         string="Grand Total (Actual Cost)", readonly=True
     )
@@ -42,8 +36,8 @@ class MrpProduction(models.Model):
         string="Grand Total (Planned Cost)", readonly=True
     )
     mark_as_done_validation = fields.Text(string="Mark as Done Validation")
-    mass_produced = fields.Boolean(string="Mass Produced")
-    melt_item = fields.Boolean(string="Melt Item", readonly=True)
+    mass_produced = fields.Boolean()
+    melt_item = fields.Boolean(readonly=True)
     one2many_field_Fzcvl = fields.One2many(
         "mrp_bom_labour_cost",
         "prod_bom_labour_cost_ids",
@@ -55,13 +49,11 @@ class MrpProduction(models.Model):
         string="Direct Overhead Cost",
     )
     original_mo = fields.Char(string="Original MO")
-    ot_applicable = fields.Boolean(
-        string="OT  Applicable", readonly=True, store=False
-    )
+    ot_applicable = fields.Boolean(string="OT  Applicable", readonly=True, store=False)
     pro_bom_total_general_cost = fields.Float(
         string="Total General Cost", readonly=True
     )
-    process_error = fields.Text(string="Process Error")
+    process_error = fields.Text()
     prod_bom_total_actual_labour_cost = fields.Float(
         string="Total Actual Labour Cost", readonly=True
     )
@@ -77,40 +69,30 @@ class MrpProduction(models.Model):
     prod_bom_total_actual_overhead_cost = fields.Float(
         string="Total Actual Overhead Cost", readonly=True
     )
-    prod_bom_total_labour_cost = fields.Float(
-        string="Total Labour Cost", readonly=True
-    )
+    prod_bom_total_labour_cost = fields.Float(string="Total Labour Cost", readonly=True)
     prod_bom_total_material_cost = fields.Float(
         string="Total Material Cost", readonly=True
     )
     prod_bom_total_overhead_cost = fields.Float(
         string="Total Overhead Cost", readonly=True
     )
-    quantity_validation = fields.Boolean(
-        string="Quantity Validation", readonly=True, store=False
-    )
+    quantity_validation = fields.Boolean(readonly=True, store=False)
     report_type_m_wip = fields.Many2one(
         "sales_report_type", string="Report Type (M-WIP)"
     )
-    serial_cancelled = fields.Boolean(string="Serial Cancelled")
+    serial_cancelled = fields.Boolean()
     source_validate = fields.Boolean(
-        string="Source Validate",
         readonly=True,
         store=False,
         compute="_compute_source_validate",
     )
-    super_user = fields.Boolean(
-        string="Super User", readonly=True, store=False
-    )
+    super_user = fields.Boolean(readonly=True, store=False)
     super_user_melt_items = fields.Boolean(
         string="Super User (Melt Items)", readonly=True
     )
-    temp_location = fields.Boolean(string="Temp Location", readonly=True)
-    total_actual_general_cost = fields.Float(
-        string="Total Actual General Cost", readonly=True
-    )
+    temp_location = fields.Boolean(readonly=True)
+    total_actual_general_cost = fields.Float(readonly=True)
     tracked_item = fields.Boolean(
-        string="Tracked Item",
         readonly=True,
         store=False,
         compute="_compute_tracked_item",

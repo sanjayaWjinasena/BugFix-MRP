@@ -8,13 +8,13 @@ class XMaterialRequestMTag(models.Model):
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
     _description = "Material Request M Tags"
 
-    color = fields.Integer(string="Color")
-    name = fields.Char(string="Name")
+    color = fields.Integer()
+    name = fields.Char()
 
 
 class XMaterialRequestMTagGap(models.Model):
     _inherit = "material_request_m_tag"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    color = fields.Integer(string="Color")
-    name = fields.Char(string="Name", required=True)
+    color = fields.Integer()
+    name = fields.Char(required=True)

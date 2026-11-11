@@ -13,9 +13,9 @@ class XMrpBomMaterialCos(models.Model):
     _rec_name = "name"
     _order = "sequence asc, id asc"
 
-    active = fields.Boolean(string="Active", default=True)
-    name = fields.Char(string="Name")
-    actual_qty = fields.Float(string="Actual Qty")
+    active = fields.Boolean(default=True)
+    name = fields.Char()
+    actual_qty = fields.Float()
     bom_line_id = fields.Many2one(
         "mrp.bom.line", string="BOM Line", ondelete="set null"
     )
@@ -24,25 +24,19 @@ class XMrpBomMaterialCos(models.Model):
     )
     cost = fields.Float(string="Cost/Unit")
     accounting_currency_id = fields.Many2one("res.currency", string="Currency")
-    line_id = fields.Many2one(
-        "mrp.bom.line", string="BOM Line ID", ondelete="cascade"
-    )
-    operation_id = fields.Many2one(
-        "mrp.routing.workcenter", string="Operation", ondelete="set null"
-    )
-    planned_qty = fields.Float(string="Planned Qty")
+    line_id = fields.Many2one("mrp.bom.line", string="BOM Line ID", ondelete="cascade")
+    operation_id = fields.Many2one("mrp.routing.workcenter", ondelete="set null")
+    planned_qty = fields.Float()
     prod_bom_line_id = fields.Many2one(
         "stock.move", string="Prod. BOM Line ID", ondelete="cascade"
     )
     prod_bom_material_cost_ids = fields.Many2one(
         "mrp.production", string="Prod. BOM Material Cost", ondelete="set null"
     )
-    product_id = fields.Many2one(
-        "product.product", string="Product", ondelete="set null"
-    )
-    sequence = fields.Integer(string="Sequence")
-    total_actual_cost = fields.Float(string="Total Actual Cost")
-    total_cost = fields.Float(string="Total Cost")
+    product_id = fields.Many2one("product.product", ondelete="set null")
+    sequence = fields.Integer()
+    total_actual_cost = fields.Float()
+    total_cost = fields.Float()
     uom_id = fields.Many2one("uom.uom", string="UOM", ondelete="set null")
 
 
@@ -50,5 +44,5 @@ class XMrpBomMaterialCosGap(models.Model):
     _inherit = "mrp_bom_material_cos"
     _rec_name = "name"  # Clear-DB Studio model: records are named by name
 
-    active = fields.Boolean(string="Active")
-    name = fields.Char(string="Name")
+    active = fields.Boolean()
+    name = fields.Char()
