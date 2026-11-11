@@ -98,8 +98,9 @@ class MrpProduction(models.Model):
         compute="_compute_tracked_item",
     )
 
-    # Ported verbatim from the Clear-DB Studio computes (same depends). Without them both flags
-    # stayed False, so the "Mass Produce Serial Nos" button never showed for serial-tracked products.
+    # Ported verbatim from the Clear-DB Studio computes (same depends). Without them
+    # both flags stayed False, so the "Mass Produce Serial Nos" button never showed for
+    # serial-tracked products.
     @api.depends("product_id")
     def _compute_tracked_item(self):
         for rec in self:
