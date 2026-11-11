@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_3383_material_request_m_tags" model="ir.actions.act_window">
+  <record id="action_material_request_m_tags" model="ir.actions.act_window">
     <field name="name">Material Request M Tags</field>
     <field name="res_model">material_request_m_tag</field>
     <field name="view_mode">tree,form</field>
@@ -17,7 +17,7 @@
                 </p>
             </field>
   </record>
-    <record id="view_8760_default_form_view_for_x_material_request_m_tag_e" model="ir.ui.view">
+    <record id="view_material_request_m_tag_form" model="ir.ui.view">
       <field name="name">Default form view for material_request_m_tag</field>
       <field name="model">material_request_m_tag</field>
       <field name="type">form</field>
@@ -38,7 +38,7 @@
 </form>
       </field>
     </record>
-    <record id="view_8759_default_list_view_for_x_material_request_m_tag_e" model="ir.ui.view">
+    <record id="view_material_request_m_tag_list" model="ir.ui.view">
       <field name="name">Default list view for material_request_m_tag</field>
       <field name="model">material_request_m_tag</field>
       <field name="type">tree</field>
@@ -49,7 +49,7 @@
 </tree>
       </field>
     </record>
-    <record id="view_8761_default_search_view_for_x_material_request_m_tag_e" model="ir.ui.view">
+    <record id="view_material_request_m_tag_search" model="ir.ui.view">
       <field name="name">Default search view for material_request_m_tag</field>
       <field name="model">material_request_m_tag</field>
       <field name="type">search</field>

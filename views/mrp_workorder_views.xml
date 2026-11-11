@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_3953_mrp_workorder_form_tablet" model="ir.ui.view">
+    <record id="view_mrp_workorder_form_tablet" model="ir.ui.view">
         <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
         <field name="model">mrp.workorder</field>
         <field name="type">form</field>
@@ -14,7 +14,7 @@
             </data>
         </field>
     </record>
-  <record id="act_window_663_work_orders" model="ir.actions.act_window">
+  <record id="action_work_orders" model="ir.actions.act_window">
     <field name="name">Work Orders</field>
     <field name="res_model">mrp.workorder</field>
     <field name="view_mode">kanban,tree,form</field>
@@ -33,7 +33,7 @@
           </p>
         </field>
   </record>
-    <record id="view_3953_mrp_workorder_view_form_inherit_quality_tablet_new_button_e" model="ir.ui.view">
+    <record id="view_mrp_workorder_view_form_inherit_quality_tablet_new_button" model="ir.ui.view">
       <field name="name">mrp.workorder.view.form.inherit.quality.tablet.new-button</field>
       <field name="model">mrp.workorder</field>
       <field name="type">form</field>

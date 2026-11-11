@@ -5,7 +5,7 @@
     <field name="res_model">mrp.workcenter.productivity</field>
     <field name="view_mode">tree,form,pivot,graph</field>
   </record>
-    <record id="ported_view_5503_mrp_workcenter_productivity_tree" model="ir.ui.view">
+    <record id="view_mrp_workcenter_productivity_tree_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.workcenter.productivity.tree customization</field>
         <field name="model">mrp.workcenter.productivity</field>
         <field name="type">tree</field>
@@ -22,7 +22,7 @@
             </data>
         </field>
     </record>
-  <record id="act_window_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
+  <record id="action_mrp_workcenter_productivity" model="ir.actions.act_window">
     <field name="name">	mrp.workcenter.productivity</field>
     <field name="res_model">mrp.workcenter.productivity</field>
     <field name="view_mode">tree,form,pivot,graph</field>
@@ -39,7 +39,7 @@
                 </p>
             </field>
   </record>
-  <record id="act_window_2555_mrp_workcenter_productivity" model="ir.actions.act_window">
+  <record id="action_mrp_workcenter_productivity" model="ir.actions.act_window">
     <field name="name">	mrp.workcenter.productivity</field>
     <field name="res_model">mrp.workcenter.productivity</field>
     <field name="view_mode">tree,form,pivot,graph</field>

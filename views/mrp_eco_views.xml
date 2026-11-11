@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_5062_mrp_eco_tree" model="ir.ui.view">
+    <record id="view_mrp_eco_view_tree_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.eco.view.tree customization</field>
         <field name="model">mrp.eco</field>
         <field name="type">tree</field>
@@ -17,7 +17,7 @@
             </data>
         </field>
     </record>
-    <record id="ported_view_4830_mrp_eco_form" model="ir.ui.view">
+    <record id="view_mrp_eco_view_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.eco.view.form customization</field>
         <field name="model">mrp.eco</field>
         <field name="type">form</field>
@@ -60,7 +60,7 @@
             </data>
         </field>
     </record>
-    <record id="view_5063_mrp_eco_view_form_button_e" model="ir.ui.view">
+    <record id="view_mrp_eco_view_form_button" model="ir.ui.view">
       <field name="name">mrp.eco.view.form_button</field>
       <field name="model">mrp.eco</field>
       <field name="type">form</field>

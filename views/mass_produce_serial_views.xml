@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_2600_mass_produce_serial_form" model="ir.ui.view">
+    <record id="view_mass_produce_serial_form" model="ir.ui.view">
         <field name="name">Mass Produce Serial Nos</field>
         <field name="model">mass_produce_serial</field>
         <field name="type">form</field>
@@ -22,8 +22,8 @@
                   <field name="generated" options="{'no_open': true}" invisible="1"/>
                 </group>
                 <newline/>
-                <button name="%(BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate)d" string="Generate" type="action" class="oe_highlight" invisible="generated == True"/>
-                <button name="%(BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear)d" string="Clear" type="action" class="oe_highlight" invisible="generated == False"/>
+                <button name="%(BugFix-MRP.action_mass_produce_serial_numbers_generate)d" string="Generate" type="action" class="oe_highlight" invisible="generated == True"/>
+                <button name="%(BugFix-MRP.action_mass_produce_serial_numbers_clear)d" string="Clear" type="action" class="oe_highlight" invisible="generated == False"/>
                 <group>
                   <field name="mass_produce_serial_ids" nolabel="1" colspan="2">
                     <tree string="Details" create="false" editable="bottom" delete="false">
@@ -35,18 +35,18 @@
                 </group>
                 <newline/>
                 <footer>
-                  <button name="%(BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original)d" string="OK" type="action" class="oe_highlight"/>
+                  <button name="%(BugFix-MRP.action_mass_produce_serial_numbers_create_original)d" string="OK" type="action" class="oe_highlight"/>
                   <button special="cancel" string="Cancel" class="oe_link"/>
                 </footer>
             </form>
         </field>
     </record>
-    <record id="ported_view_5898_mass_produce_serial_form_studio" model="ir.ui.view">
+    <record id="view_mass_produce_serial_nos_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: Mass Produce Serial Nos customization</field>
         <field name="model">mass_produce_serial</field>
         <field name="type">form</field>
         <field name="priority">99</field>
-        <field name="inherit_id" ref="BugFix-MRP.ported_view_2600_mass_produce_serial_form"/>
+        <field name="inherit_id" ref="BugFix-MRP.view_mass_produce_serial_form"/>
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='last_serial_no_id']" position="after">
@@ -55,7 +55,7 @@
             </data>
         </field>
     </record>
-  <record id="act_window_1146_mass_produce_serial" model="ir.actions.act_window">
+  <record id="action_mass_produce_serial" model="ir.actions.act_window">
     <field name="name">Mass Produce Serial</field>
     <field name="res_model">mass_produce_serial</field>
     <field name="view_mode">tree,form</field>
@@ -72,7 +72,7 @@
                 </p>
             </field>
   </record>
-    <record id="view_2623_default_tree_view_for_ir_model_837_e" model="ir.ui.view">
+    <record id="view_mass_produce_serial_tree" model="ir.ui.view">
       <field name="name">Default tree view for ir.model(837,)</field>
       <field name="model">mass_produce_serial</field>
       <field name="type">tree</field>

@@ -58,7 +58,7 @@
     # item now that v0.0.23 shipped the cost sub-model foundation.
     # See views/mrp_studio_ported_v5.xml.
     #   * 1 hardcoded ref converted: 1057 ->
-    #     %(BugFix-MRP.server_action_1057_update_costs_in_bom)d.
+    #     %(BugFix-MRP.action_update_costs_in_bom)d.
     #   * 0 field ports (all refs resolve post-v0.0.23).
     #   * 0 sentinels needed. 0 studio_approval attributes.
     #   * View adds 5 notebook tabs to mrp.bom form: Direct Material Cost,

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="sa_f5_mrp_production_proj_mark_as_done_validation" model="ir.actions.server">
+  <record id="action_mrp_production_proj_mark_as_done_validation" model="ir.actions.server">
     <field name="name">PROJ - Mark as Done Validation</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -9,14 +9,14 @@
     <field name="binding_view_types">list,form</field>
   </record>
   <!-- 4 server_actions ports for BugFix-MRP (auto-generated from Clear-DB snapshot) -->
-  <record id="server_action_2765_proj_mark_as_done_validation" model="ir.actions.server">
+  <record id="action_proj_mark_as_done_validation" model="ir.actions.server">
     <field name="name">PROJ - Mark as Done Validation</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
     <field name="code"><![CDATA[record['mark_as_done_validation'] = 'Please enter the Quantity to produce to proceed with Mark as Done.']]></field>
     <field name="usage">base_automation</field>
   </record>
-  <record id="server_action_1155_update_original_mo_in_mo" model="ir.actions.server">
+  <record id="action_update_original_mo_in_mo" model="ir.actions.server">
     <field name="name">Update Original MO in MO</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -29,7 +29,7 @@
     record['original_mo'] = record.name
   ]]></field>
   </record>
-  <record id="server_action_1738_srm_auto_populate_report_type_in_production_order" model="ir.actions.server">
+  <record id="action_srm_auto_populate_report_type_in_production_order" model="ir.actions.server">
     <field name="name">SRM - Auto Populate Report Type in Production Order</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -39,7 +39,7 @@
   if rpt_id:
    record['report_type_m_wip'] = rpt_id.id]]></field>
   </record>
-  <record id="server_action_1147_mass_produce_serial_numbers" model="ir.actions.server">
+  <record id="action_mass_produce_serial_numbers" model="ir.actions.server">
     <field name="name">Mass Produce Serial Numbers</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -59,7 +59,7 @@ action = {
           'context': ctx,
           }]]></field>
   </record>
-  <record id="server_action_2534_finished_products_location_updated" model="ir.actions.server">
+  <record id="action_finished_products_location_updated" model="ir.actions.server">
     <field name="name">Finished Products Location Updated</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -80,7 +80,7 @@ action = {
     else:
       raise UserError('There is no Finished Good Location is setup for the Finished Product Location in Production Order.')]]></field>
   </record>
-  <record id="server_action_3202_mass_produce_serial_numbers_cancel_serial_no" model="ir.actions.server">
+  <record id="action_mass_produce_serial_numbers_cancel_serial_no" model="ir.actions.server">
     <field name="name">Mass Produce Serial Numbers - Cancel Serial No</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -104,23 +104,23 @@ action = {
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="active" eval="True"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_1155_update_original_mo_in_mo')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('action_update_original_mo_in_mo')])]"/>
   </record>
-  <record id="automation_122_srm_auto_populate_report_type_in_production_order" model="base.automation">
+  <record id="automation_srm_auto_populate_report_type_in_production_order" model="base.automation">
     <field name="name">SRM - Auto Populate Report Type in Production Order</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="active" eval="True"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_1738_srm_auto_populate_report_type_in_production_order')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('action_srm_auto_populate_report_type_in_production_order')])]"/>
   </record>
-  <record id="automation_330_proj_mark_as_done_validation" model="base.automation">
+  <record id="automation_proj_mark_as_done_validation" model="base.automation">
     <field name="name">PROJ - Mark as Done Validation</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="active" eval="True"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('server_action_2765_proj_mark_as_done_validation')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('action_proj_mark_as_done_validation')])]"/>
   </record>
-  <record id="server_action_1154_update_tracking_item_status_in_mo" model="ir.actions.server">
+  <record id="action_update_tracking_item_status_in_mo" model="ir.actions.server">
     <field name="name">Update Tracking Item Status in MO</field>
     <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
     <field name="state">code</field>
@@ -133,7 +133,7 @@ action = {
   ]]></field>
   </record>
 <!-- Studio approval rule 107 "Unlock (Production Order)" (production, active on production, created 2025-11-26, 1 approval entries there; the approval history is data and stays on the environment). Remove this record to take it out. -->
-  <record id="approval_rule_107_unlock_production_order" model="studio.approval.rule">
+  <record id="approval_rule_unlock_production_order" model="studio.approval.rule">
     <field name="name">Unlock (Production Order)</field>
     <field name="model_id" ref="mrp.model_mrp_production"/>
     <field name="method">action_toggle_is_locked</field>
@@ -141,14 +141,14 @@ action = {
     <field name="notification_order">1</field>
   </record>
 <!-- Studio approval rule 108 "Cancel (Production Order)" (production, active on production, created 2025-11-26, 83 approval entries there; the approval history is data and stays on the environment). Remove this record to take it out. -->
-  <record id="approval_rule_108_cancel_production_order" model="studio.approval.rule">
+  <record id="approval_rule_cancel_production_order" model="studio.approval.rule">
     <field name="name">Cancel (Production Order)</field>
     <field name="model_id" ref="mrp.model_mrp_production"/>
     <field name="method">action_cancel</field>
     <field name="group_id" ref="stock.group_stock_manager"/>
     <field name="notification_order">1</field>
   </record>
-  <record id="server_action_2765_proj_mark_as_done_validation" model="ir.actions.server">
+  <record id="action_proj_mark_as_done_validation" model="ir.actions.server">
     <field name="name">PROJ - Mark as Done Validation</field>
     <field name="model_id" ref="mrp.model_mrp_production"/>
     <field name="state">code</field>
@@ -164,15 +164,15 @@ record['mark_as_done_validation'] = 'Please enter the Quantity to produce to pro
     <field name="trigger">on_change</field>
   </record>
     <data noupdate="1">
-    <record id="default_407_mrp_production_process_error" model="ir.default">
+    <record id="default_mrp_production_process_error" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mrp_production__process_error"/>
       <field name="json_value">"Select the Correct Finished Product Location Manually to Proceed ."</field>
     </record>
-    <record id="default_423_mrp_production_accounting_currency_id" model="ir.default">
+    <record id="default_mrp_production_accounting_currency_id" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mrp_production__accounting_currency_id"/>
       <field name="json_value">145</field>
     </record>
-    <record id="default_475_mrp_production_mark_as_done_validation" model="ir.default">
+    <record id="default_mrp_production_mark_as_done_validation" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mrp_production__mark_as_done_validation"/>
       <field name="json_value">"Please enter the Quantity to produce to proceed with Mark as Done."</field>
     </record>

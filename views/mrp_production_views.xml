@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_2390_mrp_production_tree" model="ir.ui.view">
+    <record id="view_mrp_production_tree_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.production.tree customization</field>
         <field name="model">mrp.production</field>
         <field name="type">tree</field>
@@ -20,7 +20,7 @@
             </data>
         </field>
     </record>
-    <record id="ported_view_3946_mrp_production_form_button" model="ir.ui.view">
+    <record id="view_mrp_production_form_button" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.production.form-button</field>
         <field name="model">mrp.production</field>
         <field name="type">form</field>
@@ -39,15 +39,15 @@
                 </xpath>
 
                 <xpath expr="//header/field[@name='show_lock']" position="after">
-                  <button type="action" name="%(BugFix-MRP.server_action_1147_mass_produce_serial_numbers)d" string="Mass Produce Serial Nos" class="btn-primary" invisible="((finished_products_location_updated == False) and (source_validate == True)) or ((mass_produced == True) or (tracked_item == False))"/>
+                  <button type="action" name="%(BugFix-MRP.action_mass_produce_serial_numbers)d" string="Mass Produce Serial Nos" class="btn-primary" invisible="((finished_products_location_updated == False) and (source_validate == True)) or ((mass_produced == True) or (tracked_item == False))"/>
                 </xpath>
 
                 <xpath expr="//header/button[@name='button_mark_done'][3]" position="before">
-                  <button type="action" name="%(BugFix-MRP.server_action_2534_finished_products_location_updated)d" string="Update Finished Product Location" class="btn-primary" invisible="((finished_products_location_updated == True) and (source_validate == True)) or (source_validate == False)"/>
+                  <button type="action" name="%(BugFix-MRP.action_finished_products_location_updated)d" string="Update Finished Product Location" class="btn-primary" invisible="((finished_products_location_updated == True) and (source_validate == True)) or (source_validate == False)"/>
                 </xpath>
 
                 <xpath expr="//header/button[@name='action_cancel']" position="before">
-                  <button type="action" name="%(BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no)d" string="Cancel Serial Nos" class="btn-primary" invisible="(mass_produced == False) or (serial_cancelled == True) or (state != 'draft')"/>
+                  <button type="action" name="%(BugFix-MRP.action_mass_produce_serial_numbers_cancel_serial_no)d" string="Cancel Serial Nos" class="btn-primary" invisible="(mass_produced == False) or (serial_cancelled == True) or (state != 'draft')"/>
                 </xpath>
 
                 <xpath expr="//header/button[@name='action_confirm']" position="attributes">
@@ -72,7 +72,7 @@
             </data>
         </field>
     </record>
-    <record id="ported_view_2325_mrp_production_form" model="ir.ui.view">
+    <record id="view_mrp_production_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.production.form customization</field>
         <field name="model">mrp.production</field>
         <field name="type">form</field>

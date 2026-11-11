@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="ported_view_3151_mrp_workcenter_tree" model="ir.ui.view">
+    <record id="view_mrp_workcenter_tree_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.workcenter.tree customization</field>
         <field name="model">mrp.workcenter</field>
         <field name="type">tree</field>
@@ -21,7 +21,7 @@
             </data>
         </field>
     </record>
-    <record id="ported_view_2324_mrp_workcenter_form" model="ir.ui.view">
+    <record id="view_mrp_workcenter_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.workcenter.form customization</field>
         <field name="model">mrp.workcenter</field>
         <field name="type">form</field>

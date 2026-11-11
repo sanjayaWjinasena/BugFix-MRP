@@ -5,12 +5,12 @@
     <field name="res_model">mrp.bom</field>
     <field name="view_mode">kanban,tree,form</field>
   </record>
-  <record id="action_2838_mrp_bom" model="ir.actions.act_window">
+  <record id="action_mrp_bom" model="ir.actions.act_window">
     <field name="name">mrp.bom</field>
     <field name="res_model">mrp.bom</field>
     <field name="view_mode">kanban,tree,form</field>
   </record>
-    <record id="ported_view_2574_mrp_bom_form" model="ir.ui.view">
+    <record id="view_mrp_bom_form_inherit" model="ir.ui.view">
         <field name="name">Odoo Studio: mrp.bom.form customization</field>
         <field name="model">mrp.bom</field>
         <field name="type">form</field>
@@ -20,7 +20,7 @@
             <data>
                 <xpath expr="//form[1]/sheet[1]" position="before">
                     <header>
-                      <button type="action" name="%(BugFix-MRP.server_action_1057_update_costs_in_bom)d" string="Update Cost" class="btn-primary"/>
+                      <button type="action" name="%(BugFix-MRP.action_update_costs_in_bom)d" string="Update Cost" class="btn-primary"/>
                     </header>
                     <header/>
                 </xpath>
@@ -130,12 +130,12 @@
             </data>
         </field>
     </record>
-  <record id="act_window_2838_mrp_bom" model="ir.actions.act_window">
+  <record id="action_mrp_bom_2" model="ir.actions.act_window">
     <field name="name">mrp.bom</field>
     <field name="res_model">mrp.bom</field>
     <field name="view_mode">kanban,tree,form</field>
   </record>
-    <record id="view_5461_odoo_studio_mrp_bom_tree_customization_e" model="ir.ui.view">
+    <record id="view_mrp_bom_tree_inherit" model="ir.ui.view">
       <field name="name">Odoo Studio: mrp.bom.tree customization</field>
       <field name="model">mrp.bom</field>
       <field name="type">tree</field>

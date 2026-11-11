@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_1053_mrp_bom_general_cost" model="ir.actions.act_window">
+  <record id="action_mrp_bom_general_cost" model="ir.actions.act_window">
     <field name="name">mrp.bom.general.cost</field>
     <field name="res_model">mrp_bom_general_cost</field>
     <field name="view_mode">tree,form</field>
@@ -17,7 +17,7 @@
                 </p>
             </field>
   </record>
-    <record id="view_2576_default_form_view_for_x_mrp_bom_general_cost_e" model="ir.ui.view">
+    <record id="view_mrp_bom_general_cost_form" model="ir.ui.view">
       <field name="name">Default form view for mrp_bom_general_cost</field>
       <field name="model">mrp_bom_general_cost</field>
       <field name="type">form</field>
@@ -45,7 +45,7 @@
 </form>
       </field>
     </record>
-    <record id="view_2575_default_list_view_for_x_mrp_bom_general_cost_e" model="ir.ui.view">
+    <record id="view_mrp_bom_general_cost_list" model="ir.ui.view">
       <field name="name">Default list view for mrp_bom_general_cost</field>
       <field name="model">mrp_bom_general_cost</field>
       <field name="type">tree</field>
@@ -56,7 +56,7 @@
 </tree>
       </field>
     </record>
-    <record id="view_2577_default_search_view_for_x_mrp_bom_general_cost_e" model="ir.ui.view">
+    <record id="view_mrp_bom_general_cost_search" model="ir.ui.view">
       <field name="name">Default search view for mrp_bom_general_cost</field>
       <field name="model">mrp_bom_general_cost</field>
       <field name="type">search</field>
@@ -69,12 +69,12 @@
 </search>
       </field>
     </record>
-    <record id="view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost" model="ir.ui.view">
+    <record id="view_default_list_view_for_mrp_bom_general_cost_inherit" model="ir.ui.view">
       <field name="name">Odoo Studio: Default list view for mrp_bom_general_cost customization</field>
       <field name="model">mrp_bom_general_cost</field>
       <field name="type">tree</field>
       <field name="priority">99</field>
-      <field name="inherit_id" ref="BugFix-MRP.view_2575_default_list_view_for_x_mrp_bom_general_cost_e"/>
+      <field name="inherit_id" ref="BugFix-MRP.view_mrp_bom_general_cost_list"/>
       <field name="mode">extension</field>
       <field name="arch" type="xml">
         <data>

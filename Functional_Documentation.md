@@ -97,7 +97,7 @@ graph LR
 
 *Extends a model created by `mrp`.* Python: `models/mrp_bom.py`.
 
-Other repos that use this model: `server action BugFix-Accounting.sa_f5_x_sales_report_model_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_1144_work_center_costing_model_update_journal_entries` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_2490_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Stock.server_action_1138_work_center_costing_model_create_journal_entries` (BugFix-Stock)<br>`server action BugFix-Stock.server_action_2566_work_center_costing_model_create_journal_entries_original` (BugFix-Stock)<br>`server action BugFix-Studio-Misc.server_action_2836_mst_odoo_data_clean_up_002` (BugFix-Studio-Misc)
+Other repos that use this model: `server action BugFix-Accounting.action_sales_report_model_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_work_center_costing_model_update_journal_entries` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Stock.action_work_center_costing_model_create_journal_entries` (BugFix-Stock)<br>`server action BugFix-Stock.action_work_center_costing_model_create_journal_entries_original` (BugFix-Stock)<br>`server action BugFix-Studio-Misc.server_action_2836_mst_odoo_data_clean_up_002` (BugFix-Studio-Misc)
 
 **Summary:**
 
@@ -109,25 +109,25 @@ Adds BoM costing: Direct Material, Labour, Overhead and General Cost tabs holdin
 
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| `bom_total_general_cost` | Total General Cost | float | Total General Cost of the BoM on the costing tabs; read-only, not stored and with no calculation in this port, so it always shows 0. | not stored |  | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `bom_total_labour_cost` | Total Labour Cost | float | Total Labour Cost of the BoM on the costing tabs (has an ir.default); read-only, not stored and with no calculation in this port, so it always shows 0. | not stored |  | `default BugFix-MRP.default_72_mrp_bom_bom_total_labour_cost`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `bom_total_material_cost` | Total Material Cost | float | Total Material Cost of the BoM on the costing tabs; read-only stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `bom_total_overhead_cost` | Total Overhead Cost | float | Total Overhead Cost of the BoM on the costing tabs (has an ir.default); read-only, not stored and with no calculation in this port, so it always shows 0. | not stored |  | `default BugFix-MRP.default_73_mrp_bom_bom_total_overhead_cost`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency used to display the BoM cost amounts (default set by an ir.default record). | stored | `model res.currency` (base) | `default BugFix-MRP.default_220_mrp_bom_accounting_currency_id`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `direct_general_cost` | Direct General Cost | one2many → `mrp_bom_general_cost` | General (equipment) cost lines of the BoM, one per operation, created automatically when operations are added; shown on the Direct General Cost tab. | stored | `model mrp_bom_general_cost` | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `last_updated_date_cost` | Last Updated Date (Cost) | datetime | Date and time the Update Cost button last refreshed the BoM's cost rates; read-only on the BoM form. | stored |  | `server action BugFix-MRP.server_action_1057_update_costs_in_bom`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `one2many_field_4rhw9` | Direct Material Cost | one2many → `mrp_bom_material_cos` | Material cost lines of the BoM, one per component line, created and updated automatically from BoM lines; shown on the Direct Material Cost tab. | stored | `model mrp_bom_material_cos` | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `one2many_field_bOopH` | Direct Overhead Cost | one2many → `mrp_bom_overhead_cos` | Overhead cost lines of the BoM, one per operation, created automatically when operations are added; shown on the Direct Overhead Cost tab. | stored | `model mrp_bom_overhead_cos` | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `one2many_field_jPlQP` | Direct Labour Cost | one2many → `mrp_bom_labour_cost` | Labour cost lines of the BoM, one per operation, created automatically when operations are added; shown on the Direct Labour Cost tab. | stored | `model mrp_bom_labour_cost` | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `product_category` | Product Category | char | Product Category column in the BoM list; read-only, not stored and never calculated in this port, so it is always empty. | not stored |  | `view BugFix-MRP.view_5461_odoo_studio_mrp_bom_tree_customization_e` |
+| `bom_total_general_cost` | Total General Cost | float | Total General Cost of the BoM on the costing tabs; read-only, not stored and with no calculation in this port, so it always shows 0. | not stored |  | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `bom_total_labour_cost` | Total Labour Cost | float | Total Labour Cost of the BoM on the costing tabs (has an ir.default); read-only, not stored and with no calculation in this port, so it always shows 0. | not stored |  | `default BugFix-MRP.default_72_mrp_bom_bom_total_labour_cost`<br>`view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `bom_total_material_cost` | Total Material Cost | float | Total Material Cost of the BoM on the costing tabs; read-only stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `bom_total_overhead_cost` | Total Overhead Cost | float | Total Overhead Cost of the BoM on the costing tabs (has an ir.default); read-only, not stored and with no calculation in this port, so it always shows 0. | not stored |  | `default BugFix-MRP.default_73_mrp_bom_bom_total_overhead_cost`<br>`view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency used to display the BoM cost amounts (default set by an ir.default record). | stored | `model res.currency` (base) | `default BugFix-MRP.default_mrp_bom_accounting_currency_id`<br>`view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `direct_general_cost` | Direct General Cost | one2many → `mrp_bom_general_cost` | General (equipment) cost lines of the BoM, one per operation, created automatically when operations are added; shown on the Direct General Cost tab. | stored | `model mrp_bom_general_cost` | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `last_updated_date_cost` | Last Updated Date (Cost) | datetime | Date and time the Update Cost button last refreshed the BoM's cost rates; read-only on the BoM form. | stored |  | `server action BugFix-MRP.action_update_costs_in_bom`<br>`view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `one2many_field_4rhw9` | Direct Material Cost | one2many → `mrp_bom_material_cos` | Material cost lines of the BoM, one per component line, created and updated automatically from BoM lines; shown on the Direct Material Cost tab. | stored | `model mrp_bom_material_cos` | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `one2many_field_bOopH` | Direct Overhead Cost | one2many → `mrp_bom_overhead_cos` | Overhead cost lines of the BoM, one per operation, created automatically when operations are added; shown on the Direct Overhead Cost tab. | stored | `model mrp_bom_overhead_cos` | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `one2many_field_jPlQP` | Direct Labour Cost | one2many → `mrp_bom_labour_cost` | Labour cost lines of the BoM, one per operation, created automatically when operations are added; shown on the Direct Labour Cost tab. | stored | `model mrp_bom_labour_cost` | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `product_category` | Product Category | char | Product Category column in the BoM list; read-only, not stored and never calculated in this port, so it is always empty. | not stored |  | `view BugFix-MRP.view_mrp_bom_tree_inherit` |
 | `related_field_15j_1iv9vlere` | New Related Field | char | Unconfigured Studio 'New Related Field'; read-only, not stored and without a related target, so always empty. Unused. | not stored |  |  |
 
 **Server actions (1):**
 
-- **Update Costs in BOM** (`server_action_1057_update_costs_in_bom`, type `code`)
+- **Update Costs in BOM** (`action_update_costs_in_bom`, type `code`)
   - Function: Update Cost button on the BoM: refreshes material line costs from product cost and labour/overhead/general line costs from the work center rates, then stamps Last Updated Date (Cost).
   - Depends on: `model mrp.bom` (mrp), `model mrp_bom_general_cost`, `model mrp_bom_labour_cost`, `model mrp_bom_material_cos`, `model mrp_bom_overhead_cos`<details><summary>+1 more</summary>`mrp.bom.last_updated_date_cost`</details>
-  - Used by: `view BugFix-MRP.ported_view_2574_mrp_bom_form`, `view BugFix-MRP.ported_view_3945_mrp_bom_form_button`
+  - Used by: `view BugFix-MRP.view_mrp_bom_form_inherit`, `view BugFix-MRP.ported_view_3945_mrp_bom_form_button`
   <details><summary>code (26 lines)</summary>
 
 ```python
@@ -188,29 +188,29 @@ if record.id:
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
 | mrp.bom | `aw_f4_mrp_bom_mrp_bom` | Opens **Bill of Material** records (kanban,tree,form). | `model mrp.bom` (mrp) |  |
-| mrp.bom | `action_2838_mrp_bom` | Opens **Bill of Material** records (kanban,tree,form). | `model mrp.bom` (mrp) | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom` (BugFix-Studio-Misc) |
-| mrp.bom | `act_window_2838_mrp_bom` | Opens **Bill of Material** records (kanban,tree,form). | `model mrp.bom` (mrp) |  |
+| mrp.bom | `action_mrp_bom` | Opens **Bill of Material** records (kanban,tree,form). | `model mrp.bom` (mrp) | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom` (BugFix-Studio-Misc) |
+| mrp.bom | `action_mrp_bom_2` | Opens **Bill of Material** records (kanban,tree,form). | `model mrp.bom` (mrp) |  |
 
 **Views (3):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: mrp.bom.form customization | `ported_view_2574_mrp_bom_form` | form | before `//form[1]/sheet[1]`: add header, header; after `//form[1]/sheet[1]/group[1]/group[2]/field[@name='type']`: add field last_updated_date_cost; inside `//field[@name='operation_ids']`: add tree; inside `//form[1]/sheet[1]/notebook[1]`: add page 'Direct Material Cost', page 'Direct Labour Cost', page 'Direct Overhead Cost', page 'Direct General Cost', page 'Costing' | BoM form: adds an Update Cost header button, Last Updated Date (Cost), a custom operations list, and tabs Direct Material/Labour/Overhead/General Cost plus Costing totals. | `mrp.bom.action_mrp_workorder_show_steps()` (Odoo)<br>`mrp.bom.sequence` (mrp)<br>`mrp.bom.bom_total_general_cost`<br>`mrp.bom.bom_total_labour_cost`<br>`mrp.bom.bom_total_material_cost`<details><summary>+44 more</summary>`mrp.bom.bom_total_overhead_cost`<br>`mrp.bom.accounting_currency_id`<br>`mrp.bom.direct_general_cost`<br>`mrp.bom.last_updated_date_cost`<br>`mrp.bom.one2many_field_4rhw9`<br>`mrp.bom.one2many_field_bOopH`<br>`mrp.bom.one2many_field_jPlQP`<br>`server action BugFix-MRP.server_action_1057_update_costs_in_bom`<br>`view mrp.mrp_bom_form_view` (mrp)<br>`mrp_bom_general_cost.name`<br>`mrp_bom_general_cost.bom_general_cost_ids`<br>`mrp_bom_general_cost.cost`<br>`mrp_bom_general_cost.accounting_currency_id`<br>`mrp_bom_general_cost.operation_id`<br>`mrp_bom_general_cost.planned_qty`<br>`mrp_bom_general_cost.sequence`<br>`mrp_bom_general_cost.total_cost`<br>`mrp_bom_labour_cost.name`<br>`mrp_bom_labour_cost.bom_labour_cost_ids`<br>`mrp_bom_labour_cost.cost`<br>`mrp_bom_labour_cost.accounting_currency_id`<br>`mrp_bom_labour_cost.operation_id`<br>`mrp_bom_labour_cost.planned_qty`<br>`mrp_bom_labour_cost.sequence`<br>`mrp_bom_labour_cost.total_cost`<br>`mrp_bom_material_cos.name`<br>`mrp_bom_material_cos.bom_material_cost_ids`<br>`mrp_bom_material_cos.cost`<br>`mrp_bom_material_cos.accounting_currency_id`<br>`mrp_bom_material_cos.line_id`<br>`mrp_bom_material_cos.operation_id`<br>`mrp_bom_material_cos.planned_qty`<br>`mrp_bom_material_cos.product_id`<br>`mrp_bom_material_cos.sequence`<br>`mrp_bom_material_cos.total_cost`<br>`mrp_bom_material_cos.uom_id`<br>`mrp_bom_overhead_cos.name`<br>`mrp_bom_overhead_cos.bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.cost`<br>`mrp_bom_overhead_cos.accounting_currency_id`<br>`mrp_bom_overhead_cos.operation_id`<br>`mrp_bom_overhead_cos.planned_qty`<br>`mrp_bom_overhead_cos.sequence`<br>`mrp_bom_overhead_cos.total_cost`</details> |  |
-| Odoo Studio: mrp.bom.form customization-button | `ported_view_3945_mrp_bom_form_button` | form | before `//form[1]/sheet[1]`: add header, header | BoM form: adds a header with an Update Cost button (runs the 'Update Costs in BoM' server action) and an empty header; duplicates the button added by the BoM form customization. | `server action BugFix-MRP.server_action_1057_update_costs_in_bom`<br>`view mrp.mrp_bom_form_view` (mrp) |  |
-| Odoo Studio: mrp.bom.tree customization | `view_5461_odoo_studio_mrp_bom_tree_customization_e` | tree | after `//field[@name='product_tmpl_id']`: add field display_name, field product_category | BoM list: adds optional Display Name and Product Category columns after Product (Product Category is always empty in this port). | `mrp.bom.product_category`<br>`view mrp.mrp_bom_tree_view` (mrp) |  |
+| Odoo Studio: mrp.bom.form customization | `view_mrp_bom_form_inherit` | form | before `//form[1]/sheet[1]`: add header, header; after `//form[1]/sheet[1]/group[1]/group[2]/field[@name='type']`: add field last_updated_date_cost; inside `//field[@name='operation_ids']`: add tree; inside `//form[1]/sheet[1]/notebook[1]`: add page 'Direct Material Cost', page 'Direct Labour Cost', page 'Direct Overhead Cost', page 'Direct General Cost', page 'Costing' | BoM form: adds an Update Cost header button, Last Updated Date (Cost), a custom operations list, and tabs Direct Material/Labour/Overhead/General Cost plus Costing totals. | `mrp.bom.action_mrp_workorder_show_steps()` (Odoo)<br>`mrp.bom.sequence` (mrp)<br>`mrp.bom.bom_total_general_cost`<br>`mrp.bom.bom_total_labour_cost`<br>`mrp.bom.bom_total_material_cost`<details><summary>+44 more</summary>`mrp.bom.bom_total_overhead_cost`<br>`mrp.bom.accounting_currency_id`<br>`mrp.bom.direct_general_cost`<br>`mrp.bom.last_updated_date_cost`<br>`mrp.bom.one2many_field_4rhw9`<br>`mrp.bom.one2many_field_bOopH`<br>`mrp.bom.one2many_field_jPlQP`<br>`server action BugFix-MRP.action_update_costs_in_bom`<br>`view mrp.mrp_bom_form_view` (mrp)<br>`mrp_bom_general_cost.name`<br>`mrp_bom_general_cost.bom_general_cost_ids`<br>`mrp_bom_general_cost.cost`<br>`mrp_bom_general_cost.accounting_currency_id`<br>`mrp_bom_general_cost.operation_id`<br>`mrp_bom_general_cost.planned_qty`<br>`mrp_bom_general_cost.sequence`<br>`mrp_bom_general_cost.total_cost`<br>`mrp_bom_labour_cost.name`<br>`mrp_bom_labour_cost.bom_labour_cost_ids`<br>`mrp_bom_labour_cost.cost`<br>`mrp_bom_labour_cost.accounting_currency_id`<br>`mrp_bom_labour_cost.operation_id`<br>`mrp_bom_labour_cost.planned_qty`<br>`mrp_bom_labour_cost.sequence`<br>`mrp_bom_labour_cost.total_cost`<br>`mrp_bom_material_cos.name`<br>`mrp_bom_material_cos.bom_material_cost_ids`<br>`mrp_bom_material_cos.cost`<br>`mrp_bom_material_cos.accounting_currency_id`<br>`mrp_bom_material_cos.line_id`<br>`mrp_bom_material_cos.operation_id`<br>`mrp_bom_material_cos.planned_qty`<br>`mrp_bom_material_cos.product_id`<br>`mrp_bom_material_cos.sequence`<br>`mrp_bom_material_cos.total_cost`<br>`mrp_bom_material_cos.uom_id`<br>`mrp_bom_overhead_cos.name`<br>`mrp_bom_overhead_cos.bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.cost`<br>`mrp_bom_overhead_cos.accounting_currency_id`<br>`mrp_bom_overhead_cos.operation_id`<br>`mrp_bom_overhead_cos.planned_qty`<br>`mrp_bom_overhead_cos.sequence`<br>`mrp_bom_overhead_cos.total_cost`</details> |  |
+| Odoo Studio: mrp.bom.form customization-button | `ported_view_3945_mrp_bom_form_button` | form | before `//form[1]/sheet[1]`: add header, header | BoM form: adds a header with an Update Cost button (runs the 'Update Costs in BoM' server action) and an empty header; duplicates the button added by the BoM form customization. | `server action BugFix-MRP.action_update_costs_in_bom`<br>`view mrp.mrp_bom_form_view` (mrp) |  |
+| Odoo Studio: mrp.bom.tree customization | `view_mrp_bom_tree_inherit` | tree | after `//field[@name='product_tmpl_id']`: add field display_name, field product_category | BoM list: adds optional Display Name and Product Category columns after Product (Product Category is always empty in this port). | `mrp.bom.product_category`<br>`view mrp.mrp_bom_tree_view` (mrp) |  |
 
 **Access rights (2):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Inv - Administrator | `access_6250_inv___administrator` | Gives **Inventory / Administrator** read/write/create/delete access to Bill of Material records. | `group stock.group_stock_manager` (stock)<br>`model mrp.bom` (mrp) |  |
-| mrp.bom | `access_6852_mrp_bom` | Gives **Sales / Jin - Sales - POS Users** read access to Bill of Material records. | `group BugFix-Approvals.group_132_jin_sales_pos_users` (BugFix-Approvals)<br>`model mrp.bom` (mrp) |  |
+| Inv - Administrator | `access_inv_administrator` | Gives **Inventory / Administrator** read/write/create/delete access to Bill of Material records. | `group stock.group_stock_manager` (stock)<br>`model mrp.bom` (mrp) |  |
+| mrp.bom | `access_mrp_bom` | Gives **Sales / Jin - Sales - POS Users** read access to Bill of Material records. | `group BugFix-Approvals.group_jin_sales_pos_users` (BugFix-Approvals)<br>`model mrp.bom` (mrp) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_bom multi-company | `rule_205_mrp_bom_multi_company` | For everyone (global rule): read/write/create/delete on Bill of Material only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.bom` (mrp)<br>`mrp.bom.company_id` (mrp) |  |
+| mrp_bom multi-company | `rule_mrp_bom_multi_company` | For everyone (global rule): read/write/create/delete on Bill of Material only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.bom` (mrp)<br>`mrp.bom.company_id` (mrp) |  |
 
 ### `mrp.bom.byproduct` — Byproduct
 
@@ -226,13 +226,13 @@ This repo adds no fields or logic to this model. It ships only an access right g
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| User | `access_6969_user` | Gives **Inventory / User** read access to Byproduct records. | `group stock.group_stock_user` (stock)<br>`model mrp.bom.byproduct` (mrp) |  |
+| User | `access_user_2` | Gives **Inventory / User** read access to Byproduct records. | `group stock.group_stock_user` (stock)<br>`model mrp.bom.byproduct` (mrp) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_bom_byproduct multi-company | `rule_207_mrp_bom_byproduct_multi_company` | For everyone (global rule): read/write/create/delete on Byproduct only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.bom.byproduct` (mrp)<br>`mrp.bom.byproduct.company_id` (mrp) |  |
+| mrp_bom_byproduct multi-company | `rule_mrp_bom_byproduct_multi_company` | For everyone (global rule): read/write/create/delete on Byproduct only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.bom.byproduct` (mrp)<br>`mrp.bom.byproduct.company_id` (mrp) |  |
 
 ### `mrp.bom.line` — Bill of Material Line
 
@@ -246,7 +246,7 @@ Adds no fields, but two automations keep BoM material cost lines in sync: when a
 
 **Server actions (3):**
 
-- **Execute Code** (`server_action_1016_create_bom_material_cost`, type `code`)
+- **Execute Code** (`action_create_bom_material_cost`, type `code`)
   - Function: Run by an automation on a new BoM component line: creates the matching material cost line (BoM, operation, planned quantity, UoM, line link, product).
   - Depends on: `model mrp.bom.line` (mrp), `model mrp_bom_material_cos`, `mrp.bom.line.bom_id` (mrp), `mrp.bom.line.operation_id` (mrp), `mrp.bom.line.product_id` (mrp)<details><summary>+2 more</summary>`mrp.bom.line.product_qty` (mrp), `mrp.bom.line.product_uom_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_21_create_bom_material_cost`
@@ -265,7 +265,7 @@ new_record = env["mrp_bom_material_cos"].create(
 )
 ```
   </details>
-- **Update BOM Material Cost** (`server_action_1033_update_bom_material_cost`, type `code`)
+- **Update BOM Material Cost** (`action_update_bom_material_cost_2`, type `code`)
   - Function: Run by an automation on a changed BoM component line: updates the linked material cost line's operation, product, planned quantity and UoM.
   - Depends on: `model mrp.bom.line` (mrp), `model mrp_bom_material_cos`, `mrp.bom.line.bom_id` (mrp), `mrp.bom.line.operation_id` (mrp), `mrp.bom.line.product_id` (mrp)<details><summary>+2 more</summary>`mrp.bom.line.product_qty` (mrp), `mrp.bom.line.product_uom_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_23_update_bom_material_cost`
@@ -295,7 +295,7 @@ if record.id:
         )
 ```
   </details>
-- **Update BOM Material Cost** (`server_action_1026_update_bom_material_cost`, type `code`)
+- **Update BOM Material Cost** (`action_update_bom_material_cost`, type `code`)
   - Function: Writes material-cost-line fields (BoM, operation, planned qty, UoM, line, product) onto the BoM line itself, which lacks them; not bound to any automation or button. Looks broken/unused.
   - Depends on: `model mrp.bom.line` (mrp), `mrp.bom.line.bom_id` (mrp), `mrp.bom.line.operation_id` (mrp), `mrp.bom.line.product_id` (mrp), `mrp.bom.line.product_qty` (mrp)<details><summary>+1 more</summary>`mrp.bom.line.product_uom_id` (mrp)</details>
   - Used by: — (not linked to a button, menu or automation)
@@ -318,14 +318,14 @@ record.write(
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| Create BOM Material Cost | `base_automation_21_create_bom_material_cost` |  | When a record is created or updated on Bill of Material Line, runs _Execute Code_. | `model mrp.bom.line` (mrp)<br>`mrp.bom.line.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1016_create_bom_material_cost` |  |
-| Update BOM Material Cost | `base_automation_23_update_bom_material_cost` |  | When a record is created or updated on Bill of Material Line, runs _Update BOM Material Cost_. | `model mrp.bom.line` (mrp)<br>`server action BugFix-MRP.server_action_1033_update_bom_material_cost` |  |
+| Create BOM Material Cost | `base_automation_21_create_bom_material_cost` |  | When a record is created or updated on Bill of Material Line, runs _Execute Code_. | `model mrp.bom.line` (mrp)<br>`mrp.bom.line.create_date` (mrp)<br>`server action BugFix-MRP.action_create_bom_material_cost` |  |
+| Update BOM Material Cost | `base_automation_23_update_bom_material_cost` |  | When a record is created or updated on Bill of Material Line, runs _Update BOM Material Cost_. | `model mrp.bom.line` (mrp)<br>`server action BugFix-MRP.action_update_bom_material_cost_2` |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_bom_line multi-company | `rule_206_mrp_bom_line_multi_company` | For everyone (global rule): read/write/create/delete on Bill of Material Line only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.bom.line` (mrp)<br>`mrp.bom.line.company_id` (mrp) |  |
+| mrp_bom_line multi-company | `rule_mrp_bom_line_multi_company` | For everyone (global rule): read/write/create/delete on Bill of Material Line only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.bom.line` (mrp)<br>`mrp.bom.line.company_id` (mrp) |  |
 
 ### `mrp.document` — Production Document
 
@@ -341,7 +341,7 @@ This repo adds no fields or logic to this model. It ships only an access right g
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| User | `access_6971_user` | Gives **Inventory / User** read access to Production Document records. | `group stock.group_stock_user` (stock)<br>`model mrp.document` (mrp) |  |
+| User | `access_user_4` | Gives **Inventory / User** read access to Production Document records. | `group stock.group_stock_user` (stock)<br>`model mrp.document` (mrp) |  |
 
 ### `mrp.eco` — Engineering Change Order (ECO)
 
@@ -358,16 +358,16 @@ Adds an approval step to engineering change orders: Approve and Apply both requi
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
 | `eco_id_mrp_eco_bom_change_count` | Engineering Change count | integer | Integer labelled 'Engineering Change count'; plain stored number that nothing in this repo fills or displays. | stored |  |  |
-| `error` | Error | char | Read-only error message (default text from an ir.default) shown under the BoM on the ECO form while a BoM-type ECO item is not approved. | stored |  | `default BugFix-MRP.default_371_mrp_eco_error`<br>`view BugFix-MRP.ported_view_4830_mrp_eco_form` |
-| `item_approved` | Approved Item | boolean | Marks the ECO item as approved; while unchecked on a BoM-type ECO the BoM field stays read-only and the Error message is shown. Optional column in the ECO list. | stored |  | `view BugFix-MRP.ported_view_4830_mrp_eco_form`<br>`view BugFix-MRP.ported_view_5062_mrp_eco_tree` |
-| `tag_description` | Tag Description | char | Copy of the ECO name filled by an automation; another automation finds or creates an ECO tag with this text and links it. Hidden on the form. | stored |  | `server action BugFix-MRP.sa_f5_mrp_eco_plm_tag_create`<br>`server action BugFix-MRP.sa_f5_mrp_eco_plm_tag_description`<br>`server action BugFix-MRP.server_action_2304_plm_tag_description`<br>`server action BugFix-MRP.server_action_2305_plm_tag_create`<br>`server action BugFix-MRP.server_action_2307_plm_filter_by_tag`<details><summary>+1 more</summary>`view BugFix-MRP.ported_view_4830_mrp_eco_form`</details> |
+| `error` | Error | char | Read-only error message (default text from an ir.default) shown under the BoM on the ECO form while a BoM-type ECO item is not approved. | stored |  | `default BugFix-MRP.default_mrp_eco_error`<br>`view BugFix-MRP.view_mrp_eco_view_form_inherit` |
+| `item_approved` | Approved Item | boolean | Marks the ECO item as approved; while unchecked on a BoM-type ECO the BoM field stays read-only and the Error message is shown. Optional column in the ECO list. | stored |  | `view BugFix-MRP.view_mrp_eco_view_form_inherit`<br>`view BugFix-MRP.view_mrp_eco_view_tree_inherit` |
+| `tag_description` | Tag Description | char | Copy of the ECO name filled by an automation; another automation finds or creates an ECO tag with this text and links it. Hidden on the form. | stored |  | `server action BugFix-MRP.action_mrp_eco_plm_tag_create`<br>`server action BugFix-MRP.action_mrp_eco_plm_tag_description`<br>`server action BugFix-MRP.action_plm_tag_description`<br>`server action BugFix-MRP.action_plm_tag_create`<br>`server action BugFix-MRP.action_plm_filter_by_tag`<details><summary>+1 more</summary>`view BugFix-MRP.view_mrp_eco_view_form_inherit`</details> |
 
 **Server actions (5):**
 
-- **Execute Code** (`server_action_2305_plm_tag_create`, type `code`)
+- **Execute Code** (`action_plm_tag_create`, type `code`)
   - Function: Code run by an automation: finds or creates an ECO tag named like the Tag Description and sets it as the ECO's only tag.
   - Depends on: `model mrp.eco.tag` (mrp_plm), `model mrp.eco` (mrp_plm), `mrp.eco.type` (mrp_plm), `mrp.eco.tag_description`
-  - Used by: `automation BugFix-MRP.base_automation_210_plm_tag_create`
+  - Used by: `automation BugFix-MRP.automation_plm_tag_create`
   <details><summary>code (30 lines)</summary>
 
 ```python
@@ -401,10 +401,10 @@ else:
 record.write({"tag_ids": [(6, 0, line_ids)]})
 ```
   </details>
-- **Execute Code** (`server_action_2304_plm_tag_description`, type `code`)
+- **Execute Code** (`action_plm_tag_description`, type `code`)
   - Function: Code run by an automation: copies the ECO name into Tag Description.
   - Depends on: `model mrp.eco` (mrp_plm), `mrp.eco.name` (mrp_plm), `mrp.eco.tag_description`
-  - Used by: `automation BugFix-MRP.base_automation_209_plm_tag_description`
+  - Used by: `automation BugFix-MRP.automation_plm_tag_description`
   <details><summary>code (4 lines)</summary>
 
 ```python
@@ -413,7 +413,7 @@ if record.name:
     record["tag_description"] = record.name
 ```
   </details>
-- **PLM - Filter by Tag** (`server_action_2307_plm_filter_by_tag`, type `code`)
+- **PLM - Filter by Tag** (`action_plm_filter_by_tag`, type `code`)
   - Function: Opens a list of ECOs sharing the current ECO's Tag Description; its ECO form button was stripped during porting, so nothing calls it.
   - Depends on: `model mrp.eco` (mrp_plm), `mrp.eco.tag_description`
   - Used by: — (not linked to a button, menu or automation)
@@ -432,7 +432,7 @@ action = {
 }
 ```
   </details>
-- **PLM - Tag Create** (`sa_f5_mrp_eco_plm_tag_create`, type `code`)
+- **PLM - Tag Create** (`action_mrp_eco_plm_tag_create`, type `code`)
   - Function: Finds an ECO tag named like the ECO's Tag Description, creating it if missing, and sets it as the ECO's only tag.
   - Depends on: `model mrp.eco.tag` (mrp_plm), `model mrp.eco` (mrp_plm), `mrp.eco.type` (mrp_plm), `mrp.eco.tag_description`
   - Used by: — (not linked to a button, menu or automation)
@@ -469,7 +469,7 @@ else:
 record.write({"tag_ids": [(6, 0, line_ids)]})
 ```
   </details>
-- **PLM - Tag Description** (`sa_f5_mrp_eco_plm_tag_description`, type `code`)
+- **PLM - Tag Description** (`action_mrp_eco_plm_tag_description`, type `code`)
   - Function: Copies the ECO name into Tag Description when a name is set.
   - Depends on: `model mrp.eco` (mrp_plm), `mrp.eco.name` (mrp_plm), `mrp.eco.tag_description`
   - Used by: — (not linked to a button, menu or automation)
@@ -485,8 +485,8 @@ if record.name:
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| PLM - Tag Create | `base_automation_210_plm_tag_create` |  | When a record is created or updated on Engineering Change Order (ECO), runs _Execute Code_. | `model mrp.eco` (mrp_plm)<br>`mrp.eco.create_date` (mrp_plm)<br>`server action BugFix-MRP.server_action_2305_plm_tag_create` |  |
-| PLM - Tag Description | `base_automation_209_plm_tag_description` |  | When a watched field changes in the form on Engineering Change Order (ECO), runs _Execute Code_. | `model mrp.eco` (mrp_plm)<br>`mrp.eco.name` (mrp_plm)<br>`server action BugFix-MRP.server_action_2304_plm_tag_description` |  |
+| PLM - Tag Create | `automation_plm_tag_create` |  | When a record is created or updated on Engineering Change Order (ECO), runs _Execute Code_. | `model mrp.eco` (mrp_plm)<br>`mrp.eco.create_date` (mrp_plm)<br>`server action BugFix-MRP.action_plm_tag_create` |  |
+| PLM - Tag Description | `automation_plm_tag_description` |  | When a watched field changes in the form on Engineering Change Order (ECO), runs _Execute Code_. | `model mrp.eco` (mrp_plm)<br>`mrp.eco.name` (mrp_plm)<br>`server action BugFix-MRP.action_plm_tag_description` |  |
 
 **Approval rules (2):**
 
@@ -499,21 +499,21 @@ if record.name:
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: mrp.eco.view.form customization | `ported_view_4830_mrp_eco_form` | form | inside `//sheet[1]`: add field state, field type; set studio_approval=True on `//button[@name='approve']`; set studio_approval=True on `//button[@name='action_apply']`; after `//field[@name='product_tmpl_id']`: add field tag_description; set invisible=(type in ('routing', 'product')) or (type in ['routing', 'product']), readonly=(state != 'confirmed') or (((item_approved != True) and (type == 'bom')) or (state != 'confirmed')), required=(type in ('bom', 'both')) or (type in ['bom', 'both']) on `//field[@name='bom_id']`; after `//field[@name='bom_id']`: add field error; set invisible=id == 0, readonly=(state == 'done') or (state == 'done') on `//field[@name='effectivity']`; set readonly=(state == 'done') or (state == 'done') on `//field[@name='tag_ids']` … | ECO form: approval rules on Approve and Apply; hidden Tag Description; BoM read-only until Approved Item for BoM-type ECOs, with a read-only Error message; Effectivity hidden on new records; Approved Item after Tags. | `mrp.eco.product_tmpl_id` (mrp_plm)<br>`mrp.eco.state` (mrp_plm)<br>`mrp.eco.type` (mrp_plm)<br>`mrp.eco.error`<br>`mrp.eco.item_approved`<details><summary>+2 more</summary>`mrp.eco.tag_description`<br>`view mrp_plm.mrp_eco_view_form` (mrp_plm)</details> |  |
-| Odoo Studio: mrp.eco.view.tree customization | `ported_view_5062_mrp_eco_tree` | tree | after `//field[@name='tag_ids']`: add field item_approved; after `//field[@name='stage_id']`: add field active | ECO list: adds optional Approved Item after Tags and a hidden Active column after Stage. | `mrp.eco.active` (mrp_plm)<br>`mrp.eco.item_approved`<br>`view mrp_plm.mrp_eco_view_tree` (mrp_plm) |  |
-| mrp.eco.view.form_button | `view_5063_mrp_eco_view_form_button_e` | form | after `//header/button[@name='action_new_revision']`: add | ECO form extension that should add a 'Filter by Tag' button after New Revision; the button was stripped (action id unresolvable), so the view has no effect. | `view mrp_plm.mrp_eco_view_form` (mrp_plm) |  |
+| Odoo Studio: mrp.eco.view.form customization | `view_mrp_eco_view_form_inherit` | form | inside `//sheet[1]`: add field state, field type; set studio_approval=True on `//button[@name='approve']`; set studio_approval=True on `//button[@name='action_apply']`; after `//field[@name='product_tmpl_id']`: add field tag_description; set invisible=(type in ('routing', 'product')) or (type in ['routing', 'product']), readonly=(state != 'confirmed') or (((item_approved != True) and (type == 'bom')) or (state != 'confirmed')), required=(type in ('bom', 'both')) or (type in ['bom', 'both']) on `//field[@name='bom_id']`; after `//field[@name='bom_id']`: add field error; set invisible=id == 0, readonly=(state == 'done') or (state == 'done') on `//field[@name='effectivity']`; set readonly=(state == 'done') or (state == 'done') on `//field[@name='tag_ids']` … | ECO form: approval rules on Approve and Apply; hidden Tag Description; BoM read-only until Approved Item for BoM-type ECOs, with a read-only Error message; Effectivity hidden on new records; Approved Item after Tags. | `mrp.eco.product_tmpl_id` (mrp_plm)<br>`mrp.eco.state` (mrp_plm)<br>`mrp.eco.type` (mrp_plm)<br>`mrp.eco.error`<br>`mrp.eco.item_approved`<details><summary>+2 more</summary>`mrp.eco.tag_description`<br>`view mrp_plm.mrp_eco_view_form` (mrp_plm)</details> |  |
+| Odoo Studio: mrp.eco.view.tree customization | `view_mrp_eco_view_tree_inherit` | tree | after `//field[@name='tag_ids']`: add field item_approved; after `//field[@name='stage_id']`: add field active | ECO list: adds optional Approved Item after Tags and a hidden Active column after Stage. | `mrp.eco.active` (mrp_plm)<br>`mrp.eco.item_approved`<br>`view mrp_plm.mrp_eco_view_tree` (mrp_plm) |  |
+| mrp.eco.view.form_button | `view_mrp_eco_view_form_button` | form | after `//header/button[@name='action_new_revision']`: add | ECO form extension that should add a 'Filter by Tag' button after New Revision; the button was stripped (action id unresolvable), so the view has no effect. | `view mrp_plm.mrp_eco_view_form` (mrp_plm) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Manufacturing ECO company rule | `rule_222_manufacturing_eco_company_rule` | For everyone (global rule): read/write/create/delete on Engineering Change Order (ECO) only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.eco` (mrp_plm)<br>`mrp.eco.company_id` (mrp_plm) |  |
+| Manufacturing ECO company rule | `rule_manufacturing_eco_company_rule` | For everyone (global rule): read/write/create/delete on Engineering Change Order (ECO) only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.eco` (mrp_plm)<br>`mrp.eco.company_id` (mrp_plm) |  |
 
 ### `mrp.eco.bom.change` — ECO BoM changes
 
 *Extends a model created by `mrp_plm`.*
 
-Other repos that use this model: `server action BugFix-Studio-Misc.server_action_2831_mst_odoo_data_clean_up_001` (BugFix-Studio-Misc)<br>`window action BugFix-Studio-Misc.act_window_2306_ecos_d7` (BugFix-Studio-Misc)<br>`window action BugFix-Studio-Misc.act_window_2834_mrp_eco_bom_change_d7` (BugFix-Studio-Misc)
+Other repos that use this model: `server action BugFix-Studio-Misc.server_action_2831_mst_odoo_data_clean_up_001` (BugFix-Studio-Misc)<br>`window action BugFix-Studio-Misc.action_ecos_d7` (BugFix-Studio-Misc)<br>`window action BugFix-Studio-Misc.action_mrp_eco_bom_change_d7` (BugFix-Studio-Misc)
 
 **Summary:**
 
@@ -525,14 +525,14 @@ This repo adds no fields or logic to this model. It ships two window actions tha
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| ECOs | `act_window_2306_ecos` | Opens **ECO BoM changes** records (tree,form), filtered to `[('eco_id', '=', active_id)]`. | `model mrp.eco.bom.change` (mrp_plm)<br>`mrp.eco.bom.change.eco_id` (mrp_plm) |  |
-| mrp.eco.bom.change | `act_window_2834_mrp_eco_bom_change` | Opens **ECO BoM changes** records (form). | `model mrp.eco.bom.change` (mrp_plm) |  |
+| ECOs | `action_ecos` | Opens **ECO BoM changes** records (tree,form), filtered to `[('eco_id', '=', active_id)]`. | `model mrp.eco.bom.change` (mrp_plm)<br>`mrp.eco.bom.change.eco_id` (mrp_plm) |  |
+| mrp.eco.bom.change | `action_mrp_eco_bom_change` | Opens **ECO BoM changes** records (form). | `model mrp.eco.bom.change` (mrp_plm) |  |
 
 ### `mrp.production` — Production Order
 
 *Extends a model created by `mrp`.* Python: `models/mrp_production.py`.
 
-Other repos that use this model: `approval rule BugFix-Approvals.rule_100_production_order_action_generate_serial_manufacturing_admini` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_101_production_order_action_product_forecast_report_inventory_ji` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_1_production_order_button_unplan_user_types_internal_user_1` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_2_production_order_button_mark_done_user_types_internal_user_2` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_3_production_order_button_mark_done_user_types_internal_user_3` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_4_production_order_button_mark_done_user_types_internal_user_4` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_5_production_order_button_mark_done_manufacturing_administrato` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_91_production_order_button_unbuild_manufacturing_jin_manufactur` (BugFix-Approvals)<details><summary>+18 more</summary>`approval rule BugFix-Approvals.rule_92_production_order_button_scrap_manufacturing_jin_manufacturin` (BugFix-Approvals)<br>`sale.order.line.many2one_field_btM1W` (BugFix-Sales)<br>`server action BugFix-Accounting.sa_f5_x_sales_report_model_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Accounting.sa_f5_x_sales_report_model_srm_rpt_sales_production_purchase_report` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_1144_work_center_costing_model_update_journal_entries` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_1519_sls_payment_reconciliation_automate` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_1726_srm_auto_populate_data` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_1763_srm_rpt_sales_production_purchase_report` (BugFix-Accounting)<br>`server action BugFix-Accounting.server_action_2490_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Stock.server_action_1138_work_center_costing_model_create_journal_entries` (BugFix-Stock)<br>`server action BugFix-Stock.server_action_2566_work_center_costing_model_create_journal_entries_original` (BugFix-Stock)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)<br>`server action BugFix-Studio-Misc.server_action_2883_mst_odoo_data_clean_up_004` (BugFix-Studio-Misc)<br>`stock.lot.production_id` (BugFix-Stock)<br>`rm_production_orders.production_id` (BugFix-Accounting)<br>`rm_production_varian.production_id` (BugFix-Accounting)<br>`sales_report_model.related_field_oeTJK` (Jinasena_Masterdata_Reporting)<br>`sales_report_type.production_order_id` (Jinasena_Masterdata_Reporting)</details>
+Other repos that use this model: `approval rule BugFix-Approvals.approval_rule_production_order_action_generate_serial_manufacturing_admini` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.approval_rule_production_order_action_product_forecast_report_inventory_ji` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_1_production_order_button_unplan_user_types_internal_user_1` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_2_production_order_button_mark_done_user_types_internal_user_2` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_3_production_order_button_mark_done_user_types_internal_user_3` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_4_production_order_button_mark_done_user_types_internal_user_4` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_5_production_order_button_mark_done_manufacturing_administrato` (BugFix-Approvals)<br>`approval rule BugFix-Approvals.rule_91_production_order_button_unbuild_manufacturing_jin_manufactur` (BugFix-Approvals)<details><summary>+18 more</summary>`approval rule BugFix-Approvals.rule_92_production_order_button_scrap_manufacturing_jin_manufacturin` (BugFix-Approvals)<br>`sale.order.line.many2one_field_btM1W` (BugFix-Sales)<br>`server action BugFix-Accounting.action_sales_report_model_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_sales_report_model_srm_rpt_sales_production_purchase_report` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_work_center_costing_model_update_journal_entries` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_sls_payment_reconciliation_automate` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_srm_auto_populate_data_2` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_srm_rpt_sales_production_purchase_report` (BugFix-Accounting)<br>`server action BugFix-Accounting.action_srm_rpt_costing_work_sheet` (BugFix-Accounting)<br>`server action BugFix-Stock.action_work_center_costing_model_create_journal_entries` (BugFix-Stock)<br>`server action BugFix-Stock.action_work_center_costing_model_create_journal_entries_original` (BugFix-Stock)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)<br>`server action BugFix-Studio-Misc.server_action_2883_mst_odoo_data_clean_up_004` (BugFix-Studio-Misc)<br>`stock.lot.production_id` (BugFix-Stock)<br>`rm_production_orders.production_id` (BugFix-Accounting)<br>`rm_production_varian.production_id` (BugFix-Accounting)<br>`sales_report_model.related_field_oeTJK` (Jinasena_Masterdata_Reporting)<br>`sales_report_type.production_order_id` (Jinasena_Masterdata_Reporting)</details>
 
 **Summary:**
 
@@ -544,47 +544,47 @@ Adds MO costing (Direct Material, Labour, Overhead and General Cost tabs filled 
 
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency used by the monetary cost columns on the MO cost tabs (default from an ir.default); hidden. | stored | `model res.currency` (base) | `default BugFix-MRP.default_423_mrp_production_accounting_currency_id`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `mrp_current_user` | Current User | many2one → `res.users` | Read-only user field hidden on the MO form; nothing in this repo sets it. | stored | `model res.users` (base) | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `direct_general_cost` | Direct General Cost | one2many → `mrp_bom_general_cost` | General cost lines of the MO, created and updated per work order by automations; shown on the Direct General Cost tab. | stored | `model mrp_bom_general_cost` | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `direct_material_cost` | Direct Material Cost | one2many → `mrp_bom_material_cos` | Material cost lines linked to the MO, shown on the Direct Material Cost tab with planned/actual quantity and cost. | stored | `model mrp_bom_material_cos` | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `finished_product_location` | Finished Product Location | many2one → `stock.location` | Finished-goods location found by the Update Finished Product Location button (sibling location flagged as finished good); hidden and read-only. | stored | `model stock.location` (stock) | `server action BugFix-MRP.server_action_2534_finished_products_location_updated`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `finished_products_location_updated` | Finished Products Location Updated | boolean | Set by the Update Finished Product Location button; controls visibility of that button, Mass Produce Serial Nos and Mark as Done. | stored |  | `server action BugFix-MRP.server_action_2534_finished_products_location_updated`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
-| `grand_total_actual_cost_1` | Grand Total (Actual Cost) | float | Grand total of actual costs on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `grand_total_planned_cost` | Grand Total (Planned Cost) | float | Grand total of planned costs on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `mark_as_done_validation` | Mark as Done Validation | text | Warning 'Please enter the Quantity to produce to proceed with Mark as Done.' written by an automation (default from ir.default); shown read-only only when Quantity Validation is set. | stored |  | `default BugFix-MRP.default_475_mrp_production_mark_as_done_validation`<br>`server action BugFix-MRP.sa_f5_mrp_production_proj_mark_as_done_validation`<br>`server action BugFix-MRP.server_action_2765_proj_mark_as_done_validation`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `mass_produced` | Mass Produced | boolean | True once serial numbers were mass-produced for the MO (set by Create Original Serial No, cleared by Cancel Serial Nos in draft); controls Confirm, Plan, Mark as Done, Cancel and serial buttons. | stored |  | `server action BugFix-MRP.server_action_1155_update_original_mo_in_mo`<br>`server action BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
-| `melt_item` | Melt Item | boolean | Read-only flag hidden on the MO form; nothing in this repo sets it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `one2many_field_Fzcvl` | Direct Labour Cost | one2many → `mrp_bom_labour_cost` | Labour cost lines of the MO, created and updated per work order by automations (planned/actual hours, normal and OT rates); shown on the Direct Labour Cost tab. | stored | `model mrp_bom_labour_cost` | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `one2many_field_vg1OS` | Direct Overhead Cost | one2many → `mrp_bom_overhead_cos` | Overhead cost lines of the MO, created and updated per work order by automations; shown on the Direct Overhead Cost tab. | stored | `model mrp_bom_overhead_cos` | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `original_mo` | Original MO | char | MO reference used for serials: the MO name minus its last 4 characters for tracked, mass-produced MOs, otherwise the MO name; set by an automation and copied to work orders and serial lines. | stored |  | `server action BugFix-MRP.server_action_1155_update_original_mo_in_mo`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `ot_applicable` | OT  Applicable | boolean | OT Applicable flag hidden on the MO form; read-only, not stored and never calculated, so always False. | not stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `pro_bom_total_general_cost` | Total General Cost | float | Total planned general cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `process_error` | Process Error | text | Read-only process error text (default from ir.default) shown on the MO form when Source Validate is set but the temp-location flag is not. | stored |  | `default BugFix-MRP.default_407_mrp_production_process_error`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_actual_labour_cost` | Total Actual Labour Cost | float | Total actual labour cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_actual_labour_cost_ot` | Total Actual Labour Cost (OT) | float | Total actual overtime labour cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_actual_labour_cost_without_ot` | Total Actual Labour Cost (Without OT) | float | Total actual labour cost excluding overtime on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_actual_material_cost` | Total  Actual Material Cost | float | Total actual material cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_actual_overhead_cost` | Total Actual Overhead Cost | float | Total actual overhead cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_labour_cost` | Total Labour Cost | float | Total planned labour cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_material_cost` | Total Material Cost | float | Total planned material cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `prod_bom_total_overhead_cost` | Total Overhead Cost | float | Total planned overhead cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `quantity_validation` | Quantity Validation | boolean | Hidden flag used in the Mark as Done button and validation-message conditions; read-only, not stored and never calculated, so always False and those conditions never trigger. | not stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
-| `report_type_m_wip` | Report Type (M-WIP) | many2one → `sales_report_type` | Sales report type tag for the 'Production Overview - WIP' report, set by an automation when the MO is In Progress; hidden column in the MO list. | stored | `model sales_report_type` (Jinasena_Masterdata_Reporting) | `server action BugFix-MRP.server_action_1738_srm_auto_populate_report_type_in_production_order`<br>`view BugFix-MRP.ported_view_2390_mrp_production_tree` |
-| `serial_cancelled` | Serial Cancelled | boolean | Set by Cancel Serial Nos and reset when serials are created again; controls visibility of the Cancel and Cancel Serial Nos buttons. | stored |  | `server action BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
-| `source_validate` | Source Validate | boolean | Flag controlling the Update Finished Product Location button, Process Error and Mark as Done; read-only, not stored and never calculated, so always False (that button never shows). | not stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
-| `super_user` | Super User | boolean | Hidden Super User flag on the MO form; read-only, not stored and never calculated, so always False. | not stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `super_user_melt_items` | Super User (Melt Items) | boolean | Super User (Melt Items) flag shown on the MO form (default from ir.default); read-only and nothing in this repo sets it. | stored |  | `default BugFix-MRP.default_641_mrp_production_super_user_melt_items`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `temp_location` | Temp Location | boolean | Hidden read-only flag; when True it hides the Confirm button and affects Process Error. Nothing in this repo sets it. | stored |  | `server action BugFix-MRP.server_action_2534_finished_products_location_updated`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
-| `total_actual_general_cost` | Total Actual General Cost | float | Total actual general cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `tracked_item` | Tracked Item | boolean | Should mark MOs whose product is serial-tracked (an action writes it), but it is declared not stored with no compute, so it reads False and the Mass Produce Serial Nos button never shows. | not stored |  | `server action BugFix-MRP.server_action_1154_update_tracking_item_status_in_mo`<br>`server action BugFix-MRP.server_action_1155_update_original_mo_in_mo`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_3946_mrp_production_form_button` |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency used by the monetary cost columns on the MO cost tabs (default from an ir.default); hidden. | stored | `model res.currency` (base) | `default BugFix-MRP.default_mrp_production_accounting_currency_id`<br>`view BugFix-MRP.view_mrp_production_form_inherit` |
+| `mrp_current_user` | Current User | many2one → `res.users` | Read-only user field hidden on the MO form; nothing in this repo sets it. | stored | `model res.users` (base) | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `direct_general_cost` | Direct General Cost | one2many → `mrp_bom_general_cost` | General cost lines of the MO, created and updated per work order by automations; shown on the Direct General Cost tab. | stored | `model mrp_bom_general_cost` | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `direct_material_cost` | Direct Material Cost | one2many → `mrp_bom_material_cos` | Material cost lines linked to the MO, shown on the Direct Material Cost tab with planned/actual quantity and cost. | stored | `model mrp_bom_material_cos` | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `finished_product_location` | Finished Product Location | many2one → `stock.location` | Finished-goods location found by the Update Finished Product Location button (sibling location flagged as finished good); hidden and read-only. | stored | `model stock.location` (stock) | `server action BugFix-MRP.action_finished_products_location_updated`<br>`view BugFix-MRP.view_mrp_production_form_inherit` |
+| `finished_products_location_updated` | Finished Products Location Updated | boolean | Set by the Update Finished Product Location button; controls visibility of that button, Mass Produce Serial Nos and Mark as Done. | stored |  | `server action BugFix-MRP.action_finished_products_location_updated`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
+| `grand_total_actual_cost_1` | Grand Total (Actual Cost) | float | Grand total of actual costs on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `grand_total_planned_cost` | Grand Total (Planned Cost) | float | Grand total of planned costs on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `mark_as_done_validation` | Mark as Done Validation | text | Warning 'Please enter the Quantity to produce to proceed with Mark as Done.' written by an automation (default from ir.default); shown read-only only when Quantity Validation is set. | stored |  | `default BugFix-MRP.default_mrp_production_mark_as_done_validation`<br>`server action BugFix-MRP.action_mrp_production_proj_mark_as_done_validation`<br>`server action BugFix-MRP.action_proj_mark_as_done_validation`<br>`view BugFix-MRP.view_mrp_production_form_inherit` |
+| `mass_produced` | Mass Produced | boolean | True once serial numbers were mass-produced for the MO (set by Create Original Serial No, cleared by Cancel Serial Nos in draft); controls Confirm, Plan, Mark as Done, Cancel and serial buttons. | stored |  | `server action BugFix-MRP.action_update_original_mo_in_mo`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_cancel_serial_no`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
+| `melt_item` | Melt Item | boolean | Read-only flag hidden on the MO form; nothing in this repo sets it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `one2many_field_Fzcvl` | Direct Labour Cost | one2many → `mrp_bom_labour_cost` | Labour cost lines of the MO, created and updated per work order by automations (planned/actual hours, normal and OT rates); shown on the Direct Labour Cost tab. | stored | `model mrp_bom_labour_cost` | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `one2many_field_vg1OS` | Direct Overhead Cost | one2many → `mrp_bom_overhead_cos` | Overhead cost lines of the MO, created and updated per work order by automations; shown on the Direct Overhead Cost tab. | stored | `model mrp_bom_overhead_cos` | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `original_mo` | Original MO | char | MO reference used for serials: the MO name minus its last 4 characters for tracked, mass-produced MOs, otherwise the MO name; set by an automation and copied to work orders and serial lines. | stored |  | `server action BugFix-MRP.action_update_original_mo_in_mo`<br>`view BugFix-MRP.view_mrp_production_form_inherit` |
+| `ot_applicable` | OT  Applicable | boolean | OT Applicable flag hidden on the MO form; read-only, not stored and never calculated, so always False. | not stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `pro_bom_total_general_cost` | Total General Cost | float | Total planned general cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `process_error` | Process Error | text | Read-only process error text (default from ir.default) shown on the MO form when Source Validate is set but the temp-location flag is not. | stored |  | `default BugFix-MRP.default_mrp_production_process_error`<br>`view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_actual_labour_cost` | Total Actual Labour Cost | float | Total actual labour cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_actual_labour_cost_ot` | Total Actual Labour Cost (OT) | float | Total actual overtime labour cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_actual_labour_cost_without_ot` | Total Actual Labour Cost (Without OT) | float | Total actual labour cost excluding overtime on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_actual_material_cost` | Total  Actual Material Cost | float | Total actual material cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_actual_overhead_cost` | Total Actual Overhead Cost | float | Total actual overhead cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_labour_cost` | Total Labour Cost | float | Total planned labour cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_material_cost` | Total Material Cost | float | Total planned material cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `prod_bom_total_overhead_cost` | Total Overhead Cost | float | Total planned overhead cost on the MO cost tabs; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `quantity_validation` | Quantity Validation | boolean | Hidden flag used in the Mark as Done button and validation-message conditions; read-only, not stored and never calculated, so always False and those conditions never trigger. | not stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
+| `report_type_m_wip` | Report Type (M-WIP) | many2one → `sales_report_type` | Sales report type tag for the 'Production Overview - WIP' report, set by an automation when the MO is In Progress; hidden column in the MO list. | stored | `model sales_report_type` (Jinasena_Masterdata_Reporting) | `server action BugFix-MRP.action_srm_auto_populate_report_type_in_production_order`<br>`view BugFix-MRP.view_mrp_production_tree_inherit` |
+| `serial_cancelled` | Serial Cancelled | boolean | Set by Cancel Serial Nos and reset when serials are created again; controls visibility of the Cancel and Cancel Serial Nos buttons. | stored |  | `server action BugFix-MRP.action_mass_produce_serial_numbers_cancel_serial_no`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
+| `source_validate` | Source Validate | boolean | Flag controlling the Update Finished Product Location button, Process Error and Mark as Done; read-only, not stored and never calculated, so always False (that button never shows). | not stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
+| `super_user` | Super User | boolean | Hidden Super User flag on the MO form; read-only, not stored and never calculated, so always False. | not stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `super_user_melt_items` | Super User (Melt Items) | boolean | Super User (Melt Items) flag shown on the MO form (default from ir.default); read-only and nothing in this repo sets it. | stored |  | `default BugFix-MRP.default_641_mrp_production_super_user_melt_items`<br>`view BugFix-MRP.view_mrp_production_form_inherit` |
+| `temp_location` | Temp Location | boolean | Hidden read-only flag; when True it hides the Confirm button and affects Process Error. Nothing in this repo sets it. | stored |  | `server action BugFix-MRP.action_finished_products_location_updated`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
+| `total_actual_general_cost` | Total Actual General Cost | float | Total actual general cost on the MO Costing tab; read-only stored number; nothing in this repo calculates it. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `tracked_item` | Tracked Item | boolean | Should mark MOs whose product is serial-tracked (an action writes it), but it is declared not stored with no compute, so it reads False and the Mass Produce Serial Nos button never shows. | not stored |  | `server action BugFix-MRP.action_update_tracking_item_status_in_mo`<br>`server action BugFix-MRP.action_update_original_mo_in_mo`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_production_form_button` |
 
 **Server actions (8):**
 
-- **Execute Code** (`server_action_2765_proj_mark_as_done_validation`, type `code`)
+- **Execute Code** (`action_proj_mark_as_done_validation`, type `code`)
   - Function: Code run by an automation: writes 'Please enter the Quantity to produce to proceed with Mark as Done.' into the MO's Mark as Done Validation field.
   - Depends on: `model mrp.production` (mrp), `mrp.production.mark_as_done_validation`
-  - Used by: `automation BugFix-MRP.automation_330_proj_mark_as_done_validation`
+  - Used by: `automation BugFix-MRP.automation_proj_mark_as_done_validation`
   <details><summary>code (2 lines)</summary>
 
 ```python
@@ -593,10 +593,10 @@ record["mark_as_done_validation"] = (
 )
 ```
   </details>
-- **Finished Products Location Updated** (`server_action_2534_finished_products_location_updated`, type `code`)
+- **Finished Products Location Updated** (`action_finished_products_location_updated`, type `code`)
   - Function: Update Finished Product Location button: finds the finished-good location next to the MO's destination and a temp location, resets the MO to draft with the temp destination, stores the finished location and sets the updated flag; errors if missing.
   - Depends on: `model mrp.production` (mrp), `model stock.location` (stock), `mrp.production.location_dest_id` (mrp), `mrp.production.finished_product_location`, `mrp.production.finished_products_location_updated`<details><summary>+1 more</summary>`mrp.production.temp_location`</details>
-  - Used by: `view BugFix-MRP.ported_view_3946_mrp_production_form_button`
+  - Used by: `view BugFix-MRP.view_mrp_production_form_button`
   <details><summary>code (15 lines)</summary>
 
 ```python
@@ -629,10 +629,10 @@ if record.id:
             )
 ```
   </details>
-- **Mass Produce Serial Numbers** (`server_action_1147_mass_produce_serial_numbers`, type `code`)
+- **Mass Produce Serial Numbers** (`action_mass_produce_serial_numbers`, type `code`)
   - Function: Mass Produce Serial Nos button on the MO: opens the Mass Produce Serial wizard in a pop-up, pre-filled with the MO, product, quantity, size 4, start 1 and current company.
   - Depends on: `model mrp.production` (mrp), `model res.company` (base), `mrp.production.product_id` (mrp), `mrp.production.product_qty` (mrp)
-  - Used by: `view BugFix-MRP.ported_view_3946_mrp_production_form_button`
+  - Used by: `view BugFix-MRP.view_mrp_production_form_button`
   <details><summary>code (14 lines)</summary>
 
 ```python
@@ -661,10 +661,10 @@ action = {
 }
 ```
   </details>
-- **Mass Produce Serial Numbers - Cancel Serial No** (`server_action_3202_mass_produce_serial_numbers_cancel_serial_no`, type `code`)
+- **Mass Produce Serial Numbers - Cancel Serial No** (`action_mass_produce_serial_numbers_cancel_serial_no`, type `code`)
   - Function: Cancel Serial Nos button on the MO: deletes all lots/serials of the current company linked to the MO, clears Mass Produced if the MO is draft, and sets Serial Cancelled.
   - Depends on: `model mrp.production` (mrp), `model res.company` (base), `model stock.lot` (stock), `mrp.production.state` (mrp), `mrp.production.mass_produced`<details><summary>+1 more</summary>`mrp.production.serial_cancelled`</details>
-  - Used by: `view BugFix-MRP.ported_view_3946_mrp_production_form_button`
+  - Used by: `view BugFix-MRP.view_mrp_production_form_button`
   <details><summary>code (12 lines)</summary>
 
 ```python
@@ -683,7 +683,7 @@ if record.id:
     record["serial_cancelled"] = True
 ```
   </details>
-- **PROJ - Mark as Done Validation** (`sa_f5_mrp_production_proj_mark_as_done_validation`, type `code`)
+- **PROJ - Mark as Done Validation** (`action_mrp_production_proj_mark_as_done_validation`, type `code`)
   - Function: Writes the message 'Please enter the Quantity to produce to proceed with Mark as Done.' into the MO's Mark as Done Validation field.
   - Depends on: `model mrp.production` (mrp), `mrp.production.mark_as_done_validation`
   - Used by: — (not linked to a button, menu or automation)
@@ -695,10 +695,10 @@ record["mark_as_done_validation"] = (
 )
 ```
   </details>
-- **SRM - Auto Populate Report Type in Production Order** (`server_action_1738_srm_auto_populate_report_type_in_production_order`, type `code`)
+- **SRM - Auto Populate Report Type in Production Order** (`action_srm_auto_populate_report_type_in_production_order`, type `code`)
   - Function: Run by an automation: when the MO is In Progress, sets Report Type (M-WIP) to the sales report type coded 'Production Overview - WIP'.
   - Depends on: `model mrp.production` (mrp), `model sales_report_type` (Jinasena_Masterdata_Reporting), `mrp.production.state` (mrp), `mrp.production.report_type_m_wip` (Jinasena_Masterdata_Reporting)
-  - Used by: `automation BugFix-MRP.automation_122_srm_auto_populate_report_type_in_production_order`
+  - Used by: `automation BugFix-MRP.automation_srm_auto_populate_report_type_in_production_order`
   <details><summary>code (4 lines)</summary>
 
 ```python
@@ -710,7 +710,7 @@ if record.state == "progress":
         record["report_type_m_wip"] = rpt_id.id
 ```
   </details>
-- **Update Original MO in MO** (`server_action_1155_update_original_mo_in_mo`, type `code`)
+- **Update Original MO in MO** (`action_update_original_mo_in_mo`, type `code`)
   - Function: Run by an automation: sets Original MO to the MO name minus its last 4 characters when the MO is tracked and mass-produced, otherwise to the MO name.
   - Depends on: `model mrp.production` (mrp), `mrp.production.name` (mrp), `mrp.production.mass_produced`, `mrp.production.original_mo`, `mrp.production.tracked_item`
   - Used by: `automation BugFix-MRP.automation_47_update_original_mo_in_mo`
@@ -725,7 +725,7 @@ if record.id:
         record["original_mo"] = record.name
 ```
   </details>
-- **Update Tracking Item Status in MO** (`server_action_1154_update_tracking_item_status_in_mo`, type `code`)
+- **Update Tracking Item Status in MO** (`action_update_tracking_item_status_in_mo`, type `code`)
   - Function: Sets Tracked Item True when the MO product is serial-tracked, else False; not bound to any automation here, and the field is unstored so the value is lost.
   - Depends on: `model mrp.production` (mrp), `mrp.production.product_id` (mrp), `mrp.production.tracked_item`
   - Used by: — (not linked to a button, menu or automation)
@@ -743,37 +743,37 @@ if record.product_id:
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| PROJ - Mark as Done Validation | `automation_330_proj_mark_as_done_validation` |  | When a record is created or updated on Production Order, runs _Execute Code_. | `model mrp.production` (mrp)<br>`server action BugFix-MRP.server_action_2765_proj_mark_as_done_validation` |  |
-| SRM - Auto Populate Report Type in Production Order | `automation_122_srm_auto_populate_report_type_in_production_order` |  | When a record is created or updated on Production Order, runs _SRM - Auto Populate Report Type in Production Order_. | `model mrp.production` (mrp)<br>`server action BugFix-MRP.server_action_1738_srm_auto_populate_report_type_in_production_order` |  |
-| Update Original MO in MO | `automation_47_update_original_mo_in_mo` |  | When a record is created or updated on Production Order, runs _Update Original MO in MO_. | `model mrp.production` (mrp)<br>`server action BugFix-MRP.server_action_1155_update_original_mo_in_mo` |  |
+| PROJ - Mark as Done Validation | `automation_proj_mark_as_done_validation` |  | When a record is created or updated on Production Order, runs _Execute Code_. | `model mrp.production` (mrp)<br>`server action BugFix-MRP.action_proj_mark_as_done_validation` |  |
+| SRM - Auto Populate Report Type in Production Order | `automation_srm_auto_populate_report_type_in_production_order` |  | When a record is created or updated on Production Order, runs _SRM - Auto Populate Report Type in Production Order_. | `model mrp.production` (mrp)<br>`server action BugFix-MRP.action_srm_auto_populate_report_type_in_production_order` |  |
+| Update Original MO in MO | `automation_47_update_original_mo_in_mo` |  | When a record is created or updated on Production Order, runs _Update Original MO in MO_. | `model mrp.production` (mrp)<br>`server action BugFix-MRP.action_update_original_mo_in_mo` |  |
 | Update Tracking Item Status in MO | `base_automation_46_update_tracking_item_status_in_mo` | archived | When a watched field changes in the form on Production Order, runs nothing (no action linked). **Archived — does not run.** | `model mrp.production` (mrp) |  |
 
 **Approval rules (2):**
 
 | Name | Record name | Approver group | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| Cancel (Production Order) | `approval_rule_108_cancel_production_order` | Inventory / Administrator | Before button/method `action_cancel` on Production Order runs, an approval from **Inventory / Administrator** is required (step 1). | `group stock.group_stock_manager` (stock)<br>`model mrp.production` (mrp)<br>`mrp.production.action_cancel()` (Odoo) |  |
-| Unlock (Production Order) | `approval_rule_107_unlock_production_order` | Inventory / Administrator | Before button/method `action_toggle_is_locked` on Production Order runs, an approval from **Inventory / Administrator** is required (step 1). | `group stock.group_stock_manager` (stock)<br>`model mrp.production` (mrp)<br>`mrp.production.action_toggle_is_locked()` (Odoo) |  |
+| Cancel (Production Order) | `approval_rule_cancel_production_order` | Inventory / Administrator | Before button/method `action_cancel` on Production Order runs, an approval from **Inventory / Administrator** is required (step 1). | `group stock.group_stock_manager` (stock)<br>`model mrp.production` (mrp)<br>`mrp.production.action_cancel()` (Odoo) |  |
+| Unlock (Production Order) | `approval_rule_unlock_production_order` | Inventory / Administrator | Before button/method `action_toggle_is_locked` on Production Order runs, an approval from **Inventory / Administrator** is required (step 1). | `group stock.group_stock_manager` (stock)<br>`model mrp.production` (mrp)<br>`mrp.production.action_toggle_is_locked()` (Odoo) |  |
 
 **Views (3):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: mrp.production.form customization | `ported_view_2325_mrp_production_form` | form | set create=false, delete=true, edit=true on `//form[1]`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done']`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done'][2]`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done'][3]`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done'][4]`; set studio_approval=True on `//button[@name='button_unplan']`; set invisible=state in [] or not reserve_visible on `//button[@name='action_assign']`; set studio_approval=True on `//button[@name='button_scrap']` … | MO form: disables create, adds approval rules on Mark as Done, Unplan, Scrap, Unbuild and forecast buttons, customises work order/component lists, adds validation and serial fields, and tabs Direct Material/Labour/Overhead/General Cost plus Costing. | `group account.group_account_readonly` (account)<br>`group base.group_multi_company` (base)<br>`group base.group_no_one` (base)<br>`group mrp.group_mrp_manager` (mrp)<br>`group stock.group_adv_location` (stock)<details><summary>+128 more</summary>`group uom.group_uom` (uom)<br>`mrp.production.action_get_account_moves()` (Odoo)<br>`mrp.production.bom_id` (mrp)<br>`mrp.production.button_finish()` (Odoo)<br>`mrp.production.button_pending()` (Odoo)<br>`mrp.production.button_start()` (Odoo)<br>`mrp.production.button_unblock()` (Odoo)<br>`mrp.production.check_ids` (mrp_workorder)<br>`mrp.production.company_id` (mrp)<br>`mrp.production.components_availability_state` (mrp)<br>`mrp.production.consumption` (mrp)<br>`mrp.production.date_deadline` (mrp)<br>`mrp.production.date_finished` (mrp)<br>`mrp.production.date_start` (mrp)<br>`mrp.production.duration_expected` (mrp)<br>`mrp.production.duration` (mrp)<br>`mrp.production.json_popover` (mrp)<br>`mrp.production.location_dest_id` (mrp)<br>`mrp.production.move_dest_ids` (mrp)<br>`mrp.production.name` (mrp)<br>`mrp.production.origin` (mrp)<br>`mrp.production.product_id` (mrp)<br>`mrp.production.product_tracking` (mrp)<br>`mrp.production.product_uom_category_id` (mrp)<br>`mrp.production.product_uom_id` (mrp)<br>`mrp.production.product_uom_qty` (mrp)<br>`mrp.production.qty_producing` (mrp)<br>`mrp.production.quality_check_fail` (quality_mrp)<br>`mrp.production.state` (mrp)<br>`mrp.production.user_id` (mrp)<br>`mrp.production.workcenter_id` (mrp)<br>`mrp.production.accounting_currency_id`<br>`mrp.production.mrp_current_user`<br>`mrp.production.direct_general_cost`<br>`mrp.production.direct_material_cost`<br>`mrp.production.finished_product_location`<br>`mrp.production.finished_products_location_updated`<br>`mrp.production.grand_total_actual_cost_1`<br>`mrp.production.grand_total_planned_cost`<br>`mrp.production.mark_as_done_validation`<br>`mrp.production.mass_produced`<br>`mrp.production.melt_item`<br>`mrp.production.one2many_field_Fzcvl`<br>`mrp.production.one2many_field_vg1OS`<br>`mrp.production.original_mo`<br>`mrp.production.ot_applicable`<br>`mrp.production.pro_bom_total_general_cost`<br>`mrp.production.process_error`<br>`mrp.production.prod_bom_total_actual_labour_cost_ot`<br>`mrp.production.prod_bom_total_actual_labour_cost_without_ot`<br>`mrp.production.prod_bom_total_actual_labour_cost`<br>`mrp.production.prod_bom_total_actual_material_cost`<br>`mrp.production.prod_bom_total_actual_overhead_cost`<br>`mrp.production.prod_bom_total_labour_cost`<br>`mrp.production.prod_bom_total_material_cost`<br>`mrp.production.prod_bom_total_overhead_cost`<br>`mrp.production.quantity_validation`<br>`mrp.production.serial_cancelled`<br>`mrp.production.source_validate`<br>`mrp.production.super_user_melt_items`<br>`mrp.production.super_user`<br>`mrp.production.temp_location`<br>`mrp.production.total_actual_general_cost`<br>`mrp.production.tracked_item`<br>`quality.check.control_date` (quality)<br>`quality.check.finished_lot_id` (mrp_workorder)<br>`quality.check.quality_state` (quality)<br>`quality.check.result` (mrp_workorder)<br>`quality.check.test_type` (quality)<br>`quality.check.title` (quality)<br>`quality.check.user_id` (quality)<br>`stock.move.location_dest_id` (stock)<br>`stock.move.location_id` (stock)<br>`stock.move.product_uom_qty` (stock)<br>`stock.move.product_uom` (stock)<br>`stock.move.state` (stock)<br>`view mrp.mrp_production_form_view` (mrp)<br>`window action mrp.act_mrp_block_workcenter_wo` (mrp)<br>`mrp_bom_general_cost.name`<br>`mrp_bom_general_cost.actual_qty`<br>`mrp_bom_general_cost.bom_general_cost_ids`<br>`mrp_bom_general_cost.cost`<br>`mrp_bom_general_cost.accounting_currency_id`<br>`mrp_bom_general_cost.operation_id`<br>`mrp_bom_general_cost.planned_qty`<br>`mrp_bom_general_cost.prod_bom_general_cost_ids`<br>`mrp_bom_general_cost.sequence`<br>`mrp_bom_general_cost.total_actual_cost`<br>`mrp_bom_general_cost.total_cost`<br>`mrp_bom_labour_cost.name`<br>`mrp_bom_labour_cost.actual_qty`<br>`mrp_bom_labour_cost.bom_labour_cost_ids`<br>`mrp_bom_labour_cost.cost_ot`<br>`mrp_bom_labour_cost.cost_without_ot`<br>`mrp_bom_labour_cost.cost`<br>`mrp_bom_labour_cost.accounting_currency_id`<br>`mrp_bom_labour_cost.operation_id`<br>`mrp_bom_labour_cost.planned_qty`<br>`mrp_bom_labour_cost.prod_bom_labour_cost_ids`<br>`mrp_bom_labour_cost.sequence`<br>`mrp_bom_labour_cost.total_actual_cost_ot`<br>`mrp_bom_labour_cost.total_actual_cost_without_ot`<br>`mrp_bom_labour_cost.total_actual_cost`<br>`mrp_bom_labour_cost.total_cost`<br>`mrp_bom_material_cos.name`<br>`mrp_bom_material_cos.actual_qty`<br>`mrp_bom_material_cos.bom_material_cost_ids`<br>`mrp_bom_material_cos.cost`<br>`mrp_bom_material_cos.accounting_currency_id`<br>`mrp_bom_material_cos.operation_id`<br>`mrp_bom_material_cos.planned_qty`<br>`mrp_bom_material_cos.prod_bom_material_cost_ids`<br>`mrp_bom_material_cos.product_id`<br>`mrp_bom_material_cos.sequence`<br>`mrp_bom_material_cos.total_actual_cost`<br>`mrp_bom_material_cos.total_cost`<br>`mrp_bom_material_cos.uom_id`<br>`mrp_bom_overhead_cos.name`<br>`mrp_bom_overhead_cos.actual_qty`<br>`mrp_bom_overhead_cos.bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.cost`<br>`mrp_bom_overhead_cos.accounting_currency_id`<br>`mrp_bom_overhead_cos.operation_id`<br>`mrp_bom_overhead_cos.planned_qty`<br>`mrp_bom_overhead_cos.prod_bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.sequence`<br>`mrp_bom_overhead_cos.total_actual_cost`<br>`mrp_bom_overhead_cos.total_cost`</details> |  |
-| Odoo Studio: mrp.production.form-button | `ported_view_3946_mrp_production_form_button` | form | inside `//sheet[1]`: add field finished_products_location_updated, field source_validate, field mass_produced, field tracked_item, field serial_cancelled, field temp_location, field quantity_validation; after `//header/field[@name='show_lock']`: add button 'Mass Produce Serial Nos'; before `//header/button[@name='button_mark_done'][3]`: add button 'Update Finished Product Location'; before `//header/button[@name='action_cancel']`: add button 'Cancel Serial Nos'; set invisible=(state != 'draft') or (((mass_produced == False) and (tracked_item == True)) or ((state != 'draft') or (temp_location == True))) on `//header/button[@name='action_confirm']`; set invisible=((id == False) or (state in ('done', 'cancel')) or ((serial_cancelled == False) and (mass_produced == True))) on `//header/button[@name='action_cancel']`; set invisible=(move_raw_ids or not show_produce) or (((state != 'to_close') and ((qty_producing != 0) or (state not in ('confirmed', 'progress')))) or (((mass_produced == False) and (tracked_item == True)) or (((finished_products_location_updated == False) and (source_validate == True)) or ((set(move_raw_ids).intersection([])) or (quantity_validation == True))))) on `//header/button[@name='button_mark_done'][3]`; set invisible=(state not in ('confirmed', 'progress', 'to_close') or not workorder_ids or is_planned) or (((mass_produced == False) and (tracked_item == True)) or ((is_planned == True) or ((set(workorder_ids).intersection([])) or (state not in ('confirmed', 'progress', 'to_close'))))) on `//header/button[@name='button_plan']` … | MO form: adds hidden control flags and buttons Mass Produce Serial Nos, Update Finished Product Location and Cancel Serial Nos; tightens visibility of Confirm, Cancel, Mark as Done, Plan, Unreserve and Scrap; removes the standard mass-produce wizard button. | `mrp.production.state` (mrp)<br>`mrp.production.finished_products_location_updated`<br>`mrp.production.mass_produced`<br>`mrp.production.quantity_validation`<br>`mrp.production.serial_cancelled`<details><summary>+7 more</summary>`mrp.production.source_validate`<br>`mrp.production.temp_location`<br>`mrp.production.tracked_item`<br>`server action BugFix-MRP.server_action_1147_mass_produce_serial_numbers`<br>`server action BugFix-MRP.server_action_2534_finished_products_location_updated`<br>`server action BugFix-MRP.server_action_3202_mass_produce_serial_numbers_cancel_serial_no`<br>`view mrp.mrp_production_form_view` (mrp)</details> |  |
-| Odoo Studio: mrp.production.tree customization | `ported_view_2390_mrp_production_tree` | tree | after `//field[@name='duration_expected']`: add field product_tracking, field orderpoint_id, field forecasted_issue, field is_planned; after `//field[@name='activity_exception_decoration']`: add field report_type_m_wip | MO list: adds optional columns Product Tracking, Reorder Rule, Forecasted Issue and Planned, plus a hidden Report Type (M-WIP) column. | `mrp.production.forecasted_issue` (mrp)<br>`mrp.production.is_planned` (mrp)<br>`mrp.production.orderpoint_id` (mrp)<br>`mrp.production.product_tracking` (mrp)<br>`mrp.production.report_type_m_wip` (Jinasena_Masterdata_Reporting)<details><summary>+1 more</summary>`view mrp.mrp_production_tree_view` (mrp)</details> |  |
+| Odoo Studio: mrp.production.form customization | `view_mrp_production_form_inherit` | form | set create=false, delete=true, edit=true on `//form[1]`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done']`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done'][2]`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done'][3]`; set studio_approval=True on `//form[1]/header[1]/button[@name='button_mark_done'][4]`; set studio_approval=True on `//button[@name='button_unplan']`; set invisible=state in [] or not reserve_visible on `//button[@name='action_assign']`; set studio_approval=True on `//button[@name='button_scrap']` … | MO form: disables create, adds approval rules on Mark as Done, Unplan, Scrap, Unbuild and forecast buttons, customises work order/component lists, adds validation and serial fields, and tabs Direct Material/Labour/Overhead/General Cost plus Costing. | `group account.group_account_readonly` (account)<br>`group base.group_multi_company` (base)<br>`group base.group_no_one` (base)<br>`group mrp.group_mrp_manager` (mrp)<br>`group stock.group_adv_location` (stock)<details><summary>+128 more</summary>`group uom.group_uom` (uom)<br>`mrp.production.action_get_account_moves()` (Odoo)<br>`mrp.production.bom_id` (mrp)<br>`mrp.production.button_finish()` (Odoo)<br>`mrp.production.button_pending()` (Odoo)<br>`mrp.production.button_start()` (Odoo)<br>`mrp.production.button_unblock()` (Odoo)<br>`mrp.production.check_ids` (mrp_workorder)<br>`mrp.production.company_id` (mrp)<br>`mrp.production.components_availability_state` (mrp)<br>`mrp.production.consumption` (mrp)<br>`mrp.production.date_deadline` (mrp)<br>`mrp.production.date_finished` (mrp)<br>`mrp.production.date_start` (mrp)<br>`mrp.production.duration_expected` (mrp)<br>`mrp.production.duration` (mrp)<br>`mrp.production.json_popover` (mrp)<br>`mrp.production.location_dest_id` (mrp)<br>`mrp.production.move_dest_ids` (mrp)<br>`mrp.production.name` (mrp)<br>`mrp.production.origin` (mrp)<br>`mrp.production.product_id` (mrp)<br>`mrp.production.product_tracking` (mrp)<br>`mrp.production.product_uom_category_id` (mrp)<br>`mrp.production.product_uom_id` (mrp)<br>`mrp.production.product_uom_qty` (mrp)<br>`mrp.production.qty_producing` (mrp)<br>`mrp.production.quality_check_fail` (quality_mrp)<br>`mrp.production.state` (mrp)<br>`mrp.production.user_id` (mrp)<br>`mrp.production.workcenter_id` (mrp)<br>`mrp.production.accounting_currency_id`<br>`mrp.production.mrp_current_user`<br>`mrp.production.direct_general_cost`<br>`mrp.production.direct_material_cost`<br>`mrp.production.finished_product_location`<br>`mrp.production.finished_products_location_updated`<br>`mrp.production.grand_total_actual_cost_1`<br>`mrp.production.grand_total_planned_cost`<br>`mrp.production.mark_as_done_validation`<br>`mrp.production.mass_produced`<br>`mrp.production.melt_item`<br>`mrp.production.one2many_field_Fzcvl`<br>`mrp.production.one2many_field_vg1OS`<br>`mrp.production.original_mo`<br>`mrp.production.ot_applicable`<br>`mrp.production.pro_bom_total_general_cost`<br>`mrp.production.process_error`<br>`mrp.production.prod_bom_total_actual_labour_cost_ot`<br>`mrp.production.prod_bom_total_actual_labour_cost_without_ot`<br>`mrp.production.prod_bom_total_actual_labour_cost`<br>`mrp.production.prod_bom_total_actual_material_cost`<br>`mrp.production.prod_bom_total_actual_overhead_cost`<br>`mrp.production.prod_bom_total_labour_cost`<br>`mrp.production.prod_bom_total_material_cost`<br>`mrp.production.prod_bom_total_overhead_cost`<br>`mrp.production.quantity_validation`<br>`mrp.production.serial_cancelled`<br>`mrp.production.source_validate`<br>`mrp.production.super_user_melt_items`<br>`mrp.production.super_user`<br>`mrp.production.temp_location`<br>`mrp.production.total_actual_general_cost`<br>`mrp.production.tracked_item`<br>`quality.check.control_date` (quality)<br>`quality.check.finished_lot_id` (mrp_workorder)<br>`quality.check.quality_state` (quality)<br>`quality.check.result` (mrp_workorder)<br>`quality.check.test_type` (quality)<br>`quality.check.title` (quality)<br>`quality.check.user_id` (quality)<br>`stock.move.location_dest_id` (stock)<br>`stock.move.location_id` (stock)<br>`stock.move.product_uom_qty` (stock)<br>`stock.move.product_uom` (stock)<br>`stock.move.state` (stock)<br>`view mrp.mrp_production_form_view` (mrp)<br>`window action mrp.act_mrp_block_workcenter_wo` (mrp)<br>`mrp_bom_general_cost.name`<br>`mrp_bom_general_cost.actual_qty`<br>`mrp_bom_general_cost.bom_general_cost_ids`<br>`mrp_bom_general_cost.cost`<br>`mrp_bom_general_cost.accounting_currency_id`<br>`mrp_bom_general_cost.operation_id`<br>`mrp_bom_general_cost.planned_qty`<br>`mrp_bom_general_cost.prod_bom_general_cost_ids`<br>`mrp_bom_general_cost.sequence`<br>`mrp_bom_general_cost.total_actual_cost`<br>`mrp_bom_general_cost.total_cost`<br>`mrp_bom_labour_cost.name`<br>`mrp_bom_labour_cost.actual_qty`<br>`mrp_bom_labour_cost.bom_labour_cost_ids`<br>`mrp_bom_labour_cost.cost_ot`<br>`mrp_bom_labour_cost.cost_without_ot`<br>`mrp_bom_labour_cost.cost`<br>`mrp_bom_labour_cost.accounting_currency_id`<br>`mrp_bom_labour_cost.operation_id`<br>`mrp_bom_labour_cost.planned_qty`<br>`mrp_bom_labour_cost.prod_bom_labour_cost_ids`<br>`mrp_bom_labour_cost.sequence`<br>`mrp_bom_labour_cost.total_actual_cost_ot`<br>`mrp_bom_labour_cost.total_actual_cost_without_ot`<br>`mrp_bom_labour_cost.total_actual_cost`<br>`mrp_bom_labour_cost.total_cost`<br>`mrp_bom_material_cos.name`<br>`mrp_bom_material_cos.actual_qty`<br>`mrp_bom_material_cos.bom_material_cost_ids`<br>`mrp_bom_material_cos.cost`<br>`mrp_bom_material_cos.accounting_currency_id`<br>`mrp_bom_material_cos.operation_id`<br>`mrp_bom_material_cos.planned_qty`<br>`mrp_bom_material_cos.prod_bom_material_cost_ids`<br>`mrp_bom_material_cos.product_id`<br>`mrp_bom_material_cos.sequence`<br>`mrp_bom_material_cos.total_actual_cost`<br>`mrp_bom_material_cos.total_cost`<br>`mrp_bom_material_cos.uom_id`<br>`mrp_bom_overhead_cos.name`<br>`mrp_bom_overhead_cos.actual_qty`<br>`mrp_bom_overhead_cos.bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.cost`<br>`mrp_bom_overhead_cos.accounting_currency_id`<br>`mrp_bom_overhead_cos.operation_id`<br>`mrp_bom_overhead_cos.planned_qty`<br>`mrp_bom_overhead_cos.prod_bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.sequence`<br>`mrp_bom_overhead_cos.total_actual_cost`<br>`mrp_bom_overhead_cos.total_cost`</details> |  |
+| Odoo Studio: mrp.production.form-button | `view_mrp_production_form_button` | form | inside `//sheet[1]`: add field finished_products_location_updated, field source_validate, field mass_produced, field tracked_item, field serial_cancelled, field temp_location, field quantity_validation; after `//header/field[@name='show_lock']`: add button 'Mass Produce Serial Nos'; before `//header/button[@name='button_mark_done'][3]`: add button 'Update Finished Product Location'; before `//header/button[@name='action_cancel']`: add button 'Cancel Serial Nos'; set invisible=(state != 'draft') or (((mass_produced == False) and (tracked_item == True)) or ((state != 'draft') or (temp_location == True))) on `//header/button[@name='action_confirm']`; set invisible=((id == False) or (state in ('done', 'cancel')) or ((serial_cancelled == False) and (mass_produced == True))) on `//header/button[@name='action_cancel']`; set invisible=(move_raw_ids or not show_produce) or (((state != 'to_close') and ((qty_producing != 0) or (state not in ('confirmed', 'progress')))) or (((mass_produced == False) and (tracked_item == True)) or (((finished_products_location_updated == False) and (source_validate == True)) or ((set(move_raw_ids).intersection([])) or (quantity_validation == True))))) on `//header/button[@name='button_mark_done'][3]`; set invisible=(state not in ('confirmed', 'progress', 'to_close') or not workorder_ids or is_planned) or (((mass_produced == False) and (tracked_item == True)) or ((is_planned == True) or ((set(workorder_ids).intersection([])) or (state not in ('confirmed', 'progress', 'to_close'))))) on `//header/button[@name='button_plan']` … | MO form: adds hidden control flags and buttons Mass Produce Serial Nos, Update Finished Product Location and Cancel Serial Nos; tightens visibility of Confirm, Cancel, Mark as Done, Plan, Unreserve and Scrap; removes the standard mass-produce wizard button. | `mrp.production.state` (mrp)<br>`mrp.production.finished_products_location_updated`<br>`mrp.production.mass_produced`<br>`mrp.production.quantity_validation`<br>`mrp.production.serial_cancelled`<details><summary>+7 more</summary>`mrp.production.source_validate`<br>`mrp.production.temp_location`<br>`mrp.production.tracked_item`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers`<br>`server action BugFix-MRP.action_finished_products_location_updated`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_cancel_serial_no`<br>`view mrp.mrp_production_form_view` (mrp)</details> |  |
+| Odoo Studio: mrp.production.tree customization | `view_mrp_production_tree_inherit` | tree | after `//field[@name='duration_expected']`: add field product_tracking, field orderpoint_id, field forecasted_issue, field is_planned; after `//field[@name='activity_exception_decoration']`: add field report_type_m_wip | MO list: adds optional columns Product Tracking, Reorder Rule, Forecasted Issue and Planned, plus a hidden Report Type (M-WIP) column. | `mrp.production.forecasted_issue` (mrp)<br>`mrp.production.is_planned` (mrp)<br>`mrp.production.orderpoint_id` (mrp)<br>`mrp.production.product_tracking` (mrp)<br>`mrp.production.report_type_m_wip` (Jinasena_Masterdata_Reporting)<details><summary>+1 more</summary>`view mrp.mrp_production_tree_view` (mrp)</details> |  |
 
 **Access rights (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Administrator - Kapila | `access_5656_administrator___kapila` | Gives **Inventory / Administrator** read/write/create/delete access to Production Order records. | `group stock.group_stock_manager` (stock)<br>`model mrp.production` (mrp) |  |
+| Administrator - Kapila | `access_administrator_kapila` | Gives **Inventory / Administrator** read/write/create/delete access to Production Order records. | `group stock.group_stock_manager` (stock)<br>`model mrp.production` (mrp) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_production multi-company | `rule_201_mrp_production_multi_company` | For everyone (global rule): read/write/create/delete on Production Order only where `[('company_id', 'in', company_ids)]`. | `model mrp.production` (mrp)<br>`mrp.production.company_id` (mrp) |  |
+| mrp_production multi-company | `rule_mrp_production_multi_company` | For everyone (global rule): read/write/create/delete on Production Order only where `[('company_id', 'in', company_ids)]`. | `model mrp.production` (mrp)<br>`mrp.production.company_id` (mrp) |  |
 
 ### `mrp.routing.workcenter` — Work Center Usage
 
@@ -787,7 +787,7 @@ Adds no fields, but six automations maintain BoM cost lines per operation: when 
 
 **Server actions (6):**
 
-- **Create BOM General Cost** (`server_action_1054_create_bom_general_cost`, type `code`)
+- **Create BOM General Cost** (`action_create_bom_general_cost`, type `code`)
   - Function: Run by an automation on a new BoM operation: creates a general cost line for the BoM with the operation and planned hours (cycle time / 60).
   - Depends on: `model mrp.routing.workcenter` (mrp), `model mrp_bom_general_cost`, `mrp.routing.workcenter.bom_id` (mrp), `mrp.routing.workcenter.time_cycle` (mrp)
   - Used by: `automation BugFix-MRP.base_automation_26_create_bom_general_cost`
@@ -803,7 +803,7 @@ new_record = env["mrp_bom_general_cost"].create(
 )
 ```
   </details>
-- **Create BOM Labour Cost** (`server_action_1040_create_bom_labour_cost`, type `code`)
+- **Create BOM Labour Cost** (`action_create_bom_labour_cost`, type `code`)
   - Function: Run by an automation on a new BoM operation: creates a labour cost line for the BoM with the operation and planned hours (cycle time / 60).
   - Depends on: `model mrp.routing.workcenter` (mrp), `model mrp_bom_labour_cost`, `mrp.routing.workcenter.bom_id` (mrp), `mrp.routing.workcenter.time_cycle` (mrp)
   - Used by: `automation BugFix-MRP.base_automation_24_create_bom_labour_cost`
@@ -819,7 +819,7 @@ new_record = env["mrp_bom_labour_cost"].create(
 )
 ```
   </details>
-- **Create BOM Overhead Cost** (`server_action_1049_create_bom_overhead_cost`, type `code`)
+- **Create BOM Overhead Cost** (`action_create_bom_overhead_cost`, type `code`)
   - Function: Run by an automation on a new BoM operation: creates an overhead cost line for the BoM with the operation and planned hours (cycle time / 60).
   - Depends on: `model mrp.routing.workcenter` (mrp), `model mrp_bom_overhead_cos`, `mrp.routing.workcenter.bom_id` (mrp), `mrp.routing.workcenter.time_cycle` (mrp)
   - Used by: `automation BugFix-MRP.base_automation_25_create_bom_overhead_cost`
@@ -835,7 +835,7 @@ new_record = env["mrp_bom_overhead_cos"].create(
 )
 ```
   </details>
-- **Update BOM General Cost** (`server_action_1127_update_bom_general_cost`, type `code`)
+- **Update BOM General Cost** (`action_update_bom_general_cost`, type `code`)
   - Function: Run by an automation on a changed BoM operation: updates its general cost line's planned hours (cycle time / 60).
   - Depends on: `model mrp.routing.workcenter` (mrp), `model mrp_bom_general_cost`, `mrp.routing.workcenter.bom_id` (mrp), `mrp.routing.workcenter.time_cycle` (mrp)
   - Used by: `automation BugFix-MRP.base_automation_38_update_bom_general_cost`
@@ -859,7 +859,7 @@ if record.bom_id and record.id:
         )
 ```
   </details>
-- **Update BOM Labour Cost** (`server_action_1113_update_bom_labour_cost`, type `code`)
+- **Update BOM Labour Cost** (`action_update_bom_labour_cost`, type `code`)
   - Function: Run by an automation on a changed BoM operation: updates its labour cost line's planned hours (cycle time / 60).
   - Depends on: `model mrp.routing.workcenter` (mrp), `model mrp_bom_labour_cost`, `mrp.routing.workcenter.bom_id` (mrp), `mrp.routing.workcenter.time_cycle` (mrp)
   - Used by: `automation BugFix-MRP.base_automation_36_update_bom_labour_cost`
@@ -883,7 +883,7 @@ if record.bom_id and record.id:
         )
 ```
   </details>
-- **Update BOM Overhead Cost** (`server_action_1120_update_bom_overhead_cost`, type `code`)
+- **Update BOM Overhead Cost** (`action_update_bom_overhead_cost`, type `code`)
   - Function: Run by an automation on a changed BoM operation: updates its overhead cost line's planned hours (cycle time / 60).
   - Depends on: `model mrp.routing.workcenter` (mrp), `model mrp_bom_overhead_cos`, `mrp.routing.workcenter.bom_id` (mrp), `mrp.routing.workcenter.time_cycle` (mrp)
   - Used by: `automation BugFix-MRP.base_automation_37_update_bom_overhead_cost`
@@ -911,24 +911,24 @@ if record.bom_id and record.id:
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| Create BOM General Cost | `base_automation_26_create_bom_general_cost` |  | When a record is created or updated on Work Center Usage, runs _Create BOM General Cost_. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1054_create_bom_general_cost` |  |
-| Create BOM Labour Cost | `base_automation_24_create_bom_labour_cost` |  | When a record is created or updated on Work Center Usage, runs _Create BOM Labour Cost_. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1040_create_bom_labour_cost` |  |
-| Create BOM Overhead Cost | `base_automation_25_create_bom_overhead_cost` |  | When a record is created or updated on Work Center Usage, runs _Create BOM Overhead Cost_. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1049_create_bom_overhead_cost` |  |
-| Update BOM General Cost | `base_automation_38_update_bom_general_cost` |  | When a record is created or updated on Work Center Usage, runs _Update BOM General Cost_. | `model mrp.routing.workcenter` (mrp)<br>`server action BugFix-MRP.server_action_1127_update_bom_general_cost` |  |
-| Update BOM Labour Cost | `base_automation_36_update_bom_labour_cost` |  | When a record is created or updated on Work Center Usage, runs _Update BOM Labour Cost_. | `model mrp.routing.workcenter` (mrp)<br>`server action BugFix-MRP.server_action_1113_update_bom_labour_cost` |  |
-| Update BOM Overhead Cost | `base_automation_37_update_bom_overhead_cost` |  | When a record is created or updated on Work Center Usage, runs _Update BOM Overhead Cost_. | `model mrp.routing.workcenter` (mrp)<br>`server action BugFix-MRP.server_action_1120_update_bom_overhead_cost` |  |
+| Create BOM General Cost | `base_automation_26_create_bom_general_cost` |  | When a record is created or updated on Work Center Usage, runs _Create BOM General Cost_. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.create_date` (mrp)<br>`server action BugFix-MRP.action_create_bom_general_cost` |  |
+| Create BOM Labour Cost | `base_automation_24_create_bom_labour_cost` |  | When a record is created or updated on Work Center Usage, runs _Create BOM Labour Cost_. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.create_date` (mrp)<br>`server action BugFix-MRP.action_create_bom_labour_cost` |  |
+| Create BOM Overhead Cost | `base_automation_25_create_bom_overhead_cost` |  | When a record is created or updated on Work Center Usage, runs _Create BOM Overhead Cost_. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.create_date` (mrp)<br>`server action BugFix-MRP.action_create_bom_overhead_cost` |  |
+| Update BOM General Cost | `base_automation_38_update_bom_general_cost` |  | When a record is created or updated on Work Center Usage, runs _Update BOM General Cost_. | `model mrp.routing.workcenter` (mrp)<br>`server action BugFix-MRP.action_update_bom_general_cost` |  |
+| Update BOM Labour Cost | `base_automation_36_update_bom_labour_cost` |  | When a record is created or updated on Work Center Usage, runs _Update BOM Labour Cost_. | `model mrp.routing.workcenter` (mrp)<br>`server action BugFix-MRP.action_update_bom_labour_cost` |  |
+| Update BOM Overhead Cost | `base_automation_37_update_bom_overhead_cost` |  | When a record is created or updated on Work Center Usage, runs _Update BOM Overhead Cost_. | `model mrp.routing.workcenter` (mrp)<br>`server action BugFix-MRP.action_update_bom_overhead_cost` |  |
 
 **Access rights (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| User | `access_6970_user` | Gives **Inventory / User** read access to Work Center Usage records. | `group stock.group_stock_user` (stock)<br>`model mrp.routing.workcenter` (mrp) |  |
+| User | `access_user_3` | Gives **Inventory / User** read access to Work Center Usage records. | `group stock.group_stock_user` (stock)<br>`model mrp.routing.workcenter` (mrp) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_routing_workcenter multi-company | `rule_208_mrp_routing_workcenter_multi_company` | For everyone (global rule): read/write/create/delete on Work Center Usage only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.company_id` (mrp) |  |
+| mrp_routing_workcenter multi-company | `rule_mrp_routing_workcenter_multi_company` | For everyone (global rule): read/write/create/delete on Work Center Usage only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.routing.workcenter` (mrp)<br>`mrp.routing.workcenter.company_id` (mrp) |  |
 
 ### `mrp.unbuild` — Unbuild Order
 
@@ -944,13 +944,13 @@ This repo adds no fields or logic to this model. It ships only the global multi-
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_unbuild multi-company | `rule_202_mrp_unbuild_multi_company` | For everyone (global rule): read/write/create/delete on Unbuild Order only where `[('company_id', 'in', company_ids)]`. | `model mrp.unbuild` (mrp)<br>`mrp.unbuild.company_id` (mrp) |  |
+| mrp_unbuild multi-company | `rule_mrp_unbuild_multi_company` | For everyone (global rule): read/write/create/delete on Unbuild Order only where `[('company_id', 'in', company_ids)]`. | `model mrp.unbuild` (mrp)<br>`mrp.unbuild.company_id` (mrp) |  |
 
 ### `mrp.workcenter` — Work Center
 
 *Extends a model created by `mrp`.* Python: `models/mrp_workcenter.py`.
 
-Other repos that use this model: `server action BugFix-Maintenance.sa_f5_maintenance_equipment_update_cost_per_hour_in_work_center` (BugFix-Maintenance)<br>`server action BugFix-Maintenance.server_action_2545_update_cost_per_hour_in_work_center` (BugFix-Maintenance)<br>`server action BugFix-Studio-Misc.server_action_2831_mst_odoo_data_clean_up_001` (BugFix-Studio-Misc)
+Other repos that use this model: `server action BugFix-Maintenance.action_maintenance_equipment_update_cost_per_hour_in_work_center` (BugFix-Maintenance)<br>`server action BugFix-Maintenance.action_update_cost_per_hour_in_work_center` (BugFix-Maintenance)<br>`server action BugFix-Studio-Misc.server_action_2831_mst_odoo_data_clean_up_001` (BugFix-Studio-Misc)
 
 **Summary:**
 
@@ -962,21 +962,21 @@ Adds an Actual Costing Information group with labour, overhead, equipment, idle 
 
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| `employee` | Employee | many2one → `hr.employee` | Actual working employee of the work center (used for cost per hour per its help text); hidden on the Users tab. | stored | `model hr.employee` (hr) | `view BugFix-MRP.ported_view_2324_mrp_workcenter_form` |
-| `employees` | Employees | many2many → `hr.employee` | Employees assigned to the work center, required on the Users tab of the work center form. | stored | `model hr.employee` (hr) | `view BugFix-MRP.ported_view_2324_mrp_workcenter_form` |
-| `general_cost_hour` | Equipment Actual Cost per Hour | float | Equipment actual cost per hour of the work center, read by Update Cost into BoM general cost lines; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `server action BugFix-MRP.sa_f5_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.server_action_2542_update_cost_per_hour`<br>`view BugFix-MRP.ported_view_2324_mrp_workcenter_form`<br>`view BugFix-MRP.ported_view_3151_mrp_workcenter_tree` |
-| `labour_cost_hour` | Labour Cost per Hour | float | Labour cost per hour of the work center, used by Update Cost Per Hour, Update Cost and labour costing; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `server action BugFix-MRP.sa_f5_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.server_action_2542_update_cost_per_hour`<br>`view BugFix-MRP.ported_view_2324_mrp_workcenter_form`<br>`view BugFix-MRP.ported_view_3151_mrp_workcenter_tree` |
-| `labour_idle_cost_per_hour` | Labour Idle Cost Per Hour | float | Labour idle cost per hour, shown read-only on the work center form and list; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `view BugFix-MRP.ported_view_2324_mrp_workcenter_form`<br>`view BugFix-MRP.ported_view_3151_mrp_workcenter_tree` |
-| `many2many_field_j1rG7` | Users | many2many → `res.users` | Users allowed to see the work center ('Workcenter Visibility Control'); shown as tags on the work center form and list. | stored | `model res.users` (base) | `view BugFix-MRP.ported_view_2324_mrp_workcenter_form`<br>`view BugFix-MRP.ported_view_3151_mrp_workcenter_tree` |
-| `ot_cost_per_hour` | OT Cost per Hour | float | Overtime cost per hour; when above 0 it should replace the labour rate as Cost per Hour; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `server action BugFix-MRP.sa_f5_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.server_action_2542_update_cost_per_hour`<br>`view BugFix-MRP.ported_view_2324_mrp_workcenter_form`<br>`view BugFix-MRP.ported_view_3151_mrp_workcenter_tree` |
-| `overhead_cost_hour` | Overhead Cost per Hour | float | Overhead cost per hour of the work center, entered on the form; copied by Update Cost into BoM overhead cost lines. | stored |  | `server action BugFix-MRP.sa_f5_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.server_action_2542_update_cost_per_hour`<br>`view BugFix-MRP.ported_view_2324_mrp_workcenter_form`<br>`view BugFix-MRP.ported_view_3151_mrp_workcenter_tree` |
+| `employee` | Employee | many2one → `hr.employee` | Actual working employee of the work center (used for cost per hour per its help text); hidden on the Users tab. | stored | `model hr.employee` (hr) | `view BugFix-MRP.view_mrp_workcenter_form_inherit` |
+| `employees` | Employees | many2many → `hr.employee` | Employees assigned to the work center, required on the Users tab of the work center form. | stored | `model hr.employee` (hr) | `view BugFix-MRP.view_mrp_workcenter_form_inherit` |
+| `general_cost_hour` | Equipment Actual Cost per Hour | float | Equipment actual cost per hour of the work center, read by Update Cost into BoM general cost lines; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `server action BugFix-MRP.action_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.action_update_cost_per_hour`<br>`view BugFix-MRP.view_mrp_workcenter_form_inherit`<br>`view BugFix-MRP.view_mrp_workcenter_tree_inherit` |
+| `labour_cost_hour` | Labour Cost per Hour | float | Labour cost per hour of the work center, used by Update Cost Per Hour, Update Cost and labour costing; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `server action BugFix-MRP.action_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.action_update_cost_per_hour`<br>`view BugFix-MRP.view_mrp_workcenter_form_inherit`<br>`view BugFix-MRP.view_mrp_workcenter_tree_inherit` |
+| `labour_idle_cost_per_hour` | Labour Idle Cost Per Hour | float | Labour idle cost per hour, shown read-only on the work center form and list; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `view BugFix-MRP.view_mrp_workcenter_form_inherit`<br>`view BugFix-MRP.view_mrp_workcenter_tree_inherit` |
+| `many2many_field_j1rG7` | Users | many2many → `res.users` | Users allowed to see the work center ('Workcenter Visibility Control'); shown as tags on the work center form and list. | stored | `model res.users` (base) | `view BugFix-MRP.view_mrp_workcenter_form_inherit`<br>`view BugFix-MRP.view_mrp_workcenter_tree_inherit` |
+| `ot_cost_per_hour` | OT Cost per Hour | float | Overtime cost per hour; when above 0 it should replace the labour rate as Cost per Hour; declared read-only and not stored with no calculation, so it is always 0 and cannot be entered. | not stored |  | `server action BugFix-MRP.action_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.action_update_cost_per_hour`<br>`view BugFix-MRP.view_mrp_workcenter_form_inherit`<br>`view BugFix-MRP.view_mrp_workcenter_tree_inherit` |
+| `overhead_cost_hour` | Overhead Cost per Hour | float | Overhead cost per hour of the work center, entered on the form; copied by Update Cost into BoM overhead cost lines. | stored |  | `server action BugFix-MRP.action_mrp_workcenter_update_cost_per_hour`<br>`server action BugFix-MRP.action_update_cost_per_hour`<br>`view BugFix-MRP.view_mrp_workcenter_form_inherit`<br>`view BugFix-MRP.view_mrp_workcenter_tree_inherit` |
 
 **Server actions (2):**
 
-- **Execute Code** (`server_action_2542_update_cost_per_hour`, type `code`)
+- **Execute Code** (`action_update_cost_per_hour`, type `code`)
   - Function: Code run by an automation: sets the work center's Cost per Hour to the OT Cost per Hour when above 0, otherwise to Labour Cost per Hour (both currently always 0).
   - Depends on: `model mrp.workcenter` (mrp), `mrp.workcenter.general_cost_hour`, `mrp.workcenter.labour_cost_hour`, `mrp.workcenter.ot_cost_per_hour`, `mrp.workcenter.overhead_cost_hour`
-  - Used by: `automation BugFix-MRP.base_automation_249_update_cost_per_hour`
+  - Used by: `automation BugFix-MRP.automation_update_cost_per_hour`
   <details><summary>code (7 lines)</summary>
 
 ```python
@@ -988,7 +988,7 @@ else:
     record["costs_hour"] = record.labour_cost_hour
 ```
   </details>
-- **Update Cost Per Hour** (`sa_f5_mrp_workcenter_update_cost_per_hour`, type `code`)
+- **Update Cost Per Hour** (`action_mrp_workcenter_update_cost_per_hour`, type `code`)
   - Function: Sets the work center's Cost per Hour to the OT Cost per Hour when that is above 0, otherwise to the Labour Cost per Hour.
   - Depends on: `model mrp.workcenter` (mrp), `mrp.workcenter.general_cost_hour`, `mrp.workcenter.labour_cost_hour`, `mrp.workcenter.ot_cost_per_hour`, `mrp.workcenter.overhead_cost_hour`
   - Used by: — (not linked to a button, menu or automation)
@@ -1007,21 +1007,21 @@ else:
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| Update Cost Per Hour | `base_automation_249_update_cost_per_hour` |  | When a record is created or updated on Work Center, runs _Execute Code_. | `model mrp.workcenter` (mrp)<br>`server action BugFix-MRP.server_action_2542_update_cost_per_hour` |  |
+| Update Cost Per Hour | `automation_update_cost_per_hour` |  | When a record is created or updated on Work Center, runs _Execute Code_. | `model mrp.workcenter` (mrp)<br>`server action BugFix-MRP.action_update_cost_per_hour` |  |
 
 **Views (2):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: mrp.workcenter.form customization | `ported_view_2324_mrp_workcenter_form` | form | set force_save=0, readonly=False on `//field[@name='costs_hour']`; set string=Users on `//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]/group[not(@name)][1]/div[1]/field[@name='time_start']`; after `//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]`: add group; after `//form[1]/sheet[1]/notebook[1]/page[@name='equipment']/field[@name='equipment_ids']/tree[1]`: add form; inside `//form[1]/sheet[1]/notebook[1]`: add page 'Users'; after `//form[1]/sheet[1]/notebook[1]`: add group | Work center form: makes Cost per Hour editable, adds an 'Actual Costing Information' group (labour, overhead, equipment, idle, OT cost per hour), an equipment pop-up form and a Users tab (allowed users, required employees). | `group base.group_no_one` (base)<br>`group maintenance.group_equipment_manager` (maintenance)<br>`group mrp.group_mrp_routings` (mrp)<br>`mrp.workcenter.active` (mrp)<br>`mrp.workcenter.button_mrp_workcenter()` (Odoo)<details><summary>+22 more</summary>`mrp.workcenter.company_id` (mrp)<br>`mrp.workcenter.effective_date` (mrp_maintenance)<br>`mrp.workcenter.estimated_next_failure` (mrp_maintenance)<br>`mrp.workcenter.expected_mtbf` (mrp_maintenance)<br>`mrp.workcenter.latest_failure_date` (mrp_maintenance)<br>`mrp.workcenter.maintenance_count` (mrp_maintenance)<br>`mrp.workcenter.maintenance_team_id` (mrp_maintenance)<br>`mrp.workcenter.mtbf` (mrp_maintenance)<br>`mrp.workcenter.mttr` (mrp_maintenance)<br>`mrp.workcenter.name` (mrp)<br>`mrp.workcenter.note` (mrp)<br>`mrp.workcenter.technician_user_id` (mrp_maintenance)<br>`mrp.workcenter.employee`<br>`mrp.workcenter.employees`<br>`mrp.workcenter.general_cost_hour`<br>`mrp.workcenter.labour_cost_hour`<br>`mrp.workcenter.labour_idle_cost_per_hour`<br>`mrp.workcenter.many2many_field_j1rG7`<br>`mrp.workcenter.ot_cost_per_hour`<br>`mrp.workcenter.overhead_cost_hour`<br>`view mrp.mrp_workcenter_view` (mrp)<br>`window action maintenance.hr_equipment_request_action_from_equipment` (maintenance)</details> |  |
-| Odoo Studio: mrp.workcenter.tree customization | `ported_view_3151_mrp_workcenter_tree` | tree | after `//tree[1]/field[@name='company_id']`: add field many2many_field_j1rG7; after `//field[@name='costs_hour']`: add field labour_cost_hour, field overhead_cost_hour, field general_cost_hour, field labour_idle_cost_per_hour, field ot_cost_per_hour | Work center list: adds the allowed Users tags after Company and optional columns for labour, overhead, equipment, idle and OT cost per hour after Cost per Hour. | `mrp.workcenter.general_cost_hour`<br>`mrp.workcenter.labour_cost_hour`<br>`mrp.workcenter.labour_idle_cost_per_hour`<br>`mrp.workcenter.many2many_field_j1rG7`<br>`mrp.workcenter.ot_cost_per_hour`<details><summary>+2 more</summary>`mrp.workcenter.overhead_cost_hour`<br>`view mrp.mrp_workcenter_tree_view` (mrp)</details> |  |
+| Odoo Studio: mrp.workcenter.form customization | `view_mrp_workcenter_form_inherit` | form | set force_save=0, readonly=False on `//field[@name='costs_hour']`; set string=Users on `//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]/group[not(@name)][1]/div[1]/field[@name='time_start']`; after `//form[1]/sheet[1]/notebook[1]/page[@name='general_info']/group[1]`: add group; after `//form[1]/sheet[1]/notebook[1]/page[@name='equipment']/field[@name='equipment_ids']/tree[1]`: add form; inside `//form[1]/sheet[1]/notebook[1]`: add page 'Users'; after `//form[1]/sheet[1]/notebook[1]`: add group | Work center form: makes Cost per Hour editable, adds an 'Actual Costing Information' group (labour, overhead, equipment, idle, OT cost per hour), an equipment pop-up form and a Users tab (allowed users, required employees). | `group base.group_no_one` (base)<br>`group maintenance.group_equipment_manager` (maintenance)<br>`group mrp.group_mrp_routings` (mrp)<br>`mrp.workcenter.active` (mrp)<br>`mrp.workcenter.button_mrp_workcenter()` (Odoo)<details><summary>+22 more</summary>`mrp.workcenter.company_id` (mrp)<br>`mrp.workcenter.effective_date` (mrp_maintenance)<br>`mrp.workcenter.estimated_next_failure` (mrp_maintenance)<br>`mrp.workcenter.expected_mtbf` (mrp_maintenance)<br>`mrp.workcenter.latest_failure_date` (mrp_maintenance)<br>`mrp.workcenter.maintenance_count` (mrp_maintenance)<br>`mrp.workcenter.maintenance_team_id` (mrp_maintenance)<br>`mrp.workcenter.mtbf` (mrp_maintenance)<br>`mrp.workcenter.mttr` (mrp_maintenance)<br>`mrp.workcenter.name` (mrp)<br>`mrp.workcenter.note` (mrp)<br>`mrp.workcenter.technician_user_id` (mrp_maintenance)<br>`mrp.workcenter.employee`<br>`mrp.workcenter.employees`<br>`mrp.workcenter.general_cost_hour`<br>`mrp.workcenter.labour_cost_hour`<br>`mrp.workcenter.labour_idle_cost_per_hour`<br>`mrp.workcenter.many2many_field_j1rG7`<br>`mrp.workcenter.ot_cost_per_hour`<br>`mrp.workcenter.overhead_cost_hour`<br>`view mrp.mrp_workcenter_view` (mrp)<br>`window action maintenance.hr_equipment_request_action_from_equipment` (maintenance)</details> |  |
+| Odoo Studio: mrp.workcenter.tree customization | `view_mrp_workcenter_tree_inherit` | tree | after `//tree[1]/field[@name='company_id']`: add field many2many_field_j1rG7; after `//field[@name='costs_hour']`: add field labour_cost_hour, field overhead_cost_hour, field general_cost_hour, field labour_idle_cost_per_hour, field ot_cost_per_hour | Work center list: adds the allowed Users tags after Company and optional columns for labour, overhead, equipment, idle and OT cost per hour after Cost per Hour. | `mrp.workcenter.general_cost_hour`<br>`mrp.workcenter.labour_cost_hour`<br>`mrp.workcenter.labour_idle_cost_per_hour`<br>`mrp.workcenter.many2many_field_j1rG7`<br>`mrp.workcenter.ot_cost_per_hour`<details><summary>+2 more</summary>`mrp.workcenter.overhead_cost_hour`<br>`view mrp.mrp_workcenter_tree_view` (mrp)</details> |  |
 
 **Record rules (2):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Work Centre Visibility | `rule_338_work_centre_visibility` | For everyone (global rule): read/write/create/delete on Work Center only where `[('many2many_field_j1rG7', '=', user.id)]`. | `model mrp.workcenter` (mrp) |  |
-| mrp_workcenter multi-company | `rule_203_mrp_workcenter_multi_company` | For everyone (global rule): read/write/create/delete on Work Center only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.workcenter` (mrp)<br>`mrp.workcenter.company_id` (mrp) |  |
+| Work Centre Visibility | `rule_work_centre_visibility` | For everyone (global rule): read/write/create/delete on Work Center only where `[('many2many_field_j1rG7', '=', user.id)]`. | `model mrp.workcenter` (mrp) |  |
+| mrp_workcenter multi-company | `rule_mrp_workcenter_multi_company` | For everyone (global rule): read/write/create/delete on Work Center only where `[('company_id', 'in', company_ids + [False])]`. | `model mrp.workcenter` (mrp)<br>`mrp.workcenter.company_id` (mrp) |  |
 
 ### `mrp.workcenter.productivity` — Workcenter Productivity Log
 
@@ -1037,26 +1037,26 @@ Adds an Employee field to time-tracking log lines and shows Manufacturing Order 
 
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| `employee` | Employee | many2one → `hr.employee` | Employee recorded on a work center time-tracking log line; optional column in the productivity log list. | stored | `model hr.employee` (hr) | `view BugFix-MRP.ported_view_5503_mrp_workcenter_productivity_tree` |
+| `employee` | Employee | many2one → `hr.employee` | Employee recorded on a work center time-tracking log line; optional column in the productivity log list. | stored | `model hr.employee` (hr) | `view BugFix-MRP.view_mrp_workcenter_productivity_tree_inherit` |
 
 **Window actions (2):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
 | mrp.workcenter.productivity | `aw_f4_mrp_workcenter_productivity_mrp_workcenter_productivity` | Opens **Workcenter Productivity Log** records (tree,form,pivot,graph). | `model mrp.workcenter.productivity` (mrp) |  |
-| mrp.workcenter.productivity | `act_window_2555_mrp_workcenter_productivity` | Opens **Workcenter Productivity Log** records (tree,form,pivot,graph). | `model mrp.workcenter.productivity` (mrp) | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_workcenter_productivity` (BugFix-Studio-Misc) |
+| mrp.workcenter.productivity | `action_mrp_workcenter_productivity` | Opens **Workcenter Productivity Log** records (tree,form,pivot,graph). | `model mrp.workcenter.productivity` (mrp) | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_workcenter_productivity` (BugFix-Studio-Misc) |
 
 **Views (1):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Odoo Studio: mrp.workcenter.productivity.tree customization | `ported_view_5503_mrp_workcenter_productivity_tree` | tree | after `//field[@name='date_end']`: add field production_id; after `//field[@name='user_id']`: add field employee | Work center productivity log list: adds optional columns Manufacturing Order (after End Date) and Employee (after User). | `mrp.workcenter.productivity.production_id` (mrp)<br>`mrp.workcenter.productivity.employee`<br>`view mrp.oee_tree_view` (mrp) |  |
+| Odoo Studio: mrp.workcenter.productivity.tree customization | `view_mrp_workcenter_productivity_tree_inherit` | tree | after `//field[@name='date_end']`: add field production_id; after `//field[@name='user_id']`: add field employee | Work center productivity log list: adds optional columns Manufacturing Order (after End Date) and Employee (after User). | `mrp.workcenter.productivity.production_id` (mrp)<br>`mrp.workcenter.productivity.employee`<br>`view mrp.oee_tree_view` (mrp) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_workcenter_productivity multi-company | `rule_209_mrp_workcenter_productivity_multi_company` | For everyone (global rule): read/write/create/delete on Workcenter Productivity Log only where `[('company_id', 'in', company_ids)]`. | `model mrp.workcenter.productivity` (mrp)<br>`mrp.workcenter.productivity.company_id` (mrp) |  |
+| mrp_workcenter_productivity multi-company | `rule_mrp_workcenter_productivity_multi_company` | For everyone (global rule): read/write/create/delete on Workcenter Productivity Log only where `[('company_id', 'in', company_ids)]`. | `model mrp.workcenter.productivity` (mrp)<br>`mrp.workcenter.productivity.company_id` (mrp) |  |
 
 ### `mrp.workorder` — Work Order
 
@@ -1072,12 +1072,12 @@ Adds Original MO and OT Applicable fields. Six automations create and update the
 
 | Field | Label | Type | Function | How it gets its value | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| `original_mo` | Original MO | char | Original MO reference copied from the work order's MO by the 'Assign Original MO to Work Order' action. | stored |  | `server action BugFix-MRP.server_action_1156_assign_original_mo_to_work_order` |
-| `ot_applicable` | OT Applicable | boolean | Overtime flag set by the Update Production BOM Labour Cost automation: True when already set or when the work center has an OT cost per hour. | stored |  | `server action BugFix-MRP.server_action_1086_update_production_bom_labour_cost` |
+| `original_mo` | Original MO | char | Original MO reference copied from the work order's MO by the 'Assign Original MO to Work Order' action. | stored |  | `server action BugFix-MRP.action_assign_original_mo_to_work_order` |
+| `ot_applicable` | OT Applicable | boolean | Overtime flag set by the Update Production BOM Labour Cost automation: True when already set or when the work center has an OT cost per hour. | stored |  | `server action BugFix-MRP.action_update_production_bom_labour_cost` |
 
 **Server actions (7):**
 
-- **Assign Original MO to Work Order** (`server_action_1156_assign_original_mo_to_work_order`, type `code`)
+- **Assign Original MO to Work Order** (`action_assign_original_mo_to_work_order`, type `code`)
   - Function: Copies the MO's Original MO onto the work order. Not bound to any automation, and the code starts with a stray leading space, which would raise an indentation error if run.
   - Depends on: `model mrp.production` (mrp), `model mrp.workorder` (mrp), `mrp.workorder.production_id` (mrp), `mrp.workorder.original_mo`
   - Used by: — (not linked to a button, menu or automation)
@@ -1092,7 +1092,7 @@ if record.production_id:
         record["original_mo"] = prod_order.original_mo
 ```
   </details>
-- **Create Production BOM General Cost** (`server_action_1103_create_production_bom_general_cost`, type `code`)
+- **Create Production BOM General Cost** (`action_create_production_bom_general_cost`, type `code`)
   - Function: Run by an automation on a work order: creates a general cost line on the MO for the operation with actual and expected hours.
   - Depends on: `model mrp.workorder` (mrp), `model mrp_bom_general_cost`, `mrp.workorder.duration_expected` (mrp), `mrp.workorder.duration` (mrp), `mrp.workorder.operation_id` (mrp)<details><summary>+1 more</summary>`mrp.workorder.production_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_34_create_production_bom_general_cost`
@@ -1110,7 +1110,7 @@ if record.production_id and record.operation_id:
     )
 ```
   </details>
-- **Create Production BOM Labour Cost** (`server_action_1080_create_production_bom_labour_cost`, type `code`)
+- **Create Production BOM Labour Cost** (`action_create_production_bom_labour_cost`, type `code`)
   - Function: Run by an automation on a work order: creates a labour cost line on the MO for the operation with actual and expected hours.
   - Depends on: `model mrp.workorder` (mrp), `model mrp_bom_labour_cost`, `mrp.workorder.duration_expected` (mrp), `mrp.workorder.duration` (mrp), `mrp.workorder.operation_id` (mrp)<details><summary>+1 more</summary>`mrp.workorder.production_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_30_create_production_bom_labour_cost`
@@ -1128,7 +1128,7 @@ if record.production_id and record.operation_id:
     )
 ```
   </details>
-- **Create Production BOM Overhead Cost** (`server_action_1093_create_production_bom_overhead_cost`, type `code`)
+- **Create Production BOM Overhead Cost** (`action_create_production_bom_overhead_cost`, type `code`)
   - Function: Run by an automation on a work order: creates an overhead cost line on the MO for the operation with actual and expected hours.
   - Depends on: `model mrp.workorder` (mrp), `model mrp_bom_overhead_cos`, `mrp.workorder.duration_expected` (mrp), `mrp.workorder.duration` (mrp), `mrp.workorder.operation_id` (mrp)<details><summary>+1 more</summary>`mrp.workorder.production_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_32_create_production_bom_overhead_cost`
@@ -1146,7 +1146,7 @@ if record.production_id and record.operation_id:
     )
 ```
   </details>
-- **Update Production BOM General Cost** (`server_action_1106_update_production_bom_general_cost`, type `code`)
+- **Update Production BOM General Cost** (`action_update_production_bom_general_cost`, type `code`)
   - Function: Run by an automation on a work order: updates the MO's general cost line for that operation with actual and expected hours.
   - Depends on: `model mrp.workorder` (mrp), `model mrp_bom_general_cost`, `mrp.workorder.duration_expected` (mrp), `mrp.workorder.duration` (mrp), `mrp.workorder.operation_id` (mrp)<details><summary>+1 more</summary>`mrp.workorder.production_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_35_update_production_bom_general_cost`
@@ -1171,7 +1171,7 @@ if record.production_id and record.operation_id:
         )
 ```
   </details>
-- **Update Production BOM Labour Cost** (`server_action_1086_update_production_bom_labour_cost`, type `code`)
+- **Update Production BOM Labour Cost** (`action_update_production_bom_labour_cost`, type `code`)
   - Function: Run by an automation on a work order: resets the work center's Cost per Hour (OT or labour rate), updates the MO labour cost line's hours and normal/OT/without-OT rates, and sets the work order's OT Applicable.
   - Depends on: `model mrp.workcenter` (mrp), `model mrp.workorder` (mrp), `model mrp_bom_labour_cost`, `mrp.workorder.duration_expected` (mrp), `mrp.workorder.duration` (mrp)<details><summary>+4 more</summary>`mrp.workorder.operation_id` (mrp), `mrp.workorder.production_id` (mrp), `mrp.workorder.workcenter_id` (mrp), `mrp.workorder.ot_applicable`</details>
   - Used by: `automation BugFix-MRP.base_automation_31_update_production_bom_labour_cost`
@@ -1234,7 +1234,7 @@ if record.production_id and record.operation_id:
         record["ot_applicable"] = ot_applicable
 ```
   </details>
-- **Update Production BOM Overhead Cost** (`server_action_1096_update_production_bom_overhead_cost`, type `code`)
+- **Update Production BOM Overhead Cost** (`action_update_production_bom_overhead_cost`, type `code`)
   - Function: Run by an automation on a work order: updates the MO's overhead cost line for that operation with actual and expected hours.
   - Depends on: `model mrp.workorder` (mrp), `model mrp_bom_overhead_cos`, `mrp.workorder.duration_expected` (mrp), `mrp.workorder.duration` (mrp), `mrp.workorder.operation_id` (mrp)<details><summary>+1 more</summary>`mrp.workorder.production_id` (mrp)</details>
   - Used by: `automation BugFix-MRP.base_automation_33_update_production_bom_overhead_cost`
@@ -1264,31 +1264,31 @@ if record.production_id and record.operation_id:
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
 | Assign Original MO to Work Order | `base_automation_48_assign_original_mo_to_work_order` | archived | When a record is created or updated on Work Order, runs nothing (no action linked). **Archived — does not run.** | `model mrp.workorder` (mrp) |  |
-| Create Production BOM General Cost | `base_automation_34_create_production_bom_general_cost` |  | When a record is created or updated on Work Order, runs _Create Production BOM General Cost_. | `model mrp.workorder` (mrp)<br>`mrp.workorder.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1103_create_production_bom_general_cost` |  |
-| Create Production BOM Labour Cost | `base_automation_30_create_production_bom_labour_cost` |  | When a record is created or updated on Work Order, runs _Create Production BOM Labour Cost_. | `model mrp.workorder` (mrp)<br>`mrp.workorder.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1080_create_production_bom_labour_cost` |  |
-| Create Production BOM Overhead Cost | `base_automation_32_create_production_bom_overhead_cost` |  | When a record is created or updated on Work Order, runs _Create Production BOM Overhead Cost_. | `model mrp.workorder` (mrp)<br>`mrp.workorder.create_date` (mrp)<br>`server action BugFix-MRP.server_action_1093_create_production_bom_overhead_cost` |  |
-| Update Production BOM General Cost | `base_automation_35_update_production_bom_general_cost` |  | When a record is created or updated on Work Order, runs _Update Production BOM General Cost_. | `model mrp.workorder` (mrp)<br>`server action BugFix-MRP.server_action_1106_update_production_bom_general_cost` |  |
-| Update Production BOM Labour Cost | `base_automation_31_update_production_bom_labour_cost` |  | When a record is created or updated on Work Order, runs _Update Production BOM Labour Cost_. | `model mrp.workorder` (mrp)<br>`server action BugFix-MRP.server_action_1086_update_production_bom_labour_cost` |  |
-| Update Production BOM Overhead Cost | `base_automation_33_update_production_bom_overhead_cost` |  | When a record is created or updated on Work Order, runs _Update Production BOM Overhead Cost_. | `model mrp.workorder` (mrp)<br>`server action BugFix-MRP.server_action_1096_update_production_bom_overhead_cost` |  |
+| Create Production BOM General Cost | `base_automation_34_create_production_bom_general_cost` |  | When a record is created or updated on Work Order, runs _Create Production BOM General Cost_. | `model mrp.workorder` (mrp)<br>`mrp.workorder.create_date` (mrp)<br>`server action BugFix-MRP.action_create_production_bom_general_cost` |  |
+| Create Production BOM Labour Cost | `base_automation_30_create_production_bom_labour_cost` |  | When a record is created or updated on Work Order, runs _Create Production BOM Labour Cost_. | `model mrp.workorder` (mrp)<br>`mrp.workorder.create_date` (mrp)<br>`server action BugFix-MRP.action_create_production_bom_labour_cost` |  |
+| Create Production BOM Overhead Cost | `base_automation_32_create_production_bom_overhead_cost` |  | When a record is created or updated on Work Order, runs _Create Production BOM Overhead Cost_. | `model mrp.workorder` (mrp)<br>`mrp.workorder.create_date` (mrp)<br>`server action BugFix-MRP.action_create_production_bom_overhead_cost` |  |
+| Update Production BOM General Cost | `base_automation_35_update_production_bom_general_cost` |  | When a record is created or updated on Work Order, runs _Update Production BOM General Cost_. | `model mrp.workorder` (mrp)<br>`server action BugFix-MRP.action_update_production_bom_general_cost` |  |
+| Update Production BOM Labour Cost | `base_automation_31_update_production_bom_labour_cost` |  | When a record is created or updated on Work Order, runs _Update Production BOM Labour Cost_. | `model mrp.workorder` (mrp)<br>`server action BugFix-MRP.action_update_production_bom_labour_cost` |  |
+| Update Production BOM Overhead Cost | `base_automation_33_update_production_bom_overhead_cost` |  | When a record is created or updated on Work Order, runs _Update Production BOM Overhead Cost_. | `model mrp.workorder` (mrp)<br>`server action BugFix-MRP.action_update_production_bom_overhead_cost` |  |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Work Orders | `act_window_663_work_orders` | Opens **Work Order** records (kanban,tree,form), filtered to `[('state', 'not in', ['done', 'cancel'])]`. | `model mrp.workorder` (mrp)<br>`mrp.workorder.state` (mrp) |  |
+| Work Orders | `action_work_orders` | Opens **Work Order** records (kanban,tree,form), filtered to `[('state', 'not in', ['done', 'cancel'])]`. | `model mrp.workorder` (mrp)<br>`mrp.workorder.state` (mrp) |  |
 
 **Views (2):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| mrp.workorder.view.form.inherit.quality.tablet.new-button | `ported_view_3953_mrp_workorder_form_tablet` | form | set domain=[('product_id', '=', product_id),('production_id', '=', production_id)] on `//field[@name='finished_lot_id']` | Work order tablet view: restricts the finished Lot/Serial choice to lots of the same product linked to the work order's MO. | `view mrp_workorder.mrp_workorder_view_form_tablet` (mrp_workorder) |  |
-| mrp.workorder.view.form.inherit.quality.tablet.new-button | `view_3953_mrp_workorder_view_form_inherit_quality_tablet_new_button_e` | form | set domain=[('product_id', '=', product_id),('production_id', '=', production_id)] on `//field[@name='finished_lot_id']` | Work order tablet view: restricts finished Lot/Serial to the same product and MO; duplicates `ported_view_3953_mrp_workorder_form_tablet`. | `view mrp_workorder.mrp_workorder_view_form_tablet` (mrp_workorder) |  |
+| mrp.workorder.view.form.inherit.quality.tablet.new-button | `view_mrp_workorder_form_tablet` | form | set domain=[('product_id', '=', product_id),('production_id', '=', production_id)] on `//field[@name='finished_lot_id']` | Work order tablet view: restricts the finished Lot/Serial choice to lots of the same product linked to the work order's MO. | `view mrp_workorder.mrp_workorder_view_form_tablet` (mrp_workorder) |  |
+| mrp.workorder.view.form.inherit.quality.tablet.new-button | `view_mrp_workorder_view_form_inherit_quality_tablet_new_button` | form | set domain=[('product_id', '=', product_id),('production_id', '=', production_id)] on `//field[@name='finished_lot_id']` | Work order tablet view: restricts finished Lot/Serial to the same product and MO; duplicates `view_mrp_workorder_form_tablet`. | `view mrp_workorder.mrp_workorder_view_form_tablet` (mrp_workorder) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp_workorder multi-company | `rule_204_mrp_workorder_multi_company` | For everyone (global rule): read/write/create/delete on Work Order only where `[('company_id', 'in', company_ids)]`. | `model mrp.workorder` (mrp)<br>`mrp.workorder.company_id` (mrp) |  |
+| mrp_workorder multi-company | `rule_mrp_workorder_multi_company` | For everyone (global rule): read/write/create/delete on Work Order only where `[('company_id', 'in', company_ids)]`. | `model mrp.workorder` (mrp)<br>`mrp.workorder.company_id` (mrp) |  |
 
 ### `quality.alert` — Quality Alert
 
@@ -1304,7 +1304,7 @@ This repo adds no fields or logic to this model. It ships only the global multi-
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Quality alert company rule | `rule_210_quality_alert_company_rule` | For everyone (global rule): read/write/create/delete on Quality Alert only where `[('company_id', 'in', company_ids)]`. | `model quality.alert` (quality)<br>`quality.alert.company_id` (quality) |  |
+| Quality alert company rule | `rule_quality_alert_company_rule` | For everyone (global rule): read/write/create/delete on Quality Alert only where `[('company_id', 'in', company_ids)]`. | `model quality.alert` (quality)<br>`quality.alert.company_id` (quality) |  |
 
 ### `quality.check` — Quality Check
 
@@ -1320,14 +1320,14 @@ This repo adds no fields or logic to this model. It ships access rights giving I
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Jin - Administrator | `access_7263_jin___administrator` | Gives **Inventory / Administrator** read/write/create/delete access to Quality Check records. | `group stock.group_stock_manager` (stock)<br>`model quality.check` (quality) |  |
-| quality.check | `access_6863_quality_check` | Gives **Sales / Jin - Sales - POS Users** read access to Quality Check records. | `group BugFix-Approvals.group_132_jin_sales_pos_users` (BugFix-Approvals)<br>`model quality.check` (quality) |  |
+| Jin - Administrator | `access_jin_administrator` | Gives **Inventory / Administrator** read/write/create/delete access to Quality Check records. | `group stock.group_stock_manager` (stock)<br>`model quality.check` (quality) |  |
+| quality.check | `access_quality_check` | Gives **Sales / Jin - Sales - POS Users** read access to Quality Check records. | `group BugFix-Approvals.group_jin_sales_pos_users` (BugFix-Approvals)<br>`model quality.check` (quality) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Quality check company rule | `rule_211_quality_check_company_rule` | For everyone (global rule): read/write/create/delete on Quality Check only where `['|', ('company_id', 'in', company_ids), ('point_id.company_id', 'in', company_ids)]`. | `model quality.check` (quality)<br>`quality.check.company_id` (quality)<br>`quality.check.point_id` (quality)<br>`quality.point.company_id` (quality) |  |
+| Quality check company rule | `rule_quality_check_company_rule` | For everyone (global rule): read/write/create/delete on Quality Check only where `['|', ('company_id', 'in', company_ids), ('point_id.company_id', 'in', company_ids)]`. | `model quality.check` (quality)<br>`quality.check.company_id` (quality)<br>`quality.check.point_id` (quality)<br>`quality.point.company_id` (quality) |  |
 
 ### `quality.point` — Quality Control Point
 
@@ -1343,21 +1343,21 @@ This repo adds no fields or logic to this model. It ships access rights for Inve
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Inv - Administrator | `access_6267_inv___administrator` | Gives **Inventory / Administrator** read/write/create/delete access to Quality Control Point records. | `group stock.group_stock_manager` (stock)<br>`model quality.point` (quality) |  |
-| User | `access_6089_user` | Gives **Helpdesk / User** read access to Quality Control Point records. | `group helpdesk.group_helpdesk_user` (helpdesk)<br>`model quality.point` (quality) |  |
-| quality.point | `access_6862_quality_point` | Gives **Sales / Jin - Sales - POS Users** read access to Quality Control Point records. | `group BugFix-Approvals.group_132_jin_sales_pos_users` (BugFix-Approvals)<br>`model quality.point` (quality) |  |
+| Inv - Administrator | `access_inv_administrator_2` | Gives **Inventory / Administrator** read/write/create/delete access to Quality Control Point records. | `group stock.group_stock_manager` (stock)<br>`model quality.point` (quality) |  |
+| User | `access_user` | Gives **Helpdesk / User** read access to Quality Control Point records. | `group helpdesk.group_helpdesk_user` (helpdesk)<br>`model quality.point` (quality) |  |
+| quality.point | `access_quality_point` | Gives **Sales / Jin - Sales - POS Users** read access to Quality Control Point records. | `group BugFix-Approvals.group_jin_sales_pos_users` (BugFix-Approvals)<br>`model quality.point` (quality) |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Control point company rule | `rule_212_control_point_company_rule` | For everyone (global rule): read/write/create/delete on Quality Control Point only where `[('company_id', 'in', company_ids)]`. | `model quality.point` (quality)<br>`quality.point.company_id` (quality) |  |
+| Control point company rule | `rule_control_point_company_rule` | For everyone (global rule): read/write/create/delete on Quality Control Point only where `[('company_id', 'in', company_ids)]`. | `model quality.point` (quality)<br>`quality.point.company_id` (quality) |  |
 
 ### `mass_produce_serial` — Mass Produce Serial
 
 *Created by this repo.* Python: `models/mass_produce_serial.py`, `models/x_mass_produce_serial_gap.py`. Record name field: `name`.
 
-Other repos that use this model: `access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_x_mass_produce_serial_manufacturing_jin_manu_1` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_x_mass_produce_serial_manufacturing_jin_manu` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_mass_produce_serial_group_user_x_mass_produce_serial_manufacturing_jin_manufactur` (BugFix-Studio-Misc)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)
+Other repos that use this model: `access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_mass_produce_serial_manufacturing_jin_manu_1` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_mass_produce_serial_manufacturing_jin_manu` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_mass_produce_serial_group_user_mass_produce_serial_manufacturing_jin_manufactur` (BugFix-Studio-Misc)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)
 
 **Summary:**
 
@@ -1379,34 +1379,34 @@ A pop-up wizard, opened from the Mass Produce Serial Nos button on a manufacturi
 | `activity_type_icon` | Activity Type Icon | char | Font Awesome icon of the next activity's type, read from the record's activities; used by the activity widget. | related `activity_ids.icon`; not stored | `mail.activity.icon` (mail)<br>`mass_produce_serial.activity_ids` |  |
 | `activity_type_id` | Next Activity Type | many2one → `mail.activity.type` | Type of the next scheduled activity, read from the record's activities (related to Activities > Activity Type). | related `activity_ids.activity_type_id`; not stored | `mail.activity.activity_type_id` (mail)<br>`model mail.activity.type` (mail)<br>`mass_produce_serial.activity_ids` |  |
 | `activity_user_id` | Responsible User | many2one → `res.users` | User responsible for the next scheduled activity on the record; computed by the standard activity mixin. | not stored | `model res.users` (base) |  |
-| `create_date` | Created on | datetime | Date and time the Mass Produce Serial record was created; set automatically by Odoo. | stored |  | `automation BugFix-MRP.base_automation_326_jin_company_id_in_mass_produce_serial` |
+| `create_date` | Created on | datetime | Date and time the Mass Produce Serial record was created; set automatically by Odoo. | stored |  | `automation BugFix-MRP.automation_jin_company_id_in_mass_produce_serial` |
 | `create_uid` | Created by | many2one → `res.users` | User who created the Mass Produce Serial record; set automatically by Odoo. | stored | `model res.users` (base) |  |
 | `display_name` | Display Name | char | Name shown for the Mass Produce Serial record in dropdowns, lists and breadcrumbs; computed automatically from the record's name field. | not stored |  |  |
 | `id` | ID | integer | Unique database ID of the Mass Produce Serial record, assigned automatically by Odoo. | stored |  |  |
 | `my_activity_date_deadline` | My Activity Deadline | date | Due date of the next activity assigned to the current user on this record; computed by the standard activity mixin. | not stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the Mass Produce Serial record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Mass Produce Serial record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `active` | Active | boolean | Archive flag: unchecking it archives the Mass Produce Serial record and hides it from default searches; defaults to active. | stored |  | `default BugFix-MRP.default_80_x_mass_produce_serial_active` |
-| `name` | Name | char | Name of the Mass Produce Serial wizard record; only shown in an archived default list and never filled by the logic. | stored |  | `view BugFix-MRP.view_2623_default_tree_view_for_ir_model_837_e` |
-| `accounting_company_id` | Company | many2one → `res.company` | Company of the wizard record, set to the user's current company by automations and actions; used by multi-company record rules. | stored | `model res.company` (base) | `record rule BugFix-MRP.rule_605_jin_multi_company_mass_produce_serial`<br>`record rule BugFix-MRP.rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial`<br>`server action BugFix-MRP.sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial`<br>`server action BugFix-MRP.sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<details><summary>+4 more</summary>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_2729_jin_company_id_in_mass_produce_serial`<br>`view BugFix-MRP.ported_view_5898_mass_produce_serial_form_studio`</details> |
-| `generated` | Generated | boolean | Set after Generate and cleared by Clear; toggles which of the two buttons shows and locks the Serial No Prefix. | stored |  | `server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `last_serial_no_id` | Last Used Serial No | many2one → `stock.lot` | Last existing lot/serial with the same prefix in the company, found by the Find Last automation; read-only. | stored | `model stock.lot` (stock) | `server action BugFix-MRP.sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `mass_produce_serial_ids` | Serial No List | one2many → `mass_produce_serial_` | Generated serial number lines listed in the wizard; turned into real lots/serials by OK (Create Original Serial No). | stored | `model mass_produce_serial_` | `server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `prefix_status` | Prefix Status | selection: New=New; Existing=Existing | Whether the entered prefix is New or Existing (already used on serials), set by the Find Last automation; read-only. | stored |  | `server action BugFix-MRP.sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `product_id` | Product | many2one → `product.product` | Product to create serials for, pre-filled from the MO; read-only. | stored | `model product.product` (product) | `server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `product_qty` | Quantity to Create | float | Number of serial numbers to generate, pre-filled from the MO quantity; read-only. | stored |  | `server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `production_id` | Production Order | many2one → `mrp.production` | Manufacturing order the serials are generated for, pre-filled when opened from the MO; read-only. | stored | `model mrp.production` (mrp) | `server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `sequence` | Sequence | integer | Ordering number of the wizard record (default set by an ir.default); not shown in any view. | stored |  | `default BugFix-MRP.default_81_x_mass_produce_serial_sequence` |
-| `sequence_size` | Sequence Size | integer | Number of digits of the running serial number (default 4, or taken from the last serial with the same prefix); Generate errors when a number exceeds it. | stored |  | `default BugFix-MRP.default_85_x_mass_produce_serial_sequence_size`<br>`server action BugFix-MRP.sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original`<details><summary>+2 more</summary>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form`</details> |
-| `serial_no_prefix` | Serial No Prefix | char | Prefix typed by the user (upper-cased) for new serial numbers; changing it triggers the Find Last automation. Read-only once generated. | stored |  | `automation BugFix-MRP.base_automation_45_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original`<details><summary>+2 more</summary>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form`</details> |
-| `starting_serial_no` | Starting Serial No | integer | First running number to use (default 1, or last existing number + 1 for a known prefix); read-only. | stored |  | `default BugFix-MRP.default_86_x_mass_produce_serial_starting_serial_no`<br>`server action BugFix-MRP.sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original`<details><summary>+2 more</summary>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.ported_view_2600_mass_produce_serial_form`</details> |
+| `active` | Active | boolean | Archive flag: unchecking it archives the Mass Produce Serial record and hides it from default searches; defaults to active. | stored |  | `default BugFix-MRP.default_80_mass_produce_serial_active` |
+| `name` | Name | char | Name of the Mass Produce Serial wizard record; only shown in an archived default list and never filled by the logic. | stored |  | `view BugFix-MRP.view_mass_produce_serial_tree` |
+| `accounting_company_id` | Company | many2one → `res.company` | Company of the wizard record, set to the user's current company by automations and actions; used by multi-company record rules. | stored | `model res.company` (base) | `record rule BugFix-MRP.rule_jin_multi_company_mass_produce_serial`<br>`record rule BugFix-MRP.rule_f7_mass_produce_serial_jin_multi_company_mass_produce_serial`<br>`server action BugFix-MRP.action_mass_produce_serial_jin_company_id_in_mass_produce_serial`<br>`server action BugFix-MRP.action_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<details><summary>+4 more</summary>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_jin_company_id_in_mass_produce_serial`<br>`view BugFix-MRP.view_mass_produce_serial_nos_inherit`</details> |
+| `generated` | Generated | boolean | Set after Generate and cleared by Clear; toggles which of the two buttons shows and locks the Serial No Prefix. | stored |  | `server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `last_serial_no_id` | Last Used Serial No | many2one → `stock.lot` | Last existing lot/serial with the same prefix in the company, found by the Find Last automation; read-only. | stored | `model stock.lot` (stock) | `server action BugFix-MRP.action_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `mass_produce_serial_ids` | Serial No List | one2many → `mass_produce_serial_` | Generated serial number lines listed in the wizard; turned into real lots/serials by OK (Create Original Serial No). | stored | `model mass_produce_serial_` | `server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_create_original`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `prefix_status` | Prefix Status | selection: New=New; Existing=Existing | Whether the entered prefix is New or Existing (already used on serials), set by the Find Last automation; read-only. | stored |  | `server action BugFix-MRP.action_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `product_id` | Product | many2one → `product.product` | Product to create serials for, pre-filled from the MO; read-only. | stored | `model product.product` (product) | `server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `product_qty` | Quantity to Create | float | Number of serial numbers to generate, pre-filled from the MO quantity; read-only. | stored |  | `server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `production_id` | Production Order | many2one → `mrp.production` | Manufacturing order the serials are generated for, pre-filled when opened from the MO; read-only. | stored | `model mrp.production` (mrp) | `server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_create_original`<br>`view BugFix-MRP.view_mass_produce_serial_form` |
+| `sequence` | Sequence | integer | Ordering number of the wizard record (default set by an ir.default); not shown in any view. | stored |  | `default BugFix-MRP.default_81_mass_produce_serial_sequence` |
+| `sequence_size` | Sequence Size | integer | Number of digits of the running serial number (default 4, or taken from the last serial with the same prefix); Generate errors when a number exceeds it. | stored |  | `default BugFix-MRP.default_85_mass_produce_serial_sequence_size`<br>`server action BugFix-MRP.action_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_create_original`<details><summary>+2 more</summary>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.view_mass_produce_serial_form`</details> |
+| `serial_no_prefix` | Serial No Prefix | char | Prefix typed by the user (upper-cased) for new serial numbers; changing it triggers the Find Last automation. Read-only once generated. | stored |  | `automation BugFix-MRP.base_automation_45_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_create_original`<details><summary>+2 more</summary>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.view_mass_produce_serial_form`</details> |
+| `starting_serial_no` | Starting Serial No | integer | First running number to use (default 1, or last existing number + 1 for a known prefix); read-only. | stored |  | `default BugFix-MRP.default_86_mass_produce_serial_starting_serial_no`<br>`server action BugFix-MRP.action_mass_produce_serial_mass_produce_serial_nos_find_last`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_create_original`<details><summary>+2 more</summary>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`view BugFix-MRP.view_mass_produce_serial_form`</details> |
 
 **Server actions (7):**
 
-- **Execute Code** (`server_action_2729_jin_company_id_in_mass_produce_serial`, type `code`)
+- **Execute Code** (`action_jin_company_id_in_mass_produce_serial`, type `code`)
   - Function: Code run by an automation: sets the Mass Produce Serial record's Company to the user's currently active company.
   - Depends on: `model res.company` (base), `model mass_produce_serial`, `mass_produce_serial.accounting_company_id`
-  - Used by: `automation BugFix-MRP.base_automation_326_jin_company_id_in_mass_produce_serial`
+  - Used by: `automation BugFix-MRP.automation_jin_company_id_in_mass_produce_serial`
   <details><summary>code (5 lines)</summary>
 
 ```python
@@ -1416,7 +1416,7 @@ company = env["res.company"].browse(company_id)
 record["accounting_company_id"] = company.id
 ```
   </details>
-- **Execute Code** (`server_action_1153_mass_produce_serial_nos_find_last`, type `code`)
+- **Execute Code** (`action_mass_produce_serial_nos_find_last`, type `code`)
   - Function: Run by an automation when the prefix changes: resets size 4 / start 1 and company, then marks the prefix Existing (copying size, next number and last lot from the latest lot with that prefix) or New.
   - Depends on: `model res.company` (base), `model stock.lot` (stock), `model mass_produce_serial`, `mass_produce_serial.accounting_company_id`, `mass_produce_serial.last_serial_no_id`<details><summary>+4 more</summary>`mass_produce_serial.prefix_status`, `mass_produce_serial.sequence_size`, `mass_produce_serial.serial_no_prefix`, `mass_produce_serial.starting_serial_no`</details>
   - Used by: `automation BugFix-MRP.base_automation_45_mass_produce_serial_nos_find_last`
@@ -1449,7 +1449,7 @@ if record.serial_no_prefix:
         record["prefix_status"] = "New"
 ```
   </details>
-- **JIN - Company Id in Mass Produce Serial** (`sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial`, type `code`)
+- **JIN - Company Id in Mass Produce Serial** (`action_mass_produce_serial_jin_company_id_in_mass_produce_serial`, type `code`)
   - Function: Sets the Mass Produce Serial record's Company to the user's currently active company.
   - Depends on: `model res.company` (base), `model mass_produce_serial`, `mass_produce_serial.accounting_company_id`
   - Used by: — (not linked to a button, menu or automation)
@@ -1462,7 +1462,7 @@ company = env["res.company"].browse(company_id)
 record["accounting_company_id"] = company.id
 ```
   </details>
-- **Mass Produce Serial Nos - Find Last** (`sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last`, type `code`)
+- **Mass Produce Serial Nos - Find Last** (`action_mass_produce_serial_mass_produce_serial_nos_find_last`, type `code`)
   - Function: Resets sequence size to 4, starting number to 1 and sets the current company; if a prefix is entered, looks up the latest lot with that prefix and marks it Existing (copying its size, next number and lot) or New.
   - Depends on: `model res.company` (base), `model stock.lot` (stock), `model mass_produce_serial`, `mass_produce_serial.accounting_company_id`, `mass_produce_serial.last_serial_no_id`<details><summary>+4 more</summary>`mass_produce_serial.prefix_status`, `mass_produce_serial.sequence_size`, `mass_produce_serial.serial_no_prefix`, `mass_produce_serial.starting_serial_no`</details>
   - Used by: — (not linked to a button, menu or automation)
@@ -1495,10 +1495,10 @@ if record.serial_no_prefix:
         record["prefix_status"] = "New"
 ```
   </details>
-- **Mass Produce Serial Numbers - Clear** (`server_action_1150_mass_produce_serial_numbers_clear`, type `code`)
+- **Mass Produce Serial Numbers - Clear** (`action_mass_produce_serial_numbers_clear`, type `code`)
   - Function: Clear button in the wizard: deletes the generated serial lines, resets Generated, prefix, status, size, starting number and last serial, and reopens the wizard.
   - Depends on: `model res.company` (base), `model mass_produce_serial_`, `model mass_produce_serial`, `mass_produce_serial.accounting_company_id`, `mass_produce_serial.generated`<details><summary>+9 more</summary>`mass_produce_serial.last_serial_no_id`, `mass_produce_serial.mass_produce_serial_ids`, `mass_produce_serial.prefix_status`, `mass_produce_serial.product_id`, `mass_produce_serial.product_qty`, `mass_produce_serial.production_id`, `mass_produce_serial.sequence_size`, `mass_produce_serial.serial_no_prefix`, `mass_produce_serial.starting_serial_no`</details>
-  - Used by: `view BugFix-MRP.ported_view_2600_mass_produce_serial_form`
+  - Used by: `view BugFix-MRP.view_mass_produce_serial_form`
   <details><summary>code (27 lines)</summary>
 
 ```python
@@ -1544,10 +1544,10 @@ action = {
 }
 ```
   </details>
-- **Mass Produce Serial Numbers - Create Original Serial No** (`server_action_1151_mass_produce_serial_numbers_create_original`, type `code`)
+- **Mass Produce Serial Numbers - Create Original Serial No** (`action_mass_produce_serial_numbers_create_original`, type `code`)
   - Function: OK button in the wizard: creates a real lot/serial for each generated line, marks the MO Mass Produced (Serial Cancelled off), then deletes the wizard record.
   - Depends on: `model mrp.production` (mrp), `model res.company` (base), `model stock.lot` (stock), `model mass_produce_serial`, `mass_produce_serial.mass_produce_serial_ids`<details><summary>+4 more</summary>`mass_produce_serial.production_id`, `mass_produce_serial.sequence_size`, `mass_produce_serial.serial_no_prefix`, `mass_produce_serial.starting_serial_no`</details>
-  - Used by: `view BugFix-MRP.ported_view_2600_mass_produce_serial_form`
+  - Used by: `view BugFix-MRP.view_mass_produce_serial_form`
   <details><summary>code (16 lines)</summary>
 
 ```python
@@ -1589,10 +1589,10 @@ if record.id:
     temp_rec.unlink()
 ```
   </details>
-- **Mass Produce Serial Numbers - Generate** (`server_action_1149_mass_produce_serial_numbers_generate`, type `code`)
+- **Mass Produce Serial Numbers - Generate** (`action_mass_produce_serial_numbers_generate`, type `code`)
   - Function: Generate button in the wizard: creates one serial line per unit (prefix + zero-padded running number), errors if a number exceeds Sequence Size, sets Generated and reopens the wizard.
   - Depends on: `model res.company` (base), `model mass_produce_serial_`, `model mass_produce_serial`, `mass_produce_serial.accounting_company_id`, `mass_produce_serial.generated`<details><summary>+7 more</summary>`mass_produce_serial.mass_produce_serial_ids`, `mass_produce_serial.product_id`, `mass_produce_serial.product_qty`, `mass_produce_serial.production_id`, `mass_produce_serial.sequence_size`, `mass_produce_serial.serial_no_prefix`, `mass_produce_serial.starting_serial_no`</details>
-  - Used by: `view BugFix-MRP.ported_view_2600_mass_produce_serial_form`
+  - Used by: `view BugFix-MRP.view_mass_produce_serial_form`
   <details><summary>code (36 lines)</summary>
 
 ```python
@@ -1661,43 +1661,43 @@ action = {
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| JIN - Company Id in Mass Produce Serial | `base_automation_326_jin_company_id_in_mass_produce_serial` |  | When a record is created or updated on Mass Produce Serial, runs _Execute Code_. | `model mass_produce_serial`<br>`server action BugFix-MRP.server_action_2729_jin_company_id_in_mass_produce_serial`<br>`mass_produce_serial.create_date` |  |
-| Mass Produce Serial Nos - Find Last | `base_automation_45_mass_produce_serial_nos_find_last` |  | When a watched field changes in the form on Mass Produce Serial, runs _Execute Code_. | `model mass_produce_serial`<br>`server action BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last`<br>`mass_produce_serial.serial_no_prefix` |  |
+| JIN - Company Id in Mass Produce Serial | `automation_jin_company_id_in_mass_produce_serial` |  | When a record is created or updated on Mass Produce Serial, runs _Execute Code_. | `model mass_produce_serial`<br>`server action BugFix-MRP.action_jin_company_id_in_mass_produce_serial`<br>`mass_produce_serial.create_date` |  |
+| Mass Produce Serial Nos - Find Last | `base_automation_45_mass_produce_serial_nos_find_last` |  | When a watched field changes in the form on Mass Produce Serial, runs _Execute Code_. | `model mass_produce_serial`<br>`server action BugFix-MRP.action_mass_produce_serial_nos_find_last`<br>`mass_produce_serial.serial_no_prefix` |  |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Mass Produce Serial | `act_window_1146_mass_produce_serial` | Opens **Mass Produce Serial** records (tree,form). | `model mass_produce_serial` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mass_produce_serial` (BugFix-Studio-Misc) |
+| Mass Produce Serial | `action_mass_produce_serial` | Opens **Mass Produce Serial** records (tree,form). | `model mass_produce_serial` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mass_produce_serial` (BugFix-Studio-Misc) |
 
 **Views (3):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default tree view for ir.model(837,) | `view_2623_default_tree_view_for_ir_model_837_e` | tree | full tree layout with 1 fields | Inactive default list of Mass Produce Serial records showing only Name; has no effect. | `mass_produce_serial.name` |  |
-| Mass Produce Serial Nos | `ported_view_2600_mass_produce_serial_form` | form | full form layout with 13 fields | Mass Produce Serial Nos pop-up: MO, product, quantity, prefix, status, size, start, last serial; Generate/Clear buttons, generated serial list, and OK/Cancel footer (each runs its Mass Produce Serial Numbers server action). | `server action BugFix-MRP.server_action_1149_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.server_action_1150_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.server_action_1151_mass_produce_serial_numbers_create_original`<br>`mass_produce_serial.generated`<br>`mass_produce_serial.last_serial_no_id`<details><summary>+11 more</summary>`mass_produce_serial.mass_produce_serial_ids`<br>`mass_produce_serial.prefix_status`<br>`mass_produce_serial.product_id`<br>`mass_produce_serial.product_qty`<br>`mass_produce_serial.production_id`<br>`mass_produce_serial.sequence_size`<br>`mass_produce_serial.serial_no_prefix`<br>`mass_produce_serial.starting_serial_no`<br>`mass_produce_serial_.lotserial_number`<br>`mass_produce_serial_.product_qty`<br>`mass_produce_serial_.product_uom_id`</details> | `view BugFix-MRP.ported_view_5898_mass_produce_serial_form_studio` |
-| Odoo Studio: Mass Produce Serial Nos customization | `ported_view_5898_mass_produce_serial_form_studio` | form | after `//field[@name='last_serial_no_id']`: add field accounting_company_id | Mass Produce Serial Nos pop-up customization: adds a hidden Company field after Last Used Serial No. | `view BugFix-MRP.ported_view_2600_mass_produce_serial_form`<br>`mass_produce_serial.accounting_company_id` |  |
+| Default tree view for ir.model(837,) | `view_mass_produce_serial_tree` | tree | full tree layout with 1 fields | Inactive default list of Mass Produce Serial records showing only Name; has no effect. | `mass_produce_serial.name` |  |
+| Mass Produce Serial Nos | `view_mass_produce_serial_form` | form | full form layout with 13 fields | Mass Produce Serial Nos pop-up: MO, product, quantity, prefix, status, size, start, last serial; Generate/Clear buttons, generated serial list, and OK/Cancel footer (each runs its Mass Produce Serial Numbers server action). | `server action BugFix-MRP.action_mass_produce_serial_numbers_generate`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_clear`<br>`server action BugFix-MRP.action_mass_produce_serial_numbers_create_original`<br>`mass_produce_serial.generated`<br>`mass_produce_serial.last_serial_no_id`<details><summary>+11 more</summary>`mass_produce_serial.mass_produce_serial_ids`<br>`mass_produce_serial.prefix_status`<br>`mass_produce_serial.product_id`<br>`mass_produce_serial.product_qty`<br>`mass_produce_serial.production_id`<br>`mass_produce_serial.sequence_size`<br>`mass_produce_serial.serial_no_prefix`<br>`mass_produce_serial.starting_serial_no`<br>`mass_produce_serial_.lotserial_number`<br>`mass_produce_serial_.product_qty`<br>`mass_produce_serial_.product_uom_id`</details> | `view BugFix-MRP.view_mass_produce_serial_nos_inherit` |
+| Odoo Studio: Mass Produce Serial Nos customization | `view_mass_produce_serial_nos_inherit` | form | after `//field[@name='last_serial_no_id']`: add field accounting_company_id | Mass Produce Serial Nos pop-up customization: adds a hidden Company field after Last Used Serial No. | `view BugFix-MRP.view_mass_produce_serial_form`<br>`mass_produce_serial.accounting_company_id` |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Mass Produce Serial group_system | `access_1214_mass_produce_serial_group_system` | Gives **Administration / Settings** read/write/create/delete access to Mass Produce Serial records. | `group base.group_system` (base)<br>`model mass_produce_serial` |  |
-| Mass Produce Serial group_user | `access_1215_mass_produce_serial_group_user` | Gives **User types / Internal User** read access to Mass Produce Serial records. | `group base.group_user` (base)<br>`model mass_produce_serial` |  |
-| mass_produce_serial user access | `access_x_mass_produce_serial_user` | Gives **User types / Internal User** read/write/create/delete access to Mass Produce Serial records. | `group base.group_user` (base)<br>`model mass_produce_serial` |  |
+| Mass Produce Serial group_system | `access_mass_produce_serial_group_system` | Gives **Administration / Settings** read/write/create/delete access to Mass Produce Serial records. | `group base.group_system` (base)<br>`model mass_produce_serial` |  |
+| Mass Produce Serial group_user | `access_mass_produce_serial_group_user` | Gives **User types / Internal User** read access to Mass Produce Serial records. | `group base.group_user` (base)<br>`model mass_produce_serial` |  |
+| mass_produce_serial user access | `access_mass_produce_serial_user` | Gives **User types / Internal User** read/write/create/delete access to Mass Produce Serial records. | `group base.group_user` (base)<br>`model mass_produce_serial` |  |
 
 **Record rules (2):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| JIN - Multi-Company - Mass Produce Serial | `rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial` | For everyone (global rule): read/write/create/delete on Mass Produce Serial only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial`<br>`mass_produce_serial.accounting_company_id` |  |
-| JIN - Multi-Company - Mass Produce Serial | `rule_605_jin_multi_company_mass_produce_serial` | For everyone (global rule): read/write/create/delete on Mass Produce Serial only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial`<br>`mass_produce_serial.accounting_company_id` |  |
+| JIN - Multi-Company - Mass Produce Serial | `rule_f7_mass_produce_serial_jin_multi_company_mass_produce_serial` | For everyone (global rule): read/write/create/delete on Mass Produce Serial only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial`<br>`mass_produce_serial.accounting_company_id` |  |
+| JIN - Multi-Company - Mass Produce Serial | `rule_jin_multi_company_mass_produce_serial` | For everyone (global rule): read/write/create/delete on Mass Produce Serial only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial`<br>`mass_produce_serial.accounting_company_id` |  |
 
 ### `mass_produce_serial_` — Mass Produce Serial Line
 
 *Created by this repo.* Python: `models/mass_produce_serial__gap.py`, `models/mass_produce_serial_line.py`. Record name field: `name`.
 
-Other repos that use this model: `access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_x_mass_produce_serial_manufacturing_jin_manu_2` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_x_mass_produce_serial_manufacturing_jin_manu_3` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_mass_produce_serial_line_group_user_x_mass_produce_serial_manufacturing_jin_manuf` (BugFix-Studio-Misc)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)
+Other repos that use this model: `access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_mass_produce_serial_manufacturing_jin_manu_2` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_jin_manufacturing_mo_full_writes_mps_mass_produce_serial_manufacturing_jin_manu_3` (BugFix-Studio-Misc)<br>`access right BugFix-Studio-Misc.access_g_mass_produce_serial_line_group_user_mass_produce_serial_manufacturing_jin_manuf` (BugFix-Studio-Misc)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)
 
 **Summary:**
 
@@ -1719,7 +1719,7 @@ A generated serial number line of the Mass Produce Serial wizard. It holds the s
 | `activity_type_icon` | Activity Type Icon | char | Font Awesome icon of the next activity's type, read from the record's activities; used by the activity widget. | related `activity_ids.icon`; not stored | `mail.activity.icon` (mail)<br>`mass_produce_serial_.activity_ids` |  |
 | `activity_type_id` | Next Activity Type | many2one → `mail.activity.type` | Type of the next scheduled activity, read from the record's activities (related to Activities > Activity Type). | related `activity_ids.activity_type_id`; not stored | `mail.activity.activity_type_id` (mail)<br>`model mail.activity.type` (mail)<br>`mass_produce_serial_.activity_ids` |  |
 | `activity_user_id` | Responsible User | many2one → `res.users` | User responsible for the next scheduled activity on the record; computed by the standard activity mixin. | not stored | `model res.users` (base) |  |
-| `create_date` | Created on | datetime | Date and time the Mass Produce Serial Line record was created; set automatically by Odoo. | stored |  | `automation BugFix-MRP.base_automation_327_jin_company_id_in_mass_produce_serial_line` |
+| `create_date` | Created on | datetime | Date and time the Mass Produce Serial Line record was created; set automatically by Odoo. | stored |  | `automation BugFix-MRP.automation_jin_company_id_in_mass_produce_serial_line` |
 | `create_uid` | Created by | many2one → `res.users` | User who created the Mass Produce Serial Line record; set automatically by Odoo. | stored | `model res.users` (base) |  |
 | `display_name` | Display Name | char | Name shown for the Mass Produce Serial Line record in dropdowns, lists and breadcrumbs; computed automatically from the record's name field. | not stored |  |  |
 | `id` | ID | integer | Unique database ID of the Mass Produce Serial Line record, assigned automatically by Odoo. | stored |  |  |
@@ -1727,28 +1727,28 @@ A generated serial number line of the Mass Produce Serial wizard. It holds the s
 | `write_date` | Last Updated on | datetime | Date and time the Mass Produce Serial Line record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Mass Produce Serial Line record; set automatically by Odoo. | stored | `model res.users` (base) |  |
 | `active` | Active | boolean | Archive flag: unchecking it archives the Mass Produce Serial Line record and hides it from default searches; defaults to active. | default `True`; stored |  | `default BugFix-MRP.default_82_mass_produce_serial__active` |
-| `name` | Name | char | Name of the serial line; only shown in an archived default list and never filled by the logic. | stored |  | `view BugFix-MRP.view_2624_default_tree_view_for_ir_model_839_e` |
-| `accounting_company_id` | Company | many2one → `res.company` | Company of the serial line, set to the user's current company on creation; used by multi-company record rules. | stored | `model res.company` (base) | `record rule BugFix-MRP.rule_606_jin_multi_company_mass_produce_serial_line`<br>`record rule BugFix-MRP.rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial_line`<br>`server action BugFix-MRP.sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial_line`<br>`server action BugFix-MRP.server_action_2730_jin_company_id_in_mass_produce_serial_line` |
+| `name` | Name | char | Name of the serial line; only shown in an archived default list and never filled by the logic. | stored |  | `view BugFix-MRP.view_mass_produce_serial_tree_2` |
+| `accounting_company_id` | Company | many2one → `res.company` | Company of the serial line, set to the user's current company on creation; used by multi-company record rules. | stored | `model res.company` (base) | `record rule BugFix-MRP.rule_jin_multi_company_mass_produce_serial_line`<br>`record rule BugFix-MRP.rule_f7_mass_produce_serial_jin_multi_company_mass_produce_serial_line`<br>`server action BugFix-MRP.action_mass_produce_serial_jin_company_id_in_mass_produce_serial_line`<br>`server action BugFix-MRP.action_jin_company_id_in_mass_produce_serial_line` |
 | `lot_serial_id` | Lot/Serial Number | many2one → `stock.lot` | Link to a lot/serial record; not set by any logic or shown in any view in this repo. | stored | `model stock.lot` (stock) |  |
-| `lotserial_number` | Lot/Serial Number | char | Generated serial number text (prefix + zero-padded number, upper-cased); becomes the lot name on OK. | stored |  | `view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
+| `lotserial_number` | Lot/Serial Number | char | Generated serial number text (prefix + zero-padded number, upper-cased); becomes the lot name on OK. | stored |  | `view BugFix-MRP.view_mass_produce_serial_form` |
 | `mass_produce_serial_ids` | Mass Produce Serial | many2one → `mass_produce_serial` | Parent Mass Produce Serial wizard record this line belongs to. | stored | `model mass_produce_serial` |  |
 | `product_id` | Product | many2one → `product.product` | Product of the serial, copied from the wizard. | stored | `model product.product` (product) |  |
-| `product_qty` | Quantity | float | Quantity per serial line, always written as 1 by Generate. | stored |  | `view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
-| `product_uom_id` | Unit of Measure | many2one → `uom.uom` | Unit of measure of the product, copied by Generate. | stored | `model uom.uom` (uom) | `view BugFix-MRP.ported_view_2600_mass_produce_serial_form` |
+| `product_qty` | Quantity | float | Quantity per serial line, always written as 1 by Generate. | stored |  | `view BugFix-MRP.view_mass_produce_serial_form` |
+| `product_uom_id` | Unit of Measure | many2one → `uom.uom` | Unit of measure of the product, copied by Generate. | stored | `model uom.uom` (uom) | `view BugFix-MRP.view_mass_produce_serial_form` |
 | `production_id` | Production Order | many2one → `mrp.production` | Manufacturing order the serial line belongs to, copied from the wizard. | stored | `model mrp.production` (mrp) |  |
 | `production_order` | Production Order | char | Original MO reference of the manufacturing order, copied by Generate and passed to the created lot. | stored |  |  |
 | `sequence` | Sequence | integer | Ordering number of the Mass Produce Serial Line record (default set by an ir.default record); not shown in any view in this repo. | stored |  | `default BugFix-MRP.default_83_mass_produce_serial__sequence` |
 | `sequence_size` | Sequence Size | integer | Digit size of the running number, copied from the wizard (default via ir.default). | stored |  | `default BugFix-MRP.default_87_mass_produce_serial__sequence_size` |
 | `serial_no_prefix` | Serial No Prefix | char | Serial prefix copied from the wizard and passed to the created lot. | stored |  |  |
 | `starting_no` | Starting No | char | Text field labelled Starting No; not filled by any logic or shown in any view in this repo. | stored |  |  |
-| `starting_serial_no` | Starting Serial No | integer | Running number of this serial (written by Generate), passed to the created lot. | stored |  | `default BugFix-MRP.default_88_mass_produce_serial__x_studio_starting_serial_n` |
+| `starting_serial_no` | Starting Serial No | integer | Running number of this serial (written by Generate), passed to the created lot. | stored |  | `default BugFix-MRP.default_88_mass_produce_serial_starting_serial_n` |
 
 **Server actions (2):**
 
-- **Execute Code** (`server_action_2730_jin_company_id_in_mass_produce_serial_line`, type `code`)
+- **Execute Code** (`action_jin_company_id_in_mass_produce_serial_line`, type `code`)
   - Function: Code run by an automation: sets the serial line's Company to the user's currently active company.
   - Depends on: `model res.company` (base), `model mass_produce_serial_`, `mass_produce_serial_.accounting_company_id`
-  - Used by: `automation BugFix-MRP.base_automation_327_jin_company_id_in_mass_produce_serial_line`
+  - Used by: `automation BugFix-MRP.automation_jin_company_id_in_mass_produce_serial_line`
   <details><summary>code (5 lines)</summary>
 
 ```python
@@ -1758,7 +1758,7 @@ company = env["res.company"].browse(company_id)
 record["accounting_company_id"] = company.id
 ```
   </details>
-- **JIN - Company Id in Mass Produce Serial Line** (`sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial_line`, type `code`)
+- **JIN - Company Id in Mass Produce Serial Line** (`action_mass_produce_serial_jin_company_id_in_mass_produce_serial_line`, type `code`)
   - Function: Sets the serial line's Company to the user's currently active company.
   - Depends on: `model res.company` (base), `model mass_produce_serial_`, `mass_produce_serial_.accounting_company_id`
   - Used by: — (not linked to a button, menu or automation)
@@ -1775,34 +1775,34 @@ record["accounting_company_id"] = company.id
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| JIN - Company Id in Mass Produce Serial Line | `base_automation_327_jin_company_id_in_mass_produce_serial_line` |  | When a record is created or updated on Mass Produce Serial Line, runs _Execute Code_. | `model mass_produce_serial_`<br>`server action BugFix-MRP.server_action_2730_jin_company_id_in_mass_produce_serial_line`<br>`mass_produce_serial_.create_date` |  |
+| JIN - Company Id in Mass Produce Serial Line | `automation_jin_company_id_in_mass_produce_serial_line` |  | When a record is created or updated on Mass Produce Serial Line, runs _Execute Code_. | `model mass_produce_serial_`<br>`server action BugFix-MRP.action_jin_company_id_in_mass_produce_serial_line`<br>`mass_produce_serial_.create_date` |  |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Mass Produce Serial Line | `act_window_1148_mass_produce_serial_line` | Opens **Mass Produce Serial Line** records (tree,form). | `model mass_produce_serial_` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mass_produce_serial_line` (BugFix-Studio-Misc) |
+| Mass Produce Serial Line | `action_mass_produce_serial_line` | Opens **Mass Produce Serial Line** records (tree,form). | `model mass_produce_serial_` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mass_produce_serial_line` (BugFix-Studio-Misc) |
 
 **Views (1):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default tree view for ir.model(839,) | `view_2624_default_tree_view_for_ir_model_839_e` | tree | full tree layout with 1 fields | Inactive default list of Mass Produce Serial Lines showing only Name; has no effect. | `mass_produce_serial_.name` |  |
+| Default tree view for ir.model(839,) | `view_mass_produce_serial_tree_2` | tree | full tree layout with 1 fields | Inactive default list of Mass Produce Serial Lines showing only Name; has no effect. | `mass_produce_serial_.name` |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Mass Produce Serial Line group_system | `access_1216_mass_produce_serial_line_group_system` | Gives **Administration / Settings** read/write/create/delete access to Mass Produce Serial Line records. | `group base.group_system` (base)<br>`model mass_produce_serial_` |  |
-| Mass Produce Serial Line group_user | `access_1217_mass_produce_serial_line_group_user` | Gives **User types / Internal User** read access to Mass Produce Serial Line records. | `group base.group_user` (base)<br>`model mass_produce_serial_` |  |
-| mass_produce_serial_ user access | `access_x_mass_produce_serial_line_user` | Gives **User types / Internal User** read/write/create/delete access to Mass Produce Serial Line records. | `group base.group_user` (base)<br>`model mass_produce_serial_` |  |
+| Mass Produce Serial Line group_system | `access_mass_produce_serial_line_group_system` | Gives **Administration / Settings** read/write/create/delete access to Mass Produce Serial Line records. | `group base.group_system` (base)<br>`model mass_produce_serial_` |  |
+| Mass Produce Serial Line group_user | `access_mass_produce_serial_line_group_user` | Gives **User types / Internal User** read access to Mass Produce Serial Line records. | `group base.group_user` (base)<br>`model mass_produce_serial_` |  |
+| mass_produce_serial_ user access | `access_mass_produce_serial_line_user` | Gives **User types / Internal User** read/write/create/delete access to Mass Produce Serial Line records. | `group base.group_user` (base)<br>`model mass_produce_serial_` |  |
 
 **Record rules (2):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| JIN - Multi-Company - Mass Produce Serial Line | `rule_f7_x_mass_produce_serial_jin_multi_company_mass_produce_serial_line` | For everyone (global rule): read/write/create/delete on Mass Produce Serial Line only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial_`<br>`mass_produce_serial_.accounting_company_id` |  |
-| JIN - Multi-Company - Mass Produce Serial Line | `rule_606_jin_multi_company_mass_produce_serial_line` | For everyone (global rule): read/write/create/delete on Mass Produce Serial Line only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial_`<br>`mass_produce_serial_.accounting_company_id` |  |
+| JIN - Multi-Company - Mass Produce Serial Line | `rule_f7_mass_produce_serial_jin_multi_company_mass_produce_serial_line` | For everyone (global rule): read/write/create/delete on Mass Produce Serial Line only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial_`<br>`mass_produce_serial_.accounting_company_id` |  |
+| JIN - Multi-Company - Mass Produce Serial Line | `rule_jin_multi_company_mass_produce_serial_line` | For everyone (global rule): read/write/create/delete on Mass Produce Serial Line only where `['|', ('accounting_company_id', 'in', company_ids), ('accounting_company_id', '=', False)]`. | `model mass_produce_serial_`<br>`mass_produce_serial_.accounting_company_id` |  |
 
 ### `material_request_m` — Material Request M
 
@@ -1835,61 +1835,61 @@ Purpose not evident from code. It is a standard Studio-style app record opened f
 | `my_activity_date_deadline` | My Activity Deadline | date | Due date of the next activity assigned to the current user on this record; computed by the standard activity mixin. | not stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the Material Request M record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Material Request M record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `active` | Active | boolean | Archive flag: unchecking it archives the Material Request M record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_614_x_material_request_m_active`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8746_default_search_view_for_material_request_m` |
-| `color` | Color | integer | Colour index of the Material Request M record, chosen with the colour picker in the list; used to colour the tag chips/cards. | stored |  | `view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `material_request_m_line_ids_af086` | New Lines | one2many → `material_request_m_line_af405` | Detail lines of the material request, shown on the Details tab (lines only carry a description and sequence). | stored | `model material_request_m_line_af405` | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m` |
-| `name` | Description | char | Description/title of the material request (required); shown in list, form, search and kanban. | stored; required |  | `view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8746_default_search_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `accounting_company_id` | Company | many2one → `res.company` | Company of the material request (defaults from ir.default records); used by the multi-company record rule. | stored | `model res.company` (base) | `default BugFix-MRP.default_615_x_material_request_m_accounting_company_id`<br>`default BugFix-MRP.default_616_x_material_request_m_accounting_company_id`<br>`default BugFix-MRP.default_617_x_material_request_m_accounting_company_id`<br>`record rule BugFix-MRP.rule_883_material_request_m_multi_company`<br>`view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<details><summary>+1 more</summary>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`</details> |
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the request's Value (defaults from ir.default records); hidden. | stored | `model res.currency` (base) | `default BugFix-MRP.default_618_x_material_request_m_accounting_currency_id`<br>`default BugFix-MRP.default_619_x_material_request_m_accounting_currency_id`<br>`default BugFix-MRP.default_620_x_material_request_m_accounting_currency_id`<br>`view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<details><summary>+1 more</summary>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m`</details> |
-| `date` | Date | date | Date of the material request; used by the calendar, pivot and date filters. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.view_8751_default_pivot_view_for_x_material_request_m_e` |
-| `date_start` | Start Date | datetime | Start date of the request's date range, entered with the date-range widget; drives the Gantt view. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m` |
-| `date_stop` | End Date | datetime | End date of the request's date range; drives the Gantt view. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m` |
-| `image` | Image | binary | Image shown as avatar on the form and on kanban cards. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `kanban_state` | Kanban State | selection: normal=In Progress; done=Ready; blocked=Blocked | Kanban status (In Progress / Ready / Blocked) shown on the form and as the kanban progress bar. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `notes` | Notes | html | Free-form rich-text notes on the material request form. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m` |
-| `partner_email` | Email | char | Contact email entered on the material request form. | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m` |
-| `partner_id` | Contact | many2one → `res.partner` | Contact (partner) of the material request; used in list, search, group-by and the map view. | stored | `model res.partner` (base) | `view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8746_default_search_view_for_material_request_m`<br>`view BugFix-MRP.view_8750_default_map_view_for_x_material_request_m_e` |
-| `partner_phone` | Phone | char | Contact phone entered on the form (phone widget with SMS option). | stored |  | `view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m` |
-| `custom_reports_priority` | High Priority | boolean | High-priority star on kanban cards; kanban sorts starred requests first. | stored |  | `view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `sequence` | Sequence | integer | Ordering number of the Material Request M record (default set by an ir.default record); not shown in any view in this repo. | stored |  | `default BugFix-MRP.default_621_x_material_request_m_sequence` |
-| `stage_id` | Stage | many2one → `material_request_m_stage` | Current stage of the material request, shown as a clickable status bar; kanban groups by it (default from ir.default). | stored; required | `model material_request_m_stage` | `default BugFix-MRP.default_622_x_material_request_m_stage_id`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8746_default_search_view_for_material_request_m`<br>`view BugFix-MRP.view_8751_default_pivot_view_for_x_material_request_m_e` |
-| `tag_ids` | Tags | many2many → `material_request_m_tag` | Tags classifying the material request, shown as coloured chips. | stored | `model material_request_m_tag` | `view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8746_default_search_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `user_id` | Responsible | many2one → `res.users` | Responsible user of the request; used by the 'My Material Request M' filter and group-by. | stored | `model res.users` (base) | `view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8746_default_search_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m` |
-| `value` | Value | float | Monetary value of the material request; summed in the list and used as measure in pivot, graph and kanban. | stored |  | `view BugFix-MRP.ported_view_8744_default_list_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8745_default_form_view_for_material_request_m`<br>`view BugFix-MRP.ported_view_8749_default_kanban_view_for_material_request_m`<br>`view BugFix-MRP.view_8751_default_pivot_view_for_x_material_request_m_e`<br>`view BugFix-MRP.view_8752_default_graph_view_for_x_material_request_m_e` |
+| `active` | Active | boolean | Archive flag: unchecking it archives the Material Request M record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_material_request_m_active`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_search` |
+| `color` | Color | integer | Colour index of the Material Request M record, chosen with the colour picker in the list; used to colour the tag chips/cards. | stored |  | `view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_kanban` |
+| `material_request_m_line_ids_af086` | New Lines | one2many → `material_request_m_line_af405` | Detail lines of the material request, shown on the Details tab (lines only carry a description and sequence). | stored | `model material_request_m_line_af405` | `view BugFix-MRP.view_material_request_m_form` |
+| `name` | Description | char | Description/title of the material request (required); shown in list, form, search and kanban. | stored; required |  | `view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_search`<br>`view BugFix-MRP.view_material_request_m_kanban` |
+| `accounting_company_id` | Company | many2one → `res.company` | Company of the material request (defaults from ir.default records); used by the multi-company record rule. | stored | `model res.company` (base) | `default BugFix-MRP.default_615_x_material_request_m_accounting_company_id`<br>`default BugFix-MRP.default_616_x_material_request_m_accounting_company_id`<br>`default BugFix-MRP.default_617_x_material_request_m_accounting_company_id`<br>`record rule BugFix-MRP.rule_material_request_m_multi_company`<br>`view BugFix-MRP.view_material_request_m_list`<details><summary>+1 more</summary>`view BugFix-MRP.view_material_request_m_form`</details> |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the request's Value (defaults from ir.default records); hidden. | stored | `model res.currency` (base) | `default BugFix-MRP.default_618_x_material_request_m_accounting_currency_id`<br>`default BugFix-MRP.default_619_x_material_request_m_accounting_currency_id`<br>`default BugFix-MRP.default_620_x_material_request_m_accounting_currency_id`<br>`view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_form`<details><summary>+1 more</summary>`view BugFix-MRP.view_material_request_m_kanban`</details> |
+| `date` | Date | date | Date of the material request; used by the calendar, pivot and date filters. | stored |  | `view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_pivot` |
+| `date_start` | Start Date | datetime | Start date of the request's date range, entered with the date-range widget; drives the Gantt view. | stored |  | `view BugFix-MRP.view_material_request_m_form` |
+| `date_stop` | End Date | datetime | End date of the request's date range; drives the Gantt view. | stored |  | `view BugFix-MRP.view_material_request_m_form` |
+| `image` | Image | binary | Image shown as avatar on the form and on kanban cards. | stored |  | `view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_kanban` |
+| `kanban_state` | Kanban State | selection: normal=In Progress; done=Ready; blocked=Blocked | Kanban status (In Progress / Ready / Blocked) shown on the form and as the kanban progress bar. | stored |  | `view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_kanban` |
+| `notes` | Notes | html | Free-form rich-text notes on the material request form. | stored |  | `view BugFix-MRP.view_material_request_m_form` |
+| `partner_email` | Email | char | Contact email entered on the material request form. | stored |  | `view BugFix-MRP.view_material_request_m_form` |
+| `partner_id` | Contact | many2one → `res.partner` | Contact (partner) of the material request; used in list, search, group-by and the map view. | stored | `model res.partner` (base) | `view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_search`<br>`view BugFix-MRP.view_material_request_m_map` |
+| `partner_phone` | Phone | char | Contact phone entered on the form (phone widget with SMS option). | stored |  | `view BugFix-MRP.view_material_request_m_form` |
+| `custom_reports_priority` | High Priority | boolean | High-priority star on kanban cards; kanban sorts starred requests first. | stored |  | `view BugFix-MRP.view_material_request_m_kanban` |
+| `sequence` | Sequence | integer | Ordering number of the Material Request M record (default set by an ir.default record); not shown in any view in this repo. | stored |  | `default BugFix-MRP.default_material_request_m_sequence` |
+| `stage_id` | Stage | many2one → `material_request_m_stage` | Current stage of the material request, shown as a clickable status bar; kanban groups by it (default from ir.default). | stored; required | `model material_request_m_stage` | `default BugFix-MRP.default_622_x_material_request_m_stage_id`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_search`<br>`view BugFix-MRP.view_material_request_m_pivot` |
+| `tag_ids` | Tags | many2many → `material_request_m_tag` | Tags classifying the material request, shown as coloured chips. | stored | `model material_request_m_tag` | `view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_search`<br>`view BugFix-MRP.view_material_request_m_kanban` |
+| `user_id` | Responsible | many2one → `res.users` | Responsible user of the request; used by the 'My Material Request M' filter and group-by. | stored | `model res.users` (base) | `view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_search`<br>`view BugFix-MRP.view_material_request_m_kanban` |
+| `value` | Value | float | Monetary value of the material request; summed in the list and used as measure in pivot, graph and kanban. | stored |  | `view BugFix-MRP.view_material_request_m_list`<br>`view BugFix-MRP.view_material_request_m_form`<br>`view BugFix-MRP.view_material_request_m_kanban`<br>`view BugFix-MRP.view_material_request_m_pivot`<br>`view BugFix-MRP.view_material_request_m_graph` |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M | `action_3381_material_request_m` | Opens **Material Request M** records (kanban,tree,form,calendar,gantt,map,pivot,graph). | `model material_request_m` | `menu BugFix-MRP.menu_f6_material_request_m` |
+| Material Request M | `action_material_request` | Opens **Material Request M** records (kanban,tree,form,calendar,gantt,map,pivot,graph). | `model material_request_m` | `menu BugFix-MRP.menu_material_request` |
 
 **Views (9):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default calendar view for material_request_m | `view_8747_default_calendar_view_for_x_material_request_m_e` | calendar | full calendar layout with 0 fields | Calendar view of material requests placed on their Date; quick-create fills Description. |  |  |
-| Default form view for material_request_m | `ported_view_8745_default_form_view_for_material_request_m` | form | full form layout with 18 fields | Material Request M form: clickable stage bar, kanban state, Archived ribbon, image, title, contact/phone/email, dates, responsible, value, tags, company, notes and a Details tab with lines. | `group base.group_multi_company` (base)<br>`material_request_m.active`<br>`material_request_m.material_request_m_line_ids_af086`<br>`material_request_m.name`<br>`material_request_m.accounting_company_id`<details><summary>+14 more</summary>`material_request_m.accounting_currency_id`<br>`material_request_m.date_start`<br>`material_request_m.date_stop`<br>`material_request_m.date`<br>`material_request_m.image`<br>`material_request_m.kanban_state`<br>`material_request_m.notes`<br>`material_request_m.partner_email`<br>`material_request_m.partner_id`<br>`material_request_m.partner_phone`<br>`material_request_m.stage_id`<br>`material_request_m.tag_ids`<br>`material_request_m.user_id`<br>`material_request_m.value`</details> |  |
-| Default gantt view for material_request_m | `view_8748_default_gantt_view_for_x_material_request_m_e` | gantt | full gantt layout with 0 fields | Gantt view of material requests spanning Start Date to End Date. |  |  |
-| Default graph view for material_request_m | `view_8752_default_graph_view_for_x_material_request_m_e` | graph | full graph layout with 2 fields | Graph view of material requests: total Value by creation date. | `material_request_m.value` |  |
-| Default kanban view for material_request_m | `ported_view_8749_default_kanban_view_for_material_request_m` | kanban | full kanban layout with 9 fields | Material Request M kanban grouped by stage, with image, priority star, title, tags, value, responsible avatar and a kanban-state progress bar summing Value. | `material_request_m.color`<br>`material_request_m.name`<br>`material_request_m.accounting_currency_id`<br>`material_request_m.image`<br>`material_request_m.kanban_state`<details><summary>+4 more</summary>`material_request_m.custom_reports_priority`<br>`material_request_m.tag_ids`<br>`material_request_m.user_id`<br>`material_request_m.value`</details> |  |
-| Default list view for material_request_m | `ported_view_8744_default_list_view_for_material_request_m` | tree | full tree layout with 8 fields | Material Request M list: Description, Contact, Responsible, Company, Value (summed), Tags and colour. | `group base.group_multi_company` (base)<br>`material_request_m.color`<br>`material_request_m.name`<br>`material_request_m.accounting_company_id`<br>`material_request_m.accounting_currency_id`<details><summary>+4 more</summary>`material_request_m.partner_id`<br>`material_request_m.tag_ids`<br>`material_request_m.user_id`<br>`material_request_m.value`</details> |  |
-| Default map view for material_request_m | `view_8750_default_map_view_for_x_material_request_m_e` | map | full map layout with 1 fields | Map view of material requests plotted by their Contact's address. | `material_request_m.partner_id` |  |
-| Default pivot view for material_request_m | `view_8751_default_pivot_view_for_x_material_request_m_e` | pivot | full pivot layout with 3 fields | Pivot view of material requests: Value by Date (rows) and Stage (columns). | `material_request_m.date`<br>`material_request_m.stage_id`<br>`material_request_m.value` |  |
-| Default search view for material_request_m | `ported_view_8746_default_search_view_for_material_request_m` | search | full search layout with 4 fields | Material Request M search: search by Description, Contact, Responsible and Tags; filters My requests, date filters, Archived; group by Partner, Responsible, Stage. | `material_request_m.active`<br>`material_request_m.name`<br>`material_request_m.partner_id`<br>`material_request_m.stage_id`<br>`material_request_m.tag_ids`<details><summary>+1 more</summary>`material_request_m.user_id`</details> |  |
+| Default calendar view for material_request_m | `view_material_request_m_calendar` | calendar | full calendar layout with 0 fields | Calendar view of material requests placed on their Date; quick-create fills Description. |  |  |
+| Default form view for material_request_m | `view_material_request_m_form` | form | full form layout with 18 fields | Material Request M form: clickable stage bar, kanban state, Archived ribbon, image, title, contact/phone/email, dates, responsible, value, tags, company, notes and a Details tab with lines. | `group base.group_multi_company` (base)<br>`material_request_m.active`<br>`material_request_m.material_request_m_line_ids_af086`<br>`material_request_m.name`<br>`material_request_m.accounting_company_id`<details><summary>+14 more</summary>`material_request_m.accounting_currency_id`<br>`material_request_m.date_start`<br>`material_request_m.date_stop`<br>`material_request_m.date`<br>`material_request_m.image`<br>`material_request_m.kanban_state`<br>`material_request_m.notes`<br>`material_request_m.partner_email`<br>`material_request_m.partner_id`<br>`material_request_m.partner_phone`<br>`material_request_m.stage_id`<br>`material_request_m.tag_ids`<br>`material_request_m.user_id`<br>`material_request_m.value`</details> |  |
+| Default gantt view for material_request_m | `view_material_request_m_gantt` | gantt | full gantt layout with 0 fields | Gantt view of material requests spanning Start Date to End Date. |  |  |
+| Default graph view for material_request_m | `view_material_request_m_graph` | graph | full graph layout with 2 fields | Graph view of material requests: total Value by creation date. | `material_request_m.value` |  |
+| Default kanban view for material_request_m | `view_material_request_m_kanban` | kanban | full kanban layout with 9 fields | Material Request M kanban grouped by stage, with image, priority star, title, tags, value, responsible avatar and a kanban-state progress bar summing Value. | `material_request_m.color`<br>`material_request_m.name`<br>`material_request_m.accounting_currency_id`<br>`material_request_m.image`<br>`material_request_m.kanban_state`<details><summary>+4 more</summary>`material_request_m.custom_reports_priority`<br>`material_request_m.tag_ids`<br>`material_request_m.user_id`<br>`material_request_m.value`</details> |  |
+| Default list view for material_request_m | `view_material_request_m_list` | tree | full tree layout with 8 fields | Material Request M list: Description, Contact, Responsible, Company, Value (summed), Tags and colour. | `group base.group_multi_company` (base)<br>`material_request_m.color`<br>`material_request_m.name`<br>`material_request_m.accounting_company_id`<br>`material_request_m.accounting_currency_id`<details><summary>+4 more</summary>`material_request_m.partner_id`<br>`material_request_m.tag_ids`<br>`material_request_m.user_id`<br>`material_request_m.value`</details> |  |
+| Default map view for material_request_m | `view_material_request_m_map` | map | full map layout with 1 fields | Map view of material requests plotted by their Contact's address. | `material_request_m.partner_id` |  |
+| Default pivot view for material_request_m | `view_material_request_m_pivot` | pivot | full pivot layout with 3 fields | Pivot view of material requests: Value by Date (rows) and Stage (columns). | `material_request_m.date`<br>`material_request_m.stage_id`<br>`material_request_m.value` |  |
+| Default search view for material_request_m | `view_material_request_m_search` | search | full search layout with 4 fields | Material Request M search: search by Description, Contact, Responsible and Tags; filters My requests, date filters, Archived; group by Partner, Responsible, Stage. | `material_request_m.active`<br>`material_request_m.name`<br>`material_request_m.partner_id`<br>`material_request_m.stage_id`<br>`material_request_m.tag_ids`<details><summary>+1 more</summary>`material_request_m.user_id`</details> |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M group_system | `access_8283_material_request_m_group_system` | Gives **Administration / Settings** read/write/create/delete access to Material Request M records. | `group base.group_system` (base)<br>`model material_request_m` |  |
-| Material Request M group_user | `access_8284_material_request_m_group_user` | Gives **User types / Internal User** read/write/create access to Material Request M records. | `group base.group_user` (base)<br>`model material_request_m` |  |
-| material_request_m user access | `access_x_material_request_m_user` | Gives **User types / Internal User** read/write/create/delete access to Material Request M records. | `group base.group_user` (base)<br>`model material_request_m` |  |
+| Material Request M group_system | `access_material_request_m_group_system` | Gives **Administration / Settings** read/write/create/delete access to Material Request M records. | `group base.group_system` (base)<br>`model material_request_m` |  |
+| Material Request M group_user | `access_material_request_m_group_user` | Gives **User types / Internal User** read/write/create access to Material Request M records. | `group base.group_user` (base)<br>`model material_request_m` |  |
+| material_request_m user access | `access_material_request_m_user` | Gives **User types / Internal User** read/write/create/delete access to Material Request M records. | `group base.group_user` (base)<br>`model material_request_m` |  |
 
 **Record rules (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M - Multi-Company | `rule_883_material_request_m_multi_company` | For everyone (global rule): read/write/create/delete on Material Request M only where `['|', ('accounting_company_id', '=', False), ('accounting_company_id', 'in', company_ids)]`. | `model material_request_m`<br>`material_request_m.accounting_company_id` |  |
+| Material Request M - Multi-Company | `rule_material_request_m_multi_company` | For everyone (global rule): read/write/create/delete on Material Request M only where `['|', ('accounting_company_id', '=', False), ('accounting_company_id', 'in', company_ids)]`. | `model material_request_m`<br>`material_request_m.accounting_company_id` |  |
 
 ### `material_request_m_line_af405` — material_request_m_line
 
@@ -1912,24 +1912,24 @@ A detail line of a Material Request M record, holding only a required descriptio
 | `write_date` | Last Updated on | datetime | Date and time the material_request_m_line record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the material_request_m_line record; set automatically by Odoo. | stored | `model res.users` (base) |  |
 | `material_request_m_id` | X Material Request M | many2one → `material_request_m` | Parent material request the line belongs to. | stored | `model material_request_m` |  |
-| `name` | Description | char | Description of the material request line (required). | stored; required |  | `view BugFix-MRP.view_8753_default_list_view_for_x_material_request_m_line_af405_e`<br>`view BugFix-MRP.view_8754_default_form_view_for_x_material_request_m_line_af405_e`<br>`view BugFix-MRP.view_8755_default_search_view_for_x_material_request_m_line_af405_e` |
-| `sequence` | Sequence | integer | Ordering number of the material_request_m_line record; set by dragging the handle in the list view to reorder records. | stored |  | `view BugFix-MRP.view_8753_default_list_view_for_x_material_request_m_line_af405_e` |
+| `name` | Description | char | Description of the material request line (required). | stored; required |  | `view BugFix-MRP.view_material_request_m_line_af405_list`<br>`view BugFix-MRP.view_material_request_m_line_af405_form`<br>`view BugFix-MRP.view_material_request_m_line_af405_search` |
+| `sequence` | Sequence | integer | Ordering number of the material_request_m_line record; set by dragging the handle in the list view to reorder records. | stored |  | `view BugFix-MRP.view_material_request_m_line_af405_list` |
 
 **Views (3):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for material_request_m_line_af405 | `view_8754_default_form_view_for_x_material_request_m_line_af405_e` | form | full form layout with 1 fields | Material request line form showing only the Description. | `material_request_m_line_af405.name` |  |
-| Default list view for material_request_m_line_af405 | `view_8753_default_list_view_for_x_material_request_m_line_af405_e` | tree | full tree layout with 2 fields | Inline-editable material request line list with drag handle and Description. | `material_request_m_line_af405.name`<br>`material_request_m_line_af405.sequence` |  |
-| Default search view for material_request_m_line_af405 | `view_8755_default_search_view_for_x_material_request_m_line_af405_e` | search | full search layout with 1 fields | Material request line search: search by Description. | `material_request_m_line_af405.name` |  |
+| Default form view for material_request_m_line_af405 | `view_material_request_m_line_af405_form` | form | full form layout with 1 fields | Material request line form showing only the Description. | `material_request_m_line_af405.name` |  |
+| Default list view for material_request_m_line_af405 | `view_material_request_m_line_af405_list` | tree | full tree layout with 2 fields | Inline-editable material request line list with drag handle and Description. | `material_request_m_line_af405.name`<br>`material_request_m_line_af405.sequence` |  |
+| Default search view for material_request_m_line_af405 | `view_material_request_m_line_af405_search` | search | full search layout with 1 fields | Material request line search: search by Description. | `material_request_m_line_af405.name` |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| material_request_m_line group_system | `access_8285_material_request_m_line_group_system` | Gives **Administration / Settings** read/write/create/delete access to material_request_m_line records. | `group base.group_system` (base)<br>`model material_request_m_line_af405` |  |
-| material_request_m_line group_user | `access_8286_material_request_m_line_group_user` | Gives **User types / Internal User** read/write/create access to material_request_m_line records. | `group base.group_user` (base)<br>`model material_request_m_line_af405` |  |
-| material_request_m_line_af405 user access | `access_x_material_request_m_line_af405_user` | Gives **User types / Internal User** read/write/create/delete access to material_request_m_line records. | `group base.group_user` (base)<br>`model material_request_m_line_af405` |  |
+| material_request_m_line group_system | `access_material_request_m_line_group_system` | Gives **Administration / Settings** read/write/create/delete access to material_request_m_line records. | `group base.group_system` (base)<br>`model material_request_m_line_af405` |  |
+| material_request_m_line group_user | `access_material_request_m_line_group_user` | Gives **User types / Internal User** read/write/create access to material_request_m_line records. | `group base.group_user` (base)<br>`model material_request_m_line_af405` |  |
+| material_request_m_line_af405 user access | `access_material_request_m_line_af405_user` | Gives **User types / Internal User** read/write/create/delete access to material_request_m_line records. | `group base.group_user` (base)<br>`model material_request_m_line_af405` |  |
 
 ### `material_request_m_stage` — Material Request M Stages
 
@@ -1951,30 +1951,30 @@ A stage of the Material Request M workflow, holding a stage name and sequence. S
 | `id` | ID | integer | Unique database ID of the Material Request M Stages record, assigned automatically by Odoo. | stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the Material Request M Stages record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Material Request M Stages record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `name` | Stage Name | char | Name of the material request stage (required). | stored; required |  | `view BugFix-MRP.view_8756_default_list_view_for_x_material_request_m_stage_e`<br>`view BugFix-MRP.view_8757_default_form_view_for_x_material_request_m_stage_e`<br>`view BugFix-MRP.view_8758_default_search_view_for_x_material_request_m_stage_e` |
-| `sequence` | Sequence | integer | Ordering number of the Material Request M Stages record; set by dragging the handle in the list view to reorder records. | stored |  | `view BugFix-MRP.view_8756_default_list_view_for_x_material_request_m_stage_e` |
+| `name` | Stage Name | char | Name of the material request stage (required). | stored; required |  | `view BugFix-MRP.view_material_request_m_stage_list`<br>`view BugFix-MRP.view_material_request_m_stage_form`<br>`view BugFix-MRP.view_material_request_m_stage_search` |
+| `sequence` | Sequence | integer | Ordering number of the Material Request M Stages record; set by dragging the handle in the list view to reorder records. | stored |  | `view BugFix-MRP.view_material_request_m_stage_list` |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M Stages | `act_window_3382_material_request_m_stages` | Opens **Material Request M Stages** records (tree,form). | `model material_request_m_stage` | `menu BugFix-MRP.menu_f6_material_request_m_stages` |
+| Material Request M Stages | `action_material_request_m_stages` | Opens **Material Request M Stages** records (tree,form). | `model material_request_m_stage` | `menu BugFix-MRP.menu_material_request_m_stages` |
 
 **Views (3):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for material_request_m_stage | `view_8757_default_form_view_for_x_material_request_m_stage_e` | form | full form layout with 1 fields | Material request stage form showing only the Stage Name. | `material_request_m_stage.name` |  |
-| Default list view for material_request_m_stage | `view_8756_default_list_view_for_x_material_request_m_stage_e` | tree | full tree layout with 2 fields | Inline-editable material request stage list with drag handle and Stage Name. | `material_request_m_stage.name`<br>`material_request_m_stage.sequence` |  |
-| Default search view for material_request_m_stage | `view_8758_default_search_view_for_x_material_request_m_stage_e` | search | full search layout with 1 fields | Material request stage search: search by Stage Name. | `material_request_m_stage.name` |  |
+| Default form view for material_request_m_stage | `view_material_request_m_stage_form` | form | full form layout with 1 fields | Material request stage form showing only the Stage Name. | `material_request_m_stage.name` |  |
+| Default list view for material_request_m_stage | `view_material_request_m_stage_list` | tree | full tree layout with 2 fields | Inline-editable material request stage list with drag handle and Stage Name. | `material_request_m_stage.name`<br>`material_request_m_stage.sequence` |  |
+| Default search view for material_request_m_stage | `view_material_request_m_stage_search` | search | full search layout with 1 fields | Material request stage search: search by Stage Name. | `material_request_m_stage.name` |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M Stages group_system | `access_8287_material_request_m_stages_group_system` | Gives **Administration / Settings** read/write/create/delete access to Material Request M Stages records. | `group base.group_system` (base)<br>`model material_request_m_stage` |  |
-| Material Request M Stages group_user | `access_8288_material_request_m_stages_group_user` | Gives **User types / Internal User** read/write/create access to Material Request M Stages records. | `group base.group_user` (base)<br>`model material_request_m_stage` |  |
-| material_request_m_stage user access | `access_x_material_request_m_stage_user` | Gives **User types / Internal User** read/write/create/delete access to Material Request M Stages records. | `group base.group_user` (base)<br>`model material_request_m_stage` |  |
+| Material Request M Stages group_system | `access_material_request_m_stages_group_system` | Gives **Administration / Settings** read/write/create/delete access to Material Request M Stages records. | `group base.group_system` (base)<br>`model material_request_m_stage` |  |
+| Material Request M Stages group_user | `access_material_request_m_stages_group_user` | Gives **User types / Internal User** read/write/create access to Material Request M Stages records. | `group base.group_user` (base)<br>`model material_request_m_stage` |  |
+| material_request_m_stage user access | `access_material_request_m_stage_user` | Gives **User types / Internal User** read/write/create/delete access to Material Request M Stages records. | `group base.group_user` (base)<br>`model material_request_m_stage` |  |
 
 ### `material_request_m_tag` — Material Request M Tags
 
@@ -1996,30 +1996,30 @@ A tag for classifying Material Request M records, holding a name and colour. Tag
 | `id` | ID | integer | Unique database ID of the Material Request M Tags record, assigned automatically by Odoo. | stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the Material Request M Tags record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the Material Request M Tags record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `color` | Color | integer | Colour index of the Material Request M Tags record, chosen with the colour picker in the list; used to colour the tag chips/cards. | stored |  | `view BugFix-MRP.view_8759_default_list_view_for_x_material_request_m_tag_e` |
-| `name` | Name | char | Name of the material request tag (required). | stored; required |  | `view BugFix-MRP.view_8759_default_list_view_for_x_material_request_m_tag_e`<br>`view BugFix-MRP.view_8760_default_form_view_for_x_material_request_m_tag_e`<br>`view BugFix-MRP.view_8761_default_search_view_for_x_material_request_m_tag_e` |
+| `color` | Color | integer | Colour index of the Material Request M Tags record, chosen with the colour picker in the list; used to colour the tag chips/cards. | stored |  | `view BugFix-MRP.view_material_request_m_tag_list` |
+| `name` | Name | char | Name of the material request tag (required). | stored; required |  | `view BugFix-MRP.view_material_request_m_tag_list`<br>`view BugFix-MRP.view_material_request_m_tag_form`<br>`view BugFix-MRP.view_material_request_m_tag_search` |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M Tags | `act_window_3383_material_request_m_tags` | Opens **Material Request M Tags** records (tree,form). | `model material_request_m_tag` | `menu BugFix-MRP.menu_f6_material_request_m_tags` |
+| Material Request M Tags | `action_material_request_m_tags` | Opens **Material Request M Tags** records (tree,form). | `model material_request_m_tag` | `menu BugFix-MRP.menu_material_request_m_tags` |
 
 **Views (3):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for material_request_m_tag | `view_8760_default_form_view_for_x_material_request_m_tag_e` | form | full form layout with 1 fields | Material request tag form showing only the Name. | `material_request_m_tag.name` |  |
-| Default list view for material_request_m_tag | `view_8759_default_list_view_for_x_material_request_m_tag_e` | tree | full tree layout with 2 fields | Inline-editable material request tag list with Name and colour picker. | `material_request_m_tag.color`<br>`material_request_m_tag.name` |  |
-| Default search view for material_request_m_tag | `view_8761_default_search_view_for_x_material_request_m_tag_e` | search | full search layout with 1 fields | Material request tag search: search by Name. | `material_request_m_tag.name` |  |
+| Default form view for material_request_m_tag | `view_material_request_m_tag_form` | form | full form layout with 1 fields | Material request tag form showing only the Name. | `material_request_m_tag.name` |  |
+| Default list view for material_request_m_tag | `view_material_request_m_tag_list` | tree | full tree layout with 2 fields | Inline-editable material request tag list with Name and colour picker. | `material_request_m_tag.color`<br>`material_request_m_tag.name` |  |
+| Default search view for material_request_m_tag | `view_material_request_m_tag_search` | search | full search layout with 1 fields | Material request tag search: search by Name. | `material_request_m_tag.name` |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| Material Request M Tags group_system | `access_8289_material_request_m_tags_group_system` | Gives **Administration / Settings** read/write/create/delete access to Material Request M Tags records. | `group base.group_system` (base)<br>`model material_request_m_tag` |  |
-| Material Request M Tags group_user | `access_8290_material_request_m_tags_group_user` | Gives **User types / Internal User** read/write/create access to Material Request M Tags records. | `group base.group_user` (base)<br>`model material_request_m_tag` |  |
-| material_request_m_tag user access | `access_x_material_request_m_tag_user` | Gives **User types / Internal User** read/write/create/delete access to Material Request M Tags records. | `group base.group_user` (base)<br>`model material_request_m_tag` |  |
+| Material Request M Tags group_system | `access_material_request_m_tags_group_system` | Gives **Administration / Settings** read/write/create/delete access to Material Request M Tags records. | `group base.group_system` (base)<br>`model material_request_m_tag` |  |
+| Material Request M Tags group_user | `access_material_request_m_tags_group_user` | Gives **User types / Internal User** read/write/create access to Material Request M Tags records. | `group base.group_user` (base)<br>`model material_request_m_tag` |  |
+| material_request_m_tag user access | `access_material_request_m_tag_user` | Gives **User types / Internal User** read/write/create/delete access to Material Request M Tags records. | `group base.group_user` (base)<br>`model material_request_m_tag` |  |
 
 ### `mrp_bom_general_cost` — mrp.bom.general.cost
 
@@ -2054,42 +2054,42 @@ A general (equipment) cost line for one operation, attached either to a BoM or t
 | `my_activity_date_deadline` | My Activity Deadline | date | Due date of the next activity assigned to the current user on this record; computed by the standard activity mixin. | not stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the mrp.bom.general.cost record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the mrp.bom.general.cost record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.general.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_74_x_mrp_bom_general_cost_active`<br>`view BugFix-MRP.view_2576_default_form_view_for_x_mrp_bom_general_cost_e`<br>`view BugFix-MRP.view_2577_default_search_view_for_x_mrp_bom_general_cost_e` |
-| `name` | Name | char | Name of the general cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2575_default_list_view_for_x_mrp_bom_general_cost_e`<br>`view BugFix-MRP.view_2576_default_form_view_for_x_mrp_bom_general_cost_e`<br>`view BugFix-MRP.view_2577_default_search_view_for_x_mrp_bom_general_cost_e` |
-| `actual_qty` | Actual Hour | float | Actual hours of the line; for MO lines the automations write the work order's real duration in hours. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `bom_general_cost_ids` | BOM General Cost | many2one → `mrp.bom` | Bill of Materials this general cost line belongs to (BoM Direct General Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `cost` | Cost/Hour | float | Cost per hour; refreshed by the BoM Update Cost button from the work center's Equipment Actual Cost per Hour. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_221_x_mrp_bom_general_cost_accounting_currency_id`<br>`default BugFix-MRP.default_422_x_mrp_bom_general_cost_accounting_currency_id`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | BoM operation the general cost line is for; set when the line is created from the operation or work order. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `planned_qty` | Planned Hour | float | Planned hours: the operation's cycle time in hours on BoM lines, or the work order's expected duration on MO lines; written by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `prod_bom_general_cost_ids` | Prod. BOM General Cost | many2one → `mrp.production` | Manufacturing order this general cost line belongs to (MO Direct General Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `mrp.workorder` | Work order link of the general cost line; not filled by the automations in this repo (hidden in lists). | stored | `model mrp.workorder` (mrp) | `view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `sequence` | Sequence | integer | Ordering number of the mrp.bom.general.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_75_x_mrp_bom_general_cost_sequence`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2575_default_list_view_for_x_mrp_bom_general_cost_e` |
-| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
+| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.general.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_74_mrp_bom_general_cost_active`<br>`view BugFix-MRP.view_mrp_bom_general_cost_form`<br>`view BugFix-MRP.view_mrp_bom_general_cost_search` |
+| `name` | Name | char | Name of the general cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_general_cost_list`<br>`view BugFix-MRP.view_mrp_bom_general_cost_form`<br>`view BugFix-MRP.view_mrp_bom_general_cost_search` |
+| `actual_qty` | Actual Hour | float | Actual hours of the line; for MO lines the automations write the work order's real duration in hours. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `bom_general_cost_ids` | BOM General Cost | many2one → `mrp.bom` | Bill of Materials this general cost line belongs to (BoM Direct General Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `cost` | Cost/Hour | float | Cost per hour; refreshed by the BoM Update Cost button from the work center's Equipment Actual Cost per Hour. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_mrp_bom_general_cost_accounting_currency_id`<br>`default BugFix-MRP.default_mrp_bom_general_cost_accounting_currency_id_2`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | BoM operation the general cost line is for; set when the line is created from the operation or work order. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `planned_qty` | Planned Hour | float | Planned hours: the operation's cycle time in hours on BoM lines, or the work order's expected duration on MO lines; written by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `prod_bom_general_cost_ids` | Prod. BOM General Cost | many2one → `mrp.production` | Manufacturing order this general cost line belongs to (MO Direct General Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `mrp.workorder` | Work order link of the general cost line; not filled by the automations in this repo (hidden in lists). | stored | `model mrp.workorder` (mrp) | `view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `sequence` | Sequence | integer | Ordering number of the mrp.bom.general.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_75_mrp_bom_general_cost_sequence`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_general_cost_list` |
+| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.general.cost | `act_window_1053_mrp_bom_general_cost` | Opens **mrp.bom.general.cost** records (tree,form). | `model mrp_bom_general_cost` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_general_cost` (BugFix-Studio-Misc) |
+| mrp.bom.general.cost | `action_mrp_bom_general_cost` | Opens **mrp.bom.general.cost** records (tree,form). | `model mrp_bom_general_cost` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_general_cost` (BugFix-Studio-Misc) |
 
 **Views (4):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for mrp_bom_general_cost | `view_2576_default_form_view_for_x_mrp_bom_general_cost_e` | form | full form layout with 2 fields | Default form of the general cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_general_cost.active`<br>`mrp_bom_general_cost.name` |  |
-| Default list view for mrp_bom_general_cost | `view_2575_default_list_view_for_x_mrp_bom_general_cost_e` | tree | full tree layout with 2 fields | Default list of general cost lines: drag handle and Name. | `mrp_bom_general_cost.name`<br>`mrp_bom_general_cost.sequence` | `view BugFix-MRP.view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` |
-| Default search view for mrp_bom_general_cost | `view_2577_default_search_view_for_x_mrp_bom_general_cost_e` | search | full search layout with 1 fields | Default search of general cost lines: search by Name; Archived filter. | `mrp_bom_general_cost.active`<br>`mrp_bom_general_cost.name` |  |
-| Odoo Studio: Default list view for mrp_bom_general_cost customization | `view_final_x_mrp_bom_general_cost_odoo_studio_default_list_view_for_mrp_bom_general_cost` | tree | before `//field[@name='sequence']`: add field bom_general_cost_ids, field prod_bom_general_cost_ids, field prod_bom_line_id, field operation_id, field planned_qty, field actual_qty, field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM General Cost list into a costing table: adds BOM / production BOM links, Operation, Planned Hour, Actual Hour, Cost/Hour, Total Cost and Total Actual Cost columns, and hides the Name, Prod. BOM Line ID and currency columns. | `view BugFix-MRP.view_2575_default_list_view_for_x_mrp_bom_general_cost_e`<br>`mrp_bom_general_cost.actual_qty`<br>`mrp_bom_general_cost.bom_general_cost_ids`<br>`mrp_bom_general_cost.cost`<br>`mrp_bom_general_cost.accounting_currency_id`<details><summary>+6 more</summary>`mrp_bom_general_cost.operation_id`<br>`mrp_bom_general_cost.planned_qty`<br>`mrp_bom_general_cost.prod_bom_general_cost_ids`<br>`mrp_bom_general_cost.prod_bom_line_id`<br>`mrp_bom_general_cost.total_actual_cost`<br>`mrp_bom_general_cost.total_cost`</details> |  |
+| Default form view for mrp_bom_general_cost | `view_mrp_bom_general_cost_form` | form | full form layout with 2 fields | Default form of the general cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_general_cost.active`<br>`mrp_bom_general_cost.name` |  |
+| Default list view for mrp_bom_general_cost | `view_mrp_bom_general_cost_list` | tree | full tree layout with 2 fields | Default list of general cost lines: drag handle and Name. | `mrp_bom_general_cost.name`<br>`mrp_bom_general_cost.sequence` | `view BugFix-MRP.view_default_list_view_for_mrp_bom_general_cost_inherit` |
+| Default search view for mrp_bom_general_cost | `view_mrp_bom_general_cost_search` | search | full search layout with 1 fields | Default search of general cost lines: search by Name; Archived filter. | `mrp_bom_general_cost.active`<br>`mrp_bom_general_cost.name` |  |
+| Odoo Studio: Default list view for mrp_bom_general_cost customization | `view_default_list_view_for_mrp_bom_general_cost_inherit` | tree | before `//field[@name='sequence']`: add field bom_general_cost_ids, field prod_bom_general_cost_ids, field prod_bom_line_id, field operation_id, field planned_qty, field actual_qty, field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM General Cost list into a costing table: adds BOM / production BOM links, Operation, Planned Hour, Actual Hour, Cost/Hour, Total Cost and Total Actual Cost columns, and hides the Name, Prod. BOM Line ID and currency columns. | `view BugFix-MRP.view_mrp_bom_general_cost_list`<br>`mrp_bom_general_cost.actual_qty`<br>`mrp_bom_general_cost.bom_general_cost_ids`<br>`mrp_bom_general_cost.cost`<br>`mrp_bom_general_cost.accounting_currency_id`<details><summary>+6 more</summary>`mrp_bom_general_cost.operation_id`<br>`mrp_bom_general_cost.planned_qty`<br>`mrp_bom_general_cost.prod_bom_general_cost_ids`<br>`mrp_bom_general_cost.prod_bom_line_id`<br>`mrp_bom_general_cost.total_actual_cost`<br>`mrp_bom_general_cost.total_cost`</details> |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.general.cost group_system | `access_1208_mrp_bom_general_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.general.cost records. | `group base.group_system` (base)<br>`model mrp_bom_general_cost` |  |
-| mrp.bom.general.cost group_user | `access_1209_mrp_bom_general_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.general.cost records. | `group base.group_user` (base)<br>`model mrp_bom_general_cost` |  |
-| mrp_bom_general_cost user access | `access_x_mrp_bom_general_cost_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.general.cost records. | `group base.group_user` (base)<br>`model mrp_bom_general_cost` |  |
+| mrp.bom.general.cost group_system | `access_mrp_bom_general_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.general.cost records. | `group base.group_system` (base)<br>`model mrp_bom_general_cost` |  |
+| mrp.bom.general.cost group_user | `access_mrp_bom_general_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.general.cost records. | `group base.group_user` (base)<br>`model mrp_bom_general_cost` |  |
+| mrp_bom_general_cost user access | `access_mrp_bom_general_cost_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.general.cost records. | `group base.group_user` (base)<br>`model mrp_bom_general_cost` |  |
 
 ### `mrp_bom_labour_cost` — mrp.bom.labour.cost
 
@@ -2124,52 +2124,52 @@ A labour cost line for one operation, attached either to a BoM or to a manufactu
 | `my_activity_date_deadline` | My Activity Deadline | date | Due date of the next activity assigned to the current user on this record; computed by the standard activity mixin. | not stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the mrp.bom.labour.cost record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the mrp.bom.labour.cost record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.labour.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_68_x_mrp_bom_labour_cost_active`<br>`view BugFix-MRP.view_2556_default_form_view_for_x_mrp_bom_labour_cost_e`<br>`view BugFix-MRP.view_2557_default_search_view_for_x_mrp_bom_labour_cost_e` |
-| `name` | Name | char | Name of the labour cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2555_default_list_view_for_x_mrp_bom_labour_cost_e`<br>`view BugFix-MRP.view_2556_default_form_view_for_x_mrp_bom_labour_cost_e`<br>`view BugFix-MRP.view_2557_default_search_view_for_x_mrp_bom_labour_cost_e` |
-| `actual_qty` | Actual Hour | float | Actual hours of the line; for MO lines the automations write the work order's real duration in hours. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `bom_labour_cost_ids` | BOM Labour Cost | many2one → `mrp.bom` | Bill of Materials this labour cost line belongs to (BoM Direct Labour Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `cost` | Cost/Hour | float | Cost per hour; refreshed from the work center's labour rate by Update Cost (BoM) and from the work center's Cost per Hour by the MO labour automation. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `cost_ot` | Cost/Hour(OT) | float | Overtime cost per hour, written from the work center's OT Cost per Hour by the MO labour cost automation; optional column. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `cost_without_ot` | Cost/Hour(Labour Cost) | float | Labour cost per hour without overtime, written from the work center's Labour Cost per Hour by the MO labour cost automation; optional column. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_219_x_mrp_bom_labour_cost_accounting_currency_id`<br>`default BugFix-MRP.default_420_x_mrp_bom_labour_cost_accounting_currency_id`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | BoM operation the labour cost line is for; set when the line is created from the operation or work order. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `planned_qty` | Planned Hour | float | Planned hours: the operation's cycle time in hours on BoM lines, or the work order's expected duration on MO lines; written by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `prod_bom_labour_cost_ids` | Prod. BOM Labour Cost | many2one → `mrp.production` | Manufacturing order this labour cost line belongs to (MO Direct Labour Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `mrp.workorder` | Work order link of the labour cost line; not filled by the automations in this repo (hidden in lists). | stored | `model mrp.workorder` (mrp) | `view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `sequence` | Sequence | integer | Ordering number of the mrp.bom.labour.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_69_x_mrp_bom_labour_cost_sequence`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2555_default_list_view_for_x_mrp_bom_labour_cost_e` |
-| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| `total_actual_cost_ot` | Total Actual Cost (OT) | float | Total actual overtime cost of the line; plain stored number that nothing in this repo calculates. Optional column. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `total_actual_cost_without_ot` | Total Actual Cost (Labour Cost) | float | Total actual labour cost without overtime; plain stored number that nothing in this repo calculates. Optional column. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form` |
-| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
+| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.labour.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_68_mrp_bom_labour_cost_active`<br>`view BugFix-MRP.view_mrp_bom_labour_cost_form`<br>`view BugFix-MRP.view_mrp_bom_labour_cost_search` |
+| `name` | Name | char | Name of the labour cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_labour_cost_list`<br>`view BugFix-MRP.view_mrp_bom_labour_cost_form`<br>`view BugFix-MRP.view_mrp_bom_labour_cost_search` |
+| `actual_qty` | Actual Hour | float | Actual hours of the line; for MO lines the automations write the work order's real duration in hours. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `bom_labour_cost_ids` | BOM Labour Cost | many2one → `mrp.bom` | Bill of Materials this labour cost line belongs to (BoM Direct Labour Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `cost` | Cost/Hour | float | Cost per hour; refreshed from the work center's labour rate by Update Cost (BoM) and from the work center's Cost per Hour by the MO labour automation. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `cost_ot` | Cost/Hour(OT) | float | Overtime cost per hour, written from the work center's OT Cost per Hour by the MO labour cost automation; optional column. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `cost_without_ot` | Cost/Hour(Labour Cost) | float | Labour cost per hour without overtime, written from the work center's Labour Cost per Hour by the MO labour cost automation; optional column. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_mrp_bom_labour_cost_accounting_currency_id`<br>`default BugFix-MRP.default_mrp_bom_labour_cost_accounting_currency_id_2`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | BoM operation the labour cost line is for; set when the line is created from the operation or work order. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `planned_qty` | Planned Hour | float | Planned hours: the operation's cycle time in hours on BoM lines, or the work order's expected duration on MO lines; written by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `prod_bom_labour_cost_ids` | Prod. BOM Labour Cost | many2one → `mrp.production` | Manufacturing order this labour cost line belongs to (MO Direct Labour Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `mrp.workorder` | Work order link of the labour cost line; not filled by the automations in this repo (hidden in lists). | stored | `model mrp.workorder` (mrp) | `view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `sequence` | Sequence | integer | Ordering number of the mrp.bom.labour.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_69_mrp_bom_labour_cost_sequence`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_labour_cost_list` |
+| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| `total_actual_cost_ot` | Total Actual Cost (OT) | float | Total actual overtime cost of the line; plain stored number that nothing in this repo calculates. Optional column. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `total_actual_cost_without_ot` | Total Actual Cost (Labour Cost) | float | Total actual labour cost without overtime; plain stored number that nothing in this repo calculates. Optional column. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit` |
+| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.labour.cost | `act_window_1014_mrp_bom_labour_cost` | Opens **mrp.bom.labour.cost** records (tree,form). | `model mrp_bom_labour_cost` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_labour_cost` (BugFix-Studio-Misc) |
+| mrp.bom.labour.cost | `action_mrp_bom_labour_cost` | Opens **mrp.bom.labour.cost** records (tree,form). | `model mrp_bom_labour_cost` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_labour_cost` (BugFix-Studio-Misc) |
 
 **Views (4):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for mrp_bom_labour_cost | `view_2556_default_form_view_for_x_mrp_bom_labour_cost_e` | form | full form layout with 2 fields | Default form of the labour cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_labour_cost.active`<br>`mrp_bom_labour_cost.name` |  |
-| Default list view for mrp_bom_labour_cost | `view_2555_default_list_view_for_x_mrp_bom_labour_cost_e` | tree | full tree layout with 2 fields | Default list of labour cost lines: drag handle and Name. | `mrp_bom_labour_cost.name`<br>`mrp_bom_labour_cost.sequence` | `view BugFix-MRP.view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` |
-| Default search view for mrp_bom_labour_cost | `view_2557_default_search_view_for_x_mrp_bom_labour_cost_e` | search | full search layout with 1 fields | Default search of labour cost lines: search by Name; Archived filter. | `mrp_bom_labour_cost.active`<br>`mrp_bom_labour_cost.name` |  |
-| Odoo Studio: Default list view for mrp_bom_labour_cost customization | `view_final_x_mrp_bom_labour_cost_odoo_studio_default_list_view_for_x_mrp_bom_labour_cost_c` | tree | before `//field[@name='sequence']`: add field bom_labour_cost_ids, field prod_bom_labour_cost_ids, field prod_bom_line_id, field operation_id, field planned_qty, field actual_qty, field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM Labour Cost list into a costing table: adds BOM / production BOM links, Operation, Planned Hour, Actual Hour, Cost/Hour and Total Cost (monetary), and Total Actual Cost columns; hides Name, Prod. BOM Line ID and currency. | `view BugFix-MRP.view_2555_default_list_view_for_x_mrp_bom_labour_cost_e`<br>`mrp_bom_labour_cost.actual_qty`<br>`mrp_bom_labour_cost.bom_labour_cost_ids`<br>`mrp_bom_labour_cost.cost`<br>`mrp_bom_labour_cost.accounting_currency_id`<details><summary>+6 more</summary>`mrp_bom_labour_cost.operation_id`<br>`mrp_bom_labour_cost.planned_qty`<br>`mrp_bom_labour_cost.prod_bom_labour_cost_ids`<br>`mrp_bom_labour_cost.prod_bom_line_id`<br>`mrp_bom_labour_cost.total_actual_cost`<br>`mrp_bom_labour_cost.total_cost`</details> |  |
+| Default form view for mrp_bom_labour_cost | `view_mrp_bom_labour_cost_form` | form | full form layout with 2 fields | Default form of the labour cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_labour_cost.active`<br>`mrp_bom_labour_cost.name` |  |
+| Default list view for mrp_bom_labour_cost | `view_mrp_bom_labour_cost_list` | tree | full tree layout with 2 fields | Default list of labour cost lines: drag handle and Name. | `mrp_bom_labour_cost.name`<br>`mrp_bom_labour_cost.sequence` | `view BugFix-MRP.view_default_list_view_for_mrp_bom_labour_cost_inherit` |
+| Default search view for mrp_bom_labour_cost | `view_mrp_bom_labour_cost_search` | search | full search layout with 1 fields | Default search of labour cost lines: search by Name; Archived filter. | `mrp_bom_labour_cost.active`<br>`mrp_bom_labour_cost.name` |  |
+| Odoo Studio: Default list view for mrp_bom_labour_cost customization | `view_default_list_view_for_mrp_bom_labour_cost_inherit` | tree | before `//field[@name='sequence']`: add field bom_labour_cost_ids, field prod_bom_labour_cost_ids, field prod_bom_line_id, field operation_id, field planned_qty, field actual_qty, field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM Labour Cost list into a costing table: adds BOM / production BOM links, Operation, Planned Hour, Actual Hour, Cost/Hour and Total Cost (monetary), and Total Actual Cost columns; hides Name, Prod. BOM Line ID and currency. | `view BugFix-MRP.view_mrp_bom_labour_cost_list`<br>`mrp_bom_labour_cost.actual_qty`<br>`mrp_bom_labour_cost.bom_labour_cost_ids`<br>`mrp_bom_labour_cost.cost`<br>`mrp_bom_labour_cost.accounting_currency_id`<details><summary>+6 more</summary>`mrp_bom_labour_cost.operation_id`<br>`mrp_bom_labour_cost.planned_qty`<br>`mrp_bom_labour_cost.prod_bom_labour_cost_ids`<br>`mrp_bom_labour_cost.prod_bom_line_id`<br>`mrp_bom_labour_cost.total_actual_cost`<br>`mrp_bom_labour_cost.total_cost`</details> |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.labour.cost group_system | `access_1204_mrp_bom_labour_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.labour.cost records. | `group base.group_system` (base)<br>`model mrp_bom_labour_cost` |  |
-| mrp.bom.labour.cost group_user | `access_1205_mrp_bom_labour_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.labour.cost records. | `group base.group_user` (base)<br>`model mrp_bom_labour_cost` |  |
-| mrp_bom_labour_cost user access | `access_x_mrp_bom_labour_cost_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.labour.cost records. | `group base.group_user` (base)<br>`model mrp_bom_labour_cost` |  |
+| mrp.bom.labour.cost group_system | `access_mrp_bom_labour_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.labour.cost records. | `group base.group_system` (base)<br>`model mrp_bom_labour_cost` |  |
+| mrp.bom.labour.cost group_user | `access_mrp_bom_labour_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.labour.cost records. | `group base.group_user` (base)<br>`model mrp_bom_labour_cost` |  |
+| mrp_bom_labour_cost user access | `access_mrp_bom_labour_cost_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.labour.cost records. | `group base.group_user` (base)<br>`model mrp_bom_labour_cost` |  |
 
 ### `mrp_bom_material_cos` — mrp.bom.material.cost
 
 *Created by this repo.* Python: `models/mrp_bom_material_cos.py`, `models/x_mrp_bom_material_cos_gap.py`. Record name field: `name`.
 
-Other repos that use this model: `server action BugFix-Stock.server_action_1058_create_production_bom_material_cost` (BugFix-Stock)<br>`server action BugFix-Stock.server_action_1066_create_production_bom_material_cost` (BugFix-Stock)<br>`server action BugFix-Stock.server_action_1073_update_production_bom_material_cost` (BugFix-Stock)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)
+Other repos that use this model: `server action BugFix-Stock.action_create_production_bom_material_cost` (BugFix-Stock)<br>`server action BugFix-Stock.action_create_production_bom_material_cost_2` (BugFix-Stock)<br>`server action BugFix-Stock.action_update_production_bom_material_cost` (BugFix-Stock)<br>`server action BugFix-Studio-Misc.server_action_2799_mst_odoo_data_clean_up` (BugFix-Studio-Misc)
 
 **Summary:**
 
@@ -2198,47 +2198,47 @@ A material cost line for one BoM component, attached either to a BoM or to a man
 | `my_activity_date_deadline` | My Activity Deadline | date | Due date of the next activity assigned to the current user on this record; computed by the standard activity mixin. | not stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the mrp.bom.material.cost record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the mrp.bom.material.cost record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.material.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_66_x_mrp_bom_material_cos_active`<br>`view BugFix-MRP.view_2553_default_form_view_for_x_mrp_bom_material_cos_e`<br>`view BugFix-MRP.view_2554_default_search_view_for_x_mrp_bom_material_cos_e` |
-| `name` | Name | char | Name of the material cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2552_default_list_view_for_x_mrp_bom_material_cos_e`<br>`view BugFix-MRP.view_2553_default_form_view_for_x_mrp_bom_material_cos_e`<br>`view BugFix-MRP.view_2554_default_search_view_for_x_mrp_bom_material_cos_e` |
-| `actual_qty` | Actual Qty | float | Actual quantity consumed for the material cost line; shown on the cost tabs, not filled by automations in this repo. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `bom_line_id` | BOM Line | many2one → `mrp.bom.line` | BoM component line link labelled 'BOM Line'; not filled by the automations (they use BOM Line ID instead). | stored | `model mrp.bom.line` (mrp) | `view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `bom_material_cost_ids` | BOM Material Cost | many2one → `mrp.bom` | Bill of Materials this material cost line belongs to (BoM Direct Material Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `cost` | Cost/Unit | float | Cost per unit of the component; refreshed from the product's cost by the BoM Update Cost button. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_218_x_mrp_bom_material_cos_accounting_currency_id`<br>`default BugFix-MRP.default_419_x_mrp_bom_material_cos_accounting_currency_id`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `line_id` | BOM Line ID | many2one → `mrp.bom.line` | BoM component line this material cost line was created from; used by the update automation to find and sync the line. Hidden column. | stored | `model mrp.bom.line` (mrp) | `view BugFix-MRP.ported_view_2574_mrp_bom_form` |
-| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | Operation the component is consumed in, copied from the BoM line by the create/update automations; read-only. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `planned_qty` | Planned Qty | float | Planned component quantity, copied from the BoM line by the create/update automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `stock.move` | Stock move (MO component move) link of the material cost line; not filled by the automations in this repo. | stored | `model stock.move` (stock) | `view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `prod_bom_material_cost_ids` | Prod. BOM Material Cost | many2one → `mrp.production` | Manufacturing order this material cost line belongs to (MO Direct Material Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `product_id` | Product | many2one → `product.product` | Component product, copied from the BoM line; its cost is used by Update Cost. | stored | `model product.product` (product) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `sequence` | Sequence | integer | Ordering number of the mrp.bom.material.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_67_x_mrp_bom_material_cos_sequence`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2552_default_list_view_for_x_mrp_bom_material_cos_e` |
-| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| `uom_id` | UOM | many2one → `uom.uom` | Unit of measure of the component, copied from the BoM line; read-only. | stored | `model uom.uom` (uom) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
+| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.material.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_66_mrp_bom_material_cos_active`<br>`view BugFix-MRP.view_mrp_bom_material_cos_form`<br>`view BugFix-MRP.view_mrp_bom_material_cos_search` |
+| `name` | Name | char | Name of the material cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_material_cos_list`<br>`view BugFix-MRP.view_mrp_bom_material_cos_form`<br>`view BugFix-MRP.view_mrp_bom_material_cos_search` |
+| `actual_qty` | Actual Qty | float | Actual quantity consumed for the material cost line; shown on the cost tabs, not filled by automations in this repo. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `bom_line_id` | BOM Line | many2one → `mrp.bom.line` | BoM component line link labelled 'BOM Line'; not filled by the automations (they use BOM Line ID instead). | stored | `model mrp.bom.line` (mrp) | `view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `bom_material_cost_ids` | BOM Material Cost | many2one → `mrp.bom` | Bill of Materials this material cost line belongs to (BoM Direct Material Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `cost` | Cost/Unit | float | Cost per unit of the component; refreshed from the product's cost by the BoM Update Cost button. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_mrp_bom_material_cos_accounting_currency_id`<br>`default BugFix-MRP.default_mrp_bom_material_cos_accounting_currency_id_2`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `line_id` | BOM Line ID | many2one → `mrp.bom.line` | BoM component line this material cost line was created from; used by the update automation to find and sync the line. Hidden column. | stored | `model mrp.bom.line` (mrp) | `view BugFix-MRP.view_mrp_bom_form_inherit` |
+| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | Operation the component is consumed in, copied from the BoM line by the create/update automations; read-only. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `planned_qty` | Planned Qty | float | Planned component quantity, copied from the BoM line by the create/update automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `stock.move` | Stock move (MO component move) link of the material cost line; not filled by the automations in this repo. | stored | `model stock.move` (stock) | `view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `prod_bom_material_cost_ids` | Prod. BOM Material Cost | many2one → `mrp.production` | Manufacturing order this material cost line belongs to (MO Direct Material Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `product_id` | Product | many2one → `product.product` | Component product, copied from the BoM line; its cost is used by Update Cost. | stored | `model product.product` (product) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `sequence` | Sequence | integer | Ordering number of the mrp.bom.material.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_67_mrp_bom_material_cos_sequence`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_material_cos_list` |
+| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| `uom_id` | UOM | many2one → `uom.uom` | Unit of measure of the component, copied from the BoM line; read-only. | stored | `model uom.uom` (uom) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
 
 **Window actions (2):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| BOM Material Cost Analysis | `action_x_mrp_bom_material_cos_analysis` | Opens **mrp.bom.material.cost** records (graph,pivot). | `model mrp_bom_material_cos` | `menu BugFix-MRP.menu_x_mrp_bom_material_cos_analysis` |
-| mrp.bom.material.cost | `act_window_1013_mrp_bom_material_cost` | Opens **mrp.bom.material.cost** records (tree,form). | `model mrp_bom_material_cos` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_material_cost` (BugFix-Studio-Misc) |
+| BOM Material Cost Analysis | `action_mrp_bom_material_cos_analysis` | Opens **mrp.bom.material.cost** records (graph,pivot). | `model mrp_bom_material_cos` | `menu BugFix-MRP.menu_mrp_bom_material_cos_analysis` |
+| mrp.bom.material.cost | `action_mrp_bom_material_cost` | Opens **mrp.bom.material.cost** records (tree,form). | `model mrp_bom_material_cos` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_material_cost` (BugFix-Studio-Misc) |
 
 **Views (4):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for mrp_bom_material_cos | `view_2553_default_form_view_for_x_mrp_bom_material_cos_e` | form | full form layout with 2 fields | Default form of the material cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_material_cos.active`<br>`mrp_bom_material_cos.name` |  |
-| Default list view for mrp_bom_material_cos | `view_2552_default_list_view_for_x_mrp_bom_material_cos_e` | tree | full tree layout with 2 fields | Default list of material cost lines: drag handle and Name. | `mrp_bom_material_cos.name`<br>`mrp_bom_material_cos.sequence` | `view BugFix-MRP.view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` |
-| Default search view for mrp_bom_material_cos | `view_2554_default_search_view_for_x_mrp_bom_material_cos_e` | search | full search layout with 1 fields | Default search of material cost lines: search by Name; Archived filter. | `mrp_bom_material_cos.active`<br>`mrp_bom_material_cos.name` |  |
-| Odoo Studio: Default list view for mrp_bom_material_cos customization | `view_final_x_mrp_bom_material_cos_odoo_studio_default_list_view_for_mrp_bom_material_cos` | tree | before `//field[@name='sequence']`: add field bom_material_cost_ids, field prod_bom_material_cost_ids, field prod_bom_line_id, field bom_line_id, field operation_id, field product_id, field planned_qty, field actual_qty, field uom_id; after `//field[@name='sequence']`: add field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM Material Cost list into a costing table: adds BOM / production BOM links, Prod. BOM Line ID, BOM Line, Operation, Product, Planned Qty, Actual Qty, UOM, Cost/Unit, Total Cost and Total Actual Cost columns; hides Name and currency. | `view BugFix-MRP.view_2552_default_list_view_for_x_mrp_bom_material_cos_e`<br>`mrp_bom_material_cos.actual_qty`<br>`mrp_bom_material_cos.bom_line_id`<br>`mrp_bom_material_cos.bom_material_cost_ids`<br>`mrp_bom_material_cos.cost`<details><summary>+9 more</summary>`mrp_bom_material_cos.accounting_currency_id`<br>`mrp_bom_material_cos.operation_id`<br>`mrp_bom_material_cos.planned_qty`<br>`mrp_bom_material_cos.prod_bom_line_id`<br>`mrp_bom_material_cos.prod_bom_material_cost_ids`<br>`mrp_bom_material_cos.product_id`<br>`mrp_bom_material_cos.total_actual_cost`<br>`mrp_bom_material_cos.total_cost`<br>`mrp_bom_material_cos.uom_id`</details> |  |
+| Default form view for mrp_bom_material_cos | `view_mrp_bom_material_cos_form` | form | full form layout with 2 fields | Default form of the material cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_material_cos.active`<br>`mrp_bom_material_cos.name` |  |
+| Default list view for mrp_bom_material_cos | `view_mrp_bom_material_cos_list` | tree | full tree layout with 2 fields | Default list of material cost lines: drag handle and Name. | `mrp_bom_material_cos.name`<br>`mrp_bom_material_cos.sequence` | `view BugFix-MRP.view_default_list_view_for_mrp_bom_material_cos_inherit` |
+| Default search view for mrp_bom_material_cos | `view_mrp_bom_material_cos_search` | search | full search layout with 1 fields | Default search of material cost lines: search by Name; Archived filter. | `mrp_bom_material_cos.active`<br>`mrp_bom_material_cos.name` |  |
+| Odoo Studio: Default list view for mrp_bom_material_cos customization | `view_default_list_view_for_mrp_bom_material_cos_inherit` | tree | before `//field[@name='sequence']`: add field bom_material_cost_ids, field prod_bom_material_cost_ids, field prod_bom_line_id, field bom_line_id, field operation_id, field product_id, field planned_qty, field actual_qty, field uom_id; after `//field[@name='sequence']`: add field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM Material Cost list into a costing table: adds BOM / production BOM links, Prod. BOM Line ID, BOM Line, Operation, Product, Planned Qty, Actual Qty, UOM, Cost/Unit, Total Cost and Total Actual Cost columns; hides Name and currency. | `view BugFix-MRP.view_mrp_bom_material_cos_list`<br>`mrp_bom_material_cos.actual_qty`<br>`mrp_bom_material_cos.bom_line_id`<br>`mrp_bom_material_cos.bom_material_cost_ids`<br>`mrp_bom_material_cos.cost`<details><summary>+9 more</summary>`mrp_bom_material_cos.accounting_currency_id`<br>`mrp_bom_material_cos.operation_id`<br>`mrp_bom_material_cos.planned_qty`<br>`mrp_bom_material_cos.prod_bom_line_id`<br>`mrp_bom_material_cos.prod_bom_material_cost_ids`<br>`mrp_bom_material_cos.product_id`<br>`mrp_bom_material_cos.total_actual_cost`<br>`mrp_bom_material_cos.total_cost`<br>`mrp_bom_material_cos.uom_id`</details> |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.material.cost group_system | `access_1202_mrp_bom_material_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.material.cost records. | `group base.group_system` (base)<br>`model mrp_bom_material_cos` |  |
-| mrp.bom.material.cost group_user | `access_1203_mrp_bom_material_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.material.cost records. | `group base.group_user` (base)<br>`model mrp_bom_material_cos` |  |
-| mrp_bom_material_cos user access | `access_x_mrp_bom_material_cos_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.material.cost records. | `group base.group_user` (base)<br>`model mrp_bom_material_cos` |  |
+| mrp.bom.material.cost group_system | `access_mrp_bom_material_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.material.cost records. | `group base.group_system` (base)<br>`model mrp_bom_material_cos` |  |
+| mrp.bom.material.cost group_user | `access_mrp_bom_material_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.material.cost records. | `group base.group_user` (base)<br>`model mrp_bom_material_cos` |  |
+| mrp_bom_material_cos user access | `access_mrp_bom_material_cos_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.material.cost records. | `group base.group_user` (base)<br>`model mrp_bom_material_cos` |  |
 
 ### `mrp_bom_overhead_cos` — mrp.bom.overhead.cost
 
@@ -2273,42 +2273,42 @@ An overhead cost line for one operation, attached either to a BoM or to a manufa
 | `my_activity_date_deadline` | My Activity Deadline | date | Due date of the next activity assigned to the current user on this record; computed by the standard activity mixin. | not stored |  |  |
 | `write_date` | Last Updated on | datetime | Date and time the mrp.bom.overhead.cost record was last modified; set automatically by Odoo. | stored |  |  |
 | `write_uid` | Last Updated by | many2one → `res.users` | User who last modified the mrp.bom.overhead.cost record; set automatically by Odoo. | stored | `model res.users` (base) |  |
-| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.overhead.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_70_x_mrp_bom_overhead_cos_active`<br>`view BugFix-MRP.view_2559_default_form_view_for_x_mrp_bom_overhead_cos_e`<br>`view BugFix-MRP.view_2560_default_search_view_for_x_mrp_bom_overhead_cos_e` |
-| `name` | Name | char | Name of the overhead cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2558_default_list_view_for_x_mrp_bom_overhead_cos_e`<br>`view BugFix-MRP.view_2559_default_form_view_for_x_mrp_bom_overhead_cos_e`<br>`view BugFix-MRP.view_2560_default_search_view_for_x_mrp_bom_overhead_cos_e` |
-| `actual_qty` | Actual Hour | float | Actual hours of the line; for MO lines the automations write the work order's real duration in hours. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `bom_overhead_cost_ids` | BOM Overhead Cost | many2one → `mrp.bom` | Bill of Materials this overhead cost line belongs to (BoM Direct Overhead Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `cost` | Cost/Hour | float | Cost per hour; refreshed by the BoM Update Cost button from the work center's Overhead Cost per Hour. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_217_x_mrp_bom_overhead_cos_accounting_currency_id`<br>`default BugFix-MRP.default_418_x_mrp_bom_overhead_cos_accounting_currency_id`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | BoM operation the overhead cost line is for; set when the line is created from the operation or work order. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `planned_qty` | Planned Hour | float | Planned hours: the operation's cycle time in hours on BoM lines, or the work order's expected duration on MO lines; written by the cost automations. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `mrp.workorder` | Work order link of the overhead cost line; not filled by the automations in this repo (hidden in lists). | stored | `model mrp.workorder` (mrp) | `view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `prod_bom_overhead_cost_ids` | Prod. BOM Overhead Cost | many2one → `mrp.production` | Manufacturing order this overhead cost line belongs to (MO Direct Overhead Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `sequence` | Sequence | integer | Ordering number of the mrp.bom.overhead.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_71_x_mrp_bom_overhead_cos_sequence`<br>`view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_2558_default_list_view_for_x_mrp_bom_overhead_cos_e` |
-| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.ported_view_2325_mrp_production_form`<br>`view BugFix-MRP.ported_view_2574_mrp_bom_form`<br>`view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
+| `active` | Active | boolean | Archive flag: unchecking it archives the mrp.bom.overhead.cost record and hides it from default searches; defaults to active. The form shows an Archived ribbon and the search view has an Archived filter. | stored |  | `default BugFix-MRP.default_70_mrp_bom_overhead_cos_active`<br>`view BugFix-MRP.view_mrp_bom_overhead_cos_form`<br>`view BugFix-MRP.view_mrp_bom_overhead_cos_search` |
+| `name` | Name | char | Name of the overhead cost line; shown in the default list, form and search but not filled by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_overhead_cos_list`<br>`view BugFix-MRP.view_mrp_bom_overhead_cos_form`<br>`view BugFix-MRP.view_mrp_bom_overhead_cos_search` |
+| `actual_qty` | Actual Hour | float | Actual hours of the line; for MO lines the automations write the work order's real duration in hours. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `bom_overhead_cost_ids` | BOM Overhead Cost | many2one → `mrp.bom` | Bill of Materials this overhead cost line belongs to (BoM Direct Overhead Cost tab). | stored | `model mrp.bom` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `cost` | Cost/Hour | float | Cost per hour; refreshed by the BoM Update Cost button from the work center's Overhead Cost per Hour. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `accounting_currency_id` | Currency | many2one → `res.currency` | Currency for the line's monetary amounts (default from ir.default records). | stored | `model res.currency` (base) | `default BugFix-MRP.default_mrp_bom_overhead_cos_accounting_currency_id`<br>`default BugFix-MRP.default_mrp_bom_overhead_cos_accounting_currency_id_2`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `operation_id` | Operation | many2one → `mrp.routing.workcenter` | BoM operation the overhead cost line is for; set when the line is created from the operation or work order. | stored | `model mrp.routing.workcenter` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `planned_qty` | Planned Hour | float | Planned hours: the operation's cycle time in hours on BoM lines, or the work order's expected duration on MO lines; written by the cost automations. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `prod_bom_line_id` | Prod. BOM Line ID | many2one → `mrp.workorder` | Work order link of the overhead cost line; not filled by the automations in this repo (hidden in lists). | stored | `model mrp.workorder` (mrp) | `view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `prod_bom_overhead_cost_ids` | Prod. BOM Overhead Cost | many2one → `mrp.production` | Manufacturing order this overhead cost line belongs to (MO Direct Overhead Cost tab). | stored | `model mrp.production` (mrp) | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `sequence` | Sequence | integer | Ordering number of the mrp.bom.overhead.cost record; set by dragging the handle in the list view to reorder records. | stored |  | `default BugFix-MRP.default_71_mrp_bom_overhead_cos_sequence`<br>`view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_overhead_cos_list` |
+| `total_actual_cost` | Total Actual Cost | float | Total actual cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| `total_cost` | Total Cost | float | Total planned cost of the line; plain stored number that nothing in this repo calculates. | stored |  | `view BugFix-MRP.view_mrp_production_form_inherit`<br>`view BugFix-MRP.view_mrp_bom_form_inherit`<br>`view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
 
 **Window actions (1):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.overhead.cost | `act_window_1015_mrp_bom_overhead_cost` | Opens **mrp.bom.overhead.cost** records (tree,form). | `model mrp_bom_overhead_cos` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_overhead_cost` (BugFix-Studio-Misc) |
+| mrp.bom.overhead.cost | `action_mrp_bom_overhead_cost` | Opens **mrp.bom.overhead.cost** records (tree,form). | `model mrp_bom_overhead_cos` | `menu BugFix-Studio-Misc.menu_f6r2_test_app_05_mrp_bom_overhead_cost` (BugFix-Studio-Misc) |
 
 **Views (4):**
 
 | Name | Record name | Type | What it changes | Function | Depends on | Used by |
 |---|---|---|---|---|---|---|
-| Default form view for mrp_bom_overhead_cos | `view_2559_default_form_view_for_x_mrp_bom_overhead_cos_e` | form | full form layout with 2 fields | Default form of the overhead cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_overhead_cos.active`<br>`mrp_bom_overhead_cos.name` |  |
-| Default list view for mrp_bom_overhead_cos | `view_2558_default_list_view_for_x_mrp_bom_overhead_cos_e` | tree | full tree layout with 2 fields | Base list view of BOM Overhead Cost lines: a drag handle for Sequence plus the Name column; the Studio customization view extends it with the cost columns. | `mrp_bom_overhead_cos.name`<br>`mrp_bom_overhead_cos.sequence` | `view BugFix-MRP.view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` |
-| Default search view for mrp_bom_overhead_cos | `view_2560_default_search_view_for_x_mrp_bom_overhead_cos_e` | search | full search layout with 1 fields | Search view for BOM Overhead Cost lines: search by Name and an Archived filter that shows lines whose Active flag is off. | `mrp_bom_overhead_cos.active`<br>`mrp_bom_overhead_cos.name` |  |
-| Odoo Studio: Default list view for mrp_bom_overhead_cos customization | `view_final_x_mrp_bom_overhead_cos_odoo_studio_default_list_view_for_mrp_bom_overhead_cos` | tree | before `//field[@name='sequence']`: add field bom_overhead_cost_ids, field prod_bom_overhead_cost_ids, field prod_bom_line_id, field operation_id, field planned_qty, field actual_qty, field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM Overhead Cost list into a costing table: adds BOM / production BOM links, Operation, Planned Hour, Actual Qty, Cost/Hour and Total Cost (monetary), and Total Actual Cost columns; hides Name, Prod. BOM Line ID and currency. | `view BugFix-MRP.view_2558_default_list_view_for_x_mrp_bom_overhead_cos_e`<br>`mrp_bom_overhead_cos.actual_qty`<br>`mrp_bom_overhead_cos.bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.cost`<br>`mrp_bom_overhead_cos.accounting_currency_id`<details><summary>+6 more</summary>`mrp_bom_overhead_cos.operation_id`<br>`mrp_bom_overhead_cos.planned_qty`<br>`mrp_bom_overhead_cos.prod_bom_line_id`<br>`mrp_bom_overhead_cos.prod_bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.total_actual_cost`<br>`mrp_bom_overhead_cos.total_cost`</details> |  |
+| Default form view for mrp_bom_overhead_cos | `view_mrp_bom_overhead_cos_form` | form | full form layout with 2 fields | Default form of the overhead cost line: Archived ribbon and Name title only (chatter fields stripped). | `mrp_bom_overhead_cos.active`<br>`mrp_bom_overhead_cos.name` |  |
+| Default list view for mrp_bom_overhead_cos | `view_mrp_bom_overhead_cos_list` | tree | full tree layout with 2 fields | Base list view of BOM Overhead Cost lines: a drag handle for Sequence plus the Name column; the Studio customization view extends it with the cost columns. | `mrp_bom_overhead_cos.name`<br>`mrp_bom_overhead_cos.sequence` | `view BugFix-MRP.view_default_list_view_for_mrp_bom_overhead_cos_inherit` |
+| Default search view for mrp_bom_overhead_cos | `view_mrp_bom_overhead_cos_search` | search | full search layout with 1 fields | Search view for BOM Overhead Cost lines: search by Name and an Archived filter that shows lines whose Active flag is off. | `mrp_bom_overhead_cos.active`<br>`mrp_bom_overhead_cos.name` |  |
+| Odoo Studio: Default list view for mrp_bom_overhead_cos customization | `view_default_list_view_for_mrp_bom_overhead_cos_inherit` | tree | before `//field[@name='sequence']`: add field bom_overhead_cost_ids, field prod_bom_overhead_cost_ids, field prod_bom_line_id, field operation_id, field planned_qty, field actual_qty, field cost, field total_cost, field total_actual_cost, field accounting_currency_id; set column_invisible=1 on `//field[@name='name']` | Turns the BOM Overhead Cost list into a costing table: adds BOM / production BOM links, Operation, Planned Hour, Actual Qty, Cost/Hour and Total Cost (monetary), and Total Actual Cost columns; hides Name, Prod. BOM Line ID and currency. | `view BugFix-MRP.view_mrp_bom_overhead_cos_list`<br>`mrp_bom_overhead_cos.actual_qty`<br>`mrp_bom_overhead_cos.bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.cost`<br>`mrp_bom_overhead_cos.accounting_currency_id`<details><summary>+6 more</summary>`mrp_bom_overhead_cos.operation_id`<br>`mrp_bom_overhead_cos.planned_qty`<br>`mrp_bom_overhead_cos.prod_bom_line_id`<br>`mrp_bom_overhead_cos.prod_bom_overhead_cost_ids`<br>`mrp_bom_overhead_cos.total_actual_cost`<br>`mrp_bom_overhead_cos.total_cost`</details> |  |
 
 **Access rights (3):**
 
 | Name | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| mrp.bom.overhead.cost group_system | `access_1206_mrp_bom_overhead_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.overhead.cost records. | `group base.group_system` (base)<br>`model mrp_bom_overhead_cos` |  |
-| mrp.bom.overhead.cost group_user | `access_1207_mrp_bom_overhead_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.overhead.cost records. | `group base.group_user` (base)<br>`model mrp_bom_overhead_cos` |  |
-| mrp_bom_overhead_cos user access | `access_x_mrp_bom_overhead_cos_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.overhead.cost records. | `group base.group_user` (base)<br>`model mrp_bom_overhead_cos` |  |
+| mrp.bom.overhead.cost group_system | `access_mrp_bom_overhead_cost_group_system` | Gives **Administration / Settings** read/write/create/delete access to mrp.bom.overhead.cost records. | `group base.group_system` (base)<br>`model mrp_bom_overhead_cos` |  |
+| mrp.bom.overhead.cost group_user | `access_mrp_bom_overhead_cost_group_user` | Gives **User types / Internal User** read access to mrp.bom.overhead.cost records. | `group base.group_user` (base)<br>`model mrp_bom_overhead_cos` |  |
+| mrp_bom_overhead_cos user access | `access_mrp_bom_overhead_cos_user` | Gives **User types / Internal User** read/write/create/delete access to mrp.bom.overhead.cost records. | `group base.group_user` (base)<br>`model mrp_bom_overhead_cos` |  |
 
 ## Menus
 
@@ -2316,10 +2316,10 @@ An overhead cost line for one operation, attached either to a BoM or to a manufa
 
 | Name | Record name | State | Function | Depends on | Used by |
 |---|---|---|---|---|---|
-| Manufacturing/Reporting/BOM Material Cost Analysis | `menu_x_mrp_bom_material_cos_analysis` |  | Menu **Manufacturing/Reporting/BOM Material Cost Analysis** — opens _BOM Material Cost Analysis_. | `window action BugFix-MRP.action_x_mrp_bom_material_cos_analysis` |  |
-| Material Management Module/Configuration/Material Request M Stages | `menu_f6_material_request_m_stages` |  | Menu **Material Management Module/Configuration/Material Request M Stages** — opens _Material Request M Stages_. | `window action BugFix-MRP.act_window_3382_material_request_m_stages` |  |
-| Material Management Module/Configuration/Material Request M Tags | `menu_f6_material_request_m_tags` |  | Menu **Material Management Module/Configuration/Material Request M Tags** — opens _Material Request M Tags_. | `window action BugFix-MRP.act_window_3383_material_request_m_tags` |  |
-| Material Management Module/Material Request M | `menu_f6_material_request_m` |  | Menu **Material Management Module/Material Request M** — opens _Material Request M_. | `window action BugFix-MRP.action_3381_material_request_m` |  |
+| Manufacturing/Reporting/BOM Material Cost Analysis | `menu_mrp_bom_material_cos_analysis` |  | Menu **Manufacturing/Reporting/BOM Material Cost Analysis** — opens _BOM Material Cost Analysis_. | `window action BugFix-MRP.action_mrp_bom_material_cos_analysis` |  |
+| Material Management Module/Configuration/Material Request M Stages | `menu_material_request_m_stages` |  | Menu **Material Management Module/Configuration/Material Request M Stages** — opens _Material Request M Stages_. | `window action BugFix-MRP.action_material_request_m_stages` |  |
+| Material Management Module/Configuration/Material Request M Tags | `menu_material_request_m_tags` |  | Menu **Material Management Module/Configuration/Material Request M Tags** — opens _Material Request M Tags_. | `window action BugFix-MRP.action_material_request_m_tags` |  |
+| Material Management Module/Material Request M | `menu_material_request` |  | Menu **Material Management Module/Material Request M** — opens _Material Request M_. | `window action BugFix-MRP.action_material_request` |  |
 
 ## Data records loaded (41)
 
@@ -2327,45 +2327,45 @@ Records this module creates on install (lookup values, sequences, defaults, comp
 
 | Type | Record name | Function | Depends on | Used by |
 |---|---|---|---|---|
-| `ir.default` | `default_66_x_mrp_bom_material_cos_active` | Sets the default of **Active (mrp.bom.material.cost)** to `true`. | `mrp_bom_material_cos.active` |  |
-| `ir.default` | `default_67_x_mrp_bom_material_cos_sequence` | Sets the default of **Sequence (mrp.bom.material.cost)** to `10`. | `mrp_bom_material_cos.sequence` |  |
-| `ir.default` | `default_68_x_mrp_bom_labour_cost_active` | Sets the default of **Active (mrp.bom.labour.cost)** to `true`. | `mrp_bom_labour_cost.active` |  |
-| `ir.default` | `default_69_x_mrp_bom_labour_cost_sequence` | Sets the default of **Sequence (mrp.bom.labour.cost)** to `10`. | `mrp_bom_labour_cost.sequence` |  |
-| `ir.default` | `default_70_x_mrp_bom_overhead_cos_active` | Sets the default of **Active (mrp.bom.overhead.cost)** to `true`. | `mrp_bom_overhead_cos.active` |  |
-| `ir.default` | `default_71_x_mrp_bom_overhead_cos_sequence` | Sets the default of **Sequence (mrp.bom.overhead.cost)** to `10`. | `mrp_bom_overhead_cos.sequence` |  |
+| `ir.default` | `default_66_mrp_bom_material_cos_active` | Sets the default of **Active (mrp.bom.material.cost)** to `true`. | `mrp_bom_material_cos.active` |  |
+| `ir.default` | `default_67_mrp_bom_material_cos_sequence` | Sets the default of **Sequence (mrp.bom.material.cost)** to `10`. | `mrp_bom_material_cos.sequence` |  |
+| `ir.default` | `default_68_mrp_bom_labour_cost_active` | Sets the default of **Active (mrp.bom.labour.cost)** to `true`. | `mrp_bom_labour_cost.active` |  |
+| `ir.default` | `default_69_mrp_bom_labour_cost_sequence` | Sets the default of **Sequence (mrp.bom.labour.cost)** to `10`. | `mrp_bom_labour_cost.sequence` |  |
+| `ir.default` | `default_70_mrp_bom_overhead_cos_active` | Sets the default of **Active (mrp.bom.overhead.cost)** to `true`. | `mrp_bom_overhead_cos.active` |  |
+| `ir.default` | `default_71_mrp_bom_overhead_cos_sequence` | Sets the default of **Sequence (mrp.bom.overhead.cost)** to `10`. | `mrp_bom_overhead_cos.sequence` |  |
 | `ir.default` | `default_72_mrp_bom_bom_total_labour_cost` | Sets the default of **Total Labour Cost (Bill of Material)** to `""`. | `mrp.bom.bom_total_labour_cost` |  |
 | `ir.default` | `default_73_mrp_bom_bom_total_overhead_cost` | Sets the default of **Total Overhead Cost (Bill of Material)** to `""`. | `mrp.bom.bom_total_overhead_cost` |  |
-| `ir.default` | `default_74_x_mrp_bom_general_cost_active` | Sets the default of **Active (mrp.bom.general.cost)** to `true`. | `mrp_bom_general_cost.active` |  |
-| `ir.default` | `default_75_x_mrp_bom_general_cost_sequence` | Sets the default of **Sequence (mrp.bom.general.cost)** to `10`. | `mrp_bom_general_cost.sequence` |  |
-| `ir.default` | `default_80_x_mass_produce_serial_active` | Sets the default of **Active (Mass Produce Serial)** to `true`. | `mass_produce_serial.active` |  |
-| `ir.default` | `default_81_x_mass_produce_serial_sequence` | Sets the default of **Sequence (Mass Produce Serial)** to `10`. | `mass_produce_serial.sequence` |  |
+| `ir.default` | `default_74_mrp_bom_general_cost_active` | Sets the default of **Active (mrp.bom.general.cost)** to `true`. | `mrp_bom_general_cost.active` |  |
+| `ir.default` | `default_75_mrp_bom_general_cost_sequence` | Sets the default of **Sequence (mrp.bom.general.cost)** to `10`. | `mrp_bom_general_cost.sequence` |  |
+| `ir.default` | `default_80_mass_produce_serial_active` | Sets the default of **Active (Mass Produce Serial)** to `true`. | `mass_produce_serial.active` |  |
+| `ir.default` | `default_81_mass_produce_serial_sequence` | Sets the default of **Sequence (Mass Produce Serial)** to `10`. | `mass_produce_serial.sequence` |  |
 | `ir.default` | `default_82_mass_produce_serial__active` | Sets the default of **Active (Mass Produce Serial Line)** to `true`. | `mass_produce_serial_.active` |  |
 | `ir.default` | `default_83_mass_produce_serial__sequence` | Sets the default of **Sequence (Mass Produce Serial Line)** to `10`. | `mass_produce_serial_.sequence` |  |
-| `ir.default` | `default_85_x_mass_produce_serial_sequence_size` | Sets the default of **Sequence Size (Mass Produce Serial)** to `"0"`. | `mass_produce_serial.sequence_size` |  |
-| `ir.default` | `default_86_x_mass_produce_serial_starting_serial_no` | Sets the default of **Starting Serial No (Mass Produce Serial)** to `"0"`. | `mass_produce_serial.starting_serial_no` |  |
+| `ir.default` | `default_85_mass_produce_serial_sequence_size` | Sets the default of **Sequence Size (Mass Produce Serial)** to `"0"`. | `mass_produce_serial.sequence_size` |  |
+| `ir.default` | `default_86_mass_produce_serial_starting_serial_no` | Sets the default of **Starting Serial No (Mass Produce Serial)** to `"0"`. | `mass_produce_serial.starting_serial_no` |  |
 | `ir.default` | `default_87_mass_produce_serial__sequence_size` | Sets the default of **Sequence Size (Mass Produce Serial Line)** to `"0"`. | `mass_produce_serial_.sequence_size` |  |
-| `ir.default` | `default_88_mass_produce_serial__x_studio_starting_serial_n` | Sets the default of **Starting Serial No (Mass Produce Serial Line)** to `"0"`. | `mass_produce_serial_.starting_serial_no` |  |
-| `ir.default` | `default_217_x_mrp_bom_overhead_cos_accounting_currency_id` | Sets the default of **Currency (mrp.bom.overhead.cost)** to `145`. | `mrp_bom_overhead_cos.accounting_currency_id` |  |
-| `ir.default` | `default_218_x_mrp_bom_material_cos_accounting_currency_id` | Sets the default of **Currency (mrp.bom.material.cost)** to `145`. | `mrp_bom_material_cos.accounting_currency_id` |  |
-| `ir.default` | `default_219_x_mrp_bom_labour_cost_accounting_currency_id` | Sets the default of **Currency (mrp.bom.labour.cost)** to `145`. | `mrp_bom_labour_cost.accounting_currency_id` |  |
-| `ir.default` | `default_220_mrp_bom_accounting_currency_id` | Sets the default of **Currency (Bill of Material)** to `145`. | `mrp.bom.accounting_currency_id` |  |
-| `ir.default` | `default_221_x_mrp_bom_general_cost_accounting_currency_id` | Sets the default of **Currency (mrp.bom.general.cost)** to `145`. | `mrp_bom_general_cost.accounting_currency_id` |  |
-| `ir.default` | `default_371_mrp_eco_error` | Sets the default of **Error (Engineering Change Order (ECO))** to `"The Selected Product Should be Approved to Proceed."`. | `mrp.eco.error` |  |
-| `ir.default` | `default_407_mrp_production_process_error` | Sets the default of **Process Error (Production Order)** to `"Select the Correct Finished Product Location Manually to Proceed ."`. | `mrp.production.process_error` |  |
-| `ir.default` | `default_418_x_mrp_bom_overhead_cos_accounting_currency_id` | Sets the default of **Currency (mrp.bom.overhead.cost)** to `145`. | `mrp_bom_overhead_cos.accounting_currency_id` |  |
-| `ir.default` | `default_419_x_mrp_bom_material_cos_accounting_currency_id` | Sets the default of **Currency (mrp.bom.material.cost)** to `145`. | `mrp_bom_material_cos.accounting_currency_id` |  |
-| `ir.default` | `default_420_x_mrp_bom_labour_cost_accounting_currency_id` | Sets the default of **Currency (mrp.bom.labour.cost)** to `145`. | `mrp_bom_labour_cost.accounting_currency_id` |  |
-| `ir.default` | `default_422_x_mrp_bom_general_cost_accounting_currency_id` | Sets the default of **Currency (mrp.bom.general.cost)** to `145`. | `mrp_bom_general_cost.accounting_currency_id` |  |
-| `ir.default` | `default_423_mrp_production_accounting_currency_id` | Sets the default of **Currency (Production Order)** to `145`. | `mrp.production.accounting_currency_id` |  |
-| `ir.default` | `default_475_mrp_production_mark_as_done_validation` | Sets the default of **Mark as Done Validation (Production Order)** to `"Please enter the Quantity to produce to proceed with Mark as Done."`. | `mrp.production.mark_as_done_validation` |  |
-| `ir.default` | `default_614_x_material_request_m_active` | Sets the default of **Active (Material Request M)** to `true`. | `material_request_m.active` |  |
+| `ir.default` | `default_88_mass_produce_serial_starting_serial_n` | Sets the default of **Starting Serial No (Mass Produce Serial Line)** to `"0"`. | `mass_produce_serial_.starting_serial_no` |  |
+| `ir.default` | `default_mrp_bom_overhead_cos_accounting_currency_id` | Sets the default of **Currency (mrp.bom.overhead.cost)** to `145`. | `mrp_bom_overhead_cos.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_material_cos_accounting_currency_id` | Sets the default of **Currency (mrp.bom.material.cost)** to `145`. | `mrp_bom_material_cos.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_labour_cost_accounting_currency_id` | Sets the default of **Currency (mrp.bom.labour.cost)** to `145`. | `mrp_bom_labour_cost.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_accounting_currency_id` | Sets the default of **Currency (Bill of Material)** to `145`. | `mrp.bom.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_general_cost_accounting_currency_id` | Sets the default of **Currency (mrp.bom.general.cost)** to `145`. | `mrp_bom_general_cost.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_eco_error` | Sets the default of **Error (Engineering Change Order (ECO))** to `"The Selected Product Should be Approved to Proceed."`. | `mrp.eco.error` |  |
+| `ir.default` | `default_mrp_production_process_error` | Sets the default of **Process Error (Production Order)** to `"Select the Correct Finished Product Location Manually to Proceed ."`. | `mrp.production.process_error` |  |
+| `ir.default` | `default_mrp_bom_overhead_cos_accounting_currency_id_2` | Sets the default of **Currency (mrp.bom.overhead.cost)** to `145`. | `mrp_bom_overhead_cos.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_material_cos_accounting_currency_id_2` | Sets the default of **Currency (mrp.bom.material.cost)** to `145`. | `mrp_bom_material_cos.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_labour_cost_accounting_currency_id_2` | Sets the default of **Currency (mrp.bom.labour.cost)** to `145`. | `mrp_bom_labour_cost.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_bom_general_cost_accounting_currency_id_2` | Sets the default of **Currency (mrp.bom.general.cost)** to `145`. | `mrp_bom_general_cost.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_production_accounting_currency_id` | Sets the default of **Currency (Production Order)** to `145`. | `mrp.production.accounting_currency_id` |  |
+| `ir.default` | `default_mrp_production_mark_as_done_validation` | Sets the default of **Mark as Done Validation (Production Order)** to `"Please enter the Quantity to produce to proceed with Mark as Done."`. | `mrp.production.mark_as_done_validation` |  |
+| `ir.default` | `default_material_request_m_active` | Sets the default of **Active (Material Request M)** to `true`. | `material_request_m.active` |  |
 | `ir.default` | `default_615_x_material_request_m_accounting_company_id` | Sets the default of **Company (Material Request M)** to `1` for Jinasena (Pvt) Ltd.. | `material_request_m.accounting_company_id` |  |
 | `ir.default` | `default_616_x_material_request_m_accounting_company_id` | Sets the default of **Company (Material Request M)** to `2` for Jinasena Agricultural Machinery (Pvt) Ltd.. | `material_request_m.accounting_company_id` |  |
 | `ir.default` | `default_617_x_material_request_m_accounting_company_id` | Sets the default of **Company (Material Request M)** to `3` for JLTD. | `material_request_m.accounting_company_id` |  |
 | `ir.default` | `default_618_x_material_request_m_accounting_currency_id` | Sets the default of **Currency (Material Request M)** to `145` for Jinasena (Pvt) Ltd.. | `material_request_m.accounting_currency_id` |  |
 | `ir.default` | `default_619_x_material_request_m_accounting_currency_id` | Sets the default of **Currency (Material Request M)** to `145` for Jinasena Agricultural Machinery (Pvt) Ltd.. | `material_request_m.accounting_currency_id` |  |
 | `ir.default` | `default_620_x_material_request_m_accounting_currency_id` | Sets the default of **Currency (Material Request M)** to `145` for JLTD. | `material_request_m.accounting_currency_id` |  |
-| `ir.default` | `default_621_x_material_request_m_sequence` | Sets the default of **Sequence (Material Request M)** to `10`. | `material_request_m.sequence` |  |
+| `ir.default` | `default_material_request_m_sequence` | Sets the default of **Sequence (Material Request M)** to `10`. | `material_request_m.sequence` |  |
 | `ir.default` | `default_622_x_material_request_m_stage_id` | Sets the default of **Stage (Material Request M)** to `1`. | `material_request_m.stage_id` |  |
 | `ir.default` | `default_641_mrp_production_super_user_melt_items` | Sets the default of **Super User (Melt Items) (Production Order)** to `false` for Jinasena Agricultural Machinery (Pvt) Ltd.. | `mrp.production.super_user_melt_items` |  |
 
@@ -2393,7 +2393,7 @@ Everything of other modules that this repo's attributes rely on. If one of these
 
 | Module | Kind | Count | Attributes |
 |---|---|---|---|
-| `BugFix-Approvals` | Jinasena repo | 1 | group BugFix-Approvals.group_132_jin_sales_pos_users |
+| `BugFix-Approvals` | Jinasena repo | 1 | group BugFix-Approvals.group_jin_sales_pos_users |
 | `Jinasena_Masterdata_Reporting` | Jinasena repo | 2 | model sales_report_type, mrp.production.report_type_m_wip |
 | `Odoo` | Odoo | 11 | mrp.bom.action_mrp_workorder_show_steps(), mrp.eco.action_apply(), mrp.eco.approve(), mrp.production.action_cancel(), mrp.production.action_get_account_moves(), mrp.production.action_toggle_is_locked(), mrp.production.button_finish(), mrp.production.button_pending(), mrp.production.button_start(), mrp.production.button_unblock(), mrp.workcenter.button_mrp_workcenter() |
 | `account` | Odoo | 1 | group account.group_account_readonly |
@@ -2419,4 +2419,4 @@ This repo's attributes that other Jinasena repos rely on. Changing or removing o
 
 | Repo | Kind | Count | This repo's attributes they use |
 |---|---|---|---|
-| `BugFix-Studio-Misc` | Jinasena repo | 8 | window action BugFix-MRP.act_window_1013_mrp_bom_material_cost, window action BugFix-MRP.act_window_1014_mrp_bom_labour_cost, window action BugFix-MRP.act_window_1015_mrp_bom_overhead_cost, window action BugFix-MRP.act_window_1053_mrp_bom_general_cost, window action BugFix-MRP.act_window_1146_mass_produce_serial, window action BugFix-MRP.act_window_1148_mass_produce_serial_line, window action BugFix-MRP.act_window_2555_mrp_workcenter_productivity, window action BugFix-MRP.action_2838_mrp_bom |
+| `BugFix-Studio-Misc` | Jinasena repo | 8 | window action BugFix-MRP.action_mrp_bom_material_cost, window action BugFix-MRP.action_mrp_bom_labour_cost, window action BugFix-MRP.action_mrp_bom_overhead_cost, window action BugFix-MRP.action_mrp_bom_general_cost, window action BugFix-MRP.action_mass_produce_serial, window action BugFix-MRP.action_mass_produce_serial_line, window action BugFix-MRP.action_mrp_workcenter_productivity, window action BugFix-MRP.action_mrp_bom |

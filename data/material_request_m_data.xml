@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-    <record id="default_614_x_material_request_m_active" model="ir.default">
+    <record id="default_material_request_m_active" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_material_request_m__active"/>
       <field name="json_value">true</field>
     </record>
@@ -47,7 +47,7 @@
       <field name="company_id" ref="seed_master_data_and_settings.company_jltd"/>
     </record>
     -->
-    <record id="default_621_x_material_request_m_sequence" model="ir.default">
+    <record id="default_material_request_m_sequence" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_material_request_m__sequence"/>
       <field name="json_value">10</field>
     </record>

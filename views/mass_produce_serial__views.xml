@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_1148_mass_produce_serial_line" model="ir.actions.act_window">
+  <record id="action_mass_produce_serial_line" model="ir.actions.act_window">
     <field name="name">Mass Produce Serial Line</field>
     <field name="res_model">mass_produce_serial_</field>
     <field name="view_mode">tree,form</field>
@@ -17,7 +17,7 @@
                 </p>
             </field>
   </record>
-    <record id="view_2624_default_tree_view_for_ir_model_839_e" model="ir.ui.view">
+    <record id="view_mass_produce_serial_tree_2" model="ir.ui.view">
       <field name="name">Default tree view for ir.model(839,)</field>
       <field name="model">mass_produce_serial_</field>
       <field name="type">tree</field>

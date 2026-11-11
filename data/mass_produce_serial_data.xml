@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="sa_f5_x_mass_produce_serial_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
+  <record id="action_mass_produce_serial_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
     <field name="name">JIN - Company Id in Mass Produce Serial</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -11,7 +11,7 @@ record['accounting_company_id'] = company.id]]></field>
     <field name="usage">base_automation</field>
     <field name="binding_view_types">list,form</field>
   </record>
-  <record id="sa_f5_x_mass_produce_serial_mass_produce_serial_nos_find_last" model="ir.actions.server">
+  <record id="action_mass_produce_serial_mass_produce_serial_nos_find_last" model="ir.actions.server">
     <field name="name">Mass Produce Serial Nos - Find Last</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -43,7 +43,7 @@ if record.serial_no_prefix:
        on view 2600 (mass_produce_serial primary form). All 3 reference
        the wizard models ported this version + stock.lot fields owned by
        BugFix-Stock (dep since v0.0.20). -->
-  <record id="server_action_1149_mass_produce_serial_numbers_generate" model="ir.actions.server">
+  <record id="action_mass_produce_serial_numbers_generate" model="ir.actions.server">
     <field name="name">Mass Produce Serial Numbers - Generate</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -85,7 +85,7 @@ action = {
           'context': ctx,
           }]]></field>
   </record>
-  <record id="server_action_1150_mass_produce_serial_numbers_clear" model="ir.actions.server">
+  <record id="action_mass_produce_serial_numbers_clear" model="ir.actions.server">
     <field name="name">Mass Produce Serial Numbers - Clear</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -118,7 +118,7 @@ action = {
           'context': ctx,
           }]]></field>
   </record>
-  <record id="server_action_1151_mass_produce_serial_numbers_create_original" model="ir.actions.server">
+  <record id="action_mass_produce_serial_numbers_create_original" model="ir.actions.server">
     <field name="name">Mass Produce Serial Numbers - Create Original Serial No</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -147,7 +147,7 @@ if record.id:
   temp_rec = env['mass_produce_serial'].search([('id', '=', record.id)],limit=1)
   temp_rec.unlink()]]></field>
   </record>
-  <record id="server_action_2729_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
+  <record id="action_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
     <field name="name">JIN - Company Id in Mass Produce Serial</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -157,7 +157,7 @@ company = env['res.company'].browse(company_id)
 
 record['accounting_company_id'] = company.id]]></field>
   </record>
-  <record id="server_action_1153_mass_produce_serial_nos_find_last" model="ir.actions.server">
+  <record id="action_mass_produce_serial_nos_find_last" model="ir.actions.server">
     <field name="name">Mass Produce Serial Nos - Find Last</field>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="state">code</field>
@@ -190,17 +190,17 @@ if record.serial_no_prefix:
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="trigger">on_change</field>
     <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-MRP.field_mass_produce_serial__serial_no_prefix')])]"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_mass_produce_serial_nos_find_last')])]"/>
   </record>
-  <record id="base_automation_326_jin_company_id_in_mass_produce_serial" model="base.automation">
+  <record id="automation_jin_company_id_in_mass_produce_serial" model="base.automation">
     <field name="name">JIN - Company Id in Mass Produce Serial</field>
     <field name="active" eval="True"/>
     <field name="model_id" search="[('model', '=', 'mass_produce_serial')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="trigger_field_ids" eval="[(6, 0, [ref('BugFix-MRP.field_mass_produce_serial__create_date')])]"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2729_jin_company_id_in_mass_produce_serial')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_jin_company_id_in_mass_produce_serial')])]"/>
   </record>
-  <record id="server_action_1153_mass_produce_serial_nos_find_last" model="ir.actions.server">
+  <record id="action_mass_produce_serial_nos_find_last" model="ir.actions.server">
     <field name="name">Mass Produce Serial Nos - Find Last</field>
     <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial"/>
     <field name="state">code</field>
@@ -229,7 +229,7 @@ if record.serial_no_prefix:
   
     ]]></field>
   </record>
-  <record id="server_action_2729_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
+  <record id="action_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
     <field name="name">JIN - Company Id in Mass Produce Serial</field>
     <field name="model_id" ref="BugFix-MRP.model_mass_produce_serial"/>
     <field name="state">code</field>
@@ -242,11 +242,11 @@ record['accounting_company_id'] = company.id
     ]]></field>
   </record>
     <data noupdate="1">
-    <record id="default_80_x_mass_produce_serial_active" model="ir.default">
+    <record id="default_80_mass_produce_serial_active" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial__active"/>
       <field name="json_value">true</field>
     </record>
-    <record id="default_81_x_mass_produce_serial_sequence" model="ir.default">
+    <record id="default_81_mass_produce_serial_sequence" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial__sequence"/>
       <field name="json_value">10</field>
     </record>
@@ -258,11 +258,11 @@ record['accounting_company_id'] = company.id
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial___sequence"/>
       <field name="json_value">10</field>
     </record>
-    <record id="default_85_x_mass_produce_serial_sequence_size" model="ir.default">
+    <record id="default_85_mass_produce_serial_sequence_size" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial__sequence_size"/>
       <field name="json_value">"0"</field>
     </record>
-    <record id="default_86_x_mass_produce_serial_starting_serial_no" model="ir.default">
+    <record id="default_86_mass_produce_serial_starting_serial_no" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial__starting_serial_no"/>
       <field name="json_value">"0"</field>
     </record>
@@ -270,7 +270,7 @@ record['accounting_company_id'] = company.id
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial___sequence_size"/>
       <field name="json_value">"0"</field>
     </record>
-    <record id="default_88_mass_produce_serial__x_studio_starting_serial_n" model="ir.default">
+    <record id="default_88_mass_produce_serial_starting_serial_n" model="ir.default">
       <field name="field_id" ref="BugFix-MRP.field_mass_produce_serial___starting_serial_no"/>
       <field name="json_value">"0"</field>
     </record>

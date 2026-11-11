@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="server_action_1156_assign_original_mo_to_work_order" model="ir.actions.server">
+  <record id="action_assign_original_mo_to_work_order" model="ir.actions.server">
     <field name="name">Assign Original MO to Work Order</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -10,7 +10,7 @@
   if prod_order:
     record['original_mo'] = prod_order.original_mo]]></field>
   </record>
-  <record id="server_action_1103_create_production_bom_general_cost" model="ir.actions.server">
+  <record id="action_create_production_bom_general_cost" model="ir.actions.server">
     <field name="name">Create Production BOM General Cost</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -19,7 +19,7 @@
 
   prod_bom_labour_cost = env['mrp_bom_general_cost'].create({'prod_bom_general_cost_ids':record.production_id.id,'operation_id':record.operation_id.id,'actual_qty':record.duration/60.00,'planned_qty':record.duration_expected/60.00})]]></field>
   </record>
-  <record id="server_action_1080_create_production_bom_labour_cost" model="ir.actions.server">
+  <record id="action_create_production_bom_labour_cost" model="ir.actions.server">
     <field name="name">Create Production BOM Labour Cost</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -28,7 +28,7 @@
 
   prod_bom_labour_cost = env['mrp_bom_labour_cost'].create({'prod_bom_labour_cost_ids':record.production_id.id,'operation_id':record.operation_id.id,'actual_qty':record.duration/60.00,'planned_qty':record.duration_expected/60.00})]]></field>
   </record>
-  <record id="server_action_1093_create_production_bom_overhead_cost" model="ir.actions.server">
+  <record id="action_create_production_bom_overhead_cost" model="ir.actions.server">
     <field name="name">Create Production BOM Overhead Cost</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -37,7 +37,7 @@
 
   prod_bom_labour_cost = env['mrp_bom_overhead_cos'].create({'prod_bom_overhead_cost_ids':record.production_id.id,'operation_id':record.operation_id.id,'actual_qty':record.duration/60.00,'planned_qty':record.duration_expected/60.00})]]></field>
   </record>
-  <record id="server_action_1106_update_production_bom_general_cost" model="ir.actions.server">
+  <record id="action_update_production_bom_general_cost" model="ir.actions.server">
     <field name="name">Update Production BOM General Cost</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -51,7 +51,7 @@
 
 ]]></field>
   </record>
-  <record id="server_action_1086_update_production_bom_labour_cost" model="ir.actions.server">
+  <record id="action_update_production_bom_labour_cost" model="ir.actions.server">
     <field name="name">Update Production BOM Labour Cost</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -94,7 +94,7 @@
 
 ]]></field>
   </record>
-  <record id="server_action_1096_update_production_bom_overhead_cost" model="ir.actions.server">
+  <record id="action_update_production_bom_overhead_cost" model="ir.actions.server">
     <field name="name">Update Production BOM Overhead Cost</field>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="state">code</field>
@@ -114,14 +114,14 @@
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1080_create_production_bom_labour_cost')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_create_production_bom_labour_cost')])]"/>
   </record>
   <record id="base_automation_31_update_production_bom_labour_cost" model="base.automation">
     <field name="name">Update Production BOM Labour Cost</field>
     <field name="active" eval="True"/>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="trigger">on_create_or_write</field>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1086_update_production_bom_labour_cost')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_update_production_bom_labour_cost')])]"/>
   </record>
   <record id="base_automation_32_create_production_bom_overhead_cost" model="base.automation">
     <field name="name">Create Production BOM Overhead Cost</field>
@@ -129,14 +129,14 @@
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1093_create_production_bom_overhead_cost')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_create_production_bom_overhead_cost')])]"/>
   </record>
   <record id="base_automation_33_update_production_bom_overhead_cost" model="base.automation">
     <field name="name">Update Production BOM Overhead Cost</field>
     <field name="active" eval="True"/>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="trigger">on_create_or_write</field>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1096_update_production_bom_overhead_cost')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_update_production_bom_overhead_cost')])]"/>
   </record>
   <record id="base_automation_34_create_production_bom_general_cost" model="base.automation">
     <field name="name">Create Production BOM General Cost</field>
@@ -144,14 +144,14 @@
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="trigger">on_create_or_write</field>
     <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1103_create_production_bom_general_cost')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_create_production_bom_general_cost')])]"/>
   </record>
   <record id="base_automation_35_update_production_bom_general_cost" model="base.automation">
     <field name="name">Update Production BOM General Cost</field>
     <field name="active" eval="True"/>
     <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
     <field name="trigger">on_create_or_write</field>
-    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1106_update_production_bom_general_cost')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.action_update_production_bom_general_cost')])]"/>
   </record>
   <record id="base_automation_48_assign_original_mo_to_work_order" model="base.automation">
     <field name="name">Assign Original MO to Work Order</field>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="act_window_2306_ecos" model="ir.actions.act_window">
+  <record id="action_ecos" model="ir.actions.act_window">
     <field name="name">ECOs</field>
     <field name="res_model">mrp.eco.bom.change</field>
     <field name="view_mode">tree,form</field>
     <field name="domain">[('eco_id', '=', active_id)]</field>
     <field name="context">{'search_default_eco_id': active_id,'default_eco_id': active_id}</field>
   </record>
-  <record id="act_window_2834_mrp_eco_bom_change" model="ir.actions.act_window">
+  <record id="action_mrp_eco_bom_change" model="ir.actions.act_window">
     <field name="name">mrp.eco.bom.change</field>
     <field name="res_model">mrp.eco.bom.change</field>
     <field name="view_mode">form</field>
