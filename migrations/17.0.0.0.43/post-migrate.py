@@ -9,9 +9,9 @@ def migrate(cr, version):
         return
     # (model, field_name, value, display_name, sequence)
     data = [
-        ("x_material_request_m", "x_studio_kanban_state", "normal", "In Progress", 10),
-        ("x_material_request_m", "x_studio_kanban_state", "done", "Ready", 1),
-        ("x_material_request_m", "x_studio_kanban_state", "blocked", "Blocked", 2),
+        ("material_request_m", "kanban_state", "normal", "In Progress", 10),
+        ("material_request_m", "kanban_state", "done", "Ready", 1),
+        ("material_request_m", "kanban_state", "blocked", "Blocked", 2),
     ]
     for model, name, value, display, seq in data:
         # Name is a JSONB translation field in Odoo 17
