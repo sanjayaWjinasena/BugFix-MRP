@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase E - 1 views for mrp.bom -->
+<odoo>
+  <data>
+    <record id="view_5461_odoo_studio_mrp_bom_tree_customization_e" model="ir.ui.view">
+      <field name="name">Odoo Studio: mrp.bom.tree customization</field>
+      <field name="model">mrp.bom</field>
+      <field name="type">tree</field>
+      <field name="priority">160</field>
+      <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+      <field name="mode">extension</field>
+      <field name="arch" type="xml">
+        <data>
+  <xpath expr="//field[@name='product_tmpl_id']" position="after">
+    <field name="display_name" optional="show"/>
+    <field optional="show" name="x_studio_product_category" widget="char_emojis"/>
+  </xpath>
+</data>
+      </field>
+    </record>
+
+  </data>
+</odoo>

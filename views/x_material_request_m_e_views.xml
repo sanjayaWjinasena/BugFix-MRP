@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase E - 5 views for x_material_request_m -->
+<odoo>
+  <data>
+    <record id="view_8747_default_calendar_view_for_x_material_request_m_e" model="ir.ui.view">
+      <field name="name">Default calendar view for x_material_request_m</field>
+      <field name="model">x_material_request_m</field>
+      <field name="type">calendar</field>
+      <field name="arch" type="xml">
+        <calendar date_start="x_studio_date" create_name_field="x_name"/>
+      </field>
+    </record>
+
+    <record id="view_8748_default_gantt_view_for_x_material_request_m_e" model="ir.ui.view">
+      <field name="name">Default gantt view for x_material_request_m</field>
+      <field name="model">x_material_request_m</field>
+      <field name="type">gantt</field>
+      <field name="arch" type="xml">
+        <gantt date_start="x_studio_date_start" date_stop="x_studio_date_stop"/>
+      </field>
+    </record>
+
+    <record id="view_8752_default_graph_view_for_x_material_request_m_e" model="ir.ui.view">
+      <field name="name">Default graph view for x_material_request_m</field>
+      <field name="model">x_material_request_m</field>
+      <field name="type">graph</field>
+      <field name="arch" type="xml">
+        <graph sample="1">
+  <field name="x_studio_value" type="measure"/>
+  <field name="create_date" type="row"/>
+</graph>
+      </field>
+    </record>
+
+    <record id="view_8750_default_map_view_for_x_material_request_m_e" model="ir.ui.view">
+      <field name="name">Default map view for x_material_request_m</field>
+      <field name="model">x_material_request_m</field>
+      <field name="type">map</field>
+      <field name="arch" type="xml">
+        <map res_partner="x_studio_partner_id">
+  <field name="x_studio_partner_id" string="Partner"/>
+</map>
+      </field>
+    </record>
+
+    <record id="view_8751_default_pivot_view_for_x_material_request_m_e" model="ir.ui.view">
+      <field name="name">Default pivot view for x_material_request_m</field>
+      <field name="model">x_material_request_m</field>
+      <field name="type">pivot</field>
+      <field name="arch" type="xml">
+        <pivot sample="1">
+  <field name="x_studio_value" type="measure"/>
+  <field name="x_studio_stage_id" type="col"/>
+  <field name="x_studio_date" type="row"/>
+</pivot>
+      </field>
+    </record>
+
+  </data>
+</odoo>

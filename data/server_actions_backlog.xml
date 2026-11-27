@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP backlog: 23 server actions (0 skipped) -->
+<odoo>
+
+  <record id="server_action_1016_create_bom_material_cost" model="ir.actions.server">
+    <field name="name">Create BOM Material Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_material_cos"].create({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})
+
+]]></field>
+  </record>
+
+  <record id="server_action_1033_update_bom_material_cost" model="ir.actions.server">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.id:
+  update = env['x_mrp_bom_material_cos'].search([('x_studio_line_id', '=', record.id), ('x_studio_bom_material_cost_ids', '=', record.bom_id.id,)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_product_id':record.product_id.id,'x_studio_planned_qty':record.product_qty,'x_studio_uom_id':record.product_uom_id.id}) 
+   
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_1026_update_bom_material_cost" model="ir.actions.server">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[record.write({"x_studio_bom_material_cost_ids": record.bom_id.id, "x_studio_operation_id": record.operation_id.id, "x_studio_planned_qty": record.product_qty, "x_studio_uom_id": record.product_uom_id.id, "x_studio_line_id": record.id, "x_studio_product_id": record.product_id.id})]]></field>
+  </record>
+
+  <record id="server_action_2307_plm_filter_by_tag" model="ir.actions.server">
+    <field name="name">PLM - Filter by Tag</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="usage">ir_actions_server</field>
+    <field name="code"><![CDATA[action = {
+          'name': 'Engineering Change Order ',
+          'domain': [('x_studio_tag_description', '=', record.x_studio_tag_description)],
+          'type': 'ir.actions.act_window',
+          'res_model': 'mrp.eco',
+          'view_mode': 'tree,form',
+          'view_type': 'form',
+          'view_id': False,
+          'context': False,
+          } 
+
+
+]]></field>
+  </record>
+
+  <record id="server_action_2305_plm_tag_create" model="ir.actions.server">
+    <field name="name">PLM - Tag Create</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[line_ids = []
+
+eco_tag_search = env['mrp.eco.tag'].search([('name', '=', record.x_studio_tag_description)],limit=1)
+if eco_tag_search:
+  line_ids.append(eco_tag_search.id)
+else:
+  eco_tag_create = env['mrp.eco.tag'].create({'name':record.x_studio_tag_description})
+  line_ids.append(eco_tag_create.id)
+
+"""if record.type == 'bom': 
+  record.write({'tag_ids':[(6, 0, line_ids)], 'active':False})
+else:
+  record.write({'tag_ids':[(6, 0, line_ids)]})"""
+  
+record.write({'tag_ids':[(6, 0, line_ids)]})]]></field>
+  </record>
+
+  <record id="server_action_2304_plm_tag_description" model="ir.actions.server">
+    <field name="name">PLM - Tag Description</field>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[#record.write({'x_studio_tag_description':record.name})
+if record.name:
+  record['x_studio_tag_description'] = record.name]]></field>
+  </record>
+
+  <record id="server_action_1154_update_tracking_item_status_in_mo" model="ir.actions.server">
+    <field name="name">Update Tracking Item Status in MO</field>
+    <field name="model_id" search="[('model', '=', 'mrp.production')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.product_id:
+  if record.product_id.tracking == 'serial':
+    record['x_studio_tracked_item'] = True
+  else:
+    record['x_studio_tracked_item'] = False
+  ]]></field>
+  </record>
+
+  <record id="server_action_1054_create_bom_general_cost" model="ir.actions.server">
+    <field name="name">Create BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_general_cost"].create({"x_studio_bom_general_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+
+]]></field>
+  </record>
+
+  <record id="server_action_1040_create_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Create BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_labour_cost"].create({"x_studio_bom_labour_cost_ids": record.bom_id.id, "x_studio_planned_qty": record.time_cycle/60.00, "x_studio_operation_id": record.id})
+
+]]></field>
+  </record>
+
+  <record id="server_action_1049_create_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Create BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[new_record = env["x_mrp_bom_overhead_cos"].create({"x_studio_bom_overhead_cost_ids": record.bom_id.id, "x_studio_operation_id": record.id, "x_studio_planned_qty": record.time_cycle/60.00})
+
+]]></field>
+  </record>
+
+  <record id="server_action_1127_update_bom_general_cost" model="ir.actions.server">
+    <field name="name">Update BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.bom_id and record.id:
+  update = env['x_mrp_bom_general_cost'].search([('x_studio_bom_general_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_1113_update_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Update BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.bom_id and record.id:
+  update = env['x_mrp_bom_labour_cost'].search([('x_studio_bom_labour_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_1120_update_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Update BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.bom_id and record.id:
+  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_bom_overhead_cost_ids', '=', record.bom_id.id), ('x_studio_operation_id', '=', record.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.id,'x_studio_planned_qty':record.time_cycle/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_1156_assign_original_mo_to_work_order" model="ir.actions.server">
+    <field name="name">Assign Original MO to Work Order</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[ if record.production_id:
+  prod_order = env['mrp.production'].search([('id', '=', record.production_id.id)],limit=1)
+  if prod_order:
+    record['x_studio_original_mo'] = prod_order.x_studio_original_mo]]></field>
+  </record>
+
+  <record id="server_action_1103_create_production_bom_general_cost" model="ir.actions.server">
+    <field name="name">Create Production BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  prod_bom_labour_cost = env['x_mrp_bom_general_cost'].create({'x_studio_prod_bom_general_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})]]></field>
+  </record>
+
+  <record id="server_action_1080_create_production_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Create Production BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  prod_bom_labour_cost = env['x_mrp_bom_labour_cost'].create({'x_studio_prod_bom_labour_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})]]></field>
+  </record>
+
+  <record id="server_action_1093_create_production_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Create Production BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  prod_bom_labour_cost = env['x_mrp_bom_overhead_cos'].create({'x_studio_prod_bom_overhead_cost_ids':record.production_id.id,'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00})]]></field>
+  </record>
+
+  <record id="server_action_1106_update_production_bom_general_cost" model="ir.actions.server">
+    <field name="name">Update Production BOM General Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  update = env['x_mrp_bom_general_cost'].search([('x_studio_prod_bom_general_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_1086_update_production_bom_labour_cost" model="ir.actions.server">
+    <field name="name">Update Production BOM Labour Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  ot_applicable = False
+  #######################
+  work_center = env['mrp.workcenter'].search([('id', '=', record.workcenter_id.id)])
+  if work_center:
+    for work_centers in work_center:
+      if work_centers.x_studio_ot_cost_per_hour > 0.00:
+        #work_centers.write({'costs_hour':(work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour + work_centers.x_studio_ot_cost_per_hour)}) 
+        work_centers.write({'costs_hour':(work_centers.x_studio_ot_cost_per_hour)})
+      else:
+        #work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour + work_centers.x_studio_overhead_cost_hour + work_centers.x_studio_general_cost_hour)})
+        work_centers.write({'costs_hour':(work_centers.x_studio_labour_cost_hour)}) 
+  
+  #######################
+  update = env['x_mrp_bom_labour_cost'].search([('x_studio_prod_bom_labour_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
+  if update:
+    if record.x_studio_ot_applicable == False:
+      if record.workcenter_id.x_studio_ot_cost_per_hour > 0.00:
+        ot_applicable = True
+    else:
+      ot_applicable = True
+      
+    #actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+    #actual_cost = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+    actual_cost = update.x_studio_operation_id.workcenter_id.costs_hour 
+    actual_cost_ot = update.x_studio_operation_id.workcenter_id.x_studio_ot_cost_per_hour
+    #actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour + update.x_studio_operation_id.workcenter_id.x_studio_labour_idle_cost_per_hour
+    actual_cost_without_ot = update.x_studio_operation_id.workcenter_id.x_studio_labour_cost_hour
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00,'x_studio_cost':actual_cost,'x_studio_cost_ot':actual_cost_ot,'x_studio_cost_without_ot':actual_cost_without_ot})
+    
+    record['x_studio_ot_applicable'] = ot_applicable
+      
+      
+    
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_1096_update_production_bom_overhead_cost" model="ir.actions.server">
+    <field name="name">Update Production BOM Overhead Cost</field>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[if record.production_id and record.operation_id:
+  update = env['x_mrp_bom_overhead_cos'].search([('x_studio_prod_bom_overhead_cost_ids', '=', record.production_id.id), ('x_studio_operation_id', '=', record.operation_id.id)], limit=1)
+  if update:
+    update.write({'x_studio_operation_id':record.operation_id.id,'x_studio_actual_qty':record.duration/60.00,'x_studio_planned_qty':record.duration_expected/60.00}) 
+    
+  
+
+]]></field>
+  </record>
+
+  <record id="server_action_2729_jin_company_id_in_mass_produce_serial" model="ir.actions.server">
+    <field name="name">JIN - Company Id in Mass Produce Serial</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_company_id'] = company.id]]></field>
+  </record>
+
+  <record id="server_action_1153_mass_produce_serial_nos_find_last" model="ir.actions.server">
+    <field name="name">Mass Produce Serial Nos - Find Last</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_sequence_size'] = 4  
+record['x_studio_starting_serial_no'] = 1
+record['x_studio_last_serial_no_id'] = ''
+record['x_studio_company_id'] = company.id
+
+if record.x_studio_serial_no_prefix:
+  last_sn = env['stock.lot'].search([('x_studio_serial_no_prefix', '=ilike', record.x_studio_serial_no_prefix), ('company_id', '=', company.id)],order='id desc',limit=1)
+  if last_sn:
+    record['x_studio_prefix_status'] = 'Existing'
+    record['x_studio_sequence_size'] = last_sn.x_studio_sequence_size
+    record['x_studio_starting_serial_no'] = last_sn.x_studio_starting_serial_no + 1
+    record['x_studio_last_serial_no_id'] = last_sn.id
+  else:
+    record['x_studio_prefix_status'] = 'New'
+    
+    
+   
+  ]]></field>
+  </record>
+
+  <record id="server_action_2730_jin_company_id_in_mass_produce_serial_line" model="ir.actions.server">
+    <field name="name">JIN - Company Id in Mass Produce Serial Line</field>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial_')]"/>
+    <field name="state">code</field>
+    <field name="usage">base_automation</field>
+    <field name="code"><![CDATA[company_id = env.context.get('allowed_company_ids', [env.user.company_id.id])[0]
+company = env['res.company'].browse(company_id)
+
+record['x_studio_company_id'] = company.id]]></field>
+  </record>
+
+</odoo>

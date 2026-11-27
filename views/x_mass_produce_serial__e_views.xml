@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase E - 2 views for x_mass_produce_serial_ -->
+<odoo>
+  <data>
+    <record id="view_2624_default_tree_view_for_ir_model_839_e" model="ir.ui.view">
+      <field name="name">Default tree view for ir.model(839,)</field>
+      <field name="model">x_mass_produce_serial_</field>
+      <field name="type">tree</field>
+      <field name="active" eval="False"/>
+      <field name="arch" type="xml">
+        <tree string="Mass Produce Serial Line"><field name="x_name"/></tree>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -9,6 +9,7 @@ class XMassProduceSerial(models.Model):
     Nos' button (server action 1147). Generate/Clear/OK buttons on the primary
     form (view 2600) invoke server actions 1149/1150/1151."""
     _name = 'x_mass_produce_serial'
+    _inherit = ['mail.activity.mixin']
     _description = 'Mass Produce Serial'
     _rec_name = 'x_name'
     _order = 'x_studio_sequence asc, id asc'
@@ -26,7 +27,7 @@ class XMassProduceSerial(models.Model):
         string='Prefix Status')
     x_studio_product_id = fields.Many2one('product.product', string='Product', ondelete='set null')
     x_studio_product_qty = fields.Float(string='Quantity to Create')
-    x_studio_production_id = fields.Many2one('mrp.production', string='Production Order', ondelete='cascade')
+    x_studio_production_id = fields.Many2one('mrp.production', string='Production Order', ondelete='set null')
     x_studio_sequence = fields.Integer(string='Sequence')
     x_studio_sequence_size = fields.Integer(string='Sequence Size')
     x_studio_serial_no_prefix = fields.Char(string='Serial No Prefix')

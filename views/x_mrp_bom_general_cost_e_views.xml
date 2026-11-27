@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP: Phase E - 4 views for x_mrp_bom_general_cost -->
+<odoo>
+  <data>
+    <record id="view_2576_default_form_view_for_x_mrp_bom_general_cost_e" model="ir.ui.view">
+      <field name="name">Default form view for x_mrp_bom_general_cost</field>
+      <field name="model">x_mrp_bom_general_cost</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+  <header/>
+  <sheet string="mrp.bom.general.cost">
+    <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="x_active == True"/>
+    <field name="x_active" invisible="1"/>
+    <div class="oe_title">
+                <h1>
+                    <field name="x_name" required="1" placeholder="Name..."/>
+                </h1>
+            </div>
+    <group name="studio_group_a334bf">
+      <group name="studio_group_a334bf_left"/>
+      <group name="studio_group_a334bf_right"/>
+    </group>
+  </sheet>
+  <div class="oe_chatter" name="oe_chatter">
+    <!-- STRIPPED field message_follower_ids not on x_mrp_bom_general_cost -->
+    <!-- STRIPPED field message_ids not on x_mrp_bom_general_cost -->
+    <!-- STRIPPED field activity_ids not on x_mrp_bom_general_cost -->
+  </div>
+</form>
+      </field>
+    </record>
+
+    <record id="view_2575_default_list_view_for_x_mrp_bom_general_cost_e" model="ir.ui.view">
+      <field name="name">Default list view for x_mrp_bom_general_cost</field>
+      <field name="model">x_mrp_bom_general_cost</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree>
+  <field name="x_studio_sequence" widget="handle"/>
+  <field name="x_name"/>
+</tree>
+      </field>
+    </record>
+
+    <record id="view_2577_default_search_view_for_x_mrp_bom_general_cost_e" model="ir.ui.view">
+      <field name="name">Default search view for x_mrp_bom_general_cost</field>
+      <field name="model">x_mrp_bom_general_cost</field>
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+        <search>
+  <field name="x_name"/>
+  <separator/>
+  <filter string="Archived" name="archived_x_mrp_bom_general_cost" domain="[['x_active', '=', False]]"/>
+  <separator/>
+</search>
+      </field>
+    </record>
+
+  </data>
+</odoo>

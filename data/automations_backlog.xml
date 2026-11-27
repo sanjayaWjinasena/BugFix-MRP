@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BugFix-MRP backlog: 20 base.automations -->
+<odoo>
+
+  <record id="base_automation_21_create_bom_material_cost" model="base.automation">
+    <field name="name">Create BOM Material Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_bom_line__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1016_create_bom_material_cost')])]"/>
+  </record>
+
+  <record id="base_automation_23_update_bom_material_cost" model="base.automation">
+    <field name="name">Update BOM Material Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.bom.line')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1033_update_bom_material_cost')])]"/>
+  </record>
+
+  <record id="base_automation_209_plm_tag_description" model="base.automation">
+    <field name="name">PLM - Tag Description</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('mrp_plm.field_mrp_eco__name')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2304_plm_tag_description')])]"/>
+  </record>
+
+  <record id="base_automation_210_plm_tag_create" model="base.automation">
+    <field name="name">PLM - Tag Create</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.eco')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp_plm.field_mrp_eco__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2305_plm_tag_create')])]"/>
+  </record>
+
+  <record id="base_automation_24_create_bom_labour_cost" model="base.automation">
+    <field name="name">Create BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_routing_workcenter__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1040_create_bom_labour_cost')])]"/>
+  </record>
+
+  <record id="base_automation_25_create_bom_overhead_cost" model="base.automation">
+    <field name="name">Create BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_routing_workcenter__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1049_create_bom_overhead_cost')])]"/>
+  </record>
+
+  <record id="base_automation_26_create_bom_general_cost" model="base.automation">
+    <field name="name">Create BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_routing_workcenter__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1054_create_bom_general_cost')])]"/>
+  </record>
+
+  <record id="base_automation_36_update_bom_labour_cost" model="base.automation">
+    <field name="name">Update BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1113_update_bom_labour_cost')])]"/>
+  </record>
+
+  <record id="base_automation_37_update_bom_overhead_cost" model="base.automation">
+    <field name="name">Update BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1120_update_bom_overhead_cost')])]"/>
+  </record>
+
+  <record id="base_automation_38_update_bom_general_cost" model="base.automation">
+    <field name="name">Update BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.routing.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1127_update_bom_general_cost')])]"/>
+  </record>
+
+  <record id="base_automation_249_update_cost_per_hour" model="base.automation">
+    <field name="name">Update Cost Per Hour</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workcenter')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2542_update_cost_per_hour')])]"/>
+  </record>
+
+  <record id="base_automation_30_create_production_bom_labour_cost" model="base.automation">
+    <field name="name">Create Production BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1080_create_production_bom_labour_cost')])]"/>
+  </record>
+
+  <record id="base_automation_31_update_production_bom_labour_cost" model="base.automation">
+    <field name="name">Update Production BOM Labour Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1086_update_production_bom_labour_cost')])]"/>
+  </record>
+
+  <record id="base_automation_32_create_production_bom_overhead_cost" model="base.automation">
+    <field name="name">Create Production BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1093_create_production_bom_overhead_cost')])]"/>
+  </record>
+
+  <record id="base_automation_33_update_production_bom_overhead_cost" model="base.automation">
+    <field name="name">Update Production BOM Overhead Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1096_update_production_bom_overhead_cost')])]"/>
+  </record>
+
+  <record id="base_automation_34_create_production_bom_general_cost" model="base.automation">
+    <field name="name">Create Production BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('mrp.field_mrp_workorder__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1103_create_production_bom_general_cost')])]"/>
+  </record>
+
+  <record id="base_automation_35_update_production_bom_general_cost" model="base.automation">
+    <field name="name">Update Production BOM General Cost</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'mrp.workorder')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1106_update_production_bom_general_cost')])]"/>
+  </record>
+
+  <record id="base_automation_45_mass_produce_serial_nos_find_last" model="base.automation">
+    <field name="name">Mass Produce Serial Nos - Find Last</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="trigger">on_change</field>
+    <field name="on_change_field_ids" eval="[(6, 0, [ref('BugFix-MRP.field_x_mass_produce_serial__x_studio_serial_no_prefix')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_1153_mass_produce_serial_nos_find_last')])]"/>
+  </record>
+
+  <record id="base_automation_326_jin_company_id_in_mass_produce_serial" model="base.automation">
+    <field name="name">JIN - Company Id in Mass Produce Serial</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('BugFix-MRP.field_x_mass_produce_serial__create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2729_jin_company_id_in_mass_produce_serial')])]"/>
+  </record>
+
+  <record id="base_automation_327_jin_company_id_in_mass_produce_serial_line" model="base.automation">
+    <field name="name">JIN - Company Id in Mass Produce Serial Line</field>
+    <field name="active" eval="True"/>
+    <field name="model_id" search="[('model', '=', 'x_mass_produce_serial_')]"/>
+    <field name="trigger">on_create_or_write</field>
+    <field name="trigger_field_ids" eval="[(6, 0, [ref('BugFix-MRP.field_x_mass_produce_serial___create_date')])]"/>
+    <field name="action_server_ids" eval="[(6, 0, [ref('BugFix-MRP.server_action_2730_jin_company_id_in_mass_produce_serial_line')])]"/>
+  </record>
+
+</odoo>

@@ -5,7 +5,8 @@ from odoo import fields, models
 
 class XMaterialRequestMTag(models.Model):
     _name = 'x_material_request_m_tag'
-    _description = 'X Material Request M Tag'
+    _rec_name = 'x_name'  # Clear-DB Studio model: records are named by x_name
+    _description = 'Material Request M Tags'
 
     x_color = fields.Integer(string='Color')
     x_name = fields.Char(string='Name')
